@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>吖远zzyの博客</title>
+  
+  <subtitle>一个不知名的编程爱好者</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.hzv5.cn/"/>
+  <updated>2019-08-15T07:24:59.711Z</updated>
+  <id>http://www.hzv5.cn/</id>
+  
+  <author>
+    <name>吖远zzy</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Android自定义QQ分享提示未正确授权，错误码901115</title>
+    <link href="http://www.hzv5.cn/2019/08/15/QQshare-Err/"/>
+    <id>http://www.hzv5.cn/2019/08/15/QQshare-Err/</id>
+    <published>2019-08-15T06:33:00.943Z</published>
+    <updated>2019-08-15T07:24:59.711Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p><p><img src="/img/QQshareErr/01.png" alt="QQ分享错误示例"></p><a id="more"></a><p>然后感觉就是，是不是因为QQ互联官网更新了QQ分享的SDK，于是乎，我打开了官网一看，还真的是，顶部出现了一条醒目的公告提示，这个提示已经有一段时间了，怪我最近没怎么做相关开发，没注意23333…</p><p>参考： <a href="https://wiki.connect.qq.com/%E5%8A%A0%E5%BC%BAqq%E4%BA%92%E8%81%94%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8-android%E5%8C%85%E5%90%8D%E5%92%8C-ios-bundleid-%E6%A0%A1%E9%AA%8C%E7%9A%84%E9%80%9A%E7%9F%A5%EF%BB%BF" title="加强QQ互联移动应用 Android包名和 iOS Bundleid 校验" target="_blank" rel="noopener">加强QQ互联移动应用 Android包名和 iOS Bundleid 校验</a></p><p>一看公告，这个校验新方法已经是5月30日开始的了，我这是多久没关注相关的应用使用QQ分享了23333</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>根据公告说的，是为了保障QQ用户的安全，以免被恶意盗用，加强了应用的校验，如不进行信息完善，应用将无法登录和分享至QQ好友和QQ群，所以我们补全信息即可。我们进入QQ互联平台登记的应用：QQ互联官网：<a href="https://connect.qq.com/index.html" title="QQ互联官网 - 应用管理" target="_blank" rel="noopener">QQ互联官网 - 应用管理</a> 应用管理中进行补充；</p><p><strong>（修改路径为：应用管理 – 移动应用 – 查看（应用）– 基础信息 – 平台信息 – 修改）</strong></p><p><img src="/img/QQshareErr/02.png" alt="进入应用"></p><p><img src="/img/QQshareErr/03.png" alt="修改应用信息"></p><p>进入修改应用信息后，添加用到该APPID的应用包名以及签名，每个APPID最多支持6组app共用。</p><p><img src="/img/QQshareErr/04.png" alt="添加应用包名与签名"></p><p>还有就是别忘了应用接口权限别忘了看一看有没有获取打开</p><p><img src="/img/QQshareErr/05.png" alt="管理应用权限"></p><h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>到这里就解决了这个错误码为901115的QQQ分享报错了。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一个不算问题的问题，出于平时使用频率小，导致没怎么关注这个，当使用的时候就一脸懵逼</p><p>捋清思路之后，问题就简单了</p><p>么么扎~~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/QQshareErr/01.png&quot; alt=&quot;QQ分享错误示例&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
+    
+      <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="笔记" scheme="http://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo实现文章加密和文章置顶的方法与演示</title>
+    <link href="http://www.hzv5.cn/2019/07/15/encode-top-test/"/>
+    <id>http://www.hzv5.cn/2019/07/15/encode-top-test/</id>
+    <published>2019-07-15T08:07:00.000Z</published>
+    <updated>2019-07-18T13:11:25.437Z</updated>
+    
+    <content type="html"><![CDATA[<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script><div id="hbe-security">  <div class="hbe-input-container">  <input type="password" class="hbe-form-control" id="pass" placeholder="密码是[你好]两个字的拼音字母" />    <label for="pass">密码是[你好]两个字的拼音字母</label>    <div class="bottom-line"></div>  </div></div><div id="decryptionError" style="display: none;">Incorrect Password!</div><div id="noContentError" style="display: none;">No content to display!</div><div id="encrypt-blog" style="display:none">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</div><script src="/lib/crypto-js.js"></script><script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+    
+    <summary type="html">
+    
+      此文已被加密，需输入密码查看
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    
+      <category term="博客优化" scheme="http://www.hzv5.cn/tags/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo依靠yilia主题实现添加相册目录</title>
+    <link href="http://www.hzv5.cn/2019/07/04/yilia-photos/"/>
+    <id>http://www.hzv5.cn/2019/07/04/yilia-photos/</id>
+    <published>2019-07-04T14:05:38.777Z</published>
+    <updated>2019-07-10T02:55:15.900Z</updated>
+    
+    <content type="html"><![CDATA[<p>这是<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a>相册的修改版，版权归原作者所有</p><h4 id="点此预览效果"><a href="#点此预览效果" class="headerlink" title="点此预览效果"></a><a href="https://hexo.hzv5.cn/photos/" target="_blank" rel="noopener">点此预览效果</a></h4><h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><h2 id="本相册适用于hexo-yilia主题，移植到其他主题需要改动"><a href="#本相册适用于hexo-yilia主题，移植到其他主题需要改动" class="headerlink" title="本相册适用于hexo-yilia主题，移植到其他主题需要改动"></a>本相册适用于hexo-yilia主题，移植到其他主题需要改动</h2><h3 id="与原作者相比改动"><a href="#与原作者相比改动" class="headerlink" title="与原作者相比改动"></a>与原作者相比改动</h3><a id="more"></a><p>1.由原作者图片托管在instagram改为托管在本地</p><p>2.由原作者图片尺寸固定改为尺寸可以写入ins.json</p><p>3.去掉原作者type选项，只可以放图片而不能放视频，并且图片格式只支持jpg（如果需要支持更多格式对ins.js稍作修改即可）</p><p>4.link作为图片名</p><p>5.去掉ins.jsn中的src选项</p><h3 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h3><p>1.将本项目所有文件保存到您hexo的source目录下的一个目录里</p><p>2.在本目录新建ins与minins文件夹，将原图片保存到ins文件夹下，图片略缩图保存在minins文件夹下，略缩图推荐尺寸:328x328</p><p>3.之后source目录树一般如下</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">├── _posts</span><br><span class="line">├── photos</span><br><span class="line">|   ├── ins</span><br><span class="line">|   |   ├──pic1.jpg</span><br><span class="line">|   |   ├──pic2.jpg</span><br><span class="line">|   |   └──pic3.jpg</span><br><span class="line">|   ├── minins</span><br><span class="line">|   |   ├──pic1.min.jpg</span><br><span class="line">|   |   ├──pic2.min.jpg</span><br><span class="line">|   |   └──pic3.min.jpg</span><br><span class="line">|   ├── index.ejs</span><br><span class="line">|   ├── ins.css</span><br><span class="line">|   ├── ins.js</span><br><span class="line">|   └── ins.json</span><br><span class="line">└── CNAME</span><br></pre></td></tr></table></figure><p>4.如果原图名称为xxxx.jpg，则略缩图名称为xxxx.min.jpg</p><p>5.修改ins.json与您实际情况相匹配，其中图片名不需要写后缀，描述部分随意，图片尺寸格式为图片宽度x图片高度，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">&quot;date&quot;: &quot;2015-05&quot;,</span><br><span class="line">&quot;arr&quot;: &#123;</span><br><span class="line">&quot;year&quot;: 2015,</span><br><span class="line">&quot;month&quot;: 5,</span><br><span class="line">&quot;link&quot;: [&quot;201505251818&quot;],</span><br><span class="line">&quot;text&quot;: [&quot;这是一张在2015年五月拍摄的照片&quot;],</span><br><span class="line">&quot;sizes&quot;: [&quot;1000x1000&quot;]</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>照片太多可以自己写程序简化操作</p><p>略缩图可下载这个软件批量生成</p><p>链接: <a href="https://pan.baidu.com/s/1slULnUd" target="_blank" rel="noopener">https://pan.baidu.com/s/1slULnUd</a> 密码: 54je</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是&lt;a href=&quot;http://litten.me/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Litten&lt;/a&gt;相册的修改版，版权归原作者所有&lt;/p&gt;
+&lt;h4 id=&quot;点此预览效果&quot;&gt;&lt;a href=&quot;#点此预览效果&quot; class=&quot;headerlink&quot; title=&quot;点此预览效果&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://hexo.hzv5.cn/photos/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;点此预览效果&lt;/a&gt;&lt;/h4&gt;&lt;h1 id=&quot;使用说明&quot;&gt;&lt;a href=&quot;#使用说明&quot; class=&quot;headerlink&quot; title=&quot;使用说明&quot;&gt;&lt;/a&gt;使用说明&lt;/h1&gt;&lt;h2 id=&quot;本相册适用于hexo-yilia主题，移植到其他主题需要改动&quot;&gt;&lt;a href=&quot;#本相册适用于hexo-yilia主题，移植到其他主题需要改动&quot; class=&quot;headerlink&quot; title=&quot;本相册适用于hexo-yilia主题，移植到其他主题需要改动&quot;&gt;&lt;/a&gt;本相册适用于hexo-yilia主题，移植到其他主题需要改动&lt;/h2&gt;&lt;h3 id=&quot;与原作者相比改动&quot;&gt;&lt;a href=&quot;#与原作者相比改动&quot; class=&quot;headerlink&quot; title=&quot;与原作者相比改动&quot;&gt;&lt;/a&gt;与原作者相比改动&lt;/h3&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    
+      <category term="yilia" scheme="http://www.hzv5.cn/tags/yilia/"/>
+    
+      <category term="相册" scheme="http://www.hzv5.cn/tags/%E7%9B%B8%E5%86%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo添加完GitTalk评论系统后报错以及解决办法</title>
+    <link href="http://www.hzv5.cn/2019/07/01/GitTalk-Error/"/>
+    <id>http://www.hzv5.cn/2019/07/01/GitTalk-Error/</id>
+    <published>2019-07-01T07:34:39.372Z</published>
+    <updated>2019-07-02T03:17:09.195Z</updated>
+    
+    <content type="html"><![CDATA[<p>这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。</p><p>第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：</p><a id="more"></a><p><img src="https://img-blog.csdnimg.cn/20190216224052792.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p><p>在搜索引擎的帮助下，发现是gittalk中的信息填写错了，</p><pre><code>name随便写；Homepage URL是你的仓库的名字，Authorization callback URL如果你指向了新的域名就填新的，比如说我指向了域名 hexo.hzv5.cn；否则也写仓库的名字就可以。</code></pre><p>这样之后这个错误解决了。</p><p>另外，有的时候有些朋友也会有这样的一种情况，就是没有报错，但是点击登录Github按钮会自动重定向跳转到首页，这种情况也是上面的一些设置没有设置好导致的，按照上面说的重新设置一下就行。</p><p>注意：如果github博客开启了force https功能，需要将OAuth Apps中的地址改为https。</p><p>但是，登录打开评论一看，又报了新的错误：</p><pre><code>Error:Issues are disabled for this repo</code></pre><p><img src="https://img-blog.csdnimg.cn/20190216224510351.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p><p>这个错误你只需要去项目的设置里，设置一下就行了，Settings-Features-把Issures打勾</p><p><img src="https://img-blog.csdnimg.cn/20190216224451356.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p><p>这样一顿倒腾之后，博主的gittalk已经能正常使用了。</p><p>欢迎登录Github评论留言…</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。&lt;/p&gt;
+&lt;p&gt;第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    
+      <category term="GitTalk" scheme="http://www.hzv5.cn/tags/GitTalk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用hexo+github搭建免费个人博客详细教程</title>
+    <link href="http://www.hzv5.cn/2019/06/30/hexo-github/"/>
+    <id>http://www.hzv5.cn/2019/06/30/hexo-github/</id>
+    <published>2019-06-30T03:33:56.207Z</published>
+    <updated>2019-07-10T02:57:44.916Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用github pages服务搭建博客的好处有：</p><ol><li>全是静态文件，访问速度快；</li><li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li><li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li><li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li><li>博客内容可以轻松打包、转移、发布到其它平台；</li><li>等等；<a id="more"></a><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2></li></ol><p>在开始一切之前，你必须已经：</p><ul><li>有一个github账号，没有的话去注册一个；</li><li>安装了node.js、npm，并了解相关基础知识；</li><li>安装了git for windows（或者其它git客户端）</li></ul><p>本文所使用的环境：</p><ul><li>Windows8.1</li><li><a href="mailto:node.js@5.5.0" target="_blank" rel="noopener">node.js@5.5.0</a></li><li><a href="mailto:git@1.9.2" target="_blank" rel="noopener">git@1.9.2</a></li><li><a href="mailto:hexo@3.2.2" target="_blank" rel="noopener">hexo@3.2.2</a></li></ul><h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是test，那么你就新建<code>test.github.io</code>的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io" target="_blank" rel="noopener">http://test.github.io</a> 了，是不是很方便？</p><p>由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p><p>几个注意的地方：</p><ol><li>注册的邮箱一定要验证，否则不会成功；</li><li>仓库名字必须是：<code>username.github.io</code>，其中<code>username</code>是你的用户名；</li><li>仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久，我的等了半个小时才生效；</li></ol><p>创建成功后，默认会在你这个仓库里生成一些示例页面，以后你的网站所有代码都是放在这个仓库里啦。</p><h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p>当然，你不绑定域名肯定也是可以的，就用默认的 <code>xxx.github.io</code> 来访问，如果你想更个性一点，想拥有一个属于自己的域名，那也是OK的。</p><p>首先你要注册一个域名，域名注册以前总是推荐去<code>godaddy</code>，现在觉得其实国内的阿里云也挺不错的，价格也不贵，毕竟是大公司，放心！</p><p>绑定域名分2种情况：带www和不带www的。</p><p>域名配置最常见有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP，由于不带www方式只能采用A记录，所以必须先ping一下<code>你的用户名.github.io</code>的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的IP，将CNAME指向<code>你的用户名.github.io</code>，这样可以保证无论是否添加www都可以访问，如下：</p><p><img src="http://image.liuxianan.com/201608/20160823_191336_238_8683.png" alt></p><p>然后到你的github项目根目录新建一个名为CNAME的文件（无后缀），里面填写你的域名，加不加www看你自己喜好，因为经测试：</p><ul><li>如果你填写的是没有www的，比如 mygit.me，那么无论是访问 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a></li><li>如果你填写的是带www的，比如 <a href="http://www.mygit.me" target="_blank" rel="noopener">www.mygit.me</a> ，那么无论是访问 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a></li><li>如果你填写的是其它子域名，比如 abc.mygit.me，那么访问 <a href="http://abc.mygit.me" target="_blank" rel="noopener">http://abc.mygit.me</a> 没问题，但是访问 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，不会自动跳转到 <a href="http://abc.mygit.me" target="_blank" rel="noopener">http://abc.mygit.me</a></li></ul><p>另外说一句，在你绑定了新域名之后，原来的<code>你的用户名.github.io</code>并没有失效，而是会自动跳转到你的新域名。</p><h1 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h1><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p><pre><code>$ cd ~/. ssh #检查本机已存在的ssh密钥</code></pre><p>如果提示：No such file or directory 说明你是第一次使用git。</p><pre><code>ssh-keygen -t rsa -C &apos;邮件地址&apos;</code></pre><p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p><p><img src="http://image.liuxianan.com/201608/20160818_143914_495_9084.png" alt></p><p>将刚复制的内容粘贴到key那里，title随便填，保存。</p><h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><pre><code>$ ssh -T git@github.com # 注意邮箱地址不用改</code></pre><p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到：</p><blockquote><p>Hi liuxianan! You’ve successfully authenticated, but GitHub does not provide shell access.</p></blockquote><p>看到这个信息说明SSH已配置成功！</p><p>此时你还需要配置：</p><pre><code>$ git config --global user.name &amp;quot;liuxianan&amp;quot;// 你的github用户名，非昵称$ git config --global user.email  &amp;quot;xxx@qq.com&amp;quot;// 填写你的github注册邮箱</code></pre><p>具体这个配置是干嘛的我没仔细深究。</p><h1 id="使用hexo写博客"><a href="#使用hexo写博客" class="headerlink" title="使用hexo写博客"></a>使用hexo写博客</h1><h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。</p><p>官网： <a href="http://hexo.io" target="_blank" rel="noopener">http://hexo.io</a></p><p>github: <a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a></p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>安装之前先来说几个注意事项：</p><ol><li>很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；</li><li>hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；</li><li>hexo有2种<code>_config.yml</code>文件，一个是根目录下的全局的<code>_config.yml</code>，一个是各个<code>theme</code>下的；</li></ol><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>$ npm install -g hexo</code></pre><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在电脑的某个地方新建一个名为hexo的文件夹（名字可以随便取），比如我的是<code>F:\Workspaces\hexo</code>，由于这个文件夹将来就作为你存放代码的地方，所以最好不要随便放。</p><pre><code>$ cd /f/Workspaces/hexo/$ hexo init</code></pre><p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：</p><p><img src="http://image.liuxianan.com/201608/20160818_115922_773_1148.png" alt></p><pre><code>$ hexo g # 生成$ hexo s # 启动服务</code></pre><p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：</p><p><img src="http://image.liuxianan.com/201608/20160818_120700_028_2426.png" alt></p><p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考这篇文章：<a href="http://blog.liuxianan.com/windows-port-bind.html" target="_blank" rel="noopener">http://blog.liuxianan.com/windows-port-bind.html</a></p><p>第一次初始化的时候hexo已经帮我们写了一篇名为 Hello World 的文章，默认的主题比较丑，打开时就是这个样子：</p><p><img src="http://image.liuxianan.com/201608/20160818_132443_202_6848.png" alt></p><h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">官方主题</a>。</p><p>个人比较喜欢的2个主题：<a href="https://github.com/pinggod/hexo-theme-jekyll" target="_blank" rel="noopener">hexo-theme-jekyll</a> 和 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">hexo-theme-yilia</a>。</p><p>首先下载这个主题：</p><pre><code>$ cd /f/Workspaces/hexo/$ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></pre><p>下载后的主题都在这里：</p><p><img src="http://image.liuxianan.com/201608/20160818_134500_245_0912.png" alt></p><p>修改<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: yilia</code>，然后重新执行<code>hexo g</code>来重新生成。</p><p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p><h2 id="上传之前"><a href="#上传之前" class="headerlink" title="上传之前"></a>上传之前</h2><p>在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。</p><h2 id="上传到github"><a href="#上传到github" class="headerlink" title="上传到github"></a>上传到github</h2><p>如果你一切都配置好了，发布上传很容易，一句<code>hexo d</code>就搞定，当然关键还是你要把所有东西配置好。</p><p>首先，<code>ssh key</code>肯定要配置好。</p><p>其次，配置<code>_config.yml</code>中有关deploy的部分：</p><p>正确写法：</p><pre><code>deploy:  type: git  repository: git@github.com:liuxianan/liuxianan.github.io.git  branch: master</code></pre><p>错误写法：</p><pre><code>deploy:  type: github  repository: https://github.com/liuxianan/liuxianan.github.io.git  branch: master</code></pre><p>后面一种写法是hexo2.x的写法，现在已经不行了，无论是哪种写法，此时直接执行<code>hexo d</code>的话一般会报如下错误：</p><pre><code>&lt;Deployer not found: github 或者 Deployer not found: git</code></pre><p>原因是还需要安装一个插件：</p><pre><code>npm install hexo-deployer-git --save</code></pre><p>其它命令不确定，部署这个命令一定要用git bash，否则会提示<code>Permission denied (publickey).</code></p><p>打开你的git bash，输入<code>hexo d</code>就会将本次有改动的代码全部提交，没有改动的不会：</p><p><img src="http://image.liuxianan.com/201608/20160818_140441_769_5024.png" alt></p><h2 id="保留CNAME、README-md等文件"><a href="#保留CNAME、README-md等文件" class="headerlink" title="保留CNAME、README.md等文件"></a>保留CNAME、README.md等文件</h2><p>提交之后网页上一看，发现以前其它代码都没了，此时不要慌，一些非md文件可以把他们放到source文件夹下，这里的所有文件都会原样复制（除了md文件）到public目录的：</p><p><img src="http://image.liuxianan.com/201608/20160818_141037_580_8035.png" alt></p><p>由于hexo默认会把所有md文件都转换成html，包括README.md，所有需要每次生成之后、上传之前，手动将README.md复制到public目录，并删除README.html。</p><h2 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h2><p>常见命令</p><pre><code>hexo new &amp;quot;postName&amp;quot; #新建文章hexo new page &amp;quot;pageName&amp;quot; #新建页面hexo generate #生成静态页面至public目录hexo server #开启预览访问端口（默认端口4000，&amp;#39;ctrl + c&amp;#39;关闭server）hexo deploy #部署到GitHubhexo help  # 查看帮助hexo version  #查看Hexo的版本</code></pre><p>缩写：</p><pre><code>hexo n == hexo newhexo g == hexo generatehexo s == hexo serverhexo d == hexo deploy</code></pre><p>组合命令：</p><pre><code>hexo s -g #生成并本地预览hexo d -g #生成并上传</code></pre><h2 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h2><p>这里面都是一些全局配置，每个参数的意思都比较简单明了，所以就不作详细介绍了。</p><p>需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。</p><h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>定位到我们的hexo根目录，执行命令：</p><pre><code>hexo new &amp;#39;my-first-blog&amp;#39;</code></pre><p>hexo会帮我们在<code>_posts</code>下生成相关md文件：</p><p><img src="http://image.liuxianan.com/201608/20160823_183047_352_1475.png" alt></p><p>我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：</p><p><img src="http://image.liuxianan.com/201608/20160823_183325_470_9306.png" alt></p><p>当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</p><p>一般完整格式如下：</p><pre><code>---title: postName #文章页面上的显示名称，一般是中文date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改categories: 默认分类 #分类tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面---</code></pre><p>以下是正文</p><p>那么<code>hexo new page &#39;postName&#39;</code>命令和<code>hexo new &#39;postName&#39;</code>有什么区别呢？</p><pre><code>hexo new page &apos;my-second-blog&apos;</code></pre><p>生成如下：</p><p><img src="http://image.liuxianan.com/201608/20160823_184852_854_6502.png" alt></p><p>最终部署时生成：<code>hexo\public\my-second-blog\index.html</code>，但是它不会作为文章出现在博文目录。</p><h3 id="写博客工具"><a href="#写博客工具" class="headerlink" title="写博客工具"></a>写博客工具</h3><p>那么用什么工具写博客呢？这个我还没去找，以前自己使用editor.md简单弄了个，大家有好用的hexo写博客工具可以推荐个。</p><h3 id="如何让博文列表不显示全部内容"><a href="#如何让博文列表不显示全部内容" class="headerlink" title="如何让博文列表不显示全部内容"></a>如何让博文列表不显示全部内容</h3><p>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p><p>答案是在合适的位置加上<code>&amp;lt;!--more--&amp;gt;</code>即可，例如：</p><h1 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h1><p>使用github pages服务搭建博客的好处有：</p><ol><li>全是静态文件，访问速度快；</li><li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li><li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li><li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li><li>博客内容可以轻松打包、转移、发布到其它平台；</li><li>等等；</li></ol><p>最终效果：</p><p><img src="http://image.liuxianan.com/201608/20160823_184633_653_1893.png" alt></p><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhcncn/p/4097881.html</a></p><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">http://www.jianshu.com/p/05289a4bc8b2</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;使用github pages服务搭建博客的好处有：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;全是静态文件，访问速度快；&lt;/li&gt;
+&lt;li&gt;免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；&lt;/li&gt;
+&lt;li&gt;可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；&lt;/li&gt;
+&lt;li&gt;数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；&lt;/li&gt;
+&lt;li&gt;博客内容可以轻松打包、转移、发布到其它平台；&lt;/li&gt;
+&lt;li&gt;等等；
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    
+      <category term="GitTalk" scheme="http://www.hzv5.cn/tags/GitTalk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://www.hzv5.cn/2019/06/30/hello-world/"/>
+    <id>http://www.hzv5.cn/2019/06/30/hello-world/</id>
+    <published>2019-06-30T01:57:41.849Z</published>
+    <updated>2019-07-03T11:03:32.201Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><a id="more"></a><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="第一次" scheme="http://www.hzv5.cn/categories/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
+    
+    
+      <category term="你好世界" scheme="http://www.hzv5.cn/tags/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C/"/>
+    
+      <category term="第一次" scheme="http://www.hzv5.cn/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
+    
+      <category term="随笔" scheme="http://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>百度文字合成语音的api接口，以及其他失效的接口，找了新的免费语音接口！</title>
+    <link href="http://www.hzv5.cn/2019/01/11/baidu-yuyin/"/>
+    <id>http://www.hzv5.cn/2019/01/11/baidu-yuyin/</id>
+    <published>2019-01-11T10:46:00.000Z</published>
+    <updated>2019-07-13T12:43:15.337Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h1><p>有朋友博文<a href="http://www.hzv5.cn/index.php/archives/29.html'">自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等…）</a>的评论里留言说，收集的api接口，有的已经失效了</p><p>也抽空看了，有几个确实是已经失效了，QQ秀的接口暂时没有找到新的</p><p>今天是找了下语音接口，就是文字转成语音的接口</p><p>其他的不多说了</p><p>直接开始贴接口地址，和参数说明吧</p><h1 id="1丶文字转语音"><a href="#1丶文字转语音" class="headerlink" title="1丶文字转语音"></a>1丶文字转语音</h1><p>① 接口地址：</p><a id="more"></a><pre><code>https://ai.baidu.com/aidemo?type=tns2&amp;idx=1&amp;&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=0&amp;vol=5&amp;pit=5&amp;tex=需要转换的文字内容</code></pre><h1 id="2丶文字转语音"><a href="#2丶文字转语音" class="headerlink" title="2丶文字转语音"></a>2丶文字转语音</h1><p>② 接口地址：</p><pre><code>http://tts.baidu.com/text2audio?idx=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=1&amp;vol=9&amp;pit=5&amp;tex=需要转换的文字内容</code></pre><h1 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h1><pre><code>cuid：是程序id，默认的这个是百度测试demo，需要自己单独的id可以去百度语音官网申请。per：男声0，女声1spd：速度参数，1~10，数字越大语音速度越快pit：变声参数，1~10，数字越小越低沉，数字越大音调越高tex：文本内容，也就是你要转换成语音的文字</code></pre><p>GET请求接口，会得到一个aidemo文件，后缀改成任意能识别的音频文件名称即可播放。</p><p>其他几个参数貌似没什么变化，暂时不知道是什么，可以自己改变一下数字试一下。</p><p>暂时先这样，</p><p>失效的接口到时候找到了新的再新增到这里。</p><p>失效了的，直接评论里留言即可</p><h1 id="么么扎！"><a href="#么么扎！" class="headerlink" title="么么扎！"></a>么么扎！</h1>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;最近&quot;&gt;&lt;a href=&quot;#最近&quot; class=&quot;headerlink&quot; title=&quot;最近&quot;&gt;&lt;/a&gt;最近&lt;/h1&gt;&lt;p&gt;有朋友博文&lt;a href=&quot;http://www.hzv5.cn/index.php/archives/29.html&#39;&quot;&gt;自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等…）&lt;/a&gt;的评论里留言说，收集的api接口，有的已经失效了&lt;/p&gt;
+&lt;p&gt;也抽空看了，有几个确实是已经失效了，QQ秀的接口暂时没有找到新的&lt;/p&gt;
+&lt;p&gt;今天是找了下语音接口，就是文字转成语音的接口&lt;/p&gt;
+&lt;p&gt;其他的不多说了&lt;/p&gt;
+&lt;p&gt;直接开始贴接口地址，和参数说明吧&lt;/p&gt;
+&lt;h1 id=&quot;1丶文字转语音&quot;&gt;&lt;a href=&quot;#1丶文字转语音&quot; class=&quot;headerlink&quot; title=&quot;1丶文字转语音&quot;&gt;&lt;/a&gt;1丶文字转语音&lt;/h1&gt;&lt;p&gt;① 接口地址：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="语音识别" scheme="http://www.hzv5.cn/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/"/>
+    
+      <category term="语音合成" scheme="http://www.hzv5.cn/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Android 利用腾讯开放平台的官方SDK，实现自定义QQ分享。并备份一下android-support-v7安卓支持包！</title>
+    <link href="http://www.hzv5.cn/2018/10/28/android-qq-share/"/>
+    <id>http://www.hzv5.cn/2018/10/28/android-qq-share/</id>
+    <published>2018-10-28T05:33:00.000Z</published>
+    <updated>2019-07-13T12:42:53.967Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="开头废话"><a href="#开头废话" class="headerlink" title="开头废话"></a>开头废话</h1><p>前些日子换了手机，旧手机上的数据忘了迁移备份就急急忙忙的重置格式化了，很难受！开发的一些APP源码也就给丢失了，然后只好去自己的群里面，找到曾经上传的旧版本，把他反编译出来一点点的还原。</p><p>逆向始终不是自己会玩的东西，所以效果很不理想，特别是我这种纯手机端进行编写操作的编程爱好者。蓝瘦香菇！</p><p>今天想要说一下那个自定义QQ分享的东西，官方文档以及demo最近也好像是做了一下更新。最烦的就是更新了的文档也不是那么的简洁明了，实在不是很适合给一般的coder看￣ ￣)σ。</p><p>好吧，还是直接去开始吧。</p><h1 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h1><a id="more"></a><p>1丶打开我的AIDE…</p><p>2丶新建工程项目</p><p>3丶到<a href="http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD" target="_blank" rel="noopener">QQ开放平台</a> 下载SDK</p><p>4丶解压SDK，把两个jar包导入工程项目的libs文件夹，没有这个文件夹自己新建一下</p><p>5丶然后，我们就可开始码代码了</p><p>6丶首先配置一下AndroidManifest文件，权限设置和注册Activity</p><p>权限代码：</p><pre><code>&lt;!-- APP联网所需权限 --&gt;&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;&lt;!-- 在SDCard中创建和删除文件的权限 --&gt; &lt;uses-permission     android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt; &lt;!-- 往SDCard中写入数据的权限 --&gt;&lt;uses-permission     android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre><p>当然，以上权限并不全都用的上或者不够，可以根据自己的需求进行增减。</p><p>然后是SDK需要的Activity注册了，一下代码放入到<application>标签中即可：</application></p><pre><code>&lt;!-- 注册SDKActivity --&gt;&lt;activity    android:name=&quot;com.tencent.tauth.AuthActivity&quot;        android:noHistory=&quot;true&quot;        android:launchMode=&quot;singleTask&quot; &gt;        &lt;intent-filter&gt;            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;            &lt;data android:scheme=&quot;tencentID1106885928&quot; /&gt; &lt;!-- 获取的APPID --&gt;        &lt;/intent-filter&gt;    &lt;/activity&gt;</code></pre><p>新版的SDK增加了AssistActivity，所以也要在这里给他加上去</p><pre><code>&lt;activity android:name=&quot;com.tencent.connect.common.AssistActivity&quot;       android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;       android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot; /&gt;</code></pre><p>配置好了之后，就开始写java代码了。</p><p>首先，创建实例。Tencent是SDK的功能入口，所有的接口调用都得通过Tencent进行调用。因此，调用SDK，首先需要创建一个Tencent实例，其代码如下：</p><pre><code>private static final String APP_ID = &quot;1106885928&quot;; // appid跟换成你自己的，可以在开放平台新建应用之后获取private Tencent mTencent;    //传入参数APPID    mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());</code></pre><p>   接下来就是实现回调，也就是你分享东西出去是成功了还是失败了，又或者是用户取消了分享呢？具体就是：</p><pre><code>/*** 自定义监听器实现IUiListener，需要3个方法** onComplete完成 onError错误 onCancel取消*/private class ShareUiListener implements IUiListener{    @Override    public void onComplete(Object response)    {        //分享成功        def_note(&quot;成功分享！&quot;);    }    @Override    public void onError(UiError uiError)    {        //分享失败        def_note(&quot;分享失败！&quot;);    }    @Override    public void onCancel()    {        //分享取消        def_note(&quot;您取消了分享！&quot;);    }}/** * 回调 * * @param requestCode *  * @param resultCode * @param data */@Overrideprotected void onActivityResult(int requestCode, int resultCode, Intent data){    if (null != mTencent)    {        mTencent.onActivityResult(requestCode, resultCode, data);    }}</code></pre><p>到这里就基本上搞好了。</p><p>然后就是对官方文档里面提到的api数据封装功能函数，可以分享链接，音乐，图片，应用这些东西，具体就是这样：</p><pre><code>/** * 分享到QQ * @param v */public void qqShare(String t, String s, String u, String p, String w){    final Bundle params = new Bundle();    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);//分享标题    params.putString(QQShare.SHARE_TO_QQ_SUMMARY, s);//要分享的内容摘要    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, u);//内容地址    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);//分享的图片URL    params.putString(QQShare.SHARE_TO_QQ_APP_NAME, w);//应用名称    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());}/** * 分享到QQ空间 * @param v */public void qqQzoneShare(String t, String s, String u, String p, String w)\r\n    {\r\n        int QzoneType = QzoneShare.SHARE_TO_QZONE_TYPE_NO_TYPE;\r\n        Bundle params = new Bundle();    params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneType);    params.putString(QzoneShare.SHARE_TO_QQ_TITLE, t);//分享标题    params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, s);//分享的内容摘要    params.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, u);//分享的链接    //分享的图片, 以ArrayList&lt;String&gt;的类型传入，以便支持多张图片（注：图片最多支持9张图片，多余的图片会被丢弃）    ArrayList&lt;String&gt; imageUrls = new ArrayList&lt;String&gt;();    imageUrls.add(&quot;http://www.hzv5.cn/logo.jpg&quot;);//添加一个图片地址    params.putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);//分享的图片URL    mTencent.shareToQzone(MainActivity.this, params, new ShareUiListener());}/** * 分享音乐 * @param v */private void qqAudioShare(String t, String s, String u, String p, String w){    int ii = def_getNum(0, songlist.length - 1);    final Bundle params = new Bundle();    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_AUDIO);    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  s);    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,  u);    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);    params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL, songlist[ii]);    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  w);    //params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());}</code></pre><p>到这里整个工程项目的QQ自定义分享基本上就完成了，这里算是给自己也做了一份备份。</p><h1 id="V4，V7支持包"><a href="#V4，V7支持包" class="headerlink" title="V4，V7支持包"></a>V4，V7支持包</h1><p>另外再备份两个东西，那就是安卓的android-support-v4，和v7支持包，特别是v7包，网上找的全是那种缺胳膊少腿的，找个完整的v7找了我两天时间！这个是安卓25版本的。</p><p>不是最新，但是够用就行了。</p><p>v4下载链接：<a href="https://pan.baidu.com/s/1aotD4JKcPgwje1a4cPsfqg" target="_blank" rel="noopener">点击下载v4 提取码：65o3</a></p><p>v7下载链接：<a href="https://pan.baidu.com/s/1TuK2qB5lzy6JC8ymcJxBbA'" target="_blank" rel="noopener">点击下载v7 提取码：n54t</a></p><p>OK，?完美！</p><p>笔芯❤！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;开头废话&quot;&gt;&lt;a href=&quot;#开头废话&quot; class=&quot;headerlink&quot; title=&quot;开头废话&quot;&gt;&lt;/a&gt;开头废话&lt;/h1&gt;&lt;p&gt;前些日子换了手机，旧手机上的数据忘了迁移备份就急急忙忙的重置格式化了，很难受！开发的一些APP源码也就给丢失了，然后只好去自己的群里面，找到曾经上传的旧版本，把他反编译出来一点点的还原。&lt;/p&gt;
+&lt;p&gt;逆向始终不是自己会玩的东西，所以效果很不理想，特别是我这种纯手机端进行编写操作的编程爱好者。蓝瘦香菇！&lt;/p&gt;
+&lt;p&gt;今天想要说一下那个自定义QQ分享的东西，官方文档以及demo最近也好像是做了一下更新。最烦的就是更新了的文档也不是那么的简洁明了，实在不是很适合给一般的coder看￣ ￣)σ。&lt;/p&gt;
+&lt;p&gt;好吧，还是直接去开始吧。&lt;/p&gt;
+&lt;h1 id=&quot;开整&quot;&gt;&lt;a href=&quot;#开整&quot; class=&quot;headerlink&quot; title=&quot;开整&quot;&gt;&lt;/a&gt;开整&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
+    
+      <category term="android" scheme="http://www.hzv5.cn/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>吐槽一下下，关于最近的社交软件开放的账号销户功能！</title>
+    <link href="http://www.hzv5.cn/2018/05/04/tucao-shejiaoruanjian/"/>
+    <id>http://www.hzv5.cn/2018/05/04/tucao-shejiaoruanjian/</id>
+    <published>2018-05-04T10:13:00.000Z</published>
+    <updated>2019-07-11T09:46:24.432Z</updated>
+    
+    <content type="html"><![CDATA[<p>此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销</p><p>【PS：此注销不是退出登录，而是直接把QQ账号销户】。</p><img src="http://api.hzv5.cn/images/IMG_QQxh_01.jpg" width="300" height="637" title alt><p>但是腾讯是不是太天真了？</p><p>用了十几年的QQ我们会想要注销？</p><a id="more"></a><p>知不知道QQ对于我们八零九零意味着什么？(｡･ˇ_ˇ･｡)是不是脑子有泡？</p><p>这不，才上线没多久的QQ号码销户入口，今天再去看的时候就蜜汁消失了！突然的突然的开放销户又突然的关闭，不知道是什么原因，很迷！</p><p>然后今天是因为收到一个UC浏览器的推文《<a href="https://mparticle.uc.cn/article.html?uc_param_str=frdnsnpfvecpntnwprdssskt&client=ucweb&wm_cid=220813119445534720&wm_id=04fcc49832dc4f04ae8b82194e6bf87c&title_type=1&pagetype=share&app=uc-iflow&btifl=100&wm_aid=10625dbef0684f75800da634f77f3a6a&sdkdeep=2&sdksid=bfe73bdb-01cf-eafe-89a6-7cafb58185e1&sdkoriginal=bfe73bdb-01cf-eafe-89a6-7cafb58185e1" target="_blank" title="工信部一锤定音: 再见了微信微博!">工信部一锤定音: 再见了微信微博!</a>》，UC的小编我是真的很佩服的，同一件事和主人公，可以写N个故事！把文章标题也是命名的极其吸引人！(抱拳了，老铁！)。看了这水文之后，就去看了一下微信和微博，发现确实是可以注销账号了！</p><p>如下两图：</p><p><img src="http://api.hzv5.cn/images/IMG_QQxh_02.png" width="317" height="952" title alt>    <img src="http://api.hzv5.cn/images/IMG_QQxh_03.png" width="317" height="988" title alt></p><p>然而，注销账号似乎并没有那么简单，首先你得把账号里的钱填平，还有平时在别的APP或者网站上的快捷登录授权解除才可以！具体看下面注销微信和微博的两个截图：</p><p><img src="http://api.hzv5.cn/images/IMG_QQxh_05.png" width="317" height="852" title alt>    <img src="http://api.hzv5.cn/images/IMG_QQxh_04.png" width="317" height="952" title alt></p><p>说起来也是，自己主动注销的话，各种限制，极其不愿意让你销户，这让我想起了两个比较”有意思的”电脑杀毒软件，也不知道是什么情况下安装的，自己都不知道，卸载的时候弹出N次选择框让你确认，还故意把确认卸载按钮颜色弄成暗色，把取消下载弄成高亮色！</p><p>甚至一会儿确认在右边，一会儿在左边！呵呵哒…不知道正在看此篇博文的你有没有遇到过这种极其”流氓”的软件！</p><p>主动销户困难，但是”被”销户就死很简单的事！<br>只要你违规了该APP的一些规定！他们就可以冻结你的账号，甚至是直接销户！也就不管你有没有把坑填平或者解除账号授权什么的了，这是一种什么操作？</p><p>现在手机软件、社交媒体、购物平台等网络账号中很少有提供注销账号的服务。一旦用户注册账号，即使不再使用，此前其注册信息、购买记录、好友通讯录等都还将继续储存在平台系统中。</p><p>而且很多软件和平台为了推广，各种吸引眼球的广告吸引大家去注册试用，但是大部分情况下这些软件和平台并不是我们需要的，很多注册了发现不是自己需要的，就直接关掉或卸载不管了。<br>因此现在用户的个人资料很容易会被泄露。</p><p>很多的APP都会读取我们的手机通讯录，地理位置等信息，乍看之下，无非就是多几个废弃的账号而已，但随着个人资料和信息权利重要性的提升，保留在账户里面的所有个人资料都有可能被利用、贩卖，大大增加用户隐私泄露的风险。</p><p>所以大家要是有注册了一些平台或APP账号，又没有使用的话最好及时注销掉，这些不用的账号说不好很有可能会泄露你，甚至是家人朋友的个人隐私，注销掉不仅能减少自身风险，以后换号码也简单多了。</p><p>为什么手机号码用久了，广告短信息越来越多？这会儿应该不言而喻了吧！个人是很赞成工信部出来管制的，任何平台都应该开放用户主动注销账号的权限！</p><p>五一期间大家都在更博，我实在是没什么可以拿出来的，今天就借UC推文码了一堆口水文！2333…</p><p>食用完水文，记得流行评论，发变一下你的看法！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销&lt;/p&gt;
+&lt;p&gt;【PS：此注销不是退出登录，而是直接把QQ账号销户】。&lt;/p&gt;
+&lt;img src=&quot;http://api.hzv5.cn/images/IMG_QQxh_01.jpg&quot; width=&quot;300&quot; height=&quot;637&quot; title alt&gt;
+
+&lt;p&gt;但是腾讯是不是太天真了？&lt;/p&gt;
+&lt;p&gt;用了十几年的QQ我们会想要注销？&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="收集控" scheme="http://www.hzv5.cn/categories/%E6%94%B6%E9%9B%86%E6%8E%A7/"/>
+    
+    
+      <category term="免费api" scheme="http://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9api/"/>
+    
+      <category term="接口收集" scheme="http://www.hzv5.cn/tags/%E6%8E%A5%E5%8F%A3%E6%94%B6%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等...）</title>
+    <link href="http://www.hzv5.cn/2018/04/24/my-apis/"/>
+    <id>http://www.hzv5.cn/2018/04/24/my-apis/</id>
+    <published>2018-04-24T07:35:00.000Z</published>
+    <updated>2019-07-18T13:14:14.484Z</updated>
+    
+    <content type="html"><![CDATA[<p>自写的一些API接口，以及收集的一些QQ相关的（官方）免费API接口，有需要的可以拿去用：</p><h1 id="1、获取QQ头像："><a href="#1、获取QQ头像：" class="headerlink" title="1、获取QQ头像："></a>1、获取QQ头像：</h1><pre><code>http://q2.qlogo.cn/headimg_dl?dst_uin=QQ号码&amp;amp;spec=100</code></pre><h1 id="2、获取QQ昵称："><a href="#2、获取QQ昵称：" class="headerlink" title="2、获取QQ昵称："></a>2、获取QQ昵称：</h1><pre><code>① http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码② http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码</code></pre><h1 id="3、获取QQ群头像："><a href="#3、获取QQ群头像：" class="headerlink" title="3、获取QQ群头像："></a>3、获取QQ群头像：</h1><pre><code>http://p.qlogo.cn/gh/QQ群号码/QQ群号码/100/</code></pre><h1 id="4、获取QQ秀接口："><a href="#4、获取QQ秀接口：" class="headerlink" title="4、获取QQ秀接口："></a>4、获取QQ秀接口：</h1><pre><code>http://qqshow-user.tencent.com/QQ号/10/00</code></pre><h1 id="5、百度文字转语音合成接口："><a href="#5、百度文字转语音合成接口：" class="headerlink" title="5、百度文字转语音合成接口："></a>5、百度文字转语音合成接口：</h1><a id="more"></a><pre><code>http://tts.baidu.com/text2audio?lan=zh&amp;amp;ie=UTF-8&amp;amp;spd=2&amp;amp;text=要转换的文字</code></pre><p>lan=zh：语言是中文，如果改为lan=en，则语言是英文。</p><p>ie=UTF-8：文字格式。</p><p>spd=2：语速，可以是1-9的数字，数字越大，语速越快。</p><p>text=**：这个就是你要转换的文字。</p><h1 id="6、随机颜色代码："><a href="#6、随机颜色代码：" class="headerlink" title="6、随机颜色代码："></a>6、随机颜色代码：</h1><pre><code>http://api.hzv5.cn/ys.php?n=hex&amp;t=json</code></pre><p>参数n有两种属性，rgb和hex,留空默认两个属性数据都返回！</p><p>参数t属性也有两种，text和json，留空默认返回json数据!</p><h1 id="7、生成随机密码："><a href="#7、生成随机密码：" class="headerlink" title="7、生成随机密码："></a>7、生成随机密码：</h1><pre><code>http://api.hzv5.cn/randomcode.php?n=15\r\n\r\n参数n符合条件：50000≥n≥3</code></pre><h1 id="8、文本加密与解密-有一些小问题-："><a href="#8、文本加密与解密-有一些小问题-：" class="headerlink" title="8、文本加密与解密(有一些小问题)："></a>8、文本加密与解密(有一些小问题)：</h1><pre><code>http://api.hzv5.cn/textencryption.php?t=text&amp;amp;w=encode&amp;amp;n=json</code></pre><p>参数t：需要加密解密的文本内容</p><p>参数w：加密 encode ，解密 decode</p><p>参数n：返回的数据类型，可以是json和text</p><h1 id="9、二维码生成："><a href="#9、二维码生成：" class="headerlink" title="9、二维码生成："></a>9、二维码生成：</h1><pre><code>http://api.hzv5.cn/ewm.php?n=内容</code></pre><p>参数n为需要生成的二维码内容！</p><h1 id="10、看美女："><a href="#10、看美女：" class="headerlink" title="10、看美女："></a>10、看美女：</h1><pre><code>http://api.hzv5.cn/kmn.php</code></pre><h1 id="11、查快递："><a href="#11、查快递：" class="headerlink" title="11、查快递："></a>11、查快递：</h1><pre><code>http://api.hzv5.cn/kd.php?n=</code></pre><p>参数n为快递单号。</p><h1 id="12、百度百科词条："><a href="#12、百度百科词条：" class="headerlink" title="12、百度百科词条："></a>12、百度百科词条：</h1><pre><code>http://api.hzv5.cn/bk.php?n=你好</code></pre><p>参数n为要搜索的关键字。</p><h1 id="失效"><a href="#失效" class="headerlink" title="失效"></a>失效</h1><p>如果有接口失效，请留言评论告诉我。</p><p>另：更多其他接口，或者找寻失效接口的替代接口，可以在博客上自行搜索。</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>更多api正在不断收集中，若你也有好的免费接口想要分享，请评论留言吧。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;自写的一些API接口，以及收集的一些QQ相关的（官方）免费API接口，有需要的可以拿去用：&lt;/p&gt;
+&lt;h1 id=&quot;1、获取QQ头像：&quot;&gt;&lt;a href=&quot;#1、获取QQ头像：&quot; class=&quot;headerlink&quot; title=&quot;1、获取QQ头像：&quot;&gt;&lt;/a&gt;1、获取QQ头像：&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;http://q2.qlogo.cn/headimg_dl?dst_uin=QQ号码&amp;amp;amp;spec=100&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;2、获取QQ昵称：&quot;&gt;&lt;a href=&quot;#2、获取QQ昵称：&quot; class=&quot;headerlink&quot; title=&quot;2、获取QQ昵称：&quot;&gt;&lt;/a&gt;2、获取QQ昵称：&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;① http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码
+② http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;3、获取QQ群头像：&quot;&gt;&lt;a href=&quot;#3、获取QQ群头像：&quot; class=&quot;headerlink&quot; title=&quot;3、获取QQ群头像：&quot;&gt;&lt;/a&gt;3、获取QQ群头像：&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;http://p.qlogo.cn/gh/QQ群号码/QQ群号码/100/&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;4、获取QQ秀接口：&quot;&gt;&lt;a href=&quot;#4、获取QQ秀接口：&quot; class=&quot;headerlink&quot; title=&quot;4、获取QQ秀接口：&quot;&gt;&lt;/a&gt;4、获取QQ秀接口：&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;http://qqshow-user.tencent.com/QQ号/10/00&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&quot;5、百度文字转语音合成接口：&quot;&gt;&lt;a href=&quot;#5、百度文字转语音合成接口：&quot; class=&quot;headerlink&quot; title=&quot;5、百度文字转语音合成接口：&quot;&gt;&lt;/a&gt;5、百度文字转语音合成接口：&lt;/h1&gt;
+    
+    </summary>
+    
+      <category term="收集控" scheme="http://www.hzv5.cn/categories/%E6%94%B6%E9%9B%86%E6%8E%A7/"/>
+    
+    
+      <category term="免费api" scheme="http://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9api/"/>
+    
+      <category term="接口收集" scheme="http://www.hzv5.cn/tags/%E6%8E%A5%E5%8F%A3%E6%94%B6%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于新版彩虹代刷hashsalt值如何还原出真实值</title>
+    <link href="http://www.hzv5.cn/2018/04/23/caihong-encode/"/>
+    <id>http://www.hzv5.cn/2018/04/23/caihong-encode/</id>
+    <published>2018-04-23T10:22:00.000Z</published>
+    <updated>2019-07-11T04:01:13.288Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在qq群上，有朋友要求我更新一下免费领赞(QQ名片赞)App(极其无聊的app但是喜欢的人却很多)，</p><p>以为老接口都失效了，然后去研究了一下代刷站点发现，新版本的彩虹代刷程序增加了hashsalt值 + cookies值方式的验证，</p><p>其主要目的可能就是为了加大写软件的难度，以及防止恶意刷单！</p><p>直接查看代刷站源码，可以看到hashsalt值大概是这样的：</p><a id="more"></a><pre><code>function getHashsalt() {   var hashsalt = ([] + {})[!+[] + !![] + !![] + !![] + !![]] + (!+[] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + ( + {} + [])[ + !![]] + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + ([] + {})[!+[] + !![] + !![] + !![] + !![]] + (!+[] + !![] + !![] + !![] + []) + ( + {} + [])[ + !![]] + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + ( + !![] + []) + ([] + {})[!+[] + !![]] + (!+[] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + []) + ( + !![] + []) + ( + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + []) + ( + [] + []) + ( + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + []) + ([][[]] + [])[!+[] + !![]] + (!+[] + !![] + !![] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + []) + (!+[] + !![] + !![] + !![] + !![] + !![] + []) + ( + [] + []) + ([][[]] + [])[!+[] + !![] + !![]] + (!+[] + !![] + !![] + []);    return hashsalt;}</code></pre><p>这看着着实让人很懵。</p><p>然后搜了一下发现，精易论坛的大佬[@l1294066497]以及把怎么得到准确的hashsalt值，用易语言的方法发出来了。</p><p>就是直接调用<code>V8 JavaScript</code>引擎处理即可，关于该引擎可详见百度百科介绍：<a href="https://baike.baidu.com/item/V8/6178125" title="V8 JavaScript 引擎" target="_blank" rel="noopener">https://baike.baidu.com/item/V8/6178125</a></p><p>还原hashsalt值，以及如何得到cookies值的易语言方法的代码如下图所示：</p><img src="http://api.hzv5.cn/images/01.png" alt="hzv5.cn"><p>最后是测试运行，调试结果如下：</p><img src="http://api.hzv5.cn/images/02.png" alt="hzv5.cn">]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在qq群上，有朋友要求我更新一下免费领赞(QQ名片赞)App(极其无聊的app但是喜欢的人却很多)，&lt;/p&gt;
+&lt;p&gt;以为老接口都失效了，然后去研究了一下代刷站点发现，新版本的彩虹代刷程序增加了hashsalt值 + cookies值方式的验证，&lt;/p&gt;
+&lt;p&gt;其主要目的可能就是为了加大写软件的难度，以及防止恶意刷单！&lt;/p&gt;
+&lt;p&gt;直接查看代刷站源码，可以看到hashsalt值大概是这样的：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="彩虹代刷" scheme="http://www.hzv5.cn/tags/%E5%BD%A9%E8%99%B9%E4%BB%A3%E5%88%B7/"/>
+    
+      <category term="算法解密" scheme="http://www.hzv5.cn/tags/%E7%AE%97%E6%B3%95%E8%A7%A3%E5%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>最近有一件很神奇的事情发生，哈哈！</title>
+    <link href="http://www.hzv5.cn/2018/03/16/waooooo/"/>
+    <id>http://www.hzv5.cn/2018/03/16/waooooo/</id>
+    <published>2018-03-16T07:57:00.000Z</published>
+    <updated>2019-07-13T12:45:07.222Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>最近两个星期，有一件很神奇的事情。</p><p>不知道什么时候的事情了，在手机端利用AIDE写了一个吉普赛读心术的app，最初是尝试的心态上架了百度手机助手，但是没想到通过审核了。</p><p>后来没做什么更新，(大概三个月左右之后)就被下架了。</p><p>APP的主界面大概长这个样子：</p><a id="more"></a><img src="//api.hzv5.cn/images/dx_01.jpg" title="1521255490853660.png" alt="Screenshot_2018-03-17-09-38-19-00.png"><p>最近有几位兄弟找到我，询问关于这个软件的原理是什么！</p><p>我这边都是4字真言回复了他们：</p><p>9的倍数！（这算是高冷嘛？）</p><h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>具体原理是这样的：</p><p>先来大概看一下流程，app的规则如下：</p><img src="//api.hzv5.cn/images/dx_02.jpg" title="1521255508536007.png" alt="Screenshot_2018-03-17-09-43-52-06.png"><p>（有的朋友看了规则就说，算法是固定的，你直接按照那个算法倒推回去不就是答案了嘛？其实不然，因为系统并不知道最初用户选择的是什么数字，更不知道用户通过算法计算之后的数字是什么！）</p><p>然后这是用户寻找计算数字对应的符号的界面：</p><img src="//api.hzv5.cn/images/dx_03.jpg" title="1521255529244927.png" alt="Screenshot_2018-03-17-09-43-27-23.png"><p>然后是系统给出答案的界面：<br><img src="//api.hzv5.cn/images/dx_04.jpg" title="1521255562746837.png" alt="Screenshot_2018-03-17-09-43-42-39.png"></p><p>4字真言“9的倍数”说的是：</p><p>当用户心里默选了一个两位数的数字之后，通过上面提到的规则进行计算，得到的任何一个新的数字，必定是一个9的倍数，所以只需要将列表中的9的倍数对应的符号全部显示成一样的就可以了，最后再显示结果！</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>(知道了原理，就像魔术被解密了一样，变得了无生趣了，有木有？)</p><p>还是很好奇他们是从哪里下载的APP.</p><img src="http://img.baidu.com/hi/jx2/j_0078.gif">在这里再次放一下APP的链接吧，有兴趣怼我拿去玩儿<h1 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h1><p>链接:<a href="https://pan.baidu.com/s/1fbz5Wbgex54NVoRW3mrmwQ" target="_blank" rel="noopener">https://pan.baidu.com/s/1fbz5Wbgex54NVoRW3mrmwQ</a> 密码:7cu8</p><img src="http://img.baidu.com/hi/jx2/j_0057.gif">]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;最近两个星期，有一件很神奇的事情。&lt;/p&gt;
+&lt;p&gt;不知道什么时候的事情了，在手机端利用AIDE写了一个吉普赛读心术的app，最初是尝试的心态上架了百度手机助手，但是没想到通过审核了。&lt;/p&gt;
+&lt;p&gt;后来没做什么更新，(大概三个月左右之后)就被下架了。&lt;/p&gt;
+&lt;p&gt;APP的主界面大概长这个样子：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://www.hzv5.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="吐槽" scheme="http://www.hzv5.cn/tags/%E5%90%90%E6%A7%BD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php自写api数据接口实例笔记</title>
+    <link href="http://www.hzv5.cn/2018/01/30/php-api/"/>
+    <id>http://www.hzv5.cn/2018/01/30/php-api/</id>
+    <published>2018-01-30T05:02:00.000Z</published>
+    <updated>2019-07-11T03:49:14.043Z</updated>
+    
+    <content type="html"><![CDATA[<p>php写api接口起初是因为自己在玩机器人软件，需要进行数据交互，例如看笑话，查天气，查快递等等的一些数据，来丰富机器人的功能，现在本站暂时保留着两个就博客的api接口，<img src="http://img.baidu.com/hi/face/i_f08.gif"></p><p>css什么的失效了，暂时没去管：</p><pre><code>1· http://www.hzv5.cn/api/ai.php2· http://www.hzv5.cn/api/sina_url.php</code></pre><img src="http://img.baidu.com/hi/face/i_f05.gif"><p>下面就来看看怎么自己写一个api接口吧：</p><p>实例代码：</p><a id="more"></a><pre><code>&lt;?php  $output = array();  $a = @$_GET[&quot;a&quot;] ? $_GET[&quot;a&quot;] : &quot;&quot;;  $uid = @$_GET[&quot;uid&quot;] ? $_GET[&quot;uid&quot;] : 0;\r\n  if (empty($a)) {    $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;非常抱歉，缺少参数!&quot;, &quot;code&quot;=&gt;-201);    exit(json_encode($output));  }  //接口走的端口   if ($a == &quot;get_users&quot;) {     //检查用户     if ($uid == 0) {       $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;The uid is null!&quot;, &quot;code&quot;=&gt;-401);       exit(json_encode($output));     }     //假设 $mysql 是数据库或者从网络读取的数据     $mysql = array(       10001 =&gt; array(         &quot;uid&quot;=&gt;10001,         &quot;vip&quot;=&gt;5,         &quot;nickname&quot; =&gt; &quot;Shine X&quot;,         &quot;email&quot;=&gt;&quot;88888888@qq.com&quot;,         &quot;qq&quot;=&gt;88888888,         &quot;ctime&quot;=&gt;1320321234,         &quot;lastLogin&quot;=&gt;1321121144,         &quot;level&quot;=&gt;19       ),10002 =&gt; array(         &quot;uid&quot;=&gt;10002,         &quot;vip&quot;=&gt;3,         &quot;nickname&quot; =&gt; &quot;elva&quot;,         &quot;email&quot;=&gt;&quot;99999999@qq.com&quot;,         &quot;qq&quot;=&gt;NULL,         &quot;ctime&quot;=&gt;1372323234,         &quot;lastLogin&quot;=&gt;1371122114,         &quot;level&quot;=&gt;12,       )     );     //检测查询的数据是否注册存在     $uidArr = array(10001,10002);     if (in_array($uid, $nickname, true)) {       $output = array(&quot;data&quot; =&gt; NULL, &quot;info&quot;=&gt;&quot;The user does not exist!&quot;, &quot;code&quot; =&gt; -402);       exit(json_encode($output));     }     //存在的开始查询数据库     $userInfo = $mysql[$uid];     //输出数据     $output = array(       &quot;data&quot; =&gt; array(&quot;userInfo&quot; =&gt; $userInfo),       &quot;info&quot; =&gt; &quot;Here is the message which, commonly used in popup window&quot;, //返回消息提示       &quot;code&quot; =&gt; 200, //成功与失败的代码，一般都是正数或者负数     );     exit(json_encode($output));     //其他端口查询还可以自己再继续添加，方法同上   } elseif ($a == &quot;get_result&quot;) {     //...     die(&quot;您正在调 get_result 接口!&quot;);   } elseif ($a == &quot;get_upload&quot;) {     //....     die(&quot;您正在调 get_upload 接口!&quot;);   }</code></pre><p>OK，以上便是自写api接口进行服务器和客户端之间交互的实例~</p><p><img src="http://img.baidu.com/hi/face/i_f07.gif">很简单吧，有什么不懂的可以留言评论~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;php写api接口起初是因为自己在玩机器人软件，需要进行数据交互，例如看笑话，查天气，查快递等等的一些数据，来丰富机器人的功能，现在本站暂时保留着两个就博客的api接口，&lt;img src=&quot;http://img.baidu.com/hi/face/i_f08.gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;css什么的失效了，暂时没去管：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1· http://www.hzv5.cn/api/ai.php
+
+2· http://www.hzv5.cn/api/sina_url.php&lt;/code&gt;&lt;/pre&gt;&lt;img src=&quot;http://img.baidu.com/hi/face/i_f05.gif&quot;&gt;
+
+&lt;p&gt;下面就来看看怎么自己写一个api接口吧：&lt;/p&gt;
+&lt;p&gt;实例代码：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="php接口" scheme="http://www.hzv5.cn/tags/php%E6%8E%A5%E5%8F%A3/"/>
+    
+      <category term="api写法" scheme="http://www.hzv5.cn/tags/api%E5%86%99%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>php打开网页链接请求http连接的方法</title>
+    <link href="http://www.hzv5.cn/2018/01/28/php-http/"/>
+    <id>http://www.hzv5.cn/2018/01/28/php-http/</id>
+    <published>2018-01-28T03:31:01.000Z</published>
+    <updated>2019-07-13T12:44:45.992Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="碎言碎语"><a href="#碎言碎语" class="headerlink" title="碎言碎语"></a>碎言碎语</h1><p>咱们如果是玩php非静态网站，进行网页链接请求获取需要的数据，是必不可少的，不然难道“单机”不成？</p><p>全部数据文件本地化？这好像是静态网站的模式，而且就算是静态网站也不完全是静态的，也有js加持。</p><p>这显然不太现实了吧~~</p><h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>利用php的curl函数进行封装，具体代码如下：</p><a id="more"></a><pre><code>function http_request($url,$timeout=30,$header=array()){    if (!function_exists(&quot;curl_init&quot;)) {        throw new Exception(&quot;server not install curl&quot;);    }    $ch = curl_init();    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);    curl_setopt($ch, CURLOPT_HEADER, true);    curl_setopt($ch, CURLOPT_URL, $url);    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);    if (!emptyempty($header)) {        curl_setopt($ch, CURLOPT_HTTPHEADER, $header);    }     $data = curl_exec($ch);    list($header, $data) = explode(&amp;quot;\\r\\n\\r\\n&amp;quot;, $data);    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);    if ($http_code == 301 || $http_code == 302) {         $matches = array();        preg_match(&quot;/Location:(.*?)\\n/&quot;, $header, $matches);        $url = trim(array_pop($matches));        curl_setopt($ch, CURLOPT_URL, $url);        curl_setopt($ch, CURLOPT_HEADER, false);        $data = curl_exec($ch);    }    if ($data == false) {        curl_close($ch);     }     curl_close($ch);    return $data;}</code></pre><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>这个封装好了是可以直接套用的，也对301/302重定向的网页进行了进一步的处理！</p><p>ps：由于博客显示愿意，请注意url之类的符号，需要转码还原。</p><p>打开https链接的网页也是可以的~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;碎言碎语&quot;&gt;&lt;a href=&quot;#碎言碎语&quot; class=&quot;headerlink&quot; title=&quot;碎言碎语&quot;&gt;&lt;/a&gt;碎言碎语&lt;/h1&gt;&lt;p&gt;咱们如果是玩php非静态网站，进行网页链接请求获取需要的数据，是必不可少的，不然难道“单机”不成？&lt;/p&gt;
+&lt;p&gt;全部数据文件本地化？这好像是静态网站的模式，而且就算是静态网站也不完全是静态的，也有js加持。&lt;/p&gt;
+&lt;p&gt;这显然不太现实了吧~~&lt;/p&gt;
+&lt;h1 id=&quot;封装&quot;&gt;&lt;a href=&quot;#封装&quot; class=&quot;headerlink&quot; title=&quot;封装&quot;&gt;&lt;/a&gt;封装&lt;/h1&gt;&lt;p&gt;利用php的curl函数进行封装，具体代码如下：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="php相关" scheme="http://www.hzv5.cn/tags/php%E7%9B%B8%E5%85%B3/"/>
+    
+      <category term="函数封装" scheme="http://www.hzv5.cn/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>coding pages托管项目是有点小尴尬~</title>
+    <link href="http://www.hzv5.cn/2018/01/25/coding-pages/"/>
+    <id>http://www.hzv5.cn/2018/01/25/coding-pages/</id>
+    <published>2018-01-25T09:30:01.000Z</published>
+    <updated>2019-07-13T12:43:34.857Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="小尴尬"><a href="#小尴尬" class="headerlink" title="小尴尬"></a>小尴尬</h1><p>静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，</p><p>各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。</p><p>如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：<br>（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。</p><a id="more"></a><p>而typecho测试使用的是官方最新的1.1版本。另外，鄙人完全是在手机端进行的项目测试~）</p><p>手机端上传项目代码到coding pages安装完程序后，如果编辑了项目代码，就要进行项目的重新部署，对于emlog和typecho，都会导致程序需要重新安装，typecho的话还有config文件记录，安装程序会提示使用原有数据安转访问。而emlog就不一样了，旧数据直接丢失~</p><p>emlog安装完不能删除install文件，因为程序会自己往该文件上跳，然后在进行首页访问。如果我们删除该文件的话网站就会404，不删除就可以继续访问重装程序，这是很不安全的。而typecho尚好，安装完可以正常访问，install文件也不需要删除，程序自动屏蔽掉了！</p><p>coding编辑项目貌似现在不能修改文件名称，创建文件夹以及删除文件。必须使用git/命令行进行操作。</p><p>coding可以免费使用https/SSL服务，这一点还是好的。但是至今我没看到怎么关闭SSL服务。这就导致频繁编辑项目之后，再重复绑定域名，系统自动重复申请ssl安全证书，致使证书失效，这样访问网站就提醒证书不安全了。好在一个星期之后可以重新申请！</p><h1 id="希冀"><a href="#希冀" class="headerlink" title="希冀"></a>希冀</h1><p>以上便是鄙人在手机端，使用emlog和typecho在coding pages上进行项目托管体验有效期左右的小小感受！</p><p>coding适合好的项目托管平台，跟国外的Github类似，但是国内的话coding的访问速度要快的多，而且coding还可以免费使用htts/ssl服务。</p><p>有人说这是公测阶段，后续应该是要收费的了。</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>后续还有什么新的发现，再继续追加。</p><p>总之，希望coding越做越好！</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;小尴尬&quot;&gt;&lt;a href=&quot;#小尴尬&quot; class=&quot;headerlink&quot; title=&quot;小尴尬&quot;&gt;&lt;/a&gt;小尴尬&lt;/h1&gt;&lt;p&gt;静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，&lt;/p&gt;
+&lt;p&gt;各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。&lt;/p&gt;
+&lt;p&gt;如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：&lt;br&gt;（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+    
+      <category term="coding" scheme="http://www.hzv5.cn/tags/coding/"/>
+    
+      <category term="项目托管" scheme="http://www.hzv5.cn/tags/%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1/"/>
+    
+  </entry>
+  
+</feed>
