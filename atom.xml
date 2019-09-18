@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hzv5.cn/"/>
-  <updated>2019-08-18T06:52:31.319Z</updated>
+  <updated>2019-09-18T09:15:41.022Z</updated>
   <id>http://www.hzv5.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>吹水一波，生活需要一丢丢的调节剂</title>
+    <link href="http://www.hzv5.cn/2019/09/17/cnb-huawei/"/>
+    <id>http://www.hzv5.cn/2019/09/17/cnb-huawei/</id>
+    <published>2019-09-17T07:35:00.000Z</published>
+    <updated>2019-09-18T09:15:41.022Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="华为Mate30真机提前泄露"><a href="#华为Mate30真机提前泄露" class="headerlink" title="华为Mate30真机提前泄露"></a>华为Mate30真机提前泄露</h1><p>最近手机行业讨论比较火热，容易引起话题的无非就是华为了。</p><p>此前开发者大会，公布了鸿蒙系统以及开源了方舟编译器，着实让人佩服华为的眼界。</p><p>但是今天要吐槽的是，华为将在本月19号在慕尼黑发布的新旗舰机Mate30，吐槽的点不是手机本身，而是在于他的代理商职业素养和职业道德。</p><a id="more"></a><p>本身的话，对于一个旗舰手机的发布大家都是充满了期待的，虽然网络上各种猜测和爆料，也不太影响对该机的期待。</p><p>今天浏览网页突然一片名为“华为Mate30真机上手”的视频连接吸引了我，顶进去打开一看还真的是该机的真机。</p><p>附图两张：</p><p><img src="/img/HWMate30/M-01.jpg" alt="华为Mate30正面"><br><img src="/img/HWMate30/M-02.jpg" alt="华为Mate30背面"></p><p>要知道这是19号才开发布会的机型，视屏拍摄者居然视保密协议于不顾？</p><p>虽然只是大概展示了一下手机的外观和开机桌面，但是我感觉拍视频的这位兄弟已经凉了。2333…</p><h1 id="注销一些社交账号"><a href="#注销一些社交账号" class="headerlink" title="注销一些社交账号"></a>注销一些社交账号</h1><p>这两天新注册了一个手机号码，现代网络时代换个号码真的是及其的麻烦，各种的验证换绑，验证码短信来来回回收了不下四五十条。</p><p>把一些主流的社交软件（QQ/微信/微博等等…）更换了绑定，也注销了一些社交网站的账号：</p><p>简单说几个，例如：知乎（私聊“知一声”可获得注销知乎账号专属链接），酷安，soulApp（这些app设置里面就可以自助申请注销）等…</p><p><img src="/img/HWMate30/zhihu-01.jpg" alt="注销知乎1"><br><img src="/img/HWMate30/zhihu-02.jpg" alt="注销知乎2"></p><p>然后</p><p>这几天还得抽空去银行（中国银行/工商银行/农业银行…），把银行卡的预留号码也更改一下，想想就很累，所以没啥事不要随便的换号码，另外就是一定要注意保护自己的个人隐私。2333…</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>吐吐槽，更新一波水文，调剂一下博客的氛围，让它看起来更生活化！</p><p>感谢阅读，么么哒~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;华为Mate30真机提前泄露&quot;&gt;&lt;a href=&quot;#华为Mate30真机提前泄露&quot; class=&quot;headerlink&quot; title=&quot;华为Mate30真机提前泄露&quot;&gt;&lt;/a&gt;华为Mate30真机提前泄露&lt;/h1&gt;&lt;p&gt;最近手机行业讨论比较火热，容易引起话题的无非就是华为了。&lt;/p&gt;
+&lt;p&gt;此前开发者大会，公布了鸿蒙系统以及开源了方舟编译器，着实让人佩服华为的眼界。&lt;/p&gt;
+&lt;p&gt;但是今天要吐槽的是，华为将在本月19号在慕尼黑发布的新旗舰机Mate30，吐槽的点不是手机本身，而是在于他的代理商职业素养和职业道德。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="吐槽大会" scheme="http://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A/"/>
+    
+    
+      <category term="保密协议" scheme="http://www.hzv5.cn/tags/%E4%BF%9D%E5%AF%86%E5%8D%8F%E8%AE%AE/"/>
+    
+      <category term="职业素养" scheme="http://www.hzv5.cn/tags/%E8%81%8C%E4%B8%9A%E7%B4%A0%E5%85%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>关于Git以及相关工具(Gitalk等等)在使用过程中的一些错误及解决办法</title>
