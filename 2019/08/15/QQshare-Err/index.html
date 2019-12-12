@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://www.hzv5.cn">
   <title>关于Android自定义QQ分享提示未正确授权，错误码901115 | 吖远zzyの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：">
+  <meta name="description" content="问题最近，QQ更新了一个成语接龙玩法的红包 于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了： 错误提示如图：">
 <meta name="keywords" content="笔记,知识点,Android,QQ分享">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Android自定义QQ分享提示未正确授权，错误码901115">
 <meta property="og:url" content="http://www.hzv5.cn/2019/08/15/QQshare-Err/index.html">
 <meta property="og:site_name" content="吖远zzyの博客">
-<meta property="og:description" content="问题最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：">
+<meta property="og:description" content="问题最近，QQ更新了一个成语接龙玩法的红包 于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了： 错误提示如图：">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.hzv5.cn/img/QQshareErr/01.png">
 <meta property="og:image" content="http://www.hzv5.cn/img/QQshareErr/02.png">
 <meta property="og:image" content="http://www.hzv5.cn/img/QQshareErr/03.png">
 <meta property="og:image" content="http://www.hzv5.cn/img/QQshareErr/04.png">
 <meta property="og:image" content="http://www.hzv5.cn/img/QQshareErr/05.png">
-<meta property="og:updated_time" content="2019-08-15T07:24:59.711Z">
+<meta property="og:updated_time" content="2019-12-12T12:31:09.803Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于Android自定义QQ分享提示未正确授权，错误码901115">
-<meta name="twitter:description" content="问题最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：">
+<meta name="twitter:description" content="问题最近，QQ更新了一个成语接龙玩法的红包 于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了： 错误提示如图：">
 <meta name="twitter:image" content="http://www.hzv5.cn/img/QQshareErr/01.png">
   
     <link rel="alternative" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
@@ -247,10 +247,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包，于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p>
-<p><img src="/img/QQshareErr/01.png" alt="QQ分享错误示例"></p>
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包</p>
+<p>于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p>
+<p>错误提示如图：</p>
 <a id="more"></a>
 
+<p><img src="/img/QQshareErr/01.png" alt="QQ分享错误示例"></p>
 <p>然后感觉就是，是不是因为QQ互联官网更新了QQ分享的SDK，于是乎，我打开了官网一看，还真的是，顶部出现了一条醒目的公告提示，这个提示已经有一段时间了，怪我最近没怎么做相关开发，没注意23333…</p>
 <p>参考： <a href="https://wiki.connect.qq.com/%E5%8A%A0%E5%BC%BAqq%E4%BA%92%E8%81%94%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8-android%E5%8C%85%E5%90%8D%E5%92%8C-ios-bundleid-%E6%A0%A1%E9%AA%8C%E7%9A%84%E9%80%9A%E7%9F%A5%EF%BB%BF" title="加强QQ互联移动应用 Android包名和 iOS Bundleid 校验" target="_blank" rel="noopener">加强QQ互联移动应用 Android包名和 iOS Bundleid 校验</a></p>
 <p>一看公告，这个校验新方法已经是5月30日开始的了，我这是多久没关注相关的应用使用QQ分享了23333</p>
@@ -595,14 +597,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GitTalk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
@@ -623,15 +617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">语音识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">语音合成</a>
+                <a href="javascript:void(0)" class="js-tag color3">GitTalk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -643,19 +633,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">语音识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">语音合成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,6 +702,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">相册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
             
             <div class="clearfix"></div>
