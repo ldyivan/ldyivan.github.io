@@ -9,7 +9,7 @@
   <title>Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记 | 吖远zzyの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="啰里啰嗦好像好久没有更新博客了，今年疫情很多人都过的不是很好，又到年底了，提前祝大家新年快乐吧😂，希望各位读者能够在新的一年蒸蒸日上，早日摆脱不开心，心想事成。😁哈哈~ 问题1丶hexo命令操作时出现的问题hexo -v出现的问题">
-<meta name="keywords" content="Git,MarkdownPad,笔记,知识点">
+<meta name="keywords" content="Git,笔记,知识点,MarkdownPad">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记">
 <meta property="og:url" content="http://www.hzv5.cn/2020/12/14/About-Git-Err-2/index.html">
@@ -90,6 +90,8 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
+				<li><a href="/guestbook/">留言</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -107,6 +109,276 @@
     			
             
 		</nav>
+		
+		
+		<!-- 粒子时钟 -->
+		
+			<div style="">
+			  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+			</div>
+			<script>
+			(function(){
+
+			   var digit=
+				[
+					[
+						[0,0,1,1,1,0,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,0,1,1,0],
+						[0,0,1,1,1,0,0]
+					],//0
+					[
+						[0,0,0,1,1,0,0],
+						[0,1,1,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[1,1,1,1,1,1,1]
+					],//1
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,1,1],
+						[1,1,1,1,1,1,1]
+					],//2
+					[
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//3
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,0],
+						[0,0,1,1,1,1,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,1,1,0],
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,1]
+					],//4
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,1,1,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//5
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//6
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0]
+					],//7
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//8
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,1,1,0,0,0,0]
+					],//9
+					[
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0]
+					]//:
+				];
+
+			var canvas = document.getElementById('canvas');
+
+			if(canvas.getContext){
+				var cxt = canvas.getContext('2d');
+				//声明canvas的宽高
+				var H = 100,W = 700;
+				canvas.height = H;
+				canvas.width = W;
+				cxt.fillStyle = '#f00';
+				cxt.fillRect(10,10,50,50);
+
+				//存储时间数据
+				var data = [];
+				//存储运动的小球
+				var balls = [];
+				//设置粒子半径
+				var R = canvas.height/20-1;
+				(function(){
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+					data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+				})();
+
+				/*生成点阵数字*/
+				function renderDigit(index,num){
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								cxt.beginPath();
+								cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+								cxt.closePath();
+								cxt.fill();
+							}
+						}
+					}
+				}
+
+				/*更新时钟*/
+				function updateDigitTime(){
+					var changeNumArray = [];
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					var NewData = [];
+					NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+					for(var i = data.length-1; i >=0 ; i--){
+						//时间发生变化
+						if(NewData[i] !== data[i]){
+							//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+							changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+						}
+					}
+					//增加小球
+					for(var i = 0; i< changeNumArray.length; i++){
+						addBalls.apply(this,changeNumArray[i].split('_'));
+					}
+					data = NewData.concat();
+				}
+
+				/*更新小球状态*/
+				function updateBalls(){
+					for(var i = 0; i < balls.length; i++){
+						balls[i].stepY += balls[i].disY;
+						balls[i].x += balls[i].stepX;
+						balls[i].y += balls[i].stepY;
+						if(balls[i].x > W + R || balls[i].y > H + R){
+							balls.splice(i,1);
+							i--;
+						}
+					}
+				}
+
+				/*增加要运动的小球*/
+				function addBalls(index,num){
+					var numArray = [1,2,3];
+					var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								var ball = {
+									x:14*(R+2)*index + j*2*(R+1)+(R+1),
+									y:i*2*(R+1)+(R+1),
+									stepX:Math.floor(Math.random() * 4 -2),
+									stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+									color:colorArray[Math.floor(Math.random()*colorArray.length)],
+									disY:1
+								};
+								balls.push(ball);
+							}
+						}
+					}
+				}
+
+				/*渲染*/
+				function render(){
+					//重置画布宽度，达到清空画布的效果
+					canvas.height = 100;
+					//渲染时钟
+					for(var i = 0; i < data.length; i++){
+						renderDigit(i,data[i]);
+					}
+					//渲染小球
+					for(var i = 0; i < balls.length; i++){
+						cxt.beginPath();
+						cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+						cxt.fillStyle = balls[i].color;
+						cxt.closePath();
+						cxt.fill();
+					}
+				}
+
+				clearInterval(oTimer);
+				var oTimer = setInterval(function(){
+					//更新时钟
+					updateDigitTime();
+					//更新小球状态
+					updateBalls();
+					//渲染
+					render();
+				},50);
+			}
+
+			})();
+			</script>
+		
+		<!-- 粒子时钟 -->
 		
 		
 		<nav class="header-smart-menu">
@@ -171,6 +443,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -193,13 +467,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/photos/">相册</a></li>
+					<li style="width: 20%"><a href="/photos/">相册</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">归档</a></li>
+					<li style="width: 20%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 20%"><a href="/guestbook/">留言</a></li>
 		        
 				</ul>
 			</nav>
@@ -308,15 +584,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">MarkdownPad</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">知识点</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">MarkdownPad</a>
         		</li>
       		
 		</ul>
@@ -479,8 +755,28 @@
     <div id="footer-info">
 	 </br>
 	  </br>
-		<span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> </br>
-		<span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次</span> </br>
+	  </br>
+	  </br>
+	  </br>
+	  </br>
+		<span id="busuanzi_container_site_pv">本站总访问量:<span id="busuanzi_value_site_pv"></span>次</span>/<span id="busuanzi_value_site_uv"></span>人</span> </br>
+		
+		
+		<div class="translate-style">
+			切换繁/简：<a id="translateLink" href="javascript:translatePage();">繁体</a>
+		</div>
+		<script type="text/javascript" src="/js/tw_cn.js"></script>
+			<script type="text/javascript">
+				var defaultEncoding = 2; //网站编写字体是否繁体，1-繁体，2-简体
+				var translateDelay = 0; //延迟时间,若不在前, 要设定延迟翻译时间, 如100表示100ms,默认为0
+				var cookieDomain = "http://www.hzv5.cn/"; //Cookie地址, 一定要设定, 通常为你的网址
+				var msgToTraditionalChinese = "繁体"; //此处可以更改为你想要显示的文字
+				var msgToSimplifiedChinese = "简体"; //同上，但两处均不建议更改
+				var translateButtonId = "translateLink"; //默认互换id
+				translateInitilization();
+		</script>
+		</br>	
+		
 		<span id="beian"> 备案号：<a href="http://beian.miit.gov.cn" target="_blank">粤ICP备17005281号-1</a> </span> </br>
 		
     	<div class="footer-left">
@@ -572,7 +868,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MarkdownPad</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitalk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -584,7 +880,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitalk</a>
+                <a href="javascript:void(0)" class="js-tag color2">MarkdownPad</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,14 +904,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
@@ -625,6 +913,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GitTalk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">语音识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">语音合成</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,6 +940,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">你好世界</a>
               </li>
              
@@ -656,26 +956,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">免费api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">接口收集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">语音识别</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">语音合成</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
               </li>
              
@@ -684,15 +964,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">免费api</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">接口收集</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">android App</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">php相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数封装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,6 +1001,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">php相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数封装</a>
               </li>
              
               <li class="article-tag-list-item">
