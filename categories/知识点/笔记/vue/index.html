@@ -6,24 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.hzv5.cn">
-  <title>Hexo添加完GitTalk评论系统后报错以及解决办法 | 吖远zzyの博客</title>
+  <title>Category: vue | 吖远zzyの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。 第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：">
-<meta name="keywords" content="hexo,GitTalk">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo添加完GitTalk评论系统后报错以及解决办法">
-<meta property="og:url" content="http://www.hzv5.cn/2019/07/01/GitTalk-Error/index.html">
+  <meta name="description" content="一个不知名的编程爱好者">
+<meta name="keywords" content="吖远zzy">
+<meta property="og:type" content="website">
+<meta property="og:title" content="吖远zzyの博客">
+<meta property="og:url" content="http://www.hzv5.cn/categories/知识点/笔记/vue/index.html">
 <meta property="og:site_name" content="吖远zzyの博客">
-<meta property="og:description" content="这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。 第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：">
+<meta property="og:description" content="一个不知名的编程爱好者">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216224052792.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216224510351.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70">
-<meta property="og:image" content="https://img-blog.csdnimg.cn/20190216224451356.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-07-02T03:17:09.195Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo添加完GitTalk评论系统后报错以及解决办法">
-<meta name="twitter:description" content="这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。 第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：">
-<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190216224052792.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70">
+<meta name="twitter:title" content="吖远zzyの博客">
+<meta name="twitter:description" content="一个不知名的编程爱好者">
   
     <link rel="alternative" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
   
@@ -67,14 +62,8 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<!-- greyhat_weather -->
-<script type="text/javascript">
-	WIDGET = {FID: '6s8fQjx8kp'}
-</script>
-<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
-    <!-- <div data-v-0a6ec0b4="" id="weather-float-he" style="position: absolute; padding: 0px; top: 8px; right: 20px;"></div> -->
-<div class="overlay" style="background: #4d4d4d">
-</div>
+
+
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -98,6 +87,8 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
+				<li><a href="/guestbook/">留言</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -115,6 +106,276 @@
     			
             
 		</nav>
+		
+		
+		<!-- 粒子时钟 -->
+		
+			<div style="">
+			  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+			</div>
+			<script>
+			(function(){
+
+			   var digit=
+				[
+					[
+						[0,0,1,1,1,0,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,0,1,1,0],
+						[0,0,1,1,1,0,0]
+					],//0
+					[
+						[0,0,0,1,1,0,0],
+						[0,1,1,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[1,1,1,1,1,1,1]
+					],//1
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,1,1],
+						[1,1,1,1,1,1,1]
+					],//2
+					[
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//3
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,0],
+						[0,0,1,1,1,1,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,1,1,0],
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,1]
+					],//4
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,1,1,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//5
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//6
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0]
+					],//7
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//8
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,1,1,0,0,0,0]
+					],//9
+					[
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0]
+					]//:
+				];
+
+			var canvas = document.getElementById('canvas');
+
+			if(canvas.getContext){
+				var cxt = canvas.getContext('2d');
+				//声明canvas的宽高
+				var H = 100,W = 700;
+				canvas.height = H;
+				canvas.width = W;
+				cxt.fillStyle = '#f00';
+				cxt.fillRect(10,10,50,50);
+
+				//存储时间数据
+				var data = [];
+				//存储运动的小球
+				var balls = [];
+				//设置粒子半径
+				var R = canvas.height/20-1;
+				(function(){
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+					data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+				})();
+
+				/*生成点阵数字*/
+				function renderDigit(index,num){
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								cxt.beginPath();
+								cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+								cxt.closePath();
+								cxt.fill();
+							}
+						}
+					}
+				}
+
+				/*更新时钟*/
+				function updateDigitTime(){
+					var changeNumArray = [];
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					var NewData = [];
+					NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+					for(var i = data.length-1; i >=0 ; i--){
+						//时间发生变化
+						if(NewData[i] !== data[i]){
+							//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+							changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+						}
+					}
+					//增加小球
+					for(var i = 0; i< changeNumArray.length; i++){
+						addBalls.apply(this,changeNumArray[i].split('_'));
+					}
+					data = NewData.concat();
+				}
+
+				/*更新小球状态*/
+				function updateBalls(){
+					for(var i = 0; i < balls.length; i++){
+						balls[i].stepY += balls[i].disY;
+						balls[i].x += balls[i].stepX;
+						balls[i].y += balls[i].stepY;
+						if(balls[i].x > W + R || balls[i].y > H + R){
+							balls.splice(i,1);
+							i--;
+						}
+					}
+				}
+
+				/*增加要运动的小球*/
+				function addBalls(index,num){
+					var numArray = [1,2,3];
+					var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								var ball = {
+									x:14*(R+2)*index + j*2*(R+1)+(R+1),
+									y:i*2*(R+1)+(R+1),
+									stepX:Math.floor(Math.random() * 4 -2),
+									stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+									color:colorArray[Math.floor(Math.random()*colorArray.length)],
+									disY:1
+								};
+								balls.push(ball);
+							}
+						}
+					}
+				}
+
+				/*渲染*/
+				function render(){
+					//重置画布宽度，达到清空画布的效果
+					canvas.height = 100;
+					//渲染时钟
+					for(var i = 0; i < data.length; i++){
+						renderDigit(i,data[i]);
+					}
+					//渲染小球
+					for(var i = 0; i < balls.length; i++){
+						cxt.beginPath();
+						cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+						cxt.fillStyle = balls[i].color;
+						cxt.closePath();
+						cxt.fill();
+					}
+				}
+
+				clearInterval(oTimer);
+				var oTimer = setInterval(function(){
+					//更新时钟
+					updateDigitTime();
+					//更新小球状态
+					updateBalls();
+					//渲染
+					render();
+				},50);
+			}
+
+			})();
+			</script>
+		
+		<!-- 粒子时钟 -->
 		
 		
 		<nav class="header-smart-menu">
@@ -179,6 +440,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -201,13 +464,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/photos/">相册</a></li>
+					<li style="width: 20%"><a href="/photos/">相册</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">归档</a></li>
+					<li style="width: 20%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 20%"><a href="/guestbook/">留言</a></li>
 		        
 				</ul>
 			</nav>
@@ -222,103 +487,62 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-GitTalk-Error" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-       Hexo添加完GitTalk评论系统后报错以及解决办法
-    </h1>
-	   <i class="icon-smile icon"></i> 浏览:<span id="busuanzi_value_page_pv">0</span>次   
   
-
-
-
-        
-        <a href="/2019/07/01/GitTalk-Error/" class="archive-article-date">
-  	<time datetime="2019-07-01T07:34:39.372Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
-</a>
-        
-      </header>
     
-    <div class="article-entry" itemprop="articleBody">
+    
       
-        <p>这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。</p>
-<p>第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：</p>
-<a id="more"></a>
-
-<p><img src="https://img-blog.csdnimg.cn/20190216224052792.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p>
-<p>在搜索引擎的帮助下，发现是gittalk中的信息填写错了，</p>
-<pre><code>name随便写；
-
-Homepage URL是你的仓库的名字，
-
-Authorization callback URL如果你指向了新的域名就填新的，比如说我指向了域名 hexo.hzv5.cn；否则也写仓库的名字就可以。</code></pre><p>这样之后这个错误解决了。</p>
-<p>另外，有的时候有些朋友也会有这样的一种情况，就是没有报错，但是点击登录Github按钮会自动重定向跳转到首页，这种情况也是上面的一些设置没有设置好导致的，按照上面说的重新设置一下就行。</p>
-<p>注意：如果github博客开启了force https功能，需要将OAuth Apps中的地址改为https。</p>
-<p>但是，登录打开评论一看，又报了新的错误：</p>
-<pre><code>Error:Issues are disabled for this repo</code></pre><p><img src="https://img-blog.csdnimg.cn/20190216224510351.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p>
-<p>这个错误你只需要去项目的设置里，设置一下就行了，Settings-Features-把Issures打勾</p>
-<p><img src="https://img-blog.csdnimg.cn/20190216224451356.jpeg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L01hcnQxbm4=,size_16,color_FFFFFF,t_70" alt></p>
-<p>这样一顿倒腾之后，博主的gittalk已经能正常使用了。</p>
-<p>欢迎登录Github评论留言…</p>
-
       
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖~<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay_code.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wechat_code.jpg">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2023" class="archive-year">2023</a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2023/02/22/wx-xcx-canvas/" class="archive-article-date">
+  	<time datetime="2023-02-22T15:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-02-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+       <a class="archive-article-title" href="/2023/02/22/wx-xcx-canvas/">避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决</a>
+    </h1>
+  
+
+
+
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GitTalk</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">canvas</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -326,133 +550,30 @@ Authorization callback URL如果你指向了新的域名就填新的，比如说
         		<li class="article-tag-list-item">
         			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点/笔记//" class="article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点/笔记/vue//" class="article-tag-list-link color4">vue</a>
+        		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://www.hzv5.cn/2019/07/01/GitTalk-Error/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/07/04/yilia-photos/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hexo依靠yilia主题实现添加相册目录
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/06/30/hexo-github/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用hexo+github搭建免费个人博客详细教程</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    无目录
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-
-
-  
+    
 
 
           </div>
@@ -462,13 +583,14 @@ Authorization callback URL如果你指向了新的域名就填新的，比如说
   <div class="outer">
     <div id="footer-info">
 	 </br>
-	  </br>
-		<span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> </br>
-		<span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次</span> </br>
+	  <span id="beian">
+		<span id="busuanzi_container_site_pv">本站总访问量:<span id="busuanzi_value_site_pv"></span>次</span>/<span id="busuanzi_value_site_uv"></span>人</span>
+		</br>
+		
 		<span id="beian"> 备案号：<a href="http://beian.miit.gov.cn" target="_blank">粤ICP备17005281号-1</a> </span> </br>
 		
     	<div class="footer-left">
-    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2020 吖远zzy
+    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2023 吖远zzy
     	</div>
 		
       	<div class="footer-right">
@@ -482,10 +604,10 @@ Authorization callback URL如果你指向了新的域名就填新的，比如说
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
-		isCategory: false,
+		isCategory: true,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
@@ -572,14 +694,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -589,6 +703,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,11 +722,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
+                <a href="javascript:void(0)" class="js-tag color4">Duration</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
+                <a href="javascript:void(0)" class="js-tag color4">帧动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图片合成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排列组合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NFT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,15 +754,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,6 +794,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搬家</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">免费api</a>
               </li>
              
@@ -653,22 +811,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">android App</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搬家</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -688,10 +830,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">免费主机</a>
               </li>
              
@@ -700,11 +838,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">相册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
