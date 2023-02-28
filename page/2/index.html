@@ -62,8 +62,14 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-
-
+<!-- greyhat_weather -->
+<script type="text/javascript">
+	WIDGET = {FID: '6s8fQjx8kp'}
+</script>
+<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
+    <!-- <div data-v-0a6ec0b4="" id="weather-float-he" style="position: absolute; padding: 0px; top: 8px; right: 20px;"></div> -->
+<div class="overlay" style="background: #4d4d4d">
+</div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -87,8 +93,6 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
-				<li><a href="/guestbook/">留言</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -106,276 +110,6 @@
     			
             
 		</nav>
-		
-		
-		<!-- 粒子时钟 -->
-		
-			<div style="">
-			  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
-			</div>
-			<script>
-			(function(){
-
-			   var digit=
-				[
-					[
-						[0,0,1,1,1,0,0],
-						[0,1,1,0,1,1,0],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,0,1,1,0],
-						[0,0,1,1,1,0,0]
-					],//0
-					[
-						[0,0,0,1,1,0,0],
-						[0,1,1,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[1,1,1,1,1,1,1]
-					],//1
-					[
-						[0,1,1,1,1,1,0],
-						[1,1,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,0,0],
-						[0,0,1,1,0,0,0],
-						[0,1,1,0,0,0,0],
-						[1,1,0,0,0,0,0],
-						[1,1,0,0,0,1,1],
-						[1,1,1,1,1,1,1]
-					],//2
-					[
-						[1,1,1,1,1,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,0,0,1,1,0],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,1,1,0]
-					],//3
-					[
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,1,0],
-						[0,0,1,1,1,1,0],
-						[0,1,1,0,1,1,0],
-						[1,1,0,0,1,1,0],
-						[1,1,1,1,1,1,1],
-						[0,0,0,0,1,1,0],
-						[0,0,0,0,1,1,0],
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,1,1]
-					],//4
-					[
-						[1,1,1,1,1,1,1],
-						[1,1,0,0,0,0,0],
-						[1,1,0,0,0,0,0],
-						[1,1,1,1,1,1,0],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,1,1,0]
-					],//5
-					[
-						[0,0,0,0,1,1,0],
-						[0,0,1,1,0,0,0],
-						[0,1,1,0,0,0,0],
-						[1,1,0,0,0,0,0],
-						[1,1,0,1,1,1,0],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,1,1,0]
-					],//6
-					[
-						[1,1,1,1,1,1,1],
-						[1,1,0,0,0,1,1],
-						[0,0,0,0,1,1,0],
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,0,0],
-						[0,0,0,1,1,0,0],
-						[0,0,1,1,0,0,0],
-						[0,0,1,1,0,0,0],
-						[0,0,1,1,0,0,0],
-						[0,0,1,1,0,0,0]
-					],//7
-					[
-						[0,1,1,1,1,1,0],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,1,1,0],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,1,1,0]
-					],//8
-					[
-						[0,1,1,1,1,1,0],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[1,1,0,0,0,1,1],
-						[0,1,1,1,0,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,0,1,1],
-						[0,0,0,0,1,1,0],
-						[0,0,0,1,1,0,0],
-						[0,1,1,0,0,0,0]
-					],//9
-					[
-						[0,0,0,0,0,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,0,0,0,0,0],
-						[0,0,0,0,0,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,1,1,1,0,0],
-						[0,0,0,0,0,0,0]
-					]//:
-				];
-
-			var canvas = document.getElementById('canvas');
-
-			if(canvas.getContext){
-				var cxt = canvas.getContext('2d');
-				//声明canvas的宽高
-				var H = 100,W = 700;
-				canvas.height = H;
-				canvas.width = W;
-				cxt.fillStyle = '#f00';
-				cxt.fillRect(10,10,50,50);
-
-				//存储时间数据
-				var data = [];
-				//存储运动的小球
-				var balls = [];
-				//设置粒子半径
-				var R = canvas.height/20-1;
-				(function(){
-					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
-					//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
-					data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
-				})();
-
-				/*生成点阵数字*/
-				function renderDigit(index,num){
-					for(var i = 0; i < digit[num].length; i++){
-						for(var j = 0; j < digit[num][i].length; j++){
-							if(digit[num][i][j] == 1){
-								cxt.beginPath();
-								cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
-								cxt.closePath();
-								cxt.fill();
-							}
-						}
-					}
-				}
-
-				/*更新时钟*/
-				function updateDigitTime(){
-					var changeNumArray = [];
-					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
-					var NewData = [];
-					NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
-					for(var i = data.length-1; i >=0 ; i--){
-						//时间发生变化
-						if(NewData[i] !== data[i]){
-							//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
-							changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
-						}
-					}
-					//增加小球
-					for(var i = 0; i< changeNumArray.length; i++){
-						addBalls.apply(this,changeNumArray[i].split('_'));
-					}
-					data = NewData.concat();
-				}
-
-				/*更新小球状态*/
-				function updateBalls(){
-					for(var i = 0; i < balls.length; i++){
-						balls[i].stepY += balls[i].disY;
-						balls[i].x += balls[i].stepX;
-						balls[i].y += balls[i].stepY;
-						if(balls[i].x > W + R || balls[i].y > H + R){
-							balls.splice(i,1);
-							i--;
-						}
-					}
-				}
-
-				/*增加要运动的小球*/
-				function addBalls(index,num){
-					var numArray = [1,2,3];
-					var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
-					for(var i = 0; i < digit[num].length; i++){
-						for(var j = 0; j < digit[num][i].length; j++){
-							if(digit[num][i][j] == 1){
-								var ball = {
-									x:14*(R+2)*index + j*2*(R+1)+(R+1),
-									y:i*2*(R+1)+(R+1),
-									stepX:Math.floor(Math.random() * 4 -2),
-									stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
-									color:colorArray[Math.floor(Math.random()*colorArray.length)],
-									disY:1
-								};
-								balls.push(ball);
-							}
-						}
-					}
-				}
-
-				/*渲染*/
-				function render(){
-					//重置画布宽度，达到清空画布的效果
-					canvas.height = 100;
-					//渲染时钟
-					for(var i = 0; i < data.length; i++){
-						renderDigit(i,data[i]);
-					}
-					//渲染小球
-					for(var i = 0; i < balls.length; i++){
-						cxt.beginPath();
-						cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
-						cxt.fillStyle = balls[i].color;
-						cxt.closePath();
-						cxt.fill();
-					}
-				}
-
-				clearInterval(oTimer);
-				var oTimer = setInterval(function(){
-					//更新时钟
-					updateDigitTime();
-					//更新小球状态
-					updateBalls();
-					//渲染
-					render();
-				},50);
-			}
-
-			})();
-			</script>
-		
-		<!-- 粒子时钟 -->
 		
 		
 		<nav class="header-smart-menu">
@@ -440,8 +174,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -464,15 +196,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/photos/">相册</a></li>
+					<li style="width: 25%"><a href="/photos/">相册</a></li>
 		        
-					<li style="width: 20%"><a href="/archives/">归档</a></li>
+					<li style="width: 25%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
-		        
-					<li style="width: 20%"><a href="/guestbook/">留言</a></li>
+					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -489,550 +219,32 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hexo-rep" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-yilia-photos" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-       <a class="article-title" href="/2020/04/07/hexo-rep/">当你更换电脑设备，怎么重新部署自己的Hexo博客</a>
+       <a class="article-title" href="/2019/07/04/yilia-photos/">Hexo依靠yilia主题实现添加相册目录</a>
     </h1>
   
 
 
 
         
-        <a href="/2020/04/07/hexo-rep/" class="archive-article-date">
-  	<time datetime="2020-04-07T09:30:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
+        <a href="/2019/07/04/yilia-photos/" class="archive-article-date">
+  	<time datetime="2019-07-04T14:05:38.777Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>经常会在不同的电脑设备上面进行更新博客，所以博主就需要经常的重新配置博客环境。</p>
-<p>今天就更新一篇博文，整理一下这个东西。</p>
-<p>给大家看，也是给我自己看，经常会忘记一些东西，这就当时一个笔记好了。</p>
-<h1 id="备份数据"><a href="#备份数据" class="headerlink" title="备份数据"></a>备份数据</h1><p>哪些是我们必须拷贝文件：</p>
+        <p>这是<a href="http://litten.me/" target="_blank" rel="noopener">Litten</a>相册的修改版，版权归原作者所有</p>
+<h4 id="点此预览效果"><a href="#点此预览效果" class="headerlink" title="点此预览效果"></a><a href="https://hexo.hzv5.cn/photos/" target="_blank" rel="noopener">点此预览效果</a></h4><h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><h2 id="本相册适用于hexo-yilia主题，移植到其他主题需要改动"><a href="#本相册适用于hexo-yilia主题，移植到其他主题需要改动" class="headerlink" title="本相册适用于hexo-yilia主题，移植到其他主题需要改动"></a>本相册适用于hexo-yilia主题，移植到其他主题需要改动</h2><h3 id="与原作者相比改动"><a href="#与原作者相比改动" class="headerlink" title="与原作者相比改动"></a>与原作者相比改动</h3>
         
-          <a class="article-more-a" href="/2020/04/07/hexo-rep/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HEXO</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搬家</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点/Hexo//" class="article-tag-list-link color5">Hexo</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点/Hexo/Git//" class="article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/07/hexo-rep/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mylist-app" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2020/04/03/mylist-app/">把自己做的一些小工具app归类到了网站上</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2020/04/03/mylist-app/" class="archive-article-date">
-  	<time datetime="2020-04-03T09:30:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>蛮久没有更新博客了，实在是因为hexo更新博文不是很方便，而且，因为一些特殊原因呢，博主所在用的电脑经常被重装，导致系统之后，环境也经常要重新配置，这很麻烦。索性就不怎么更新了。哈哈哈2333….</p>
-<p>然后，最近在群里面呢，经常看到一些有意思的东西，手动去处理就会显得略微的麻烦，所以呢，博主就是利用自己仅有的那么一丢丢的安卓开发的知识，在手机上面进行了一些小小的工具开发，实现一些自己想要的功能，坦白说，写这些工具的目的完全是为了方便自己，但是既然有朋友想要，那就分享出去呗。</p>
-<p>挺有意思的是，群里面有一些从12年就开始跟着我的朋友，挺好的，我很欣慰。毕竟，人来人往，没有不散的宴席，能一路走来这么久，也是挺开心的吧。</p>
-<h1 id="APP相关"><a href="#APP相关" class="headerlink" title="APP相关"></a>APP相关</h1><p>贴图就不贴了，为手机端省点流量，就简单的讲一下为什么要写这些App好了。</p>
-        
-          <a class="article-more-a" href="/2020/04/03/mylist-app/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓软件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">原创软件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">android App</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/水文//" class="article-tag-list-link color3">水文</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/水文/吐槽//" class="article-tag-list-link color3">吐槽</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/水文/吐槽/心情//" class="article-tag-list-link color3">心情</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/03/mylist-app/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-add-rssblog" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2019/11/30/add-rssblog/">一款博主自己写的博客订阅安卓APP</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2019/11/30/add-rssblog/" class="archive-article-date">
-  	<time datetime="2019-11-30T07:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>我发现我好想很喜欢缘起这个词，2333…</p>
-<p>上个星期，在十年之约博主群看到有typecho的客户端软件，然后就想HEXO怎么没有？</p>
-<p>博主就开始着手写这么个软件了，说出来你可能不太相信，这个软件是纯手机端撸的，完全没有用到电脑。</p>
-<p>下面附几张软件界面截图：</p>
-        
-          <a class="article-more-a" href="/2019/11/30/add-rssblog/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客订阅</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">安卓软件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">原创软件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/吐槽大会//" class="article-tag-list-link color5">吐槽大会</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/吐槽大会/知识笔记//" class="article-tag-list-link color5">知识笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/30/add-rssblog/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-cnb-huawei" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2019/09/17/cnb-huawei/">吹水一波，生活需要一丢丢的调节剂</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2019/09/17/cnb-huawei/" class="archive-article-date">
-  	<time datetime="2019-09-17T07:35:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="华为Mate30真机提前泄露"><a href="#华为Mate30真机提前泄露" class="headerlink" title="华为Mate30真机提前泄露"></a>华为Mate30真机提前泄露</h1><p>最近手机行业讨论比较火热，容易引起话题的无非就是华为了。</p>
-<p>此前开发者大会，公布了鸿蒙系统以及开源了方舟编译器，着实让人佩服华为的眼界。</p>
-<p>但是今天要吐槽的是，华为将在本月19号在慕尼黑发布的新旗舰机Mate30，吐槽的点不是手机本身，而是在于他的代理商职业素养和职业道德。</p>
-        
-          <a class="article-more-a" href="/2019/09/17/cnb-huawei/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">保密协议</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">职业素养</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/吐槽大会//" class="article-tag-list-link color5">吐槽大会</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/09/17/cnb-huawei/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-About-Git-Err" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2019/08/17/About-Git-Err/">关于Git以及相关工具(Gitalk等等)在使用过程中的一些错误及解决办法</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2019/08/17/About-Git-Err/" class="archive-article-date">
-  	<time datetime="2019-08-17T04:36:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1丶Gitalk评论工具一直Logging"><a href="#1丶Gitalk评论工具一直Logging" class="headerlink" title="1丶Gitalk评论工具一直Logging"></a>1丶Gitalk评论工具一直Logging</h2><p>今天突然地发现，yilia主题配置的Gitalk评论给你，点击登陆后一直处于Logging状态。</p>
-<p>可能gitment作者那个服务器过期了，登陆时一直报Object ProgressEvent。</p>
-<p>很大部分原因是因为js相关的东西没有加载出来导致的。</p>
-<p>如图：</p>
-        
-          <a class="article-more-a" href="/2019/08/17/About-Git-Err/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Gitalk</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">知识点</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/17/About-Git-Err/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-encode-top-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2019/07/15/encode-top-test/">Hexo实现文章加密和文章置顶的方法与演示</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2019/07/15/encode-top-test/" class="archive-article-date">
-  	<time datetime="2019-07-15T08:07:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        此文已被加密，需输入密码查看
-        
-          <a class="article-more-a" href="/2019/07/15/encode-top-test/#more">more >></a>
+          <a class="article-more-a" href="/2019/07/04/yilia-photos/#more">more >></a>
         
       
 
@@ -1050,7 +262,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客优化</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">yilia</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">相册</a>
         		</li>
       		
 		</ul>
@@ -1071,7 +287,299 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/15/encode-top-test/">发现更多 >></a>
+          <a class="article-more-a" href="/2019/07/04/yilia-photos/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-GitTalk-Error" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2019/07/01/GitTalk-Error/">Hexo添加完GitTalk评论系统后报错以及解决办法</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2019/07/01/GitTalk-Error/" class="archive-article-date">
+  	<time datetime="2019-07-01T07:34:39.372Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。</p>
+<p>第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：</p>
+        
+          <a class="article-more-a" href="/2019/07/01/GitTalk-Error/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GitTalk</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/01/GitTalk-Error/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo-github" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2019/06/30/hexo-github/">使用hexo+github搭建免费个人博客详细教程</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2019/06/30/hexo-github/" class="archive-article-date">
+  	<time datetime="2019-06-30T03:33:56.207Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用github pages服务搭建博客的好处有：</p>
+<ol>
+<li>全是静态文件，访问速度快；</li>
+<li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li>
+<li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li>
+<li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li>
+<li>博客内容可以轻松打包、转移、发布到其它平台；</li>
+<li>等等；
+        
+          <a class="article-more-a" href="/2019/06/30/hexo-github/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GitTalk</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/30/hexo-github/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2019/06/30/hello-world/">Hello World</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2019/06/30/hello-world/" class="archive-article-date">
+  	<time datetime="2019-06-30T01:57:41.849Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/06/30/hello-world/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">你好世界</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">第一次</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/第一次//" class="article-tag-list-link color4">第一次</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/06/30/hello-world/">发现更多 >></a>
         </p>
       
 
@@ -1241,11 +749,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">QQ分享</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">QQ分享</a>
         		</li>
       		
 		</ul>
@@ -1267,109 +775,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/10/28/android-qq-share/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-QQshare-Err" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2018/08/15/QQshare-Err/">关于Android自定义QQ分享提示未正确授权，错误码901115</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2018/08/15/QQshare-Err/" class="archive-article-date">
-  	<time datetime="2018-08-15T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包</p>
-<p>于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p>
-<p>错误提示如图：</p>
-        
-          <a class="article-more-a" href="/2018/08/15/QQshare-Err/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">知识点</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">QQ分享</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/15/QQshare-Err/">发现更多 >></a>
         </p>
       
 
@@ -1497,6 +902,298 @@
 
 
   
+    <article id="post-caihong-encode" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2018/04/23/caihong-encode/">关于新版彩虹代刷hashsalt值如何还原出真实值</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2018/04/23/caihong-encode/" class="archive-article-date">
+  	<time datetime="2018-04-23T10:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近在qq群上，有朋友要求我更新一下免费领赞(QQ名片赞)App(极其无聊的app但是喜欢的人却很多)，</p>
+<p>以为老接口都失效了，然后去研究了一下代刷站点发现，新版本的彩虹代刷程序增加了hashsalt值 + cookies值方式的验证，</p>
+<p>其主要目的可能就是为了加大写软件的难度，以及防止恶意刷单！</p>
+<p>直接查看代刷站源码，可以看到hashsalt值大概是这样的：</p>
+        
+          <a class="article-more-a" href="/2018/04/23/caihong-encode/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">彩虹代刷</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">算法解密</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/04/23/caihong-encode/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-waooooo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2018/03/16/waooooo/">最近有一件很神奇的事情发生，哈哈！</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2018/03/16/waooooo/" class="archive-article-date">
+  	<time datetime="2018-03-16T07:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>最近两个星期，有一件很神奇的事情。</p>
+<p>不知道什么时候的事情了，在手机端利用AIDE写了一个吉普赛读心术的app，最初是尝试的心态上架了百度手机助手，但是没想到通过审核了。</p>
+<p>后来没做什么更新，(大概三个月左右之后)就被下架了。</p>
+<p>APP的主界面大概长这个样子：</p>
+        
+          <a class="article-more-a" href="/2018/03/16/waooooo/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">吐槽</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/随笔//" class="article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/16/waooooo/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-php-api" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2018/01/30/php-api/">php自写api数据接口实例笔记</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2018/01/30/php-api/" class="archive-article-date">
+  	<time datetime="2018-01-30T05:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>php写api接口起初是因为自己在玩机器人软件，需要进行数据交互，例如看笑话，查天气，查快递等等的一些数据，来丰富机器人的功能，现在本站暂时保留着两个就博客的api接口，<img src="http://img.baidu.com/hi/face/i_f08.gif"></p>
+<p>css什么的失效了，暂时没去管：</p>
+<pre><code>1· http://www.hzv5.cn/api/ai.php
+
+2· http://www.hzv5.cn/api/sina_url.php</code></pre><img src="http://img.baidu.com/hi/face/i_f05.gif">
+
+<p>下面就来看看怎么自己写一个api接口吧：</p>
+<p>实例代码：</p>
+        
+          <a class="article-more-a" href="/2018/01/30/php-api/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">php接口</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">api写法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/30/php-api/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1511,14 +1208,13 @@
   <div class="outer">
     <div id="footer-info">
 	 </br>
-	  <span id="beian">
-		<span id="busuanzi_container_site_pv">本站总访问量:<span id="busuanzi_value_site_pv"></span>次</span>/<span id="busuanzi_value_site_uv"></span>人</span>
-		</br>
-		
+	  </br>
+		<span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> </br>
+		<span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次</span> </br>
 		<span id="beian"> 备案号：<a href="http://beian.miit.gov.cn" target="_blank">粤ICP备17005281号-1</a> </span> </br>
 		
     	<div class="footer-left">
-    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2023 吖远zzy
+    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2020 吖远zzy
     	</div>
 		
       	<div class="footer-right">
@@ -1622,6 +1318,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
@@ -1631,10 +1335,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1650,27 +1350,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Duration</a>
+                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">帧动画</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图片合成</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排列组合</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">NFT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
+                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1682,31 +1366,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1722,14 +1390,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客搬家</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">免费api</a>
               </li>
              
@@ -1739,6 +1399,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">android App</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客搬家</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1758,6 +1434,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">免费主机</a>
               </li>
              
@@ -1766,31 +1446,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">yilia</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
