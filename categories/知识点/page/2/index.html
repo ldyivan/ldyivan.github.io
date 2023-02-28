@@ -62,14 +62,8 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<!-- greyhat_weather -->
-<script type="text/javascript">
-	WIDGET = {FID: '6s8fQjx8kp'}
-</script>
-<script type="text/javascript" src="https://apip.weatherdt.com/float/static/js/r.js?v=1111"></script>
-    <!-- <div data-v-0a6ec0b4="" id="weather-float-he" style="position: absolute; padding: 0px; top: 8px; right: 20px;"></div> -->
-<div class="overlay" style="background: #4d4d4d">
-</div>
+
+
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -93,6 +87,8 @@
 	        
 				<li><a href="/tags/随笔/">随笔</a></li>
 	        
+				<li><a href="/guestbook/">留言</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -110,6 +106,276 @@
     			
             
 		</nav>
+		
+		
+		<!-- 粒子时钟 -->
+		
+			<div style="">
+			  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+			</div>
+			<script>
+			(function(){
+
+			   var digit=
+				[
+					[
+						[0,0,1,1,1,0,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,0,1,1,0],
+						[0,0,1,1,1,0,0]
+					],//0
+					[
+						[0,0,0,1,1,0,0],
+						[0,1,1,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[1,1,1,1,1,1,1]
+					],//1
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,1,1],
+						[1,1,1,1,1,1,1]
+					],//2
+					[
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//3
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,0],
+						[0,0,1,1,1,1,0],
+						[0,1,1,0,1,1,0],
+						[1,1,0,0,1,1,0],
+						[1,1,1,1,1,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,1,1]
+					],//4
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,1,1,1,1,0],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//5
+					[
+						[0,0,0,0,1,1,0],
+						[0,0,1,1,0,0,0],
+						[0,1,1,0,0,0,0],
+						[1,1,0,0,0,0,0],
+						[1,1,0,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//6
+					[
+						[1,1,1,1,1,1,1],
+						[1,1,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,0,0,1,1,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0],
+						[0,0,1,1,0,0,0]
+					],//7
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,1,1,0]
+					],//8
+					[
+						[0,1,1,1,1,1,0],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[1,1,0,0,0,1,1],
+						[0,1,1,1,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,0,1,1],
+						[0,0,0,0,1,1,0],
+						[0,0,0,1,1,0,0],
+						[0,1,1,0,0,0,0]
+					],//9
+					[
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,0,0,0,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,1,1,1,0,0],
+						[0,0,0,0,0,0,0]
+					]//:
+				];
+
+			var canvas = document.getElementById('canvas');
+
+			if(canvas.getContext){
+				var cxt = canvas.getContext('2d');
+				//声明canvas的宽高
+				var H = 100,W = 700;
+				canvas.height = H;
+				canvas.width = W;
+				cxt.fillStyle = '#f00';
+				cxt.fillRect(10,10,50,50);
+
+				//存储时间数据
+				var data = [];
+				//存储运动的小球
+				var balls = [];
+				//设置粒子半径
+				var R = canvas.height/20-1;
+				(function(){
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+					data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+				})();
+
+				/*生成点阵数字*/
+				function renderDigit(index,num){
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								cxt.beginPath();
+								cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+								cxt.closePath();
+								cxt.fill();
+							}
+						}
+					}
+				}
+
+				/*更新时钟*/
+				function updateDigitTime(){
+					var changeNumArray = [];
+					var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+					var NewData = [];
+					NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+					for(var i = data.length-1; i >=0 ; i--){
+						//时间发生变化
+						if(NewData[i] !== data[i]){
+							//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+							changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+						}
+					}
+					//增加小球
+					for(var i = 0; i< changeNumArray.length; i++){
+						addBalls.apply(this,changeNumArray[i].split('_'));
+					}
+					data = NewData.concat();
+				}
+
+				/*更新小球状态*/
+				function updateBalls(){
+					for(var i = 0; i < balls.length; i++){
+						balls[i].stepY += balls[i].disY;
+						balls[i].x += balls[i].stepX;
+						balls[i].y += balls[i].stepY;
+						if(balls[i].x > W + R || balls[i].y > H + R){
+							balls.splice(i,1);
+							i--;
+						}
+					}
+				}
+
+				/*增加要运动的小球*/
+				function addBalls(index,num){
+					var numArray = [1,2,3];
+					var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+					for(var i = 0; i < digit[num].length; i++){
+						for(var j = 0; j < digit[num][i].length; j++){
+							if(digit[num][i][j] == 1){
+								var ball = {
+									x:14*(R+2)*index + j*2*(R+1)+(R+1),
+									y:i*2*(R+1)+(R+1),
+									stepX:Math.floor(Math.random() * 4 -2),
+									stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+									color:colorArray[Math.floor(Math.random()*colorArray.length)],
+									disY:1
+								};
+								balls.push(ball);
+							}
+						}
+					}
+				}
+
+				/*渲染*/
+				function render(){
+					//重置画布宽度，达到清空画布的效果
+					canvas.height = 100;
+					//渲染时钟
+					for(var i = 0; i < data.length; i++){
+						renderDigit(i,data[i]);
+					}
+					//渲染小球
+					for(var i = 0; i < balls.length; i++){
+						cxt.beginPath();
+						cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+						cxt.fillStyle = balls[i].color;
+						cxt.closePath();
+						cxt.fill();
+					}
+				}
+
+				clearInterval(oTimer);
+				var oTimer = setInterval(function(){
+					//更新时钟
+					updateDigitTime();
+					//更新小球状态
+					updateBalls();
+					//渲染
+					render();
+				},50);
+			}
+
+			})();
+			</script>
+		
+		<!-- 粒子时钟 -->
 		
 		
 		<nav class="header-smart-menu">
@@ -174,6 +440,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -196,13 +464,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/photos/">相册</a></li>
+					<li style="width: 20%"><a href="/photos/">相册</a></li>
 		        
-					<li style="width: 25%"><a href="/archives/">归档</a></li>
+					<li style="width: 20%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
+		        
+					<li style="width: 20%"><a href="/guestbook/">留言</a></li>
 		        
 				</ul>
 			</nav>
@@ -226,9 +496,192 @@
       
       <section class="archives-wrap">
         <div class="archive-year-wrap">
+          <a href="/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2019/01/11/baidu-yuyin/" class="archive-article-date">
+  	<time datetime="2019-01-11T10:46:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-11</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+       <a class="archive-article-title" href="/2019/01/11/baidu-yuyin/">百度文字合成语音的api接口，以及其他失效的接口，找了新的免费语音接口！</a>
+    </h1>
+  
+
+
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">语音识别</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">语音合成</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+      
+        </div></section>
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
           <a href="/archives/2018" class="archive-year">2018</a>
         </div>
         <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/10/28/android-qq-share/" class="archive-article-date">
+  	<time datetime="2018-10-28T05:33:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-28</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+       <a class="archive-article-title" href="/2018/10/28/android-qq-share/">Android 利用腾讯开放平台的官方SDK，实现自定义QQ分享。并备份一下android-support-v7安卓支持包！</a>
+    </h1>
+  
+
+
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">QQ分享</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">android</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/08/15/QQshare-Err/" class="archive-article-date">
+  	<time datetime="2018-08-15T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+       <a class="archive-article-title" href="/2018/08/15/QQshare-Err/">关于Android自定义QQ分享提示未正确授权，错误码901115</a>
+    </h1>
+  
+
+
+
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">知识点</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">QQ分享</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
     
     <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
@@ -466,13 +919,14 @@
   <div class="outer">
     <div id="footer-info">
 	 </br>
-	  </br>
-		<span id="busuanzi_container_site_pv"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次</span> </br>
-		<span id="busuanzi_container_site_uv"> 本站访客数<span id="busuanzi_value_site_uv"></span>人次</span> </br>
+	  <span id="beian">
+		<span id="busuanzi_container_site_pv">本站总访问量:<span id="busuanzi_value_site_pv"></span>次</span>/<span id="busuanzi_value_site_uv"></span>人</span>
+		</br>
+		
 		<span id="beian"> 备案号：<a href="http://beian.miit.gov.cn" target="_blank">粤ICP备17005281号-1</a> </span> </br>
 		
     	<div class="footer-left">
-    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2020 吖远zzy
+    		<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1266069698'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/z_stat.php%3Fid%3D1266069698%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>   | &copy; 2023 吖远zzy
     	</div>
 		
       	<div class="footer-right">
@@ -560,7 +1014,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitalk</a>
+                <a href="javascript:void(0)" class="js-tag color2">MarkdownPad</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -572,15 +1026,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MarkdownPad</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gitalk</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,6 +1042,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客订阅</a>
               </li>
              
@@ -608,11 +1058,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
+                <a href="javascript:void(0)" class="js-tag color4">Duration</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
+                <a href="javascript:void(0)" class="js-tag color4">帧动画</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">图片合成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排列组合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NFT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,15 +1086,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">博客优化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,18 +1130,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">免费api</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">接口收集</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">android App</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HEXO</a>
               </li>
              
@@ -668,19 +1138,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">coding</a>
+                <a href="javascript:void(0)" class="js-tag color2">android App</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">项目托管</a>
+                <a href="javascript:void(0)" class="js-tag color1">免费api</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">php相关</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">函数封装</a>
+                <a href="javascript:void(0)" class="js-tag color5">接口收集</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -692,7 +1158,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
+                <a href="javascript:void(0)" class="js-tag color1">php相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">函数封装</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -701,6 +1171,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">三丰云</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">吐槽</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信小程序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">JScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">canvas</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
