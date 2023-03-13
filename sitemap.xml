@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.hzv5.cn//404.html</loc>
+    
+    <lastmod>2023-03-13T08:00:19.426Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.hzv5.cn/2023/03/13/js-array/</loc>
     
     <lastmod>2023-03-13T07:40:11.329Z</lastmod>
@@ -257,13 +264,6 @@
     <loc>http://www.hzv5.cn/photos/index.html</loc>
     
     <lastmod>2019-07-07T01:49:27.889Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.hzv5.cn//404.html</loc>
-    
-    <lastmod>2019-07-04T03:27:23.312Z</lastmod>
     
   </url>
   
