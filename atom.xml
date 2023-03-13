@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hzv5.cn/"/>
-  <updated>2023-02-28T15:43:40.626Z</updated>
+  <updated>2023-03-13T07:40:11.329Z</updated>
   <id>http://www.hzv5.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>修改JS数组中一个元素的值，其它元素也会跟着变化</title>
+    <link href="http://www.hzv5.cn/2023/03/13/js-array/"/>
+    <id>http://www.hzv5.cn/2023/03/13/js-array/</id>
+    <published>2023-03-13T06:40:25.000Z</published>
+    <updated>2023-03-13T07:40:11.329Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="js的神奇"><a href="#js的神奇" class="headerlink" title="js的神奇"></a>js的神奇</h1><h2 id="知识点问题复现"><a href="#知识点问题复现" class="headerlink" title="知识点问题复现"></a>知识点问题复现</h2><p>今天在码着代码调试的时候，根据条件判断将一个数组的一个元素值进行增或者减的操作，结果发现，数组中的其它元素也都跟着变了。</p><p>第一次碰见这种情况，检查了好几遍代码也没感觉哪里有写错，有点一头雾水，甚至写了各种小demo调试。</p><p>最后发现，是关于js的堆与栈问题…</p><p>示例代码：</p><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var d = [</span><br><span class="line">&#123;</span><br><span class="line">a: 1</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">a: 2</span><br><span class="line">&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">d[2].a = 100;</span><br><span class="line">console.log(d);</span><br></pre></td></tr></table></figure><p>按照我们通常的认知里，上述代码执行的结果应该是是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[&#123;a:1&#125;,&#123;a:100&#125;]</span><br></pre></td></tr></table></figure><p>而实际上的执行结果却是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">[&#123;a:100&#125;,&#123;a:100&#125;]</span><br></pre></td></tr></table></figure><p>很奇怪吧~</p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>先把数组转换成字符串，再转换成对象，在进行数据修改，最后再赋值回去。</p><p>代码示例：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">var d = [</span><br><span class="line">&#123;</span><br><span class="line">a: 1</span><br><span class="line">&#125;,</span><br><span class="line">&#123;</span><br><span class="line">a: 2</span><br><span class="line">&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">var tmp = JSON.parse(JSON.stringify(d));</span><br><span class="line">tmp[2].a = 100;</span><br><span class="line">d = tmp;</span><br><span class="line">console.log(d);</span><br></pre></td></tr></table></figure><h2 id="原因和原理"><a href="#原因和原理" class="headerlink" title="原因和原理"></a>原因和原理</h2><p>js中的数组是引用类型，数组变量存储在栈，元素数据存储在堆中，将数组赋值不同的对象，所以的赋值对象都指向堆同一个数据，所以改变其中一个数组中的元素，别的数组元素也会改变。</p><p>把数组转换成字符串，再转换成对象，这样会新分配一块内存，就不会指向同一个堆中的数据了。</p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>新的知识又增加了~</p><p>感谢阅读。</p><p>么么哒~~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;js的神奇&quot;&gt;&lt;a href=&quot;#js的神奇&quot; class=&quot;headerlink&quot; title=&quot;js的神奇&quot;&gt;&lt;/a&gt;js的神奇&lt;/h1&gt;&lt;h2 id=&quot;知识点问题复现&quot;&gt;&lt;a href=&quot;#知识点问题复现&quot; class=&quot;headerlink&quot; title=&quot;知识点问题复现&quot;&gt;&lt;/a&gt;知识点问题复现&lt;/h2&gt;&lt;p&gt;今天在码着代码调试的时候，根据条件判断将一个数组的一个元素值进行增或者减的操作，结果发现，数组中的其它元素也都跟着变了。&lt;/p&gt;
+&lt;p&gt;第一次碰见这种情况，检查了好几遍代码也没感觉哪里有写错，有点一头雾水，甚至写了各种小demo调试。&lt;/p&gt;
+&lt;p&gt;最后发现，是关于js的堆与栈问题…&lt;/p&gt;
+&lt;p&gt;示例代码：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+      <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JScript" scheme="http://www.hzv5.cn/tags/JScript/"/>
+    
+      <category term="vue" scheme="http://www.hzv5.cn/tags/vue/"/>
+    
+      <category term="大前端" scheme="http://www.hzv5.cn/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>微信小程序的审核没有统一标准吗？真的太奇葩了...</title>
@@ -587,35 +618,6 @@
       <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
     
       <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>吐槽一下下，关于最近的社交软件开放的账号销户功能！</title>
-    <link href="http://www.hzv5.cn/2018/05/04/tucao-sjirji/"/>
-    <id>http://www.hzv5.cn/2018/05/04/tucao-sjirji/</id>
-    <published>2018-05-04T10:13:00.000Z</published>
-    <updated>2019-07-11T09:46:24.432Z</updated>
-    
-    <content type="html"><![CDATA[<p>此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销</p><p>【PS：此注销不是退出登录，而是直接把QQ账号销户】。</p><img src="http://api.hzv5.cn/images/IMG_QQxh_01.jpg" width="300" height="637" title alt><p>但是腾讯是不是太天真了？</p><p>用了十几年的QQ我们会想要注销？</p><a id="more"></a><p>知不知道QQ对于我们八零九零意味着什么？(｡･ˇ_ˇ･｡)是不是脑子有泡？</p><p>这不，才上线没多久的QQ号码销户入口，今天再去看的时候就蜜汁消失了！突然的突然的开放销户又突然的关闭，不知道是什么原因，很迷！</p><p>然后今天是因为收到一个UC浏览器的推文《<a href="https://mparticle.uc.cn/article.html?uc_param_str=frdnsnpfvecpntnwprdssskt&client=ucweb&wm_cid=220813119445534720&wm_id=04fcc49832dc4f04ae8b82194e6bf87c&title_type=1&pagetype=share&app=uc-iflow&btifl=100&wm_aid=10625dbef0684f75800da634f77f3a6a&sdkdeep=2&sdksid=bfe73bdb-01cf-eafe-89a6-7cafb58185e1&sdkoriginal=bfe73bdb-01cf-eafe-89a6-7cafb58185e1" target="_blank" title="工信部一锤定音: 再见了微信微博!">工信部一锤定音: 再见了微信微博!</a>》，UC的小编我是真的很佩服的，同一件事和主人公，可以写N个故事！把文章标题也是命名的极其吸引人！(抱拳了，老铁！)。看了这水文之后，就去看了一下微信和微博，发现确实是可以注销账号了！</p><p>如下两图：</p><p><img src="http://api.hzv5.cn/images/IMG_QQxh_02.png" width="317" height="952" title alt>    <img src="http://api.hzv5.cn/images/IMG_QQxh_03.png" width="317" height="988" title alt></p><p>然而，注销账号似乎并没有那么简单，首先你得把账号里的钱填平，还有平时在别的APP或者网站上的快捷登录授权解除才可以！具体看下面注销微信和微博的两个截图：</p><p><img src="http://api.hzv5.cn/images/IMG_QQxh_05.png" width="317" height="852" title alt>    <img src="http://api.hzv5.cn/images/IMG_QQxh_04.png" width="317" height="952" title alt></p><p>说起来也是，自己主动注销的话，各种限制，极其不愿意让你销户，这让我想起了两个比较”有意思的”电脑杀毒软件，也不知道是什么情况下安装的，自己都不知道，卸载的时候弹出N次选择框让你确认，还故意把确认卸载按钮颜色弄成暗色，把取消下载弄成高亮色！</p><p>甚至一会儿确认在右边，一会儿在左边！呵呵哒…不知道正在看此篇博文的你有没有遇到过这种极其”流氓”的软件！</p><p>主动销户困难，但是”被”销户就死很简单的事！<br>只要你违规了该APP的一些规定！他们就可以冻结你的账号，甚至是直接销户！也就不管你有没有把坑填平或者解除账号授权什么的了，这是一种什么操作？</p><p>现在手机软件、社交媒体、购物平台等网络账号中很少有提供注销账号的服务。一旦用户注册账号，即使不再使用，此前其注册信息、购买记录、好友通讯录等都还将继续储存在平台系统中。</p><p>而且很多软件和平台为了推广，各种吸引眼球的广告吸引大家去注册试用，但是大部分情况下这些软件和平台并不是我们需要的，很多注册了发现不是自己需要的，就直接关掉或卸载不管了。<br>因此现在用户的个人资料很容易会被泄露。</p><p>很多的APP都会读取我们的手机通讯录，地理位置等信息，乍看之下，无非就是多几个废弃的账号而已，但随着个人资料和信息权利重要性的提升，保留在账户里面的所有个人资料都有可能被利用、贩卖，大大增加用户隐私泄露的风险。</p><p>所以大家要是有注册了一些平台或APP账号，又没有使用的话最好及时注销掉，这些不用的账号说不好很有可能会泄露你，甚至是家人朋友的个人隐私，注销掉不仅能减少自身风险，以后换号码也简单多了。</p><p>为什么手机号码用久了，广告短信息越来越多？这会儿应该不言而喻了吧！个人是很赞成工信部出来管制的，任何平台都应该开放用户主动注销账号的权限！</p><p>五一期间大家都在更博，我实在是没什么可以拿出来的，今天就借UC推文码了一堆口水文！2333…</p><p>食用完水文，记得流行评论，发变一下你的看法！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销&lt;/p&gt;
-&lt;p&gt;【PS：此注销不是退出登录，而是直接把QQ账号销户】。&lt;/p&gt;
-&lt;img src=&quot;http://api.hzv5.cn/images/IMG_QQxh_01.jpg&quot; width=&quot;300&quot; height=&quot;637&quot; title alt&gt;
-
-&lt;p&gt;但是腾讯是不是太天真了？&lt;/p&gt;
-&lt;p&gt;用了十几年的QQ我们会想要注销？&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="收集控" scheme="http://www.hzv5.cn/categories/%E6%94%B6%E9%9B%86%E6%8E%A7/"/>
-    
-    
-      <category term="免费api" scheme="http://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9api/"/>
-    
-      <category term="接口收集" scheme="http://www.hzv5.cn/tags/%E6%8E%A5%E5%8F%A3%E6%94%B6%E9%9B%86/"/>
     
   </entry>
   

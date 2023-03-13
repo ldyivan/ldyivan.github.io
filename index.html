@@ -589,6 +589,110 @@
 
 
   
+    <article id="post-js-array" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+       <a class="article-title" href="/2023/03/13/js-array/">修改JS数组中一个元素的值，其它元素也会跟着变化</a>
+    </h1>
+  
+
+
+
+        
+        <a href="/2023/03/13/js-array/" class="archive-article-date">
+  	<time datetime="2023-03-13T06:40:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js的神奇"><a href="#js的神奇" class="headerlink" title="js的神奇"></a>js的神奇</h1><h2 id="知识点问题复现"><a href="#知识点问题复现" class="headerlink" title="知识点问题复现"></a>知识点问题复现</h2><p>今天在码着代码调试的时候，根据条件判断将一个数组的一个元素值进行增或者减的操作，结果发现，数组中的其它元素也都跟着变了。</p>
+<p>第一次碰见这种情况，检查了好几遍代码也没感觉哪里有写错，有点一头雾水，甚至写了各种小demo调试。</p>
+<p>最后发现，是关于js的堆与栈问题…</p>
+<p>示例代码：</p>
+        
+          <a class="article-more-a" href="/2023/03/13/js-array/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JScript</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/知识点/笔记//" class="article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/13/js-array/">发现更多 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-wx-mini" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1419,112 +1523,6 @@
 
 
   
-    <article id="post-About-Git-Err-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-       <a class="article-title" href="/2020/12/14/About-Git-Err-2/">Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记</a>
-    </h1>
-  
-
-
-
-        
-        <a href="/2020/12/14/About-Git-Err-2/" class="archive-article-date">
-  	<time datetime="2020-12-14T07:32:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="啰里啰嗦"><a href="#啰里啰嗦" class="headerlink" title="啰里啰嗦"></a>啰里啰嗦</h1><p>好像好久没有更新博客了，今年疫情很多人都过的不是很好，又到年底了，提前祝大家新年快乐吧😂，希望各位读者能够在新的一年蒸蒸日上，早日摆脱不开心，心想事成。😁哈哈~</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1丶hexo命令操作时出现的问题"><a href="#1丶hexo命令操作时出现的问题" class="headerlink" title="1丶hexo命令操作时出现的问题"></a>1丶hexo命令操作时出现的问题</h2><h3 id="hexo-v出现的问题"><a href="#hexo-v出现的问题" class="headerlink" title="hexo -v出现的问题"></a>hexo -v出现的问题</h3>
-        
-          <a class="article-more-a" href="/2020/12/14/About-Git-Err-2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">MarkdownPad</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">知识点</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点//" class="article-tag-list-link color4">知识点</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/知识点/吐槽//" class="article-tag-list-link color3">吐槽</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/12/14/About-Git-Err-2/">发现更多 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1819,6 +1817,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">相册</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大前端</a>
               </li>
             
             <div class="clearfix"></div>
