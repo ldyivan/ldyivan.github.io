@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hzv5.cn/"/>
-  <updated>2023-03-13T07:40:11.329Z</updated>
+  <updated>2023-03-28T10:13:39.807Z</updated>
   <id>http://www.hzv5.cn/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unity一些常用的小知识点笔记，WebGL部署报Unable to parse Build解决笔记</title>
+    <link href="http://www.hzv5.cn/2023/03/28/unity_note/"/>
+    <id>http://www.hzv5.cn/2023/03/28/unity_note/</id>
+    <published>2023-03-28T09:44:20.000Z</published>
+    <updated>2023-03-28T10:13:39.807Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Unity知识点一"><a href="#Unity知识点一" class="headerlink" title="Unity知识点一"></a>Unity知识点一</h1><h2 id="Unity打包WebGL报Unable-to-parse-Build"><a href="#Unity打包WebGL报Unable-to-parse-Build" class="headerlink" title="Unity打包WebGL报Unable to parse Build"></a>Unity打包WebGL报Unable to parse Build</h2><p>错误详情示例：</p><p>Unable to parse Build/*.framework.js.gz! This can happen if build compression was enabled but web server hosting the content was misconfigured to not serve the file with HTTP Response Header “Content-Encoding: gzip” present. Check browser Console and Devtools Network tab to debug.</p><p>图示：</p><p><img src="/img/unityNote/error.png" alt="unityError"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><a id="more"></a><p>在Unity的WebGL创建时的PlayerSettings中，拉到最下面展开Publishing settings选项卡，把Decompression Fallback 选项勾上即可。</p><p>图示：</p><p><img src="/img/unityNote/setting.png" alt="unitysetting"></p><h2 id="原因和原理"><a href="#原因和原理" class="headerlink" title="原因和原理"></a>原因和原理</h2><p>关于Decompression Fallback的unity官方的解释：</p><p><img src="/img/unityNote/tip.png" alt="unityTip"></p><p>参考翻译：在加载程序中包括生成文件的解压缩回退代码。如果无法根据选定的压缩方法配置服务器响应标头，请使用此选项。</p><h1 id="Unity知识点二"><a href="#Unity知识点二" class="headerlink" title="Unity知识点二"></a>Unity知识点二</h1><h2 id="一些常用的小知识"><a href="#一些常用的小知识" class="headerlink" title="一些常用的小知识"></a>一些常用的小知识</h2><h3 id="随机数生成"><a href="#随机数生成" class="headerlink" title="随机数生成"></a>随机数生成</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Random.Range(0, 10); //随机生成0到10之间的整数。不包含10</span><br></pre></td></tr></table></figure><h3 id="在指定位置生成物体-小怪-道具等"><a href="#在指定位置生成物体-小怪-道具等" class="headerlink" title="在指定位置生成物体/小怪/道具等"></a>在指定位置生成物体/小怪/道具等</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Instantiate&lt;GameObject&gt;(obj, position, Quaternion.identity);</span><br></pre></td></tr></table></figure><p>obj : 要新建物体/小怪/道具的GameObject</p><p>position：生成的位置</p><h3 id="2D角色转向"><a href="#2D角色转向" class="headerlink" title="2D角色转向"></a>2D角色转向</h3><p> 利用SpriteRenderer组件下的flipX属性</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">GetComponent&lt;SpriteRenderer&gt;().flipX = true;</span><br></pre></td></tr></table></figure><p>或使用transform的localScale属性</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">transform.localScale = new Vector3(-1, 1, 1);</span><br></pre></td></tr></table></figure><h3 id="角色从一个点移动到另一点"><a href="#角色从一个点移动到另一点" class="headerlink" title="角色从一个点移动到另一点"></a>角色从一个点移动到另一点</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">transform.position = Vector3.MoveTowards(startPosition, endPosition, Time.deltaTime * speed);</span><br></pre></td></tr></table></figure><h3 id="计算两个点的距离"><a href="#计算两个点的距离" class="headerlink" title="计算两个点的距离"></a>计算两个点的距离</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">float dis = Vector3.Distance(startPosition, endPosition);</span><br></pre></td></tr></table></figure><h3 id="查找物体和子物体"><a href="#查找物体和子物体" class="headerlink" title="查找物体和子物体"></a>查找物体和子物体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//查找物体方法</span><br><span class="line">GameObject go = GameObject.Find(&quot;Cube&quot;);</span><br><span class="line"></span><br><span class="line">//查找子物体，并且将得到的物体转换成gameobject</span><br><span class="line">GameObject objname = go.transform.FindChild(&quot;Sphere/Cylinder/Plane&quot;).gameObject;</span><br><span class="line">Debug.Log(&quot;得到最终子物体的名字是：&quot; + objname.name);</span><br></pre></td></tr></table></figure><h3 id="重新加载当前场景"><a href="#重新加载当前场景" class="headerlink" title="重新加载当前场景"></a>重新加载当前场景</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SceneManager.LoadScene(SceneManager.GetActiveScene().name);</span><br></pre></td></tr></table></figure><h3 id="加载下一个场景"><a href="#加载下一个场景" class="headerlink" title="加载下一个场景"></a>加载下一个场景</h3><p>需要先在构建项目前，在设置中把所有的场景一次拖入列表中，从上到下顺序排列。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);</span><br></pre></td></tr></table></figure><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>新的知识又又又增加了~</p><p>感谢阅读。</p><p>么么哒~~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Unity知识点一&quot;&gt;&lt;a href=&quot;#Unity知识点一&quot; class=&quot;headerlink&quot; title=&quot;Unity知识点一&quot;&gt;&lt;/a&gt;Unity知识点一&lt;/h1&gt;&lt;h2 id=&quot;Unity打包WebGL报Unable-to-parse-Build&quot;&gt;&lt;a href=&quot;#Unity打包WebGL报Unable-to-parse-Build&quot; class=&quot;headerlink&quot; title=&quot;Unity打包WebGL报Unable to parse Build&quot;&gt;&lt;/a&gt;Unity打包WebGL报Unable to parse Build&lt;/h2&gt;&lt;p&gt;错误详情示例：&lt;/p&gt;
+&lt;p&gt;Unable to parse Build/*.framework.js.gz! This can happen if build compression was enabled but web server hosting the content was misconfigured to not serve the file with HTTP Response Header “Content-Encoding: gzip” present. Check browser Console and Devtools Network tab to debug.&lt;/p&gt;
+&lt;p&gt;图示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/unityNote/error.png&quot; alt=&quot;unityError&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;解决办法&quot;&gt;&lt;a href=&quot;#解决办法&quot; class=&quot;headerlink&quot; title=&quot;解决办法&quot;&gt;&lt;/a&gt;解决办法&lt;/h2&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+      <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="Unity" scheme="http://www.hzv5.cn/tags/Unity/"/>
+    
+      <category term="WebGL" scheme="http://www.hzv5.cn/tags/WebGL/"/>
+    
+  </entry>
   
   <entry>
     <title>修改JS数组中一个元素的值，其它元素也会跟着变化</title>
@@ -588,36 +618,6 @@
       <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
     
       <category term="android" scheme="http://www.hzv5.cn/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于Android自定义QQ分享提示未正确授权，错误码901115</title>
-    <link href="http://www.hzv5.cn/2018/08/15/QQshare-Err/"/>
-    <id>http://www.hzv5.cn/2018/08/15/QQshare-Err/</id>
-    <published>2018-08-15T02:12:16.000Z</published>
-    <updated>2023-02-22T15:18:26.389Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包</p><p>于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p><p>错误提示如图：</p><a id="more"></a><p><img src="/img/QQshareErr/01.png" alt="QQ分享错误示例"></p><p>然后感觉就是，是不是因为QQ互联官网更新了QQ分享的SDK，于是乎，我打开了官网一看，还真的是，顶部出现了一条醒目的公告提示，这个提示已经有一段时间了，怪我最近没怎么做相关开发，没注意23333…</p><p>参考： <a href="https://wiki.connect.qq.com/%E5%8A%A0%E5%BC%BAqq%E4%BA%92%E8%81%94%E7%A7%BB%E5%8A%A8%E5%BA%94%E7%94%A8-android%E5%8C%85%E5%90%8D%E5%92%8C-ios-bundleid-%E6%A0%A1%E9%AA%8C%E7%9A%84%E9%80%9A%E7%9F%A5%EF%BB%BF" title="加强QQ互联移动应用 Android包名和 iOS Bundleid 校验" target="_blank" rel="noopener">加强QQ互联移动应用 Android包名和 iOS Bundleid 校验</a></p><p>一看公告，这个校验新方法已经是5月30日开始的了，我这是多久没关注相关的应用使用QQ分享了23333</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>根据公告说的，是为了保障QQ用户的安全，以免被恶意盗用，加强了应用的校验，如不进行信息完善，应用将无法登录和分享至QQ好友和QQ群，所以我们补全信息即可。我们进入QQ互联平台登记的应用：QQ互联官网：<a href="https://connect.qq.com/index.html" title="QQ互联官网 - 应用管理" target="_blank" rel="noopener">QQ互联官网 - 应用管理</a> 应用管理中进行补充；</p><p><strong>（修改路径为：应用管理 – 移动应用 – 查看（应用）– 基础信息 – 平台信息 – 修改）</strong></p><p><img src="/img/QQshareErr/02.png" alt="进入应用"></p><p><img src="/img/QQshareErr/03.png" alt="修改应用信息"></p><p>进入修改应用信息后，添加用到该APPID的应用包名以及签名，每个APPID最多支持6组app共用。</p><p><img src="/img/QQshareErr/04.png" alt="添加应用包名与签名"></p><p>还有就是别忘了应用接口权限别忘了看一看有没有获取打开</p><p><img src="/img/QQshareErr/05.png" alt="管理应用权限"></p><h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>到这里就解决了这个错误码为901115的QQQ分享报错了。</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>一个不算问题的问题，出于平时使用频率小，导致没怎么关注这个，当使用的时候就一脸懵逼</p><p>捋清思路之后，问题就简单了</p><p>么么扎~~</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h1&gt;&lt;p&gt;最近，QQ更新了一个成语接龙玩法的红包&lt;/p&gt;
-&lt;p&gt;于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：&lt;/p&gt;
-&lt;p&gt;错误提示如图：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-    
-      <category term="笔记" scheme="http://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="知识点" scheme="http://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-      <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
-    
-      <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
     
   </entry>
   
