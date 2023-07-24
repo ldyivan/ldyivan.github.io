@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hzv5.cn/"/>
-  <updated>2023-03-28T10:13:39.807Z</updated>
+  <updated>2023-07-24T11:35:12.237Z</updated>
   <id>http://www.hzv5.cn/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用vercel和github免费实现serverless api接口服务部署</title>
+    <link href="http://www.hzv5.cn/2023/07/24/github_api/"/>
+    <id>http://www.hzv5.cn/2023/07/24/github_api/</id>
+    <published>2023-07-24T10:10:05.000Z</published>
+    <updated>2023-07-24T11:35:12.237Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="vercel"><a href="#vercel" class="headerlink" title="vercel"></a>vercel</h1><h2 id="简单介绍一下vercel"><a href="#简单介绍一下vercel" class="headerlink" title="简单介绍一下vercel"></a>简单介绍一下vercel</h2><p>vercel和github Pages一样，也是一个免费的托管平台，同类的平台还有Netlify，提供CDN加速。</p><p>但是在相比之下，vercel在国内的访问速度更快，可以托管动态网站，并且提供Production环境和development环境。</p><p>支持持续集成，一次push就会自动化构建发布，发布在development环境，都会生成不一样的链接可供预览。</p><p>自动配置https，不用自己去FreeSSL申请证书，更是省去了一大堆证书的配置，可以绑定自定义域名。</p><h2 id="注册vercel"><a href="#注册vercel" class="headerlink" title="注册vercel"></a>注册vercel</h2><p>打开vercel主页 <a href="https://vercel.com/login" target="_blank" rel="noopener">https://vercel.com/login</a></p><p><img src="/img/vercel/01.png" alt="注册vercel"></p><a id="more"></a><p>使用GitHub账号去登录关联vercel，后续部署在github的代码就可以自动提交到vercel，自动触发部署。</p><h2 id="同步github项目和部署"><a href="#同步github项目和部署" class="headerlink" title="同步github项目和部署"></a>同步github项目和部署</h2><p>新建vercel项目</p><p><img src="/img/vercel/02.png" alt="新建vercel项目02"></p><p>如何点击绑定github仓库，会自动读取github的所有仓库，选择你要自动部署的仓库，点击Import即可导入，一路点击Deploy即可。</p><p><img src="/img/vercel/03.png" alt="新建vercel项目03"></p><p>等个几分钟自动部署完毕之后，就可以点击Visit访问部署的网站了，vercel还提供了多个开发预览域名和公开域名。</p><p><img src="/img/vercel/04.png" alt="新建vercel项目04"></p><p>你也可以绑定自定义域名：</p><p><img src="/img/vercel/05.png" alt="新建vercel项目05"></p><p>点击vercel项目的Setting设置栏目的Domains选项，在输入框输入你的域名，如何点击Add添加即可，最后把域名用CNAME方式解析到vercel指定的DNS地址即可完成自定义域名的绑定。</p><h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><h2 id="添加vercel-json"><a href="#添加vercel-json" class="headerlink" title="添加vercel.json"></a>添加vercel.json</h2><p>要实现可以访问执行php，需要在项目的根目录添加一个vercel.json文件。</p><p>大致格式为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;functions&quot;: &#123;</span><br><span class="line">    &quot;api/index.php&quot;: &#123; &quot;runtime&quot;: &quot;vercel-php@0.5.2&quot; &#125;,</span><br><span class="line">    &quot;api/api.php&quot;: &#123; &quot;runtime&quot;: &quot;vercel-php@0.5.2&quot; &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;routes&quot;: [</span><br><span class="line">  &#123; &quot;src&quot;: &quot;/&quot;, &quot;dest&quot;: &quot;/api/index.php&quot; &#125;,</span><br><span class="line">  &#123; &quot;src&quot;: &quot;/index.php&quot;, &quot;dest&quot;: &quot;/api/index.php&quot; &#125;,</span><br><span class="line">  &#123; &quot;src&quot;: &quot;/api.php&quot;, &quot;dest&quot;: &quot;/api/api.php&quot; &#125;</span><br><span class="line">]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>可以使用正则表达式，更多配置参数可以在vercel的官网档案中查找，地址为 <a href="https://vercel.com/docs" target="_blank" rel="noopener">https://vercel.com/docs</a></p><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>新的知识又增加了~</p><p>感谢阅读。</p><p>么么哒~~</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;vercel&quot;&gt;&lt;a href=&quot;#vercel&quot; class=&quot;headerlink&quot; title=&quot;vercel&quot;&gt;&lt;/a&gt;vercel&lt;/h1&gt;&lt;h2 id=&quot;简单介绍一下vercel&quot;&gt;&lt;a href=&quot;#简单介绍一下vercel&quot; class=&quot;headerlink&quot; title=&quot;简单介绍一下vercel&quot;&gt;&lt;/a&gt;简单介绍一下vercel&lt;/h2&gt;&lt;p&gt;vercel和github Pages一样，也是一个免费的托管平台，同类的平台还有Netlify，提供CDN加速。&lt;/p&gt;
+&lt;p&gt;但是在相比之下，vercel在国内的访问速度更快，可以托管动态网站，并且提供Production环境和development环境。&lt;/p&gt;
+&lt;p&gt;支持持续集成，一次push就会自动化构建发布，发布在development环境，都会生成不一样的链接可供预览。&lt;/p&gt;
+&lt;p&gt;自动配置https，不用自己去FreeSSL申请证书，更是省去了一大堆证书的配置，可以绑定自定义域名。&lt;/p&gt;
+&lt;h2 id=&quot;注册vercel&quot;&gt;&lt;a href=&quot;#注册vercel&quot; class=&quot;headerlink&quot; title=&quot;注册vercel&quot;&gt;&lt;/a&gt;注册vercel&lt;/h2&gt;&lt;p&gt;打开vercel主页 &lt;a href=&quot;https://vercel.com/login&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://vercel.com/login&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/vercel/01.png&quot; alt=&quot;注册vercel&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    
+      <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="vercel" scheme="http://www.hzv5.cn/tags/vercel/"/>
+    
+      <category term="github" scheme="http://www.hzv5.cn/tags/github/"/>
+    
+      <category term="api" scheme="http://www.hzv5.cn/tags/api/"/>
+    
+  </entry>
   
   <entry>
     <title>Unity一些常用的小知识点笔记，WebGL部署报Unable to parse Build解决笔记</title>
@@ -590,34 +623,6 @@
       <category term="语音识别" scheme="http://www.hzv5.cn/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/"/>
     
       <category term="语音合成" scheme="http://www.hzv5.cn/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Android 利用腾讯开放平台的官方SDK，实现自定义QQ分享。并备份一下android-support-v7安卓支持包！</title>
-    <link href="http://www.hzv5.cn/2018/10/28/android-qq-share/"/>
-    <id>http://www.hzv5.cn/2018/10/28/android-qq-share/</id>
-    <published>2018-10-28T05:33:00.000Z</published>
-    <updated>2019-07-13T12:42:53.967Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="开头废话"><a href="#开头废话" class="headerlink" title="开头废话"></a>开头废话</h1><p>前些日子换了手机，旧手机上的数据忘了迁移备份就急急忙忙的重置格式化了，很难受！开发的一些APP源码也就给丢失了，然后只好去自己的群里面，找到曾经上传的旧版本，把他反编译出来一点点的还原。</p><p>逆向始终不是自己会玩的东西，所以效果很不理想，特别是我这种纯手机端进行编写操作的编程爱好者。蓝瘦香菇！</p><p>今天想要说一下那个自定义QQ分享的东西，官方文档以及demo最近也好像是做了一下更新。最烦的就是更新了的文档也不是那么的简洁明了，实在不是很适合给一般的coder看￣ ￣)σ。</p><p>好吧，还是直接去开始吧。</p><h1 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h1><a id="more"></a><p>1丶打开我的AIDE…</p><p>2丶新建工程项目</p><p>3丶到<a href="http://wiki.open.qq.com/wiki/mobile/SDK%E4%B8%8B%E8%BD%BD" target="_blank" rel="noopener">QQ开放平台</a> 下载SDK</p><p>4丶解压SDK，把两个jar包导入工程项目的libs文件夹，没有这个文件夹自己新建一下</p><p>5丶然后，我们就可开始码代码了</p><p>6丶首先配置一下AndroidManifest文件，权限设置和注册Activity</p><p>权限代码：</p><pre><code>&lt;!-- APP联网所需权限 --&gt;&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;&lt;!-- 在SDCard中创建和删除文件的权限 --&gt; &lt;uses-permission     android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt; &lt;!-- 往SDCard中写入数据的权限 --&gt;&lt;uses-permission     android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre><p>当然，以上权限并不全都用的上或者不够，可以根据自己的需求进行增减。</p><p>然后是SDK需要的Activity注册了，一下代码放入到<application>标签中即可：</application></p><pre><code>&lt;!-- 注册SDKActivity --&gt;&lt;activity    android:name=&quot;com.tencent.tauth.AuthActivity&quot;        android:noHistory=&quot;true&quot;        android:launchMode=&quot;singleTask&quot; &gt;        &lt;intent-filter&gt;            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;            &lt;data android:scheme=&quot;tencentID1106885928&quot; /&gt; &lt;!-- 获取的APPID --&gt;        &lt;/intent-filter&gt;    &lt;/activity&gt;</code></pre><p>新版的SDK增加了AssistActivity，所以也要在这里给他加上去</p><pre><code>&lt;activity android:name=&quot;com.tencent.connect.common.AssistActivity&quot;       android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;       android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot; /&gt;</code></pre><p>配置好了之后，就开始写java代码了。</p><p>首先，创建实例。Tencent是SDK的功能入口，所有的接口调用都得通过Tencent进行调用。因此，调用SDK，首先需要创建一个Tencent实例，其代码如下：</p><pre><code>private static final String APP_ID = &quot;1106885928&quot;; // appid跟换成你自己的，可以在开放平台新建应用之后获取private Tencent mTencent;    //传入参数APPID    mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());</code></pre><p>   接下来就是实现回调，也就是你分享东西出去是成功了还是失败了，又或者是用户取消了分享呢？具体就是：</p><pre><code>/*** 自定义监听器实现IUiListener，需要3个方法** onComplete完成 onError错误 onCancel取消*/private class ShareUiListener implements IUiListener{    @Override    public void onComplete(Object response)    {        //分享成功        def_note(&quot;成功分享！&quot;);    }    @Override    public void onError(UiError uiError)    {        //分享失败        def_note(&quot;分享失败！&quot;);    }    @Override    public void onCancel()    {        //分享取消        def_note(&quot;您取消了分享！&quot;);    }}/** * 回调 * * @param requestCode *  * @param resultCode * @param data */@Overrideprotected void onActivityResult(int requestCode, int resultCode, Intent data){    if (null != mTencent)    {        mTencent.onActivityResult(requestCode, resultCode, data);    }}</code></pre><p>到这里就基本上搞好了。</p><p>然后就是对官方文档里面提到的api数据封装功能函数，可以分享链接，音乐，图片，应用这些东西，具体就是这样：</p><pre><code>/** * 分享到QQ * @param v */public void qqShare(String t, String s, String u, String p, String w){    final Bundle params = new Bundle();    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);//分享标题    params.putString(QQShare.SHARE_TO_QQ_SUMMARY, s);//要分享的内容摘要    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, u);//内容地址    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);//分享的图片URL    params.putString(QQShare.SHARE_TO_QQ_APP_NAME, w);//应用名称    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());}/** * 分享到QQ空间 * @param v */public void qqQzoneShare(String t, String s, String u, String p, String w)\r\n    {\r\n        int QzoneType = QzoneShare.SHARE_TO_QZONE_TYPE_NO_TYPE;\r\n        Bundle params = new Bundle();    params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneType);    params.putString(QzoneShare.SHARE_TO_QQ_TITLE, t);//分享标题    params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, s);//分享的内容摘要    params.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, u);//分享的链接    //分享的图片, 以ArrayList&lt;String&gt;的类型传入，以便支持多张图片（注：图片最多支持9张图片，多余的图片会被丢弃）    ArrayList&lt;String&gt; imageUrls = new ArrayList&lt;String&gt;();    imageUrls.add(&quot;http://www.hzv5.cn/logo.jpg&quot;);//添加一个图片地址    params.putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);//分享的图片URL    mTencent.shareToQzone(MainActivity.this, params, new ShareUiListener());}/** * 分享音乐 * @param v */private void qqAudioShare(String t, String s, String u, String p, String w){    int ii = def_getNum(0, songlist.length - 1);    final Bundle params = new Bundle();    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_AUDIO);    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  s);    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,  u);    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);    params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL, songlist[ii]);    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  w);    //params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());}</code></pre><p>到这里整个工程项目的QQ自定义分享基本上就完成了，这里算是给自己也做了一份备份。</p><h1 id="V4，V7支持包"><a href="#V4，V7支持包" class="headerlink" title="V4，V7支持包"></a>V4，V7支持包</h1><p>另外再备份两个东西，那就是安卓的android-support-v4，和v7支持包，特别是v7包，网上找的全是那种缺胳膊少腿的，找个完整的v7找了我两天时间！这个是安卓25版本的。</p><p>不是最新，但是够用就行了。</p><p>v4下载链接：<a href="https://pan.baidu.com/s/1aotD4JKcPgwje1a4cPsfqg" target="_blank" rel="noopener">点击下载v4 提取码：65o3</a></p><p>v7下载链接：<a href="https://pan.baidu.com/s/1TuK2qB5lzy6JC8ymcJxBbA'" target="_blank" rel="noopener">点击下载v7 提取码：n54t</a></p><p>OK，?完美！</p><p>笔芯❤！</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;开头废话&quot;&gt;&lt;a href=&quot;#开头废话&quot; class=&quot;headerlink&quot; title=&quot;开头废话&quot;&gt;&lt;/a&gt;开头废话&lt;/h1&gt;&lt;p&gt;前些日子换了手机，旧手机上的数据忘了迁移备份就急急忙忙的重置格式化了，很难受！开发的一些APP源码也就给丢失了，然后只好去自己的群里面，找到曾经上传的旧版本，把他反编译出来一点点的还原。&lt;/p&gt;
-&lt;p&gt;逆向始终不是自己会玩的东西，所以效果很不理想，特别是我这种纯手机端进行编写操作的编程爱好者。蓝瘦香菇！&lt;/p&gt;
-&lt;p&gt;今天想要说一下那个自定义QQ分享的东西，官方文档以及demo最近也好像是做了一下更新。最烦的就是更新了的文档也不是那么的简洁明了，实在不是很适合给一般的coder看￣ ￣)σ。&lt;/p&gt;
-&lt;p&gt;好吧，还是直接去开始吧。&lt;/p&gt;
-&lt;h1 id=&quot;开整&quot;&gt;&lt;a href=&quot;#开整&quot; class=&quot;headerlink&quot; title=&quot;开整&quot;&gt;&lt;/a&gt;开整&lt;/h1&gt;
-    
-    </summary>
-    
-      <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
-    
-    
-      <category term="QQ分享" scheme="http://www.hzv5.cn/tags/QQ%E5%88%86%E4%BA%AB/"/>
-    
-      <category term="android" scheme="http://www.hzv5.cn/tags/android/"/>
     
   </entry>
   
