@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://www.hzv5.cn">
   <title>使用hexo+github搭建免费个人博客详细教程 | 吖远zzyの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言使用github pages服务搭建博客的好处有：  全是静态文件，访问速度快； 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台； 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的； 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行； 博客内容可以轻松打包、转移、发布到其它平台； 等等；">
-<meta name="keywords" content="hexo,GitTalk">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo+github搭建免费个人博客详细教程">
 <meta property="og:url" content="http://www.hzv5.cn/2020/12/22/hexo-github/index.html">
 <meta property="og:site_name" content="吖远zzyの博客">
 <meta property="og:description" content="前言使用github pages服务搭建博客的好处有：  全是静态文件，访问速度快； 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台； 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的； 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行； 博客内容可以轻松打包、转移、发布到其它平台； 等等；">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160823_191336_238_8683.png">
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160818_143914_495_9084.png">
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160818_115922_773_1148.png">
@@ -28,10 +27,12 @@
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160823_183325_470_9306.png">
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160823_184852_854_6502.png">
 <meta property="og:image" content="http://image.liuxianan.com/201608/20160823_184633_653_1893.png">
-<meta property="og:updated_time" content="2019-07-10T02:57:44.916Z">
+<meta property="article:published_time" content="2020-12-22T03:26:51.000Z">
+<meta property="article:modified_time" content="2024-12-22T10:31:19.522Z">
+<meta property="article:author" content="吖远zzy">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="GitTalk">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo+github搭建免费个人博客详细教程">
-<meta name="twitter:description" content="前言使用github pages服务搭建博客的好处有：  全是静态文件，访问速度快； 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台； 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的； 数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行； 博客内容可以轻松打包、转移、发布到其它平台； 等等；">
 <meta name="twitter:image" content="http://image.liuxianan.com/201608/20160823_191336_238_8683.png">
   
     <link rel="alternative" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
@@ -69,8 +70,8 @@
   
   
 
-</head>
-</html>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -84,10 +85,8 @@
 			<img src="/img/logo.png" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">吖远zzy</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
-		
-		<p class="header-subtitle">一个不知名的编程爱好者</p>
 		
 
 		<nav class="header-menu">
@@ -99,7 +98,7 @@
 	        
 				<li><a href="/archives/">归档</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 				<li><a href="/guestbook/">留言</a></li>
 	        
@@ -408,7 +407,7 @@
 
 					<a target="_blank" href="https://app.hzv5.cn/hxw/" title="火星文转换器"><svg t="1734603573030" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17266" width="32" height="32"><path d="M978.940333 191.326938c3.239073-13.187653-1.110539 96.802003-19.665799 211.187544-10.596395 65.24418-59.413849 140.483213-59.413848 166.765975 0 5.691514 40.395865-0.601542 79.079647-28.226206 42.200491-30.077104 38.452421-43.773755 37.943424-37.665789-1.573264 20.961428 11.290482 49.280178-23.136234 117.532069-34.472989 68.159345-99.023082 99.208171-106.056497 118.550063-22.210785 60.987113-72.277595 102.215882-116.328984 147.609173A447.408493 447.408493 0 0 1 449.953479 1024C199.388065 1024 0 817.300885 0 569.280457 0 316.031239 204.524309 114.514641 449.953479 114.514641c25.542402 0 45.994833 0 71.583508 5.182517 5.089971 0 110.498654-5.182516 136.041056-20.683794 46.041106-31.002554 56.267321-46.50383 56.267321-46.50383s5.089971 20.683793 5.089972 41.321314c0 20.683793-5.089971 31.002554-5.089972 31.002553s66.447264-5.136244 107.352126-46.50383A1201.649722 1201.649722 0 0 0 887.691026 6.005704s25.542402 31.002554 35.768618 113.691454c10.226215 82.6889-20.359886 84.724889-51.038532 148.719712-19.295619 40.164502 19.712071 18.647805 51.038532-17.537266 18.601532-21.424153 51.686347-51.871437 55.480689-59.552666zM307.249188 373.779279c-16.658088 71.62978-36.647795 130.48836-58.85858 177.131008l51.084805 18.323897c23.876593-52.195344 43.8663-112.164462 59.413849-181.017895L307.249188 373.779279z m333.717039-0.555269c-28.87402 58.858579-62.745467 108.832845-102.724879 151.033335l43.31103 31.095099c42.200491-44.421569 78.848286-97.172183 109.943384-157.696571l-50.529535-24.431863zM433.85066 291.044107v183.238973c-7.773775 109.943384-82.179903 204.339219-222.663116 283.742774l35.537255 46.642648c114.940811-71.074511 187.68113-154.364953 217.66569-250.426597 38.313604 103.835418 112.164462 186.570591 220.997307 247.650249l35.537256-46.642648c-134.375247-71.62978-210.447185-165.470346-228.215813-280.966426V291.044107H433.85066z" fill="#F2554E" p-id="17267"></path></svg></a>
 
-					<a target="_blank" href="https://www.hzv5.cn/blogPic/" title="图片批量处理"><svg t="1734767309457" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3374" width="32" height="32"><path d="M921.6 1024H102.4c-58.026667 0-102.4-44.373333-102.4-102.4V102.4c0-58.026667 44.373333-102.4 102.4-102.4h819.2c58.026667 0 102.4 44.373333 102.4 102.4v819.2c0 58.026667-44.373333 102.4-102.4 102.4z" fill="#5883FF" p-id="3375"></path><path d="M720.213333 402.773333m-51.2 0a51.2 51.2 0 1 0 102.4 0 51.2 51.2 0 1 0-102.4 0Z" fill="#FFFFFF" p-id="3376"></path><path d="M819.2 245.76H204.8c-37.546667 0-68.266667 30.72-68.266667 68.266667v409.6c0 37.546667 30.72 68.266667 68.266667 68.266666h614.4c37.546667 0 68.266667-30.72 68.266667-68.266666v-409.6c0-37.546667-30.72-68.266667-68.266667-68.266667z m17.066667 443.733333c0 13.653333-6.826667 27.306667-13.653334 34.133334l-177.493333-119.466667-116.053333 150.186667-153.6-191.146667h85.333333v-61.44l-266.24 211.626667c-3.413333-6.826667-6.826667-17.066667-6.826667-23.893334v-341.333333c0-27.306667 23.893333-51.2 51.2-51.2h546.133334c27.306667 0 51.2 23.893333 51.2 51.2v341.333333z" fill="#FFFFFF" p-id="3377"></path><path d="M163.84 754.346667h696.32L399.36 402.773333z" fill="#FFFFFF" p-id="3378"></path></svg></a>
+					<a target="_blank" href="https://www.hzv5.cn/blogPic/" title="图片批量处理"><svg t="1734860516958" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5454" width="32" height="32"><path d="M512 0C229.229714 0 0 229.229714 0 512s229.229714 512 512 512 512-229.229714 512-512S794.770286 0 512 0z m274.285714 656.618057V704.365714a21.942857 21.942857 0 0 1-21.942857 21.942857H259.657143a21.942857 21.942857 0 0 1-21.942857-21.942857V319.634286a21.942857 21.942857 0 0 1 21.942857-21.942857h504.685714a21.942857 21.942857 0 0 1 21.942857 21.942857z" fill="#3D3D3D" p-id="5455"></path><path d="M764.342857 726.308571H259.657143a21.942857 21.942857 0 0 1-21.942857-21.942857 21.942857 21.942857 0 0 0 21.942857 21.942857h504.685714a21.942857 21.942857 0 0 0 21.942857-21.942857 21.942857 21.942857 0 0 1-21.942857 21.942857zM764.342857 297.691429H259.657143a21.942857 21.942857 0 0 0-21.942857 21.942857v275.616914c24.693029-69.756343 91.223771-119.727543 169.435428-119.727543 74.920229 0 139.117714 45.860571 166.0928 111.030857A137.618286 137.618286 0 0 1 786.285714 656.618057V319.634286a21.942857 21.942857 0 0 0-21.942857-21.942857zM661.284571 456.023771a48.493714 48.493714 0 1 1 48.574172-48.493714 48.530286 48.530286 0 0 1-48.574172 48.493714z" fill="#6ACC9B" p-id="5456"></path><path d="M612.7104 407.530057a48.574171 48.493714 0 1 0 97.148343 0 48.574171 48.493714 0 1 0-97.148343 0Z" fill="#FFFFFF" p-id="5457"></path><path d="M654.826057 559.754971a136.981943 136.981943 0 0 0-81.583543 26.799543 180.136229 180.136229 0 0 1-1.002057 139.702857H764.342857a21.942857 21.942857 0 0 0 21.942857-21.942857v-47.696457a137.647543 137.647543 0 0 0-131.459657-96.863086z" fill="#73E5A1" p-id="5458"></path><path d="M259.657143 726.308571h312.583314a180.136229 180.136229 0 0 0 1.002057-139.702857c-26.975086-65.170286-91.172571-111.030857-166.0928-111.030857-78.211657 0-144.7424 49.9712-169.435428 119.727543V704.365714a21.942857 21.942857 0 0 0 21.942857 21.942857z" fill="#95EFBA" p-id="5459"></path></svg></a>
 
 					<a target="_blank" href="https://app.hzv5.cn/emo/" title="emoji抽象字"><svg t="1734603629485" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19314" width="32" height="32"><path d="M98.986667 520.533333C98.986667 747.690667 283.136 931.84 510.293333 931.84S921.6 747.690667 921.6 520.533333 737.450667 109.226667 510.293333 109.226667 98.986667 293.376 98.986667 520.533333z" fill="#FEC43C" p-id="19315"></path><path d="M911.36 436.701867C872.792747 249.56928 707.857067 109.226667 509.27616 109.226667 282.79808 109.226667 98.986667 293.0688 98.986667 519.594667c0 99.30752 35.283627 189.590187 93.545813 260.171093C262.280533 818.33984 341.879467 839.68 427.219627 839.68 668.4672 839.68 868.68992 665.685333 911.36 436.701867z" fill="#FFD73A" p-id="19316"></path><path d="M515.413333 733.866667c-108.19584 0-198.222507-77.325653-214.739626-179.070294-2.47808-17.09056 10.734933-32.556373 28.90752-32.556373h371.664213c18.172587 0 31.3856 15.4624 28.910933 32.556373C713.632427 656.541013 623.60576 733.866667 515.413333 733.866667z" fill="#873A18" p-id="19317"></path><path d="M701.842773 522.24H329.6256c-18.19648 0-31.429973 14.882133-28.94848 31.3344 0.826027 5.485227 1.652053 10.96704 3.30752 16.452267h422.67648c1.655467-5.485227 2.481493-10.96704 3.310933-16.452267 3.310933-16.452267-10.752-31.3344-28.125866-31.3344z" fill="#FFFFFF" p-id="19318"></path><path d="M573.607253 621.226667c-24.97536 0-47.455573 12.526933-61.607253 31.726933-13.318827-19.203413-35.79904-31.726933-61.607253-31.726933-39.12704 0-71.594667 30.057813-74.92608 68.46464C412.931413 719.745707 460.383573 737.28 512 737.28s99.068587-17.534293 136.533333-47.588693C645.20192 651.28448 612.734293 621.226667 573.607253 621.226667z" fill="#F44444" p-id="19319"></path><path d="M396.516693 453.973333c-9.076053 0-16.500053-7.461547-16.500053-16.57856 0-36.47488-29.696-66.317653-65.989973-66.317653s-65.989973 29.842773-65.989974 66.317653c0 9.117013-7.424 16.57856-16.500053 16.57856-9.07264 0-16.49664-7.461547-16.49664-16.57856C215.04 382.682453 259.584 337.92 314.026667 337.92s98.986667 44.762453 98.986666 99.474773c0 9.117013-7.424 16.57856-16.49664 16.57856z m395.946667 0c-9.076053 0-16.500053-7.461547-16.500053-16.57856 0-36.47488-29.696-66.317653-65.989974-66.317653s-65.989973 29.842773-65.989973 66.317653c0 9.117013-7.424 16.57856-16.500053 16.57856-9.07264 0-16.49664-7.461547-16.49664-16.57856C610.986667 382.682453 655.530667 337.92 709.973333 337.92s98.986667 44.762453 98.986667 99.474773c0 9.117013-7.424 16.57856-16.49664 16.57856z" fill="#873A18" p-id="19320"></path><path d="M989.709653 669.047467c-32.064853 31.812267-83.8656 31.812267-115.933866 0-52.619947-52.206933-69.888-184.354133-69.888-184.354134s134.02112 17.13152 185.821866 69.33504c32.068267 30.999893 32.068267 83.206827 0 115.019094z m-955.419306 0c32.064853 31.812267 83.8656 31.812267 115.933866 0C202.84416 616.840533 220.112213 484.693333 220.112213 484.693333s-134.02112 17.13152-185.821866 69.33504c-32.068267 30.999893-32.068267 83.206827 0 115.019094z" fill="#61A3E0" p-id="19321"></path></svg></a>
 
@@ -434,13 +433,15 @@
       
 <nav id="mobile-nav">
 		<!-- greyhat_weather -->
+		<!-- 
 		<script type="text/javascript">
 			WIDGET = {FID: '6s8fQjx8kp'}
 		</script>
 		<script type="text/javascript" src="./r.js?v=1111"></script>
-  	<div class="overlay js-overlay" style="background: #4d4d4d">
-		<div data-v-0a6ec0b4="" id="weather-float-he2" style="position: absolute; padding: 0px; top: 8px; right: 20px;"></div>
-	</div>
+		<div class="overlay js-overlay" style="background: #4d4d4d">
+			<div data-v-0a6ec0b4="" id="weather-float-he2" style="position: absolute; padding: 0px; top: 8px; right: 20px;"></div>
+		</div>
+		-->
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -450,10 +451,8 @@
 				<img src="/img/logo.png" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">吖远zzy</h1>
+			  <h1 class="header-author js-header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一个不知名的编程爱好者<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -481,7 +480,7 @@
 
 					<a target="_blank" href="https://app.hzv5.cn/hxw/" title="火星文转换器"><svg t="1734603573030" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17266" width="32" height="32"><path d="M978.940333 191.326938c3.239073-13.187653-1.110539 96.802003-19.665799 211.187544-10.596395 65.24418-59.413849 140.483213-59.413848 166.765975 0 5.691514 40.395865-0.601542 79.079647-28.226206 42.200491-30.077104 38.452421-43.773755 37.943424-37.665789-1.573264 20.961428 11.290482 49.280178-23.136234 117.532069-34.472989 68.159345-99.023082 99.208171-106.056497 118.550063-22.210785 60.987113-72.277595 102.215882-116.328984 147.609173A447.408493 447.408493 0 0 1 449.953479 1024C199.388065 1024 0 817.300885 0 569.280457 0 316.031239 204.524309 114.514641 449.953479 114.514641c25.542402 0 45.994833 0 71.583508 5.182517 5.089971 0 110.498654-5.182516 136.041056-20.683794 46.041106-31.002554 56.267321-46.50383 56.267321-46.50383s5.089971 20.683793 5.089972 41.321314c0 20.683793-5.089971 31.002554-5.089972 31.002553s66.447264-5.136244 107.352126-46.50383A1201.649722 1201.649722 0 0 0 887.691026 6.005704s25.542402 31.002554 35.768618 113.691454c10.226215 82.6889-20.359886 84.724889-51.038532 148.719712-19.295619 40.164502 19.712071 18.647805 51.038532-17.537266 18.601532-21.424153 51.686347-51.871437 55.480689-59.552666zM307.249188 373.779279c-16.658088 71.62978-36.647795 130.48836-58.85858 177.131008l51.084805 18.323897c23.876593-52.195344 43.8663-112.164462 59.413849-181.017895L307.249188 373.779279z m333.717039-0.555269c-28.87402 58.858579-62.745467 108.832845-102.724879 151.033335l43.31103 31.095099c42.200491-44.421569 78.848286-97.172183 109.943384-157.696571l-50.529535-24.431863zM433.85066 291.044107v183.238973c-7.773775 109.943384-82.179903 204.339219-222.663116 283.742774l35.537255 46.642648c114.940811-71.074511 187.68113-154.364953 217.66569-250.426597 38.313604 103.835418 112.164462 186.570591 220.997307 247.650249l35.537256-46.642648c-134.375247-71.62978-210.447185-165.470346-228.215813-280.966426V291.044107H433.85066z" fill="#F2554E" p-id="17267"></path></svg></a>
 
-					<a target="_blank" href="https://www.hzv5.cn/blogPic/" title="图片批量处理"><svg t="1734767309457" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3374" width="32" height="32"><path d="M921.6 1024H102.4c-58.026667 0-102.4-44.373333-102.4-102.4V102.4c0-58.026667 44.373333-102.4 102.4-102.4h819.2c58.026667 0 102.4 44.373333 102.4 102.4v819.2c0 58.026667-44.373333 102.4-102.4 102.4z" fill="#5883FF" p-id="3375"></path><path d="M720.213333 402.773333m-51.2 0a51.2 51.2 0 1 0 102.4 0 51.2 51.2 0 1 0-102.4 0Z" fill="#FFFFFF" p-id="3376"></path><path d="M819.2 245.76H204.8c-37.546667 0-68.266667 30.72-68.266667 68.266667v409.6c0 37.546667 30.72 68.266667 68.266667 68.266666h614.4c37.546667 0 68.266667-30.72 68.266667-68.266666v-409.6c0-37.546667-30.72-68.266667-68.266667-68.266667z m17.066667 443.733333c0 13.653333-6.826667 27.306667-13.653334 34.133334l-177.493333-119.466667-116.053333 150.186667-153.6-191.146667h85.333333v-61.44l-266.24 211.626667c-3.413333-6.826667-6.826667-17.066667-6.826667-23.893334v-341.333333c0-27.306667 23.893333-51.2 51.2-51.2h546.133334c27.306667 0 51.2 23.893333 51.2 51.2v341.333333z" fill="#FFFFFF" p-id="3377"></path><path d="M163.84 754.346667h696.32L399.36 402.773333z" fill="#FFFFFF" p-id="3378"></path></svg></a>
+					<a target="_blank" href="https://www.hzv5.cn/blogPic/" title="图片批量处理"><svg t="1734860516958" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5454" width="32" height="32"><path d="M512 0C229.229714 0 0 229.229714 0 512s229.229714 512 512 512 512-229.229714 512-512S794.770286 0 512 0z m274.285714 656.618057V704.365714a21.942857 21.942857 0 0 1-21.942857 21.942857H259.657143a21.942857 21.942857 0 0 1-21.942857-21.942857V319.634286a21.942857 21.942857 0 0 1 21.942857-21.942857h504.685714a21.942857 21.942857 0 0 1 21.942857 21.942857z" fill="#3D3D3D" p-id="5455"></path><path d="M764.342857 726.308571H259.657143a21.942857 21.942857 0 0 1-21.942857-21.942857 21.942857 21.942857 0 0 0 21.942857 21.942857h504.685714a21.942857 21.942857 0 0 0 21.942857-21.942857 21.942857 21.942857 0 0 1-21.942857 21.942857zM764.342857 297.691429H259.657143a21.942857 21.942857 0 0 0-21.942857 21.942857v275.616914c24.693029-69.756343 91.223771-119.727543 169.435428-119.727543 74.920229 0 139.117714 45.860571 166.0928 111.030857A137.618286 137.618286 0 0 1 786.285714 656.618057V319.634286a21.942857 21.942857 0 0 0-21.942857-21.942857zM661.284571 456.023771a48.493714 48.493714 0 1 1 48.574172-48.493714 48.530286 48.530286 0 0 1-48.574172 48.493714z" fill="#6ACC9B" p-id="5456"></path><path d="M612.7104 407.530057a48.574171 48.493714 0 1 0 97.148343 0 48.574171 48.493714 0 1 0-97.148343 0Z" fill="#FFFFFF" p-id="5457"></path><path d="M654.826057 559.754971a136.981943 136.981943 0 0 0-81.583543 26.799543 180.136229 180.136229 0 0 1-1.002057 139.702857H764.342857a21.942857 21.942857 0 0 0 21.942857-21.942857v-47.696457a137.647543 137.647543 0 0 0-131.459657-96.863086z" fill="#73E5A1" p-id="5458"></path><path d="M259.657143 726.308571h312.583314a180.136229 180.136229 0 0 0 1.002057-139.702857c-26.975086-65.170286-91.172571-111.030857-166.0928-111.030857-78.211657 0-144.7424 49.9712-169.435428 119.727543V704.365714a21.942857 21.942857 0 0 0 21.942857 21.942857z" fill="#95EFBA" p-id="5459"></path></svg></a>
 
 					<a target="_blank" href="https://app.hzv5.cn/emo/" title="emoji抽象字"><svg t="1734603629485" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="19314" width="32" height="32"><path d="M98.986667 520.533333C98.986667 747.690667 283.136 931.84 510.293333 931.84S921.6 747.690667 921.6 520.533333 737.450667 109.226667 510.293333 109.226667 98.986667 293.376 98.986667 520.533333z" fill="#FEC43C" p-id="19315"></path><path d="M911.36 436.701867C872.792747 249.56928 707.857067 109.226667 509.27616 109.226667 282.79808 109.226667 98.986667 293.0688 98.986667 519.594667c0 99.30752 35.283627 189.590187 93.545813 260.171093C262.280533 818.33984 341.879467 839.68 427.219627 839.68 668.4672 839.68 868.68992 665.685333 911.36 436.701867z" fill="#FFD73A" p-id="19316"></path><path d="M515.413333 733.866667c-108.19584 0-198.222507-77.325653-214.739626-179.070294-2.47808-17.09056 10.734933-32.556373 28.90752-32.556373h371.664213c18.172587 0 31.3856 15.4624 28.910933 32.556373C713.632427 656.541013 623.60576 733.866667 515.413333 733.866667z" fill="#873A18" p-id="19317"></path><path d="M701.842773 522.24H329.6256c-18.19648 0-31.429973 14.882133-28.94848 31.3344 0.826027 5.485227 1.652053 10.96704 3.30752 16.452267h422.67648c1.655467-5.485227 2.481493-10.96704 3.310933-16.452267 3.310933-16.452267-10.752-31.3344-28.125866-31.3344z" fill="#FFFFFF" p-id="19318"></path><path d="M573.607253 621.226667c-24.97536 0-47.455573 12.526933-61.607253 31.726933-13.318827-19.203413-35.79904-31.726933-61.607253-31.726933-39.12704 0-71.594667 30.057813-74.92608 68.46464C412.931413 719.745707 460.383573 737.28 512 737.28s99.068587-17.534293 136.533333-47.588693C645.20192 651.28448 612.734293 621.226667 573.607253 621.226667z" fill="#F44444" p-id="19319"></path><path d="M396.516693 453.973333c-9.076053 0-16.500053-7.461547-16.500053-16.57856 0-36.47488-29.696-66.317653-65.989973-66.317653s-65.989973 29.842773-65.989974 66.317653c0 9.117013-7.424 16.57856-16.500053 16.57856-9.07264 0-16.49664-7.461547-16.49664-16.57856C215.04 382.682453 259.584 337.92 314.026667 337.92s98.986667 44.762453 98.986666 99.474773c0 9.117013-7.424 16.57856-16.49664 16.57856z m395.946667 0c-9.076053 0-16.500053-7.461547-16.500053-16.57856 0-36.47488-29.696-66.317653-65.989974-66.317653s-65.989973 29.842773-65.989973 66.317653c0 9.117013-7.424 16.57856-16.500053 16.57856-9.07264 0-16.49664-7.461547-16.49664-16.57856C610.986667 382.682453 655.530667 337.92 709.973333 337.92s98.986667 44.762453 98.986667 99.474773c0 9.117013-7.424 16.57856-16.49664 16.57856z" fill="#873A18" p-id="19320"></path><path d="M989.709653 669.047467c-32.064853 31.812267-83.8656 31.812267-115.933866 0-52.619947-52.206933-69.888-184.354133-69.888-184.354134s134.02112 17.13152 185.821866 69.33504c32.068267 30.999893 32.068267 83.206827 0 115.019094z m-955.419306 0c32.064853 31.812267 83.8656 31.812267 115.933866 0C202.84416 616.840533 220.112213 484.693333 220.112213 484.693333s-134.02112 17.13152-185.821866 69.33504c-32.068267 30.999893-32.068267 83.206827 0 115.019094z" fill="#61A3E0" p-id="19321"></path></svg></a>
 					
@@ -507,7 +506,7 @@
 		        
 					<li style="width: 20%"><a href="/archives/">归档</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 20%"><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 		        
 					<li style="width: 20%"><a href="/guestbook/">留言</a></li>
 		        
@@ -540,7 +539,7 @@
 
         
         <a href="/2020/12/22/hexo-github/" class="archive-article-date">
-  	<time datetime="2020-12-22T03:54:47.112Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
+  	<time datetime="2020-12-22T03:26:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-22</time>
 </a>
         
       </header>
@@ -554,7 +553,7 @@
 <li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li>
 <li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li>
 <li>博客内容可以轻松打包、转移、发布到其它平台；</li>
-<li>等等；<a id="more"></a>
+<li>等等；<span id="more"></span>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2></li>
 </ol>
 <p>在开始一切之前，你必须已经：</p>
@@ -566,11 +565,11 @@
 <p>本文所使用的环境：</p>
 <ul>
 <li>Windows8.1</li>
-<li><a href="mailto:node.js@5.5.0" target="_blank" rel="noopener">node.js@5.5.0</a></li>
-<li><a href="mailto:git@1.9.2" target="_blank" rel="noopener">git@1.9.2</a></li>
-<li><a href="mailto:hexo@3.2.2" target="_blank" rel="noopener">hexo@3.2.2</a></li>
+<li><a href="mailto:node.js@5.5.0">node.js@5.5.0</a></li>
+<li><a href="mailto:git@1.9.2">git@1.9.2</a></li>
+<li><a href="mailto:hexo@3.2.2">hexo@3.2.2</a></li>
 </ul>
-<h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是test，那么你就新建<code>test.github.io</code>的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io" target="_blank" rel="noopener">http://test.github.io</a> 了，是不是很方便？</p>
+<h1 id="搭建github博客"><a href="#搭建github博客" class="headerlink" title="搭建github博客"></a>搭建github博客</h1><h2 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h2><p>新建一个名为<code>你的用户名.github.io</code>的仓库，比如说，如果你的github用户名是test，那么你就新建<code>test.github.io</code>的仓库（必须是你的用户名，其它名称无效），将来你的网站访问地址就是 <a href="http://test.github.io">http://test.github.io</a> 了，是不是很方便？</p>
 <p>由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p>
 <p>几个注意的地方：</p>
 <ol>
@@ -583,18 +582,18 @@
 <p>首先你要注册一个域名，域名注册以前总是推荐去<code>godaddy</code>，现在觉得其实国内的阿里云也挺不错的，价格也不贵，毕竟是大公司，放心！</p>
 <p>绑定域名分2种情况：带www和不带www的。</p>
 <p>域名配置最常见有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP，由于不带www方式只能采用A记录，所以必须先ping一下<code>你的用户名.github.io</code>的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的IP，将CNAME指向<code>你的用户名.github.io</code>，这样可以保证无论是否添加www都可以访问，如下：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_191336_238_8683.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160823_191336_238_8683.png" alt=""></p>
 <p>然后到你的github项目根目录新建一个名为CNAME的文件（无后缀），里面填写你的域名，加不加www看你自己喜好，因为经测试：</p>
 <ul>
-<li>如果你填写的是没有www的，比如 mygit.me，那么无论是访问 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a></li>
-<li>如果你填写的是带www的，比如 <a href="http://www.mygit.me" target="_blank" rel="noopener">www.mygit.me</a> ，那么无论是访问 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a> 还是 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，都会自动跳转到 <a href="http://www.mygit.me" target="_blank" rel="noopener">http://www.mygit.me</a></li>
-<li>如果你填写的是其它子域名，比如 abc.mygit.me，那么访问 <a href="http://abc.mygit.me" target="_blank" rel="noopener">http://abc.mygit.me</a> 没问题，但是访问 <a href="http://mygit.me" target="_blank" rel="noopener">http://mygit.me</a> ，不会自动跳转到 <a href="http://abc.mygit.me" target="_blank" rel="noopener">http://abc.mygit.me</a></li>
+<li>如果你填写的是没有www的，比如 mygit.me，那么无论是访问 <a href="http://www.mygit.me">http://www.mygit.me</a> 还是 <a href="http://mygit.me">http://mygit.me</a> ，都会自动跳转到 <a href="http://mygit.me">http://mygit.me</a></li>
+<li>如果你填写的是带www的，比如 <a href="http://www.mygit.me">www.mygit.me</a> ，那么无论是访问 <a href="http://www.mygit.me">http://www.mygit.me</a> 还是 <a href="http://mygit.me">http://mygit.me</a> ，都会自动跳转到 <a href="http://www.mygit.me">http://www.mygit.me</a></li>
+<li>如果你填写的是其它子域名，比如 abc.mygit.me，那么访问 <a href="http://abc.mygit.me">http://abc.mygit.me</a> 没问题，但是访问 <a href="http://mygit.me">http://mygit.me</a> ，不会自动跳转到 <a href="http://abc.mygit.me">http://abc.mygit.me</a></li>
 </ul>
 <p>另外说一句，在你绑定了新域名之后，原来的<code>你的用户名.github.io</code>并没有失效，而是会自动跳转到你的新域名。</p>
 <h1 id="配置SSH-key"><a href="#配置SSH-key" class="headerlink" title="配置SSH key"></a>配置SSH key</h1><p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
 <pre><code>$ cd ~/. ssh #检查本机已存在的ssh密钥</code></pre><p>如果提示：No such file or directory 说明你是第一次使用git。</p>
 <pre><code>ssh-keygen -t rsa -C &apos;邮件地址&apos;</code></pre><p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到<code>.ssh\id_rsa.pub</code>文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_143914_495_9084.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_143914_495_9084.png" alt=""></p>
 <p>将刚复制的内容粘贴到key那里，title随便填，保存。</p>
 <h2 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h2><pre><code>$ ssh -T git@github.com # 注意邮箱地址不用改</code></pre><p>如果提示<code>Are you sure you want to continue connecting (yes/no)?</code>，输入yes，然后会看到：</p>
 <blockquote>
@@ -605,8 +604,8 @@
 <pre><code>$ git config --global user.name &amp;quot;liuxianan&amp;quot;// 你的github用户名，非昵称
 $ git config --global user.email  &amp;quot;xxx@qq.com&amp;quot;// 填写你的github注册邮箱</code></pre><p>具体这个配置是干嘛的我没仔细深究。</p>
 <h1 id="使用hexo写博客"><a href="#使用hexo写博客" class="headerlink" title="使用hexo写博客"></a>使用hexo写博客</h1><h2 id="hexo简介"><a href="#hexo简介" class="headerlink" title="hexo简介"></a>hexo简介</h2><p>Hexo是一个简单、快速、强大的基于 Github Pages 的博客发布工具，支持Markdown格式，有众多优秀插件和主题。</p>
-<p>官网： <a href="http://hexo.io" target="_blank" rel="noopener">http://hexo.io</a></p>
-<p>github: <a href="https://github.com/hexojs/hexo" target="_blank" rel="noopener">https://github.com/hexojs/hexo</a></p>
+<p>官网： <a href="http://hexo.io">http://hexo.io</a></p>
+<p>github: <a href="https://github.com/hexojs/hexo">https://github.com/hexojs/hexo</a></p>
 <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
 <h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>安装之前先来说几个注意事项：</p>
 <ol>
@@ -617,19 +616,19 @@ $ git config --global user.email  &amp;quot;xxx@qq.com&amp;quot;// 填写你的g
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>$ npm install -g hexo</code></pre><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>在电脑的某个地方新建一个名为hexo的文件夹（名字可以随便取），比如我的是<code>F:\Workspaces\hexo</code>，由于这个文件夹将来就作为你存放代码的地方，所以最好不要随便放。</p>
 <pre><code>$ cd /f/Workspaces/hexo/
 $ hexo init</code></pre><p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_115922_773_1148.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_115922_773_1148.png" alt=""></p>
 <pre><code>$ hexo g # 生成
 $ hexo s # 启动服务</code></pre><p>执行以上命令之后，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_120700_028_2426.png" alt></p>
-<p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考这篇文章：<a href="http://blog.liuxianan.com/windows-port-bind.html" target="_blank" rel="noopener">http://blog.liuxianan.com/windows-port-bind.html</a></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_120700_028_2426.png" alt=""></p>
+<p><code>hexo s</code>是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000">http://localhost:4000</a> 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故，因为4000这个端口太常见了，解决端口冲突问题请参考这篇文章：<a href="http://blog.liuxianan.com/windows-port-bind.html">http://blog.liuxianan.com/windows-port-bind.html</a></p>
 <p>第一次初始化的时候hexo已经帮我们写了一篇名为 Hello World 的文章，默认的主题比较丑，打开时就是这个样子：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_132443_202_6848.png" alt></p>
-<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 <a href="https://hexo.io/themes/" target="_blank" rel="noopener">官方主题</a>。</p>
-<p>个人比较喜欢的2个主题：<a href="https://github.com/pinggod/hexo-theme-jekyll" target="_blank" rel="noopener">hexo-theme-jekyll</a> 和 <a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">hexo-theme-yilia</a>。</p>
+<p><img src="http://image.liuxianan.com/201608/20160818_132443_202_6848.png" alt=""></p>
+<h2 id="修改主题"><a href="#修改主题" class="headerlink" title="修改主题"></a>修改主题</h2><p>既然默认主题很丑，那我们别的不做，首先来替换一个好看点的主题。这是 <a href="https://hexo.io/themes/">官方主题</a>。</p>
+<p>个人比较喜欢的2个主题：<a href="https://github.com/pinggod/hexo-theme-jekyll">hexo-theme-jekyll</a> 和 <a href="https://github.com/litten/hexo-theme-yilia">hexo-theme-yilia</a>。</p>
 <p>首先下载这个主题：</p>
 <pre><code>$ cd /f/Workspaces/hexo/
 $ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></pre><p>下载后的主题都在这里：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_134500_245_0912.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_134500_245_0912.png" alt=""></p>
 <p>修改<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: yilia</code>，然后重新执行<code>hexo g</code>来重新生成。</p>
 <p>如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下public的内容，然后再来重新生成和发布。</p>
 <h2 id="上传之前"><a href="#上传之前" class="headerlink" title="上传之前"></a>上传之前</h2><p>在上传代码到github之前，一定要记得先把你以前所有代码下载下来（虽然github有版本管理，但备份一下总是好的），因为从hexo提交代码时会把你以前的所有代码都删掉。</p>
@@ -648,9 +647,9 @@ $ git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</code></
 <pre><code>&lt;Deployer not found: github 或者 Deployer not found: git</code></pre><p>原因是还需要安装一个插件：</p>
 <pre><code>npm install hexo-deployer-git --save</code></pre><p>其它命令不确定，部署这个命令一定要用git bash，否则会提示<code>Permission denied (publickey).</code></p>
 <p>打开你的git bash，输入<code>hexo d</code>就会将本次有改动的代码全部提交，没有改动的不会：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_140441_769_5024.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_140441_769_5024.png" alt=""></p>
 <h2 id="保留CNAME、README-md等文件"><a href="#保留CNAME、README-md等文件" class="headerlink" title="保留CNAME、README.md等文件"></a>保留CNAME、README.md等文件</h2><p>提交之后网页上一看，发现以前其它代码都没了，此时不要慌，一些非md文件可以把他们放到source文件夹下，这里的所有文件都会原样复制（除了md文件）到public目录的：</p>
-<p><img src="http://image.liuxianan.com/201608/20160818_141037_580_8035.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160818_141037_580_8035.png" alt=""></p>
 <p>由于hexo默认会把所有md文件都转换成html，包括README.md，所有需要每次生成之后、上传之前，手动将README.md复制到public目录，并删除README.html。</p>
 <h2 id="常用hexo命令"><a href="#常用hexo命令" class="headerlink" title="常用hexo命令"></a>常用hexo命令</h2><p>常见命令</p>
 <pre><code>hexo new &amp;quot;postName&amp;quot; #新建文章
@@ -669,9 +668,9 @@ hexo d -g #生成并上传</code></pre><h2 id="config-yml"><a href="#config-yml"
 <p>需要特别注意的地方是，冒号后面必须有一个空格，否则可能会出问题。</p>
 <h2 id="写博客"><a href="#写博客" class="headerlink" title="写博客"></a>写博客</h2><p>定位到我们的hexo根目录，执行命令：</p>
 <pre><code>hexo new &amp;#39;my-first-blog&amp;#39;</code></pre><p>hexo会帮我们在<code>_posts</code>下生成相关md文件：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_183047_352_1475.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160823_183047_352_1475.png" alt=""></p>
 <p>我们只需要打开这个文件就可以开始写博客了，默认生成如下内容：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_183325_470_9306.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160823_183325_470_9306.png" alt=""></p>
 <p>当然你也可以直接自己新建md文件，用这个命令的好处是帮我们自动生成了时间。</p>
 <p>一般完整格式如下：</p>
 <pre><code>---
@@ -683,7 +682,7 @@ description: 附加一段文章摘要，字数最好在140字以内，会出现�
 ---</code></pre><p>以下是正文</p>
 <p>那么<code>hexo new page &#39;postName&#39;</code>命令和<code>hexo new &#39;postName&#39;</code>有什么区别呢？</p>
 <pre><code>hexo new page &apos;my-second-blog&apos;</code></pre><p>生成如下：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_184852_854_6502.png" alt></p>
+<p><img src="http://image.liuxianan.com/201608/20160823_184852_854_6502.png" alt=""></p>
 <p>最终部署时生成：<code>hexo\public\my-second-blog\index.html</code>，但是它不会作为文章出现在博文目录。</p>
 <h3 id="写博客工具"><a href="#写博客工具" class="headerlink" title="写博客工具"></a>写博客工具</h3><p>那么用什么工具写博客呢？这个我还没去找，以前自己使用editor.md简单弄了个，大家有好用的hexo写博客工具可以推荐个。</p>
 <h3 id="如何让博文列表不显示全部内容"><a href="#如何让博文列表不显示全部内容" class="headerlink" title="如何让博文列表不显示全部内容"></a>如何让博文列表不显示全部内容</h3><p>默认情况下，生成的博文目录会显示全部的文章内容，如何设置文章摘要的长度呢？</p>
@@ -698,9 +697,9 @@ description: 附加一段文章摘要，字数最好在140字以内，会出现�
 <li>等等；</li>
 </ol>
 <p>最终效果：</p>
-<p><img src="http://image.liuxianan.com/201608/20160823_184633_653_1893.png" alt></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhcncn/p/4097881.html</a></p>
-<p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="noopener">http://www.jianshu.com/p/05289a4bc8b2</a></p>
+<p><img src="http://image.liuxianan.com/201608/20160823_184633_653_1893.png" alt=""></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html">http://www.cnblogs.com/zhcncn/p/4097881.html</a></p>
+<p><a href="http://www.jianshu.com/p/05289a4bc8b2">http://www.jianshu.com/p/05289a4bc8b2</a></p>
 
       
 
@@ -868,7 +867,7 @@ description: 附加一段文章摘要，字数最好在140字以内，会出现�
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#准备工作"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#搭建github博客"><span class="toc-number">2.</span> <span class="toc-text">搭建github博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建仓库"><span class="toc-number">2.1.</span> <span class="toc-text">创建仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绑定域名"><span class="toc-number">2.2.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置SSH-key"><span class="toc-number">3.</span> <span class="toc-text">配置SSH key</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试是否成功"><span class="toc-number">3.1.</span> <span class="toc-text">测试是否成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用hexo写博客"><span class="toc-number">4.</span> <span class="toc-text">使用hexo写博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo简介"><span class="toc-number">4.1.</span> <span class="toc-text">hexo简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">4.2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">4.3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">4.4.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">4.5.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改主题"><span class="toc-number">4.6.</span> <span class="toc-text">修改主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传之前"><span class="toc-number">4.7.</span> <span class="toc-text">上传之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#上传到github"><span class="toc-number">4.8.</span> <span class="toc-text">上传到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#保留CNAME、README-md等文件"><span class="toc-number">4.9.</span> <span class="toc-text">保留CNAME、README.md等文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用hexo命令"><span class="toc-number">4.10.</span> <span class="toc-text">常用hexo命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config-yml"><span class="toc-number">4.11.</span> <span class="toc-text">_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#写博客"><span class="toc-number">4.12.</span> <span class="toc-text">写博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#写博客工具"><span class="toc-number">4.12.1.</span> <span class="toc-text">写博客工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何让博文列表不显示全部内容"><span class="toc-number">4.12.2.</span> <span class="toc-text">如何让博文列表不显示全部内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#前言-1"><span class="toc-number">5.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E5%BB%BAgithub%E5%8D%9A%E5%AE%A2"><span class="toc-number">2.</span> <span class="toc-text">搭建github博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-number">2.1.</span> <span class="toc-text">创建仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%91%E5%AE%9A%E5%9F%9F%E5%90%8D"><span class="toc-number">2.2.</span> <span class="toc-text">绑定域名</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESSH-key"><span class="toc-number">3.</span> <span class="toc-text">配置SSH key</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="toc-number">3.1.</span> <span class="toc-text">测试是否成功</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-number">4.</span> <span class="toc-text">使用hexo写博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo%E7%AE%80%E4%BB%8B"><span class="toc-number">4.1.</span> <span class="toc-text">hexo简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">4.2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">4.3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">4.4.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">4.5.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9%E4%B8%BB%E9%A2%98"><span class="toc-number">4.6.</span> <span class="toc-text">修改主题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E4%B9%8B%E5%89%8D"><span class="toc-number">4.7.</span> <span class="toc-text">上传之前</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%88%B0github"><span class="toc-number">4.8.</span> <span class="toc-text">上传到github</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E7%95%99CNAME%E3%80%81README-md%E7%AD%89%E6%96%87%E4%BB%B6"><span class="toc-number">4.9.</span> <span class="toc-text">保留CNAME、README.md等文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8hexo%E5%91%BD%E4%BB%A4"><span class="toc-number">4.10.</span> <span class="toc-text">常用hexo命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#config-yml"><span class="toc-number">4.11.</span> <span class="toc-text">_config.yml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-number">4.12.</span> <span class="toc-text">写博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%8D%9A%E5%AE%A2%E5%B7%A5%E5%85%B7"><span class="toc-number">4.12.1.</span> <span class="toc-text">写博客工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%A9%E5%8D%9A%E6%96%87%E5%88%97%E8%A1%A8%E4%B8%8D%E6%98%BE%E7%A4%BA%E5%85%A8%E9%83%A8%E5%86%85%E5%AE%B9"><span class="toc-number">4.12.2.</span> <span class="toc-text">如何让博文列表不显示全部内容</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-1"><span class="toc-number">5.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">6.</span> <span class="toc-text">参考</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -1007,14 +1006,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GitTalk</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
@@ -1035,6 +1026,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GitTalk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客订阅</a>
               </li>
              
@@ -1044,14 +1051,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">原创软件</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">QQ分享</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1087,19 +1086,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">彩虹代刷</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">算法解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">保密协议</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">职业素养</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,15 +1166,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">android App</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">php接口</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">api写法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">android App</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,15 +1218,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unity</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">WebGL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">uniapp</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1239,19 +1238,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">相册</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">红包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">yilia</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">相册</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1303,23 +1302,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="https://foreverblog.cn/blog/748.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 十年之约 <br/> - /聚集志愿建博十年公益项目</a>
+              <a href="https://foreverblog.cn/blog/748.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 十年之约 <br/> - /%E8%81%9A%E9%9B%86%E5%BF%97%E6%84%BF%E5%BB%BA%E5%8D%9A%E5%8D%81%E5%B9%B4%E5%85%AC%E7%9B%8A%E9%A1%B9%E7%9B%AE</a>
             </li>
           
             <li class="search-li">
-              <a href="http://niaobulashi.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 鸟不拉屎 <br/> - /人生有几个十年？点点滴滴，用文字记录</a>
+              <a href="http://niaobulashi.com" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 鸟不拉屎 <br/> - /%E4%BA%BA%E7%94%9F%E6%9C%89%E5%87%A0%E4%B8%AA%E5%8D%81%E5%B9%B4%EF%BC%9F%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4%EF%BC%8C%E7%94%A8%E6%96%87%E5%AD%97%E8%AE%B0%E5%BD%95</a>
             </li>
           
             <li class="search-li">
-              <a href="http://oxblog.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 公牛博客 <br/> - /荏苒的岁月留下了淡淡的忧伤</a>
+              <a href="http://oxblog.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 公牛博客 <br/> - /%E8%8D%8F%E8%8B%92%E7%9A%84%E5%B2%81%E6%9C%88%E7%95%99%E4%B8%8B%E4%BA%86%E6%B7%A1%E6%B7%A1%E7%9A%84%E5%BF%A7%E4%BC%A4</a>
             </li>
           
             <li class="search-li">
-              <a href="https://dxq520.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 两个有意思的 <br/> - /吃狗粮请到 两个有意思的。记录两个人的生活点点滴滴。</a>
+              <a href="https://dxq520.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 两个有意思的 <br/> - /%E5%90%83%E7%8B%97%E7%B2%AE%E8%AF%B7%E5%88%B0%20%E4%B8%A4%E4%B8%AA%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E3%80%82%E8%AE%B0%E5%BD%95%E4%B8%A4%E4%B8%AA%E4%BA%BA%E7%9A%84%E7%94%9F%E6%B4%BB%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4%E3%80%82</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.skkky.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 天空无影 <br/> - /Only the lonely are free！</a>
+              <a href="http://www.skkky.cn" target="_blank" class="search-title"><i class="icon-quo-left icon"></i> 天空无影 <br/> - /Only%20the%20lonely%20are%20free%EF%BC%81</a>
             </li>
           
         </ul>
