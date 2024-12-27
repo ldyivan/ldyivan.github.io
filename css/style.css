@@ -1030,7 +1030,17 @@ body {
   }
 }
 .post-content .post-body blockquote p {
-  margin-bottom: 0;
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+.post-content .post-body code {
+  padding: $space-xs $space-sm;
+  background: var(--color-background);
+  border-radius: 4px;
+  font-family: $font-family-code;
+  font-size: 0.9em;
+  color: var(--primary-color);
 }
 .post-content .post-body pre {
   margin: $space-lg 0;
@@ -1038,133 +1048,17 @@ body {
   background: var(--color-code-background);
   border-radius: 8px;
   overflow-x: auto;
-  font-family: $font-family-code;
-  font-size: 14px;
-  line-height: 1.6;
-  position: relative;
+}
+@media (max-width: $breakpoint-tablet) {
+  .post-content .post-body pre {
+    margin: $space-md 0;
+    padding: $space-md;
+  }
 }
 .post-content .post-body pre code {
   padding: 0;
   background: none;
-  color: var(--color-code-text);
-}
-.post-content .post-body pre code.language-html .token.tag {
-  color: #e96900;
-}
-.post-content .post-body pre code.language-html .token.attr-name {
-  color: #2973b7;
-}
-.post-content .post-body pre code.language-html .token.attr-value {
-  color: #42b983;
-}
-.post-content .post-body pre code.language-html .token.comment {
-  color: #999;
-}
-.post-content .post-body pre code.language-html .token.doctype {
-  color: #999;
-}
-.post-content .post-body pre code.language-html .token.entity {
-  color: #e96900;
-}
-.post-content .post-body pre code.language-html .token.string {
-  color: #42b983;
-}
-.post-content .post-body pre code.language-markdown .token.heading {
-  color: #e96900;
-}
-.post-content .post-body pre code.language-markdown .token.emphasis {
-  color: #2973b7;
-  font-style: italic;
-}
-.post-content .post-body pre code.language-markdown .token.strong {
-  color: #42b983;
-  font-weight: bold;
-}
-.post-content .post-body pre code.language-markdown .token.link {
-  color: #2973b7;
-}
-.post-content .post-body pre code.language-markdown .token.code {
-  color: #e96900;
-}
-.post-content .post-body pre code.language-markdown .token.list {
-  color: #42b983;
-}
-.post-content .post-body pre code.language-markdown .token.url {
-  color: #2973b7;
-}
-.post-content .post-body pre code.language-markdown .token.blockquote {
-  color: #999;
-}
-.post-content .post-body pre code.language-markdown .token.hr {
-  color: #999;
-}
-.post-content .post-body pre code.language-markdown .token.table {
-  color: #e96900;
-}
-.post-content .post-body pre code .token.keyword {
-  color: #e96900;
-}
-.post-content .post-body pre code .token.string {
-  color: #42b983;
-}
-.post-content .post-body pre code .token.number {
-  color: #2973b7;
-}
-.post-content .post-body pre code .token.boolean {
-  color: #2973b7;
-}
-.post-content .post-body pre code .token.function {
-  color: #e96900;
-}
-.post-content .post-body pre code .token.comment {
-  color: #999;
-}
-.post-content .post-body pre code .token.operator {
-  color: #999;
-}
-.post-content .post-body pre code .token.punctuation {
-  color: #999;
-}
-.post-content .post-body code {
-  padding: 0.2em 0.4em;
-  margin: 0 0.2em;
-  background: var(--color-code-inline-background);
-  border-radius: 4px;
-  font-family: $font-family-code;
-  font-size: 0.9em;
-  color: var(--color-code-text);
-}
-.post-content .post-body .language-html .tag {
-  color: #e96900;
-}
-.post-content .post-body .language-html .attr-name {
-  color: #2973b7;
-}
-.post-content .post-body .language-html .attr-value {
-  color: #42b983;
-}
-.post-content .post-body .language-html .comment {
-  color: #999;
-}
-.post-content .post-body .language-markdown .section {
-  color: #e96900;
-}
-.post-content .post-body .language-markdown .emphasis {
-  color: #2973b7;
-  font-style: italic;
-}
-.post-content .post-body .language-markdown .strong {
-  color: #42b983;
-  font-weight: bold;
-}
-.post-content .post-body .language-markdown .link {
-  color: #2973b7;
-}
-.post-content .post-body .language-markdown .code {
-  color: #e96900;
-}
-.post-content .post-body .language-markdown .list {
-  color: #42b983;
+  color: var(--color-text);
 }
 .post-content .post-body ul,
 .post-content .post-body ol {

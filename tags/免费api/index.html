@@ -40,9 +40,6 @@
   <!-- RSS -->
   
   
-  <!-- 代码高亮样式 -->
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-  
   <script>
     // 在样式加载完成后显示页面
     window.addEventListener('load', function() {
@@ -69,7 +66,9 @@
         
           <div class="profile">
             <div class="avatar">
-              <img src="/img/logo.png" alt="吖远zzy">
+			  <a href="/">
+				<img src="/img/logo.png" alt="吖远zzy">
+			  </a>
             </div>
             <h2 class="name">吖远zzy</h2>
             <p class="description">一个不知名的编程爱好者~</p>
@@ -78,6 +77,30 @@
                 <a href="https://github.com/ldyivan" target="_blank" rel="noopener">
                   
                     <i class="fab fa-github"></i>
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/cy/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-book"></i>
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/qqgj/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-comment-dollar"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/blogPic/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-image"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/android/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-user-astronaut"></i>
                   
                 </a>
               
@@ -689,7 +712,9 @@ document.addEventListener('DOMContentLoaded', function() {
           
             <div class="copyright">
               <span>© 2018 - 2024</span>
-              <span>吖远zzy</span>
+			  <a href="https://www.hzv5.cn" target="_blank">
+				<span>吖远zzy</span>
+			  </a>
               
                 <br>
                 <span>All rights reserved.</span>
@@ -704,7 +729,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <span>Powered by <a href="https://hexo.io" target="_blank">Hexo</a></span>
               
               
-                <span>Theme - <a href="https://github.com/yourusername/hexo-theme-ldysprout" target="_blank">LdySprout</a></span>
+                <span>Theme - <a href="https://github.com/ldyivan/hexo-theme-ldysprout" target="_blank">LdySprout</a></span>
               
             </div>
             
@@ -783,17 +808,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <h1 id="1、获取QQ头像："><a href="#1、获取QQ头像：" class="headerlink" title="1、获取QQ头像："></a>1、获取QQ头像：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">① http://q2.qlogo.cn/headimg_dl?dst_uin=QQ号码&amp;spec=100</span><br><span class="line">② http://q1.qlogo.cn/g?b=qq&amp;nk=QQ号码&amp;s=100</span><br><span class="line">③ http://qlogo1.store.qq.com/qzone/QQ号码/QQ号码/100</span><br></pre></td></tr></table></figure>
 
 <h1 id="2、获取QQ群头像："><a href="#2、获取QQ群头像：" class="headerlink" title="2、获取QQ群头像："></a>2、获取QQ群头像：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://p.qlogo.cn/gh/QQ群号码/QQ群号码/100/</span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;example&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h1</span>&gt;</span>HTML示例<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span>&gt;</span>这是一个段落<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Markdown示例</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="bullet">-</span> 列表项1</span><br><span class="line"><span class="bullet">-</span> 列表项2</span><br><span class="line"></span><br><span class="line"><span class="strong">**粗体**</span> <span class="emphasis">*斜体*</span></span><br></pre></td></tr></table></figure>
-<h1 id="3、获取QQ秀接口："><a href="#3、获取QQ秀接口：" class="headerlink" title="3、获取QQ秀接口："></a>3、获取QQ秀接口：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~http://qqshow-user.tencent.com/QQ号/10/00~~</span><br></pre></td></tr></table></figure>
-
+<h1 id="3、获取QQ秀接口："><a href="#3、获取QQ秀接口：" class="headerlink" title="3、获取QQ秀接口："></a>3、获取QQ秀接口：</h1><p><s><a href="http://qqshow-user.tencent.com/QQ号/10/00">http://qqshow-user.tencent.com/QQ号/10/00</a></s></p>
 <h1 id="4、获取QQ空间音乐列表："><a href="#4、获取QQ空间音乐列表：" class="headerlink" title="4、获取QQ空间音乐列表："></a>4、获取QQ空间音乐列表：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://qzone-music.qq.com/fcg-bin/cgi_playlist_xml.fcg?g_tk=1916754934&amp;json=1&amp;uin=QQ号码</span><br></pre></td></tr></table></figure>
 
-<h1 id="5、获取QQ昵称："><a href="#5、获取QQ昵称：" class="headerlink" title="5、获取QQ昵称："></a>5、获取QQ昵称：</h1><h3 id="①-已失效"><a href="#①-已失效" class="headerlink" title="① 已失效"></a>① 已失效</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;s&gt;http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码&lt;s/&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="②-已失效"><a href="#②-已失效" class="headerlink" title="② 已失效"></a>② 已失效</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;s&gt;http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码&lt;s/&gt;</span><br></pre></td></tr></table></figure>
-
+<h1 id="5、获取QQ昵称："><a href="#5、获取QQ昵称：" class="headerlink" title="5、获取QQ昵称："></a>5、获取QQ昵称：</h1><h3 id="①-已失效"><a href="#①-已失效" class="headerlink" title="① 已失效"></a>① 已失效</h3><p><s><a href="http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码">http://r.pengyou.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码</a></s></p>
+<h3 id="②-已失效"><a href="#②-已失效" class="headerlink" title="② 已失效"></a>② 已失效</h3><p><s><a href="http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码">http://users.qzone.qq.com/fcg-bin/cgi_get_portrait.fcg?uins=QQ号码</a></s></p>
 <h3 id="全新的有效的接口"><a href="#全新的有效的接口" class="headerlink" title="全新的有效的接口"></a>全新的有效的接口</h3>
           </div>
         
@@ -818,14 +838,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   <!-- jQuery -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-
-<!-- 代码高亮 -->
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
-<script>
-  Prism.highlightAll();
-</script>
 
 <!-- 主题脚本 -->
 <script src="/js/theme.js"></script>
