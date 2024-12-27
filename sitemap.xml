@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.hzv5.cn/2018/04/24/my-apis/</loc>
+    
+    <lastmod>2024-12-27T13:13:12.806Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hzv5.cn/links/index.html</loc>
+    
+    <lastmod>2024-12-27T10:46:58.934Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hzv5.cn/about/index.html</loc>
+    
+    <lastmod>2024-12-27T10:45:52.711Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hzv5.cn/guestbook/index.html</loc>
+    
+    <lastmod>2024-12-27T10:42:42.183Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://www.hzv5.cn/friends/index.html</loc>
+    
+    <lastmod>2024-12-26T12:39:20.071Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.hzv5.cn/2020/12/23/GitTalk-Error/</loc>
     
     <lastmod>2024-12-22T10:32:03.522Z</lastmod>
@@ -47,13 +82,6 @@
     <loc>http://www.hzv5.cn/2023/09/27/zfb-hb/</loc>
     
     <lastmod>2023-09-27T10:41:36.663Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.hzv5.cn/2018/04/24/my-apis/</loc>
-    
-    <lastmod>2023-09-17T12:51:18.789Z</lastmod>
     
   </url>
   
@@ -247,13 +275,6 @@
   </url>
   
   <url>
-    <loc>http://www.hzv5.cn/guestbook/index.html</loc>
-    
-    <lastmod>2019-08-18T09:57:09.198Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.hzv5.cn/2019/07/15/encode-top-test/</loc>
     
     <lastmod>2019-07-18T13:11:25.437Z</lastmod>
@@ -324,13 +345,6 @@
   </url>
   
   <url>
-    <loc>http://www.hzv5.cn/about/index.html</loc>
-    
-    <lastmod>2019-07-01T06:37:12.199Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://www.hzv5.cn/tags/index.html</loc>
     
     <lastmod>2019-06-30T02:16:45.902Z</lastmod>
@@ -341,13 +355,6 @@
     <loc>http://www.hzv5.cn/repository/index.html</loc>
     
     <lastmod>2019-06-30T02:16:45.883Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.hzv5.cn/links/index.html</loc>
-    
-    <lastmod>2019-06-30T02:16:45.859Z</lastmod>
     
   </url>
   

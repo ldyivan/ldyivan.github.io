@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<!DOCTYPE html>
+<html lang="zh-CN" style="visibility: hidden;">
+<script>
+  (function() {
+    const darkMode = localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (darkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      // 预设背景色，避免闪烁
+      document.documentElement.style.backgroundColor = '#1a1a1a';
+    } else {
+      document.documentElement.style.backgroundColor = '#ffffff';
+    }
+  })();
+</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>友情链接 | 吖远zzyの博客</title>
+  
+  <!-- 网站图标 -->
+  <link rel="icon" href="/favicon.ico">
+  
+  <!-- Font Awesome 图标 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Fancybox -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+  
+  
+  <!-- RSS -->
+  
+  
+  <!-- 代码高亮样式 -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+  
+  <script>
+    // 在样式加载完成后显示页面
+    window.addEventListener('load', function() {
+      document.documentElement.style.visibility = 'visible';
+    });
+  </script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
+</head>
+
+<body>
+  <div class="loading-container">
+  <div class="loading-spinner">
+    <div class="bounce1"></div>
+    <div class="bounce2"></div>
+    <div class="bounce3"></div>
+  </div>
+</div>
+  
+  <div class="container">
+    <!-- 左侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- 个人信息 -->
+        
+          <div class="profile">
+            <div class="avatar">
+              <img src="/img/logo.png" alt="吖远zzy">
+            </div>
+            <h2 class="name">吖远zzy</h2>
+            <p class="description">一个不知名的编程爱好者~</p>
+            <div class="social-links">
+              
+                <a href="https://github.com/ldyivan" target="_blank" rel="noopener">
+                  
+                    <i class="fab fa-github"></i>
+                  
+                </a>
+              
+                <a href="http://weibo.com/u/1625877175" target="_blank" rel="noopener">
+                  
+                    <i class="fab fa-weibo"></i>
+                  
+                </a>
+              
+                <a href="mailto:i@hzv5.cn" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-envelope"></i>
+                  
+                </a>
+              
+                <a href="/atom.xml" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-rss"></i>
+                  
+                </a>
+              
+            </div>
+          </div>
+        
+
+        <!-- 导航菜单 -->
+        <div class="widget-wrap menu-wrap">
+  <nav class="menu">
+    
+      <a href="/" class="menu-item">
+        
+          
+              <i class="fas fa-home"></i>
+            
+        
+        <span class="menu-text">首页</span>
+      </a>
+    
+      <a href="/archives" class="menu-item">
+        
+          
+              <i class="fas fa-archive"></i>
+            
+        
+        <span class="menu-text">归档</span>
+      </a>
+    
+      <a href="/categories" class="menu-item">
+        
+          
+              <i class="fas fa-folder-open"></i>
+            
+        
+        <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/friends" class="menu-item">
+        
+          
+              <i class="fas fa-link"></i>
+            
+        
+        <span class="menu-text">友链</span>
+      </a>
+    
+      <a href="/guestbook" class="menu-item">
+        
+          
+              <span class="menu-icon svg-icon">
+                
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z'/></svg>
+              </span>
+            
+        
+        <span class="menu-text">留言</span>
+      </a>
+    
+      <a href="/about" class="menu-item">
+        
+          
+              <i class="fas fa-user"></i>
+            
+        
+        <span class="menu-text">关于</span>
+      </a>
+    
+  </nav>
+</div> 
+
+        <!-- 搜索框 -->
+        
+          <!-- 搜索框 -->
+<div class="search-box">
+  <div class="search-input-wrap">
+    <input type="text" class="search-input" placeholder="搜索文章...">
+    <i class="fas fa-search search-icon" id="search-btn"></i>
+  </div>
+</div>
+
+<!-- 搜索结果容器 -->
+<div class="search-result-container">
+  <div class="search-result-wrapper">
+    <div class="search-result-header">
+      <h3>搜索结果</h3>
+      <button class="search-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="search-result-list"></div>
+    <div class="search-result-empty" style="display: none;">
+      <div class="icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="text">未找到相关结果</div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResultContainer = document.querySelector('.search-result-container');
+  const searchResultList = document.querySelector('.search-result-list');
+  const searchCloseBtn = document.querySelector('.search-close-btn');
+  const searchEmpty = document.querySelector('.search-result-empty');
+
+  // 格式化日期
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  async function performSearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    searchResultContainer.classList.add('active');
+    searchResultList.innerHTML = '<div class="loading">搜索中...</div>';
+    searchEmpty.style.display = 'none';
+
+    try {
+      const searchPath = '/search.xml';
+      const response = await fetch(searchPath);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const xmlText = await response.text();
+      
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+        throw new Error('XML解析错误');
+      }
+
+      const posts = xmlDoc.getElementsByTagName('entry');
+
+      
+      const results = Array.from(posts).filter(post => {
+        try {
+          const title = post.querySelector('title')?.textContent.toLowerCase() || '';
+          const content = post.querySelector('content')?.textContent.toLowerCase() || '';
+          return title.includes(query.toLowerCase()) || content.includes(query.toLowerCase());
+        } catch (e) {
+          console.error('处理文章时出错:', e);
+          return false;
+        }
+      });
+
+      if (results.length === 0) {
+        searchResultList.innerHTML = '';
+        searchEmpty.style.display = 'block';
+        return;
+      }
+
+      searchResultList.innerHTML = results.map(post => {
+        try {
+          const title = post.querySelector('title')?.textContent || '无标题';
+          const url = post.querySelector('url')?.textContent || '';
+          const path = url.replace(/^\/|\/$/g, '');
+          
+          // 从文件路径中提取日期
+          const dateMatch = path.match(/(\d{4})\/(\d{2})\/(\d{2})/);
+          const displayDate = dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : '';
+          
+          // 获取分类信息
+          const categories = Array.from(post.getElementsByTagName('category'))
+            .filter(cat => cat.textContent.trim() && !cat.getAttribute('scheme'));
+          const categoryHtml = categories
+            .map(category => {
+              const term = category.textContent.trim();
+              return `<span class="category"><i class="fas fa-folder"></i>${term}</span>`;
+            })
+            .join('');
+          
+          // 获取标签信息并合并显示
+          const tags = Array.from(post.getElementsByTagName('tags')?.[0]?.getElementsByTagName('tag') || []);
+          const tagHtml = tags.length > 0 ? 
+            `<span class="tags"><i class="fas fa-tags"></i>${tags.map(tag => tag.textContent.trim()).join(', ')}</span>` : '';
+
+          return `
+            <div class="search-result-item">
+              <div class="title">
+                <a href="/${path}">${title}</a>
+              </div>
+              <div class="meta">
+                ${displayDate ? `<span class="date"><i class="fas fa-calendar"></i>${displayDate}</span>` : ''}
+                ${categoryHtml}
+                ${tagHtml}
+              </div>
+            </div>
+          `;
+        } catch (e) {
+          console.error('生成搜索结果HTML时出错:', e);
+          return '';
+        }
+      }).join('');
+    } catch (err) {
+      console.error('搜索出错:', err);
+      searchResultList.innerHTML = `<div class="error">搜索出错: ${err.message}</div>`;
+    }
+  }
+
+  // 事件绑定
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  searchCloseBtn.addEventListener('click', () => {
+    searchResultContainer.classList.remove('active');
+  });
+
+  searchResultContainer.addEventListener('click', (e) => {
+    if (e.target === searchResultContainer) {
+      searchResultContainer.classList.remove('active');
+    }
+  });
+});
+</script>
+
+<style>
+.search-result-item {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+  background-color: var(--card-header-bg);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item .title {
+  margin-bottom: 12px;
+}
+
+.search-result-item .title a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.search-result-item .title a:hover {
+  color: var(--primary-color);
+}
+
+.search-result-item .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9em;
+  color: var(--text-color-secondary);
+  align-items: center;
+}
+
+.search-result-item .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-result-item .meta i {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.search-result-item .meta .date {
+  color: var(--text-color-secondary);
+  font-weight: 500;
+}
+
+.search-result-item .meta .category,
+.search-result-item .meta .tags {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--card-header-bg);
+  transition: all 0.3s ease;
+}
+
+.search-result-item .meta .category:hover,
+.search-result-item .meta .tags:hover {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+}
+
+.search-result-item .meta .tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+</style> 
+        
+		
+		<!-- 粒子时钟 -->
+		<div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px 0;">
+		  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+		</div>
+		<script>
+		(function(){
+
+		   var digit=
+			[
+				[
+					[0,0,1,1,1,0,0],
+					[0,1,1,0,1,1,0],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,0,1,1,0],
+					[0,0,1,1,1,0,0]
+				],//0
+				[
+					[0,0,0,1,1,0,0],
+					[0,1,1,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[1,1,1,1,1,1,1]
+				],//1
+				[
+					[0,1,1,1,1,1,0],
+					[1,1,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,0,0],
+					[0,0,1,1,0,0,0],
+					[0,1,1,0,0,0,0],
+					[1,1,0,0,0,0,0],
+					[1,1,0,0,0,1,1],
+					[1,1,1,1,1,1,1]
+				],//2
+				[
+					[1,1,1,1,1,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,0,0,1,1,0],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,1,1,0]
+				],//3
+				[
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,1,0],
+					[0,0,1,1,1,1,0],
+					[0,1,1,0,1,1,0],
+					[1,1,0,0,1,1,0],
+					[1,1,1,1,1,1,1],
+					[0,0,0,0,1,1,0],
+					[0,0,0,0,1,1,0],
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,1,1]
+				],//4
+				[
+					[1,1,1,1,1,1,1],
+					[1,1,0,0,0,0,0],
+					[1,1,0,0,0,0,0],
+					[1,1,1,1,1,1,0],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,1,1,0]
+				],//5
+				[
+					[0,0,0,0,1,1,0],
+					[0,0,1,1,0,0,0],
+					[0,1,1,0,0,0,0],
+					[1,1,0,0,0,0,0],
+					[1,1,0,1,1,1,0],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,1,1,0]
+				],//6
+				[
+					[1,1,1,1,1,1,1],
+					[1,1,0,0,0,1,1],
+					[0,0,0,0,1,1,0],
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,0,0],
+					[0,0,0,1,1,0,0],
+					[0,0,1,1,0,0,0],
+					[0,0,1,1,0,0,0],
+					[0,0,1,1,0,0,0],
+					[0,0,1,1,0,0,0]
+				],//7
+				[
+					[0,1,1,1,1,1,0],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,1,1,0],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,1,1,0]
+				],//8
+				[
+					[0,1,1,1,1,1,0],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[1,1,0,0,0,1,1],
+					[0,1,1,1,0,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,0,1,1],
+					[0,0,0,0,1,1,0],
+					[0,0,0,1,1,0,0],
+					[0,1,1,0,0,0,0]
+				],//9
+				[
+					[0,0,0,0,0,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,0,0,0,0,0],
+					[0,0,0,0,0,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,1,1,1,0,0],
+					[0,0,0,0,0,0,0]
+				]//:
+			];
+
+		var canvas = document.getElementById('canvas');
+
+		if(canvas.getContext){
+			var cxt = canvas.getContext('2d');
+			//声明canvas的宽高
+			var H = 100,W = 700;
+			canvas.height = H;
+			canvas.width = W;
+			cxt.fillStyle = '#f00';
+			cxt.fillRect(10,10,50,50);
+
+			//存储时间数据
+			var data = [];
+			//存储运动的小球
+			var balls = [];
+			//设置粒子半径
+			var R = canvas.height/20-1;
+			(function(){
+				var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+				//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
+				data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+			})();
+
+			/*生成点阵数字*/
+			function renderDigit(index,num){
+				for(var i = 0; i < digit[num].length; i++){
+					for(var j = 0; j < digit[num][i].length; j++){
+						if(digit[num][i][j] == 1){
+							cxt.beginPath();
+							cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
+							cxt.closePath();
+							cxt.fill();
+						}
+					}
+				}
+			}
+
+			/*更新时钟*/
+			function updateDigitTime(){
+				var changeNumArray = [];
+				var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
+				var NewData = [];
+				NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
+				for(var i = data.length-1; i >=0 ; i--){
+					//时间发生变化
+					if(NewData[i] !== data[i]){
+						//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
+						changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
+					}
+				}
+				//增加小球
+				for(var i = 0; i< changeNumArray.length; i++){
+					addBalls.apply(this,changeNumArray[i].split('_'));
+				}
+				data = NewData.concat();
+			}
+
+			/*更新小球状态*/
+			function updateBalls(){
+				for(var i = 0; i < balls.length; i++){
+					balls[i].stepY += balls[i].disY;
+					balls[i].x += balls[i].stepX;
+					balls[i].y += balls[i].stepY;
+					if(balls[i].x > W + R || balls[i].y > H + R){
+						balls.splice(i,1);
+						i--;
+					}
+				}
+			}
+
+			/*增加要运动的小球*/
+			function addBalls(index,num){
+				var numArray = [1,2,3];
+				var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
+				for(var i = 0; i < digit[num].length; i++){
+					for(var j = 0; j < digit[num][i].length; j++){
+						if(digit[num][i][j] == 1){
+							var ball = {
+								x:14*(R+2)*index + j*2*(R+1)+(R+1),
+								y:i*2*(R+1)+(R+1),
+								stepX:Math.floor(Math.random() * 4 -2),
+								stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
+								color:colorArray[Math.floor(Math.random()*colorArray.length)],
+								disY:1
+							};
+							balls.push(ball);
+						}
+					}
+				}
+			}
+
+			/*渲染*/
+			function render(){
+				//重置画布宽度，达到清空画布的效果
+				canvas.height = 100;
+				//渲染时钟
+				for(var i = 0; i < data.length; i++){
+					renderDigit(i,data[i]);
+				}
+				//渲染小球
+				for(var i = 0; i < balls.length; i++){
+					cxt.beginPath();
+					cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
+					cxt.fillStyle = balls[i].color;
+					cxt.closePath();
+					cxt.fill();
+				}
+			}
+
+			clearInterval(oTimer);
+			var oTimer = setInterval(function(){
+				//更新时钟
+				updateDigitTime();
+				//更新小球状态
+				updateBalls();
+				//渲染
+				render();
+			},50);
+		}
+
+		})();
+		</script>
+		
+		<!-- 粒子时钟 -->
+	
+        <!-- 版权和备案信息 -->
+        <div class="sidebar-footer">
+          <!-- 备案信息 -->
+          
+            <div class="beian">
+              
+                <a href="https://beian.miit.gov.cn/" target="_blank">
+                  <i class="fas fa-shield-alt"></i>
+                  粤ICP备17005281号-1
+                </a>
+              
+              
+            </div>
+          
+
+          <!-- 版权信息 -->
+          
+            <div class="copyright">
+              <span>© 2018 - 2024</span>
+              <span>吖远zzy</span>
+              
+                <br>
+                <span>All rights reserved.</span>
+              
+            </div>
+          
+
+          <!-- Powered by 信息 -->
+          
+            <div class="powered-by">
+              
+                <span>Powered by <a href="https://hexo.io" target="_blank">Hexo</a></span>
+              
+              
+                <span>Theme - <a href="https://github.com/yourusername/hexo-theme-ldysprout" target="_blank">LdySprout</a></span>
+              
+            </div>
+            
+          
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <div class="content-inner">
+        <!-- 阅读进度条 -->
+<div class="reading-progress-bar" id="reading-progress-bar"></div>
+
+
+  <!-- 文章目录 -->
+  <div class="article-toc collapsed" id="article-toc">
+    <div class="toc-title">
+      <i class="fas fa-list"></i>
+      <span>目录</span>
+    </div>
+    <div class="toc-content">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">十年之约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">鸟不拉屎</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">公牛博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">两个有意思的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">天空无影</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number"></span> <span class="toc-text">友链申请说明</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">本站信息：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">申请友链的朋友请先添加本站友链，然后在下方留下贵站信息：</span></a></li></ol>
+    </div>
+  </div>
+
+
+<article class="article post-type-" itemscope itemtype="http://schema.org/Article">
+  <div class="article-inner">
+    <header class="article-header">
+      <h2 class="article-title">
+        <a href="/">友情链接</a>
+      </h2>
+      <div class="article-meta">
+        <span class="article-date">
+          <i class="fas fa-calendar-alt"></i>
+          2024-12-27
+        </span>
+        
+        
+      </div>
+    </header>
+    <div class="article-content">
+      
+        
+      <div class="friends-container">
+        
+          <div class="friends-description">
+            <p>欢迎交换友链 ꉂ(ˊᗜˋ*)</p>
+          </div>
+        
+
+        <div class="friends-list">
+          
+              <div class="friend-item">
+                <a href="https://foreverblog.cn/blog/748.html" target="_blank" rel="noopener">
+                  <div class="friend-info">
+                    
+                      <img class="friend-avatar" src="http://p.qlogo.cn/gh/702409956/702409956/100/" alt="十年之约">
+                    
+                    <div class="friend-detail">
+                      <h3 class="friend-name">十年之约</h3>
+                      
+                        <p class="friend-description">聚集志愿建博十年公益项目</p>
+                      
+                      
+                        <div class="friend-tags">
+                          <span class="tag">博客联盟</span><span class="tag">博客聚集</span>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+              <div class="friend-item">
+                <a href="http://niaobulashi.com" target="_blank" rel="noopener">
+                  <div class="friend-info">
+                    
+                      <img class="friend-avatar" src="/img/logo.png" alt="鸟不拉屎">
+                    
+                    <div class="friend-detail">
+                      <h3 class="friend-name">鸟不拉屎</h3>
+                      
+                        <p class="friend-description">点点滴滴，用文字记录</p>
+                      
+                      
+                        <div class="friend-tags">
+                          <span class="tag">技术</span><span class="tag">生活记录</span>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+              <div class="friend-item">
+                <a href="http://oxblog.cn" target="_blank" rel="noopener">
+                  <div class="friend-info">
+                    
+                      <img class="friend-avatar" src="http://oxblog.cn/wp-content/uploads/2016/12/cropped-ico.ooopic.com_-180x180.png" alt="公牛博客">
+                    
+                    <div class="friend-detail">
+                      <h3 class="friend-name">公牛博客</h3>
+                      
+                        <p class="friend-description">荏苒的岁月留下了淡淡的忧伤</p>
+                      
+                      
+                        <div class="friend-tags">
+                          <span class="tag">技术</span><span class="tag">生活记录</span>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+              <div class="friend-item">
+                <a href="https://dxq520.cn" target="_blank" rel="noopener">
+                  <div class="friend-info">
+                    
+                      <img class="friend-avatar" src="/img/logo.png" alt="两个有意思的">
+                    
+                    <div class="friend-detail">
+                      <h3 class="friend-name">两个有意思的</h3>
+                      
+                        <p class="friend-description">记录两个人的生活点点滴滴。</p>
+                      
+                      
+                        <div class="friend-tags">
+                          <span class="tag">技术</span><span class="tag">生活记录</span>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+              <div class="friend-item">
+                <a href="http://www.skkky.cn" target="_blank" rel="noopener">
+                  <div class="friend-info">
+                    
+                      <img class="friend-avatar" src="https://i.loli.net/2019/02/05/5c59975060f64.jpg" alt="天空无影">
+                    
+                    <div class="friend-detail">
+                      <h3 class="friend-name">天空无影</h3>
+                      
+                        <p class="friend-description">Only the lonely are free！</p>
+                      
+                      
+                        <div class="friend-tags">
+                          <span class="tag">技术</span><span class="tag">生活记录</span>
+                        </div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            
+        </div>
+        
+        
+          <div class="friends-info">
+            <h2 class="info-title">友链申请说明</h2>
+            <div class="info-content markdown-content"><div class="md-section">
+                      <h3>本站信息：</h3>
+                      <p><strong>名称：</strong>吖远zzy</p><p><strong>描述：</strong>一个不知名的编程爱好者~</p><p><strong>网址：</strong>https://www.hzv5.cn</p><p><strong>头像：</strong>https://www.hzv5.cn/img/logo.png</p>
+                    </div><div class="md-section">
+                      <h3>申请友链的朋友请先添加本站友链，然后在下方留下贵站信息：</h3>
+                      <li>网站名称</li><li>网站独立域名</li><li>网站头像(1:1正方形)</li><li>网站一句话简介(15字以内)</li><li>网站类型(1~3个标签)</li>
+                    </div></div>
+          </div>
+        
+      </div>
+    
+      
+    </div>
+
+    
+      <!-- 文章底部分享和赞赏 -->
+      <div class="article-footer">
+        <!-- 分享模块 -->
+        
+        <div class="article-share">
+          <div class="share-links">
+            <a href="https://service.weibo.com/share/share.php?url=&title=友情链接" target="_blank" class="share-link weibo" title="分享到微博">
+              <i class="fab fa-weibo"></i>
+            </a>
+            <a href="https://connect.qq.com/widget/shareqq/index.html?url=&title=友情链接" target="_blank" class="share-link qq" title="分享到QQ">
+              <i class="fab fa-qq"></i>
+            </a>
+            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=&title=友情链接" target="_blank" class="share-link qzone" title="分享到QQ空间">
+              <i class="fas fa-star"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=友情链接&url=" target="_blank" class="share-link twitter" title="分享到Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" class="share-link facebook" title="分享到Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <button class="share-link copy" data-clipboard-text="" title="复制链接">
+              <i class="fas fa-link"></i>
+            </button>
+          </div>
+        </div>
+        
+
+        <!-- 赞赏模块 -->
+        
+        <div class="article-reward">
+          <button class="reward-button" id="reward-button">
+            <i class="fas fa-qrcode"></i>
+            <span class="reward-button-text">赞赏</span>
+          </button>
+        </div>
+        
+      </div>
+
+      <div class="article-nav">
+        
+        
+      </div>
+
+      <!-- 评论模块 -->
+      
+        
+  <div class="comments" id="comments">
+    
+      <div id="gitalk-container"></div>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+      <script>
+        var gitalk = new Gitalk({
+          clientID: 'f9d80c822c0bc01e8457',
+          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
+          repo: 'ldyivan.github.io',
+          owner: 'ldyivan',
+          admin: ["ldyivan"],
+          id: location.pathname,
+          distractionFreeMode: 'false',
+          language: 'zh-CN'
+        })
+        gitalk.render('gitalk-container')
+      </script>
+    
+  </div>
+ 
+      
+    
+    
+  </div>
+</article>
+
+<!-- 赞赏弹窗 -->
+<div class="reward-popup" id="reward-qrcodes">
+  <div class="reward-popup-wrapper">
+    <div class="reward-popup-header">
+      <div class="reward-popup-title">感谢您的支持！</div>
+      <div class="reward-popup-close" id="reward-close">
+        <i class="fas fa-times"></i>
+      </div>
+    </div>
+    <div class="reward-popup-content">
+      
+      <div class="reward-popup-item">
+        <img src="/img/wechat_code.jpg" alt="微信赞赏码">
+        <span>微信赞赏</span>
+      </div>
+      
+      
+      <div class="reward-popup-item">
+        <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
+        <span>支付宝赞赏</span>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<!-- 遮罩层 -->
+<div class="reward-overlay" id="reward-overlay"></div> 
+      </div>
+    </main>
+
+    <!-- 移动端菜单按钮 -->
+    <button class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+<!-- 代码高亮 -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markup.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-markdown.min.js"></script>
+<script>
+  Prism.highlightAll();
+</script>
+
+<!-- 主题脚本 -->
+<script src="/js/theme.js"></script>
+
+<!-- 搜索脚本 -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- Fancybox -->
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+<!-- Clipboard -->
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+
+<!-- 分享和赞赏功能 -->
+
+<script src="/js/share-reward.js"></script>
+
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" aria-label="返回顶部">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- 文章目录按钮 -->
+
+
+<!-- 暗黑模式切换按钮 -->
+<button class="dark-mode-toggle" aria-label="切换暗黑模式">
+  <i class="fas fa-moon"></i>
+</button>
+
+
+
+</body>
+</html>
