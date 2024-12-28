@@ -28,8 +28,13 @@
   <!-- 网站图标 -->
   <link rel="icon" href="/favicon.ico">
   
-  <!-- Font Awesome 图标 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <!-- 预加载字体文件 -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   
   <!-- 主题样式 -->
   
@@ -170,6 +175,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/photos" class="menu-item">
+        
+          
+              <i class="fas fa-photo-video"></i>
+            
+        
+        <span class="menu-text">相册</span>
       </a>
     
       <a href="/friends" class="menu-item">
@@ -687,28 +701,24 @@ document.addEventListener('DOMContentLoaded', function() {
 </article>
 
 <!-- 赞赏弹窗 -->
-<div class="reward-popup" id="reward-qrcodes">
-  <div class="reward-popup-wrapper">
-    <div class="reward-popup-header">
-      <div class="reward-popup-title">感谢您的支持！</div>
-      <div class="reward-popup-close" id="reward-close">
-        <i class="fas fa-times"></i>
-      </div>
+<div class="reward-qrcodes" id="reward-qrcodes">
+  <div class="reward-title">感谢您的支持！</div>
+  <button class="reward-close" id="reward-close">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="reward-qrcode-list">
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/wechat_code.jpg" alt="微信赞赏码">
+      <span class="reward-name">微信赞赏</span>
     </div>
-    <div class="reward-popup-content">
-      
-      <div class="reward-popup-item">
-        <img src="/img/wechat_code.jpg" alt="微信赞赏码">
-        <span>微信赞赏</span>
-      </div>
-      
-      
-      <div class="reward-popup-item">
-        <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
-        <span>支付宝赞赏</span>
-      </div>
-      
+    
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
+      <span class="reward-name">支付宝赞赏</span>
     </div>
+    
   </div>
 </div>
 

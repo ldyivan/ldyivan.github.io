@@ -28,8 +28,13 @@
   <!-- 网站图标 -->
   <link rel="icon" href="/favicon.ico">
   
-  <!-- Font Awesome 图标 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Font Awesome -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <!-- 预加载字体文件 -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
   
   <!-- 主题样式 -->
   
@@ -170,6 +175,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/photos" class="menu-item">
+        
+          
+              <i class="fas fa-photo-video"></i>
+            
+        
+        <span class="menu-text">相册</span>
       </a>
     
       <a href="/friends" class="menu-item">
@@ -557,8 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <p>此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销</p>
 <p>【PS：此注销不是退出登录，而是直接把QQ账号销户】。</p>
-<img src="http://api.hzv5.cn/images/IMG_QQxh_01.jpg" width="300" height="637" title="" alt=""/>
-
+<p><img src="/img/tucao/IMG_QQxh_01.png" alt="QQ账号销户"></p>
 <p>但是腾讯是不是太天真了？</p>
 <p>用了十几年的QQ我们会想要注销？</p>
 <span id="more"></span>
@@ -567,9 +580,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>这不，才上线没多久的QQ号码销户入口，今天再去看的时候就蜜汁消失了！突然的突然的开放销户又突然的关闭，不知道是什么原因，很迷！</p>
 <p>然后今天是因为收到一个UC浏览器的推文《<a href="https://mparticle.uc.cn/article.html?uc_param_str=frdnsnpfvecpntnwprdssskt&client=ucweb&wm_cid=220813119445534720&wm_id=04fcc49832dc4f04ae8b82194e6bf87c&title_type=1&pagetype=share&app=uc-iflow&btifl=100&wm_aid=10625dbef0684f75800da634f77f3a6a&sdkdeep=2&sdksid=bfe73bdb-01cf-eafe-89a6-7cafb58185e1&sdkoriginal=bfe73bdb-01cf-eafe-89a6-7cafb58185e1" target="_blank" title="工信部一锤定音: 再见了微信微博!">工信部一锤定音: 再见了微信微博!</a>》，UC的小编我是真的很佩服的，同一件事和主人公，可以写N个故事！把文章标题也是命名的极其吸引人！(抱拳了，老铁！)。看了这水文之后，就去看了一下微信和微博，发现确实是可以注销账号了！</p>
 <p>如下两图：</p>
-<p><img src="http://api.hzv5.cn/images/IMG_QQxh_02.png" width="317" height="952" title="" alt=""/>    <img src="http://api.hzv5.cn/images/IMG_QQxh_03.png" width="317" height="988" title="" alt=""/></p>
+<p><img src="/img/tucao/IMG_QQxh_02.png" alt="申请注销微信"><br><img src="/img/tucao/IMG_QQxh_03.png" alt="申请注销微博"></p>
 <p>然而，注销账号似乎并没有那么简单，首先你得把账号里的钱填平，还有平时在别的APP或者网站上的快捷登录授权解除才可以！具体看下面注销微信和微博的两个截图：</p>
-<p><img src="http://api.hzv5.cn/images/IMG_QQxh_05.png" width="317" height="852" title="" alt=""/>    <img src="http://api.hzv5.cn/images/IMG_QQxh_04.png" width="317" height="952" title="" alt=""/></p>
+<p><img src="/img/tucao/IMG_QQxh_05.png" alt="注销微信时提醒"><br><img src="/img/tucao/IMG_QQxh_04.png" alt="注销微博时提醒"></p>
 <p>说起来也是，自己主动注销的话，各种限制，极其不愿意让你销户，这让我想起了两个比较”有意思的”电脑杀毒软件，也不知道是什么情况下安装的，自己都不知道，卸载的时候弹出N次选择框让你确认，还故意把确认卸载按钮颜色弄成暗色，把取消下载弄成高亮色！</p>
 <p>甚至一会儿确认在右边，一会儿在左边！呵呵哒…不知道正在看此篇博文的你有没有遇到过这种极其”流氓”的软件！</p>
 <p>主动销户困难，但是”被”销户就死很简单的事！<br>只要你违规了该APP的一些规定！他们就可以冻结你的账号，甚至是直接销户！也就不管你有没有把坑填平或者解除账号授权什么的了，这是一种什么操作？</p>
@@ -676,28 +689,24 @@ document.addEventListener('DOMContentLoaded', function() {
 </article>
 
 <!-- 赞赏弹窗 -->
-<div class="reward-popup" id="reward-qrcodes">
-  <div class="reward-popup-wrapper">
-    <div class="reward-popup-header">
-      <div class="reward-popup-title">感谢您的支持！</div>
-      <div class="reward-popup-close" id="reward-close">
-        <i class="fas fa-times"></i>
-      </div>
+<div class="reward-qrcodes" id="reward-qrcodes">
+  <div class="reward-title">感谢您的支持！</div>
+  <button class="reward-close" id="reward-close">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="reward-qrcode-list">
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/wechat_code.jpg" alt="微信赞赏码">
+      <span class="reward-name">微信赞赏</span>
     </div>
-    <div class="reward-popup-content">
-      
-      <div class="reward-popup-item">
-        <img src="/img/wechat_code.jpg" alt="微信赞赏码">
-        <span>微信赞赏</span>
-      </div>
-      
-      
-      <div class="reward-popup-item">
-        <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
-        <span>支付宝赞赏</span>
-      </div>
-      
+    
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
+      <span class="reward-name">支付宝赞赏</span>
     </div>
+    
   </div>
 </div>
 
