@@ -1,31 +1,72 @@
 // 处理复制链接和赞赏功能
 document.addEventListener('DOMContentLoaded', function() {
-  // 复制链接功能
-  const copyButton = document.querySelector('.share-link.copy');
-  if (copyButton) {
-    // 初始化提示文本
-    copyButton.setAttribute('data-tooltip', '复制链接');
-    
-    copyButton.addEventListener('click', function() {
-      const url = this.getAttribute('data-clipboard-text');
-      navigator.clipboard.writeText(url).then(() => {
-        // 显示复制成功提示
-        this.setAttribute('data-tooltip', '复制成功！');
-        this.classList.add('tooltip-show');
+  // 分享功能
+  const shareLinks = document.querySelectorAll('.share-link');
+  if (shareLinks) {
+    shareLinks.forEach(link => {
+      if (link.classList.contains('copy')) {
+        // 复制链接功能
+        const tooltip = document.createElement('div');
+        tooltip.className = 'copy-tooltip';
+        tooltip.style.cssText = `
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          padding: 6px 12px;
+          background: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          border-radius: 4px;
+          font-size: 12px;
+          white-space: nowrap;
+          opacity: 0;
+          transition: opacity 0.3s;
+          pointer-events: none;
+          margin-bottom: 8px;
+        `;
+        link.appendChild(tooltip);
         
-        setTimeout(() => {
-          this.classList.remove('tooltip-show');
-          this.setAttribute('data-tooltip', '复制链接');
-        }, 2000);
-      }).catch(() => {
-        this.setAttribute('data-tooltip', '复制失败，请重试');
-        this.classList.add('tooltip-show');
-        
-        setTimeout(() => {
-          this.classList.remove('tooltip-show');
-          this.setAttribute('data-tooltip', '复制链接');
-        }, 2000);
-      });
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const url = this.getAttribute('data-clipboard-text');
+          navigator.clipboard.writeText(url).then(() => {
+            tooltip.textContent = '复制成功！';
+            tooltip.style.opacity = '1';
+            setTimeout(() => {
+              tooltip.style.opacity = '0';
+            }, 2000);
+          }).catch(() => {
+            tooltip.textContent = '复制失败，请重试';
+            tooltip.style.opacity = '1';
+            setTimeout(() => {
+              tooltip.style.opacity = '0';
+            }, 2000);
+          });
+        });
+      } else {
+        // 其他分享按钮
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const url = this.href;
+          const title = document.title;
+          const text = document.querySelector('meta[name="description"]')?.content || '';
+          
+          // 检查是否支持 Web Share API
+          if (navigator.share && /mobile/i.test(navigator.userAgent)) {
+            navigator.share({
+              title: title,
+              text: text,
+              url: url
+            }).catch((error) => {
+              // 如果分享失败，回退到原始链接
+              window.open(url, '_blank');
+            });
+          } else {
+            // 在桌面端或不支持 Web Share API 时，使用原始链接
+            window.open(url, '_blank');
+          }
+        });
+      }
     });
   }
 

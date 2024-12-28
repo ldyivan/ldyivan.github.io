@@ -1,6 +1,6 @@
 // 代码块复制功能
 function initCodeCopy() {
-  console.log('初始化代码复制功能')
+  // console.log('初始化代码复制功能')
   const highlights = document.querySelectorAll('.highlight')
   
   highlights.forEach(highlight => {
@@ -15,7 +15,7 @@ function initCodeCopy() {
       // 获取代码内容 - 修复获取方式
       const codeElement = highlight.querySelector('.code pre') || highlight.querySelector('pre code')
       if (!codeElement) {
-        console.error('未找到代码元素')
+        // console.error('未找到代码元素')
         return
       }
       
@@ -23,24 +23,58 @@ function initCodeCopy() {
       const code = codeElement.textContent || codeElement.innerText
       
       try {
-        await navigator.clipboard.writeText(code)
-        copyButton.textContent = '已复制!'
-        copyButton.classList.add('copied')
-        
-        setTimeout(() => {
-          copyButton.textContent = '复制代码'
-          copyButton.classList.remove('copied')
-        }, 2000)
+        // 尝试使用现代 Clipboard API
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(code)
+          showCopyResult(copyButton, true)
+        } else {
+          // 回退方案：使用传统的复制方法
+          const textArea = document.createElement('textarea')
+          textArea.value = code
+          textArea.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;'
+          document.body.appendChild(textArea)
+          
+          if (navigator.userAgent.match(/ipad|iphone/i)) {
+            // iOS 设备特殊处理
+            const range = document.createRange()
+            range.selectNodeContents(textArea)
+            const selection = window.getSelection()
+            selection.removeAllRanges()
+            selection.addRange(range)
+            textArea.setSelectionRange(0, code.length)
+          } else {
+            // 其他设备
+            textArea.select()
+          }
+          
+          try {
+            document.execCommand('copy')
+            showCopyResult(copyButton, true)
+          } catch (err) {
+            console.error('复制失败:', err)
+            showCopyResult(copyButton, false)
+          }
+          
+          document.body.removeChild(textArea)
+        }
       } catch (err) {
         console.error('复制失败:', err)
-        copyButton.textContent = '复制失败'
-        
-        setTimeout(() => {
-          copyButton.textContent = '复制代码'
-        }, 2000)
+        showCopyResult(copyButton, false)
       }
     })
   })
+}
+
+// 显示复制结果
+function showCopyResult(button, success) {
+  const originalText = button.textContent
+  button.textContent = success ? '已复制!' : '复制失败'
+  button.classList.toggle('copied', success)
+  
+  setTimeout(() => {
+    button.textContent = originalText
+    button.classList.remove('copied')
+  }, 2000)
 }
 
   // 初始化文章目录
@@ -49,11 +83,11 @@ function initCodeCopy() {
     const articleToc = document.getElementById('article-toc')
     
     if (!tocButton || !articleToc) {
-      console.log('目录元素未找到')
+      // console.log('目录元素未找到')
       return
     }
     
-    console.log('初始化目录功能')
+    // console.log('初始化目录功能')
     
     // 切换目录显示状态
     const toggleToc = (show) => {
@@ -66,7 +100,7 @@ function initCodeCopy() {
     
     // 点击按钮切换目录显示状态
     tocButton.addEventListener('click', () => {
-      console.log('点击目录按钮')
+      // console.log('点击目录按钮')
       toggleToc()
     })
     
@@ -192,14 +226,49 @@ function initMobileMenu() {
   overlay.addEventListener('click', toggleMenu)
 }
 
+// 文章阅读进度条
+function initReadingProgress() {
+  const progressBar = document.getElementById('reading-progress-bar')
+  if (!progressBar) return
+
+  function updateProgress() {
+    const article = document.querySelector('.article-inner')
+    if (!article) return
+
+    const windowHeight = window.innerHeight
+    const documentHeight = article.clientHeight
+    const scrolled = window.scrollY
+    const articleTop = article.offsetTop
+    const articleBottom = articleTop + documentHeight
+
+    // 计算阅读进度
+    if (scrolled < articleTop) {
+      progressBar.style.width = '0%'
+    } else if (scrolled > articleBottom - windowHeight) {
+      progressBar.style.width = '100%'
+    } else {
+      const progress = ((scrolled - articleTop) / (documentHeight - windowHeight)) * 100
+      progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`
+    }
+  }
+
+  // 监听滚动事件
+  window.addEventListener('scroll', updateProgress)
+  window.addEventListener('resize', updateProgress)
+  
+  // 初始化进度
+  updateProgress()
+}
+
 // 页面加载完成后初始化所有功能
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('页面加载完成，开始初始化功能')
+  // console.log('页面加载完成，开始初始化功能')
   initArticleToc()
   initCodeCopy()
   initBackToTop()
   initDarkMode()
   initMobileMenu()
+  initReadingProgress()
 })
 
 // 页面加载完成后启用过渡效果
