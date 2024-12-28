@@ -13,7 +13,7 @@ function initCodeCopy() {
     // 点击复制事件
     copyButton.addEventListener('click', async () => {
       // 获取代码内容 - 修复获取方式
-      const codeElement = highlight.querySelector('.code pre') || highlight.querySelector('pre code')
+      const codeElement = highlight.querySelector('td.code pre') || highlight.querySelector('pre code') || highlight.querySelector('pre')
       if (!codeElement) {
         // console.error('未找到代码元素')
         return
@@ -28,28 +28,24 @@ function initCodeCopy() {
           await navigator.clipboard.writeText(code)
           showCopyResult(copyButton, true)
         } else {
-          // 回退方案：使用传统的复制方法
+          // 回退方案：创建临时textarea
           const textArea = document.createElement('textarea')
           textArea.value = code
-          textArea.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0;'
+          textArea.style.position = 'fixed'
+          textArea.style.left = '0'
+          textArea.style.top = '0'
+          textArea.style.opacity = '0'
           document.body.appendChild(textArea)
-          
-          if (navigator.userAgent.match(/ipad|iphone/i)) {
-            // iOS 设备特殊处理
-            const range = document.createRange()
-            range.selectNodeContents(textArea)
-            const selection = window.getSelection()
-            selection.removeAllRanges()
-            selection.addRange(range)
-            textArea.setSelectionRange(0, code.length)
-          } else {
-            // 其他设备
-            textArea.select()
-          }
+          textArea.focus()
+          textArea.select()
           
           try {
-            document.execCommand('copy')
-            showCopyResult(copyButton, true)
+            const successful = document.execCommand('copy')
+            if (successful) {
+              showCopyResult(copyButton, true)
+            } else {
+              showCopyResult(copyButton, false)
+            }
           } catch (err) {
             console.error('复制失败:', err)
             showCopyResult(copyButton, false)

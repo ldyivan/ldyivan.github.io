@@ -23,25 +23,56 @@ document.addEventListener('DOMContentLoaded', function() {
           transition: opacity 0.3s;
           pointer-events: none;
           margin-bottom: 8px;
+          z-index: 1000;
         `;
         link.appendChild(tooltip);
         
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', async function(e) {
           e.preventDefault();
           const url = this.getAttribute('data-clipboard-text');
-          navigator.clipboard.writeText(url).then(() => {
-            tooltip.textContent = '复制成功！';
-            tooltip.style.opacity = '1';
-            setTimeout(() => {
-              tooltip.style.opacity = '0';
-            }, 2000);
-          }).catch(() => {
+          
+          try {
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              tooltip.textContent = '复制成功！';
+              tooltip.style.opacity = '1';
+            } else {
+              const textArea = document.createElement('textarea');
+              textArea.value = url;
+              textArea.style.position = 'fixed';
+              textArea.style.left = '0';
+              textArea.style.top = '0';
+              textArea.style.opacity = '0';
+              document.body.appendChild(textArea);
+              textArea.focus();
+              textArea.select();
+              
+              try {
+                const successful = document.execCommand('copy');
+                if (successful) {
+                  tooltip.textContent = '复制成功！';
+                  tooltip.style.opacity = '1';
+                } else {
+                  tooltip.textContent = '复制失败，请重试';
+                  tooltip.style.opacity = '1';
+                }
+              } catch (err) {
+                console.error('复制失败:', err);
+                tooltip.textContent = '复制失败，请重试';
+                tooltip.style.opacity = '1';
+              }
+              
+              document.body.removeChild(textArea);
+            }
+          } catch (err) {
+            console.error('复制失败:', err);
             tooltip.textContent = '复制失败，请重试';
             tooltip.style.opacity = '1';
-            setTimeout(() => {
-              tooltip.style.opacity = '0';
-            }, 2000);
-          });
+          }
+          
+          setTimeout(() => {
+            tooltip.style.opacity = '0';
+          }, 2000);
         });
       } else {
         // 其他分享按钮

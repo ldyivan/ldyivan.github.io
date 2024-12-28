@@ -80,31 +80,23 @@ body {
   height: 120px;
   margin: 0 auto 15px;
 }
-.sidebar .sidebar-inner .profile .avatar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: 50%;
-  animation: avatar-breath 4s ease-in-out infinite;
-}
 .sidebar .sidebar-inner .profile .avatar img {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   border: 3px solid var(--primary-color);
   padding: 3px;
-  transition: all 0.5s ease;
+  transition: transform 0.3s ease;
   position: relative;
   z-index: 1;
   background: var(--card-bg-color);
 }
-.sidebar .sidebar-inner .profile .avatar img:hover {
-  transform: rotate(8deg) scale(1.05);
-  box-shadow: 0 0 20px var(--primary-color);
-  border-color: var(--secondary-color);
+@media (min-width: 769px) {
+  .sidebar .sidebar-inner .profile .avatar img:hover {
+    transform: rotate(8deg) scale(1.05);
+    box-shadow: 0 0 20px var(--primary-color);
+    border-color: var(--secondary-color);
+  }
 }
 .sidebar .sidebar-inner .profile .name {
   font-size: 1.2em;
@@ -1570,27 +1562,79 @@ body {
 }
 .copy-button {
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  width: 2em;
-  height: 2em;
+  top: 8px;
+  right: 8px;
+  width: 60px;
+  height: 24px;
+  background: rgba(255,255,255,0.1);
   border: none;
-  background: var(--card-bg-color);
-  color: var(--text-color-secondary);
-  border-radius: $radius-small;
+  border-radius: 4px;
+  color: rgba(255,255,255,0.8);
+  font-size: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
+  z-index: 3;
+  opacity: 1;
 }
 .copy-button:hover {
-  color: $color-primary;
-  background: var(--body-bg-color);
+  background: rgba(255,255,255,0.2);
+  color: #fff;
 }
-pre:hover .copy-button {
-  opacity: 1;
+.copy-button:active {
+  transform: scale(0.95);
+}
+.copy-button.copied {
+  background: #28a745;
+  color: #fff;
+}
+.gutter pre {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.85em;
+  padding-right: 15px !important;
+  position: relative;
+  z-index: 1;
+}
+.highlight {
+  position: relative;
+  margin: 2em 0;
+  border-radius: 12px;
+  background: var(--code-bg-color);
+  overflow: hidden;
+}
+.highlight table {
+  width: 100%;
+  border-spacing: 0;
+  border: none;
+}
+.highlight table td {
+  padding: 0;
+  border: none;
+}
+.highlight table td.gutter {
+  text-align: right;
+  padding: 20px 0 20px 20px;
+  width: 1%;
+  min-width: 50px;
+  color: var(--text-color-secondary);
+  background: var(--code-bg-color);
+  border-right: 1px solid var(--border-color);
+  user-select: none;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+.highlight table td.gutter pre {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+.highlight table td.code {
+  padding: 20px;
+  width: 99%;
+  background: var(--code-bg-color);
 }
 .reading-progress-bar {
   position: fixed;
@@ -1980,6 +2024,103 @@ html[data-theme="dark"] .reward-popup .reward-popup-wrapper .reward-popup-conten
     width: 160px;
     height: 160px;
   }
+}
+.reward-qrcodes {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  background: var(--card-bg-color);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  z-index: 1000;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90%;
+  width: 400px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.reward-qrcodes.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.reward-qrcodes .reward-title {
+  font-size: 1.2em;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  text-align: center;
+}
+.reward-qrcodes .reward-qrcode-list {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.reward-qrcodes .reward-qrcode-list .reward-qrcode-item {
+  text-align: center;
+  flex: 1;
+  min-width: 120px;
+}
+.reward-qrcodes .reward-qrcode-list .reward-qrcode-item img {
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .reward-qrcodes .reward-qrcode-list .reward-qrcode-item img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.reward-qrcodes .reward-qrcode-list .reward-qrcode-item .reward-name {
+  font-size: 0.9em;
+  color: var(--text-color-secondary);
+}
+.reward-qrcodes .reward-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-color);
+  color: var(--text-color-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.reward-qrcodes .reward-close:hover {
+  background: var(--primary-color);
+  color: #fff;
+  transform: rotate(90deg);
+}
+.reward-qrcodes .reward-close i {
+  font-size: 16px;
+}
+.reward-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.reward-overlay.active {
+  opacity: 1;
 }
 @-moz-keyframes popupScale {
   from {
@@ -2511,6 +2652,12 @@ html[data-theme="dark"] .comments .utterances iframe {
   background: #1a1b26;
   overflow: hidden;
 }
+@media (max-width: 768px) {
+  .highlight {
+    margin: 1.5em -15px;
+    border-radius: 0;
+  }
+}
 .highlight pre {
   margin: 0;
   padding: 0;
@@ -2544,10 +2691,18 @@ html[data-theme="dark"] .comments .utterances iframe {
   width: 1%;
   min-width: 50px;
   color: #7982a9;
-  background: #191a25;
+  background: rgba(0,0,0,0.2);
   border-right: 1px solid #414868;
   user-select: none;
   vertical-align: top;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+@media (max-width: 768px) {
+  .highlight table td.gutter {
+    display: none;
+  }
 }
 .highlight table td.gutter pre {
   margin: 0;
@@ -2558,6 +2713,12 @@ html[data-theme="dark"] .comments .utterances iframe {
   padding: 20px;
   width: 99%;
   vertical-align: top;
+  background: #1a1b26;
+}
+@media (max-width: 768px) {
+  .highlight table td.code {
+    padding: 15px;
+  }
 }
 .highlight .line {
   height: 1.7em;
