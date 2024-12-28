@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const rewardButton = document.getElementById('reward-button');
   const rewardQrcodes = document.getElementById('reward-qrcodes');
   const rewardClose = document.getElementById('reward-close');
+  const rewardOverlay = document.getElementById('reward-overlay');
 
   if (rewardButton && rewardQrcodes && rewardClose) {
     let isRewardVisible = false;
@@ -41,19 +42,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function showReward(event) {
       if (event) {
         event.preventDefault();
-        event.stopPropagation();
       }
       if (!isRewardVisible) {
+        document.body.style.overflow = 'hidden'; // 防止背景滚动
         rewardQrcodes.style.display = 'flex';
+        rewardOverlay.style.display = 'block';
         // 强制重排
         rewardQrcodes.offsetHeight;
         rewardQrcodes.classList.add('active');
+        rewardOverlay.classList.add('active');
         isRewardVisible = true;
-        
-        // 添加点击外部关闭
-        setTimeout(() => {
-          document.addEventListener('click', handleOutsideClick);
-        }, 0);
       }
     }
 
@@ -61,33 +59,26 @@ document.addEventListener('DOMContentLoaded', function() {
     function closeReward(event) {
       if (event) {
         event.preventDefault();
-        event.stopPropagation();
       }
       if (isRewardVisible) {
+        document.body.style.overflow = ''; // 恢复背景滚动
         rewardQrcodes.classList.remove('active');
+        rewardOverlay.classList.remove('active');
         isRewardVisible = false;
-        
-        // 移除点击外部关闭
-        document.removeEventListener('click', handleOutsideClick);
         
         setTimeout(() => {
           if (!isRewardVisible) {
             rewardQrcodes.style.display = 'none';
+            rewardOverlay.style.display = 'none';
           }
         }, 300);
-      }
-    }
-
-    // 处理点击外部
-    function handleOutsideClick(event) {
-      if (!rewardQrcodes.contains(event.target) && !rewardButton.contains(event.target)) {
-        closeReward();
       }
     }
 
     // 绑定事件
     rewardButton.addEventListener('click', showReward);
     rewardClose.addEventListener('click', closeReward);
+    rewardOverlay.addEventListener('click', closeReward);
     
     // 点击弹窗内部不关闭
     rewardQrcodes.addEventListener('click', function(event) {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <!DOCTYPE html>
 <html lang="zh-CN" style="visibility: hidden;">
 <script>
   (function() {
@@ -49,15 +50,25 @@
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
 </head>
 
+</head>
 <body>
+  <!-- Loading 容器 -->
   <div class="loading-container">
-  <div class="loading-spinner">
-    <div class="bounce1"></div>
-    <div class="bounce2"></div>
-    <div class="bounce3"></div>
+    <div class="loading-spinner">
+      <div class="cube">
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+      </div>
+    </div>
   </div>
-</div>
   
+  <!-- 页面加载进度条 -->
+  <div class="loading-bar"></div>
+
   <div class="container">
     <!-- 左侧边栏 -->
     <aside class="sidebar">
@@ -66,9 +77,9 @@
         
           <div class="profile">
             <div class="avatar">
-			  <a href="/">
-				<img src="/img/logo.png" alt="吖远zzy">
-			  </a>
+              <a href="/">
+                <img src="/img/logo.png" alt="吖远zzy">
+              </a>
             </div>
             <h2 class="name">吖远zzy</h2>
             <p class="description">一个不知名的编程爱好者~</p>
@@ -424,275 +435,12 @@ document.addEventListener('DOMContentLoaded', function() {
 }
 </style> 
         
-		
-		<!-- 粒子时钟 -->
-		<div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px 0;">
-		  <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
-		</div>
-		<script>
-		(function(){
-
-		   var digit=
-			[
-				[
-					[0,0,1,1,1,0,0],
-					[0,1,1,0,1,1,0],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,0,1,1,0],
-					[0,0,1,1,1,0,0]
-				],//0
-				[
-					[0,0,0,1,1,0,0],
-					[0,1,1,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[1,1,1,1,1,1,1]
-				],//1
-				[
-					[0,1,1,1,1,1,0],
-					[1,1,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,0,0],
-					[0,0,1,1,0,0,0],
-					[0,1,1,0,0,0,0],
-					[1,1,0,0,0,0,0],
-					[1,1,0,0,0,1,1],
-					[1,1,1,1,1,1,1]
-				],//2
-				[
-					[1,1,1,1,1,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,0,0,1,1,0],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,1,1,0]
-				],//3
-				[
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,1,0],
-					[0,0,1,1,1,1,0],
-					[0,1,1,0,1,1,0],
-					[1,1,0,0,1,1,0],
-					[1,1,1,1,1,1,1],
-					[0,0,0,0,1,1,0],
-					[0,0,0,0,1,1,0],
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,1,1]
-				],//4
-				[
-					[1,1,1,1,1,1,1],
-					[1,1,0,0,0,0,0],
-					[1,1,0,0,0,0,0],
-					[1,1,1,1,1,1,0],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,1,1,0]
-				],//5
-				[
-					[0,0,0,0,1,1,0],
-					[0,0,1,1,0,0,0],
-					[0,1,1,0,0,0,0],
-					[1,1,0,0,0,0,0],
-					[1,1,0,1,1,1,0],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,1,1,0]
-				],//6
-				[
-					[1,1,1,1,1,1,1],
-					[1,1,0,0,0,1,1],
-					[0,0,0,0,1,1,0],
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,0,0],
-					[0,0,0,1,1,0,0],
-					[0,0,1,1,0,0,0],
-					[0,0,1,1,0,0,0],
-					[0,0,1,1,0,0,0],
-					[0,0,1,1,0,0,0]
-				],//7
-				[
-					[0,1,1,1,1,1,0],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,1,1,0],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,1,1,0]
-				],//8
-				[
-					[0,1,1,1,1,1,0],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[1,1,0,0,0,1,1],
-					[0,1,1,1,0,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,0,1,1],
-					[0,0,0,0,1,1,0],
-					[0,0,0,1,1,0,0],
-					[0,1,1,0,0,0,0]
-				],//9
-				[
-					[0,0,0,0,0,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,1,1,1,0,0],
-					[0,0,0,0,0,0,0]
-				]//:
-			];
-
-		var canvas = document.getElementById('canvas');
-
-		if(canvas.getContext){
-			var cxt = canvas.getContext('2d');
-			//声明canvas的宽高
-			var H = 100,W = 700;
-			canvas.height = H;
-			canvas.width = W;
-			cxt.fillStyle = '#f00';
-			cxt.fillRect(10,10,50,50);
-
-			//存储时间数据
-			var data = [];
-			//存储运动的小球
-			var balls = [];
-			//设置粒子半径
-			var R = canvas.height/20-1;
-			(function(){
-				var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
-				//存储时间数字，由十位小时、个位小时、冒号、十位分钟、个位分钟、冒号、十位秒钟、个位秒钟这7个数字组成
-				data.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
-			})();
-
-			/*生成点阵数字*/
-			function renderDigit(index,num){
-				for(var i = 0; i < digit[num].length; i++){
-					for(var j = 0; j < digit[num][i].length; j++){
-						if(digit[num][i][j] == 1){
-							cxt.beginPath();
-							cxt.arc(14*(R+2)*index + j*2*(R+1)+(R+1),i*2*(R+1)+(R+1),R,0,2*Math.PI);
-							cxt.closePath();
-							cxt.fill();
-						}
-					}
-				}
-			}
-
-			/*更新时钟*/
-			function updateDigitTime(){
-				var changeNumArray = [];
-				var temp = /(\d)(\d):(\d)(\d):(\d)(\d)/.exec(new Date());
-				var NewData = [];
-				NewData.push(temp[1],temp[2],10,temp[3],temp[4],10,temp[5],temp[6]);
-				for(var i = data.length-1; i >=0 ; i--){
-					//时间发生变化
-					if(NewData[i] !== data[i]){
-						//将变化的数字值和在data数组中的索引存储在changeNumArray数组中
-						changeNumArray.push(i+'_'+(Number(data[i])+1)%10);
-					}
-				}
-				//增加小球
-				for(var i = 0; i< changeNumArray.length; i++){
-					addBalls.apply(this,changeNumArray[i].split('_'));
-				}
-				data = NewData.concat();
-			}
-
-			/*更新小球状态*/
-			function updateBalls(){
-				for(var i = 0; i < balls.length; i++){
-					balls[i].stepY += balls[i].disY;
-					balls[i].x += balls[i].stepX;
-					balls[i].y += balls[i].stepY;
-					if(balls[i].x > W + R || balls[i].y > H + R){
-						balls.splice(i,1);
-						i--;
-					}
-				}
-			}
-
-			/*增加要运动的小球*/
-			function addBalls(index,num){
-				var numArray = [1,2,3];
-				var colorArray =  ["#3BE","#09C","#A6C","#93C","#9C0","#690","#FB3","#F80","#F44","#C00"];
-				for(var i = 0; i < digit[num].length; i++){
-					for(var j = 0; j < digit[num][i].length; j++){
-						if(digit[num][i][j] == 1){
-							var ball = {
-								x:14*(R+2)*index + j*2*(R+1)+(R+1),
-								y:i*2*(R+1)+(R+1),
-								stepX:Math.floor(Math.random() * 4 -2),
-								stepY:-2*numArray[Math.floor(Math.random()*numArray.length)],
-								color:colorArray[Math.floor(Math.random()*colorArray.length)],
-								disY:1
-							};
-							balls.push(ball);
-						}
-					}
-				}
-			}
-
-			/*渲染*/
-			function render(){
-				//重置画布宽度，达到清空画布的效果
-				canvas.height = 100;
-				//渲染时钟
-				for(var i = 0; i < data.length; i++){
-					renderDigit(i,data[i]);
-				}
-				//渲染小球
-				for(var i = 0; i < balls.length; i++){
-					cxt.beginPath();
-					cxt.arc(balls[i].x,balls[i].y,R,0,2*Math.PI);
-					cxt.fillStyle = balls[i].color;
-					cxt.closePath();
-					cxt.fill();
-				}
-			}
-
-			clearInterval(oTimer);
-			var oTimer = setInterval(function(){
-				//更新时钟
-				updateDigitTime();
-				//更新小球状态
-				updateBalls();
-				//渲染
-				render();
-			},50);
-		}
-
-		})();
-		</script>
-		
-		<!-- 粒子时钟 -->
-	
+    
+        <!-- 粒子时钟 -->
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px 0;">
+          <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+        </div>
+    
         <!-- 版权和备案信息 -->
         <div class="sidebar-footer">
           <!-- 备案信息 -->
@@ -712,9 +460,9 @@ document.addEventListener('DOMContentLoaded', function() {
           
             <div class="copyright">
               <span>© 2018 - 2024</span>
-			  <a href="https://www.hzv5.cn" target="_blank">
-				<span>吖远zzy</span>
-			  </a>
+              <a href="https://www.hzv5.cn" target="_blank">
+                <span>吖远zzy</span>
+              </a>
               
                 <br>
                 <span>All rights reserved.</span>
@@ -839,135 +587,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <i class="fas fa-moon"></i>
 </button>
 
+<!-- Disqus -->
 
 
-</body>
-</html>言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！</p>
-<p>这是一场资本家的狂欢泡沫还是致富风口？</p>
-<p>咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..</p>
-<p>然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。</p>
-<p>但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境没有部署，更难受的是安装模块还不成功！</p>
-<p>最后就自己在Android上去实现了</p>
-<p>下面直接看怎么实现的：</p>
-<h1 id="Android实现图片合成"><a href="#Android实现图片合成" class="headerlink" title="Android实现图片合成"></a>Android实现图片合成</h1>
-          </div>
-        
-      </div>
-    </div>
-  
-    <div class="post-item">
-      <div class="post-date">
-        <i class="fas fa-calendar"></i>
-        2021-06-07
-      </div>
-      <div class="post-info">
-        <h2 class="post-title">
-          <a href="/2021/06/07/android-gif/">Android实现帧动画动态设置播放时间间隔</a>
-        </h2>
-        <div class="post-meta">
-          
-            <div class="post-categories">
-              <i class="fas fa-folder"></i>
-              <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>，<a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/">吐槽</a>，<a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/">Android</a>
-            </div>
-          
-        </div>
-        
-          <div class="post-excerpt">
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前些天在弄一个娱乐小工具App，需要播放gif，但是找了一圈，基本上是使用第三方库的<code>com.felipecsl:gifimageview:2.2.0</code>，和Android帧动画的。</p>
-<p>第三方库貌似自定义局限性很大，帧动画的话在xml中把播放时间给写死了，也不好控制。</p>
-<p>自带的api只看到getDuration，但是没有setDuration，就离谱。</p>
-<p>找了一圈发现是有方法自己去实现setDuration的。</p>
-<p>下面直接看怎么实现的：</p>
-<h1 id="帧动画实现控制播放时间-速度"><a href="#帧动画实现控制播放时间-速度" class="headerlink" title="帧动画实现控制播放时间/速度"></a>帧动画实现控制播放时间/速度</h1>
-          </div>
-        
-      </div>
-    </div>
-  
-    <div class="post-item">
-      <div class="post-date">
-        <i class="fas fa-calendar"></i>
-        2018-08-15
-      </div>
-      <div class="post-info">
-        <h2 class="post-title">
-          <a href="/2018/08/15/QQshare-Err/">关于Android自定义QQ分享提示未正确授权，错误码901115</a>
-        </h2>
-        <div class="post-meta">
-          
-            <div class="post-categories">
-              <i class="fas fa-folder"></i>
-              <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
-            </div>
-          
-        </div>
-        
-          <div class="post-excerpt">
-            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包</p>
-<p>于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p>
-<p>错误提示如图：</p>
-          </div>
-        
-      </div>
-    </div>
-  
-</div>
+<!-- Loading -->
+<script src="/js/loading.js"></script>
 
-<!-- 分页 -->
- 
-      </div>
-    </main>
-
-    <!-- 移动端菜单按钮 -->
-    <button class="menu-toggle" id="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <!-- 遮罩层 -->
-    <div class="overlay" id="overlay"></div>
-  </div>
-
-  <!-- jQuery -->
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-
-<!-- 主题脚本 -->
-<script src="/js/theme.js"></script>
-
-<!-- 搜索脚本 -->
-
-<script src="/js/search.js"></script>
-
-
-<!-- Fancybox -->
-
-<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
-
-
-<!-- Clipboard -->
-
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
-
-
-<!-- 分享和赞赏功能 -->
-
-<script src="/js/share-reward.js"></script>
-
-
-<!-- 返回顶部按钮 -->
-<button class="back-to-top" aria-label="返回顶部">
-  <i class="fas fa-arrow-up"></i>
-</button>
-
-<!-- 文章目录按钮 -->
-
-
-<!-- 暗黑模式切换按钮 -->
-<button class="dark-mode-toggle" aria-label="切换暗黑模式">
-  <i class="fas fa-moon"></i>
-</button>
-
-
+<!-- 粒子时钟 -->
+<script src="/js/clock.js"></script>
 
 </body>
 </html>
