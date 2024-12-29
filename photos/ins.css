@@ -111,19 +111,43 @@
 	opacity: 0;
 }
 .photos-btn-wrap {
-	border-bottom: 1px solid #e5e5e5;
-	margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 40px 0;
+    border-bottom: 1px solid var(--border-color);
 }
 .photos-btn {
-	font-size: 16px;
-	color: #333;
-	margin-bottom: -4px;
-	padding: 5px 8px 3px;
+    position: relative;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1em;
+    padding: 16px 0;
+    margin-right: 32px;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.photos-btn:last-child {
+    margin-right: 0;
+}
+.photos-btn:hover {
+    opacity: 1;
 }
 .photos-btn.active {
-	color: #08c;
-	border: 1px solid #e5e5e5;
-	border-bottom: 5px solid #fff;
+    color: var(--primary-color);
+    opacity: 1;
+}
+.photos-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
 }
 
 @media screen and (max-width:600px) {
@@ -142,4 +166,288 @@
 		width: 90%;
 		height: 90%;
 	}
+}
+
+.loading-wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.photo-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.photo-section {
+    margin-bottom: 48px;
+}
+
+.photo-date {
+    position: relative;
+    font-size: 1.2em;
+    font-weight: 500;
+    margin: 0 0 24px 0;
+    padding: 0 0 0 20px;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+}
+
+.photo-date::before {
+    content: '#';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    padding: 0;
+}
+
+.photo-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    background: var(--card-background);
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.photo-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-background);
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+}
+
+.loading-icon {
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--border-color);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+.loading-text {
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.error-message {
+    color: var(--error-color);
+    font-size: 14px;
+    text-align: center;
+    padding: 10px;
+}
+
+.photo-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.photo-item img.lazy {
+    opacity: 0;
+}
+
+.photo-item img.lazy.loaded {
+    opacity: 1;
+}
+
+.photo-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 3;
+}
+
+.photo-item:hover .photo-info {
+    transform: translateY(0);
+}
+
+.photo-info p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 暗黑模式 */
+:root {
+    --text-color: #2c3e50;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --card-background: #ffffff;
+    --primary-color: #3b82f6;
+    --error-color: #ef4444;
+    --background-color: #ffffff;
+}
+
+[data-theme="dark"] {
+    --text-color: #e5e7eb;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-background: #1f2937;
+    --primary-color: #60a5fa;
+    --error-color: #f87171;
+    --background-color: #111827;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+    .photos-btn-wrap {
+        margin: 0 0 32px 0;
+    }
+
+    .photos-btn {
+        font-size: 0.9em;
+        padding: 12px 0;
+        margin-right: 24px;
+    }
+
+    .photo-section {
+        margin-bottom: 32px;
+    }
+
+    .photo-date {
+        font-size: 1.1em;
+        margin: 0 0 16px 0;
+    }
+
+    .photo-grid {
+        gap: 16px;
+    }
+}
+
+/* 错误状态 */
+.error {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-color);
+    background: var(--card-background);
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.preview-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    cursor: zoom-out;
+}
+
+.preview-overlay.active {
+    display: flex;
+}
+
+.preview-container {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.preview-image {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.preview-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.preview-text {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.preview-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 30px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.preview-close:hover {
+    background: rgba(0, 0, 0, 0.8);
 }

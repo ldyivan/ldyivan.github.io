@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -578,12 +569,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <p><img src="/img/GitalkErr/logging.png" alt="一直处于登陆中"></p>
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>果然不出所料的就解决了，已yilia主题为例：</p>
 <p>打开博客目录 <code>themes\yilia\layout\_partial\post\gitment.ejs</code> 将：</p>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;//imsun.github.io/gitment/style/default.css&quot;&gt;
-&lt;script src=&quot;//imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;</code></pre><p>修改为：</p>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://jjeejj.github.io/css/gitment.css&quot;&gt;
-&lt;script src=&quot;https://jjeejj.github.io/js/gitment.js&quot;&gt;&lt;/script&gt;</code></pre><p>或者是改为：</p>
-<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://jjeejj.github.io/css/gitment.css&quot;&gt;
-&lt;script src=&quot;https://www.wenjunjiang.win/js/gitment.js&quot;&gt;&lt;/script&gt;</code></pre><p>这样修改源文件之后，登陆时就不会再报错了，这也是别人的服务器，如果你怕再次失效之类的，你也可以自己搭建一个源文件服务器来支持你的需求2333。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;//imsun.github.io/gitment/style/default.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;//imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>修改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://jjeejj.github.io/css/gitment.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;https://jjeejj.github.io/js/gitment.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或者是改为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://jjeejj.github.io/css/gitment.css&quot;&gt;</span><br><span class="line">&lt;script src=&quot;https://www.wenjunjiang.win/js/gitment.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样修改源文件之后，登陆时就不会再报错了，这也是别人的服务器，如果你怕再次失效之类的，你也可以自己搭建一个源文件服务器来支持你的需求2333。</p>
 <h2 id="2丶Gitalk无法进行初始化创建Issue评论区"><a href="#2丶Gitalk无法进行初始化创建Issue评论区" class="headerlink" title="2丶Gitalk无法进行初始化创建Issue评论区"></a>2丶Gitalk无法进行初始化创建Issue评论区</h2><p>错误提示为：Error: Validation Failed（如图）</p>
 <p><img src="/img/GitalkErr/zs.png" alt="无法初始化"></p>
 <p>这种情况是因为Issue有字数限制的咯</p>
@@ -591,12 +585,18 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>2.修改主题的Gitalk评论ID获取项目，把获取地址改为获取标题，电视写文章的时候同样要控制标题的长度不要超过50个字符。</p>
 <p><img src="/img/GitalkErr/zs02.png" alt="修改文件"></p>
 <p>博主用的是yilia主题为例：</p>
-<pre><code>id: &quot;&lt;%=url%&gt;&quot;</code></pre><p>修改为</p>
-<pre><code>id: &quot;&lt;%=page.title%&gt;&quot;</code></pre><p>这样就可以把这个问题解决，可以愉快地创建评论咯。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id: &quot;&lt;%=url%&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>修改为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">id: &quot;&lt;%=page.title%&gt;&quot;</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以把这个问题解决，可以愉快地创建评论咯。</p>
 <h2 id="3丶换电脑后，执行-hexo-d-命令提示没有-Git-文件夹"><a href="#3丶换电脑后，执行-hexo-d-命令提示没有-Git-文件夹" class="headerlink" title="3丶换电脑后，执行 hexo d 命令提示没有 .Git 文件夹"></a>3丶换电脑后，执行 hexo d 命令提示没有 .Git 文件夹</h2><p>前两天也是在更换设备去更新博客，博主是直接把博客根目录下整个文件夹拷贝，放到U盘里面储存。</p>
 <p>在新电脑上操作直接拷贝 .ssh 秘钥到相应的文件夹里就可以开始对博客进行操作了。</p>
 <p>但是突然出现这样一个问题：博客能够正常编译(即 hexo g)，也能正常本地预览(即 hexo s)，就是提交到远程Git仓库的时候总报没有 <code>.Git</code> 文件夹:</p>
-<pre><code>fatal: not a git repository (or any of the parent directories): .git</code></pre><h2 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h2><p>搜索引擎给出的答案，大部分用户都是能够直接使用 <code>git init</code> 进行初始化恢复，但是我这边使用该指令并没有达到想要效果，甚至还产生了其他的问题或错误。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: not a git repository (or any of the parent directories): .git</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决-2"><a href="#解决-2" class="headerlink" title="解决"></a>解决</h2><p>搜索引擎给出的答案，大部分用户都是能够直接使用 <code>git init</code> 进行初始化恢复，但是我这边使用该指令并没有达到想要效果，甚至还产生了其他的问题或错误。</p>
 <p>然后解决办法就是：</p>
 <p>删除博客根目录的 <code>.deploy_git</code> 文件夹</p>
 <p>然后使用命令 <code>hexo deploy</code> 重新创建该文件夹</p>
@@ -671,29 +671,6 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- 评论模块 -->
-      
-        
-  <div class="comments" id="comments">
-    
-      <div id="gitalk-container"></div>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-      <script>
-        var gitalk = new Gitalk({
-          clientID: 'f9d80c822c0bc01e8457',
-          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
-          repo: 'ldyivan.github.io',
-          owner: 'ldyivan',
-          admin: ["ldyivan"],
-          id: location.pathname,
-          distractionFreeMode: 'false',
-          language: 'zh-CN'
-        })
-        gitalk.render('gitalk-container')
-      </script>
-    
-  </div>
- 
       
     
     

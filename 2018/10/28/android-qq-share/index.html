@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -582,131 +573,28 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>5丶然后，我们就可开始码代码了</p>
 <p>6丶首先配置一下AndroidManifest文件，权限设置和注册Activity</p>
 <p>权限代码：</p>
-<pre><code>&lt;!-- APP联网所需权限 --&gt;
-&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
-&lt;!-- 在SDCard中创建和删除文件的权限 --&gt; 
-&lt;uses-permission 
-    android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt; 
-&lt;!-- 往SDCard中写入数据的权限 --&gt;
-&lt;uses-permission 
-    android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</code></pre><p>当然，以上权限并不全都用的上或者不够，可以根据自己的需求进行增减。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- APP联网所需权限 --&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;</span><br><span class="line">&lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;</span><br><span class="line">&lt;!-- 在SDCard中创建和删除文件的权限 --&gt; </span><br><span class="line">&lt;uses-permission </span><br><span class="line">	android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot; /&gt; </span><br><span class="line">&lt;!-- 往SDCard中写入数据的权限 --&gt;</span><br><span class="line">&lt;uses-permission </span><br><span class="line">	android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当然，以上权限并不全都用的上或者不够，可以根据自己的需求进行增减。</p>
 <p>然后是SDK需要的Activity注册了，一下代码放入到<application>标签中即可：</p>
-<pre><code>&lt;!-- 注册SDKActivity --&gt;
-&lt;activity
-    android:name=&quot;com.tencent.tauth.AuthActivity&quot;
-        android:noHistory=&quot;true&quot;
-        android:launchMode=&quot;singleTask&quot; &gt;
-        &lt;intent-filter&gt;
-            &lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;
-            &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;
-            &lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;
-            &lt;data android:scheme=&quot;tencentID1106885928&quot; /&gt; &lt;!-- 获取的APPID --&gt;
-        &lt;/intent-filter&gt;
-    &lt;/activity&gt;</code></pre><p>新版的SDK增加了AssistActivity，所以也要在这里给他加上去</p>
-<pre><code>&lt;activity android:name=&quot;com.tencent.connect.common.AssistActivity&quot;
-       android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;
-       android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot; /&gt;</code></pre><p>配置好了之后，就开始写java代码了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 注册SDKActivity --&gt;</span><br><span class="line">&lt;activity</span><br><span class="line">	android:name=&quot;com.tencent.tauth.AuthActivity&quot;</span><br><span class="line">		android:noHistory=&quot;true&quot;</span><br><span class="line">		android:launchMode=&quot;singleTask&quot; &gt;</span><br><span class="line">		&lt;intent-filter&gt;</span><br><span class="line">			&lt;action android:name=&quot;android.intent.action.VIEW&quot; /&gt;</span><br><span class="line">			&lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</span><br><span class="line">			&lt;category android:name=&quot;android.intent.category.BROWSABLE&quot; /&gt;</span><br><span class="line">			&lt;data android:scheme=&quot;tencentID1106885928&quot; /&gt; &lt;!-- 获取的APPID --&gt;</span><br><span class="line">		&lt;/intent-filter&gt;</span><br><span class="line">	&lt;/activity&gt;</span><br></pre></td></tr></table></figure>
+
+<p>新版的SDK增加了AssistActivity，所以也要在这里给他加上去</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;activity android:name=&quot;com.tencent.connect.common.AssistActivity&quot;</span><br><span class="line">	android:theme=&quot;@android:style/Theme.Translucent.NoTitleBar&quot;</span><br><span class="line">	android:configChanges=&quot;orientation|keyboardHidden|screenSize&quot; /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>配置好了之后，就开始写java代码了。</p>
 <p>首先，创建实例。Tencent是SDK的功能入口，所有的接口调用都得通过Tencent进行调用。因此，调用SDK，首先需要创建一个Tencent实例，其代码如下：</p>
 <pre><code>private static final String APP_ID = &quot;1106885928&quot;; // appid跟换成你自己的，可以在开放平台新建应用之后获取
 private Tencent mTencent;
     //传入参数APPID
     mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());</code></pre><p>   接下来就是实现回调，也就是你分享东西出去是成功了还是失败了，又或者是用户取消了分享呢？具体就是：</p>
-<pre><code>/**
-* 自定义监听器实现IUiListener，需要3个方法
-*
-* onComplete完成 onError错误 onCancel取消
-*/
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">* 自定义监听器实现IUiListener，需要3个方法</span><br><span class="line">*</span><br><span class="line">* onComplete完成 onError错误 onCancel取消</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">private class ShareUiListener implements IUiListener</span><br><span class="line">&#123;</span><br><span class="line">	@Override</span><br><span class="line">	public void onComplete(Object response)</span><br><span class="line">	&#123;</span><br><span class="line">		//分享成功</span><br><span class="line">		def_note(&quot;成功分享！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void onError(UiError uiError)</span><br><span class="line">	&#123;</span><br><span class="line">		//分享失败</span><br><span class="line">		def_note(&quot;分享失败！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	@Override</span><br><span class="line">	public void onCancel()</span><br><span class="line">	&#123;</span><br><span class="line">		//分享取消</span><br><span class="line">		def_note(&quot;您取消了分享！&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 回调</span><br><span class="line"> *</span><br><span class="line"> * @param requestCode</span><br><span class="line"> * </span><br><span class="line"> * @param resultCode</span><br><span class="line"> * @param data</span><br><span class="line"> */</span><br><span class="line">@Override</span><br><span class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data)</span><br><span class="line">&#123;</span><br><span class="line">	if (null != mTencent)</span><br><span class="line">	&#123;</span><br><span class="line">		mTencent.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-private class ShareUiListener implements IUiListener
-&#123;
-    @Override
-    public void onComplete(Object response)
-    &#123;
-        //分享成功
-        def_note(&quot;成功分享！&quot;);
-    &#125;
-    @Override
-    public void onError(UiError uiError)
-    &#123;
-        //分享失败
-        def_note(&quot;分享失败！&quot;);
-    &#125;
-    @Override
-    public void onCancel()
-    &#123;
-        //分享取消
-        def_note(&quot;您取消了分享！&quot;);
-    &#125;
-&#125;
-
-/**
- * 回调
- *
- * @param requestCode
- * 
- * @param resultCode
- * @param data
- */
-@Override
-protected void onActivityResult(int requestCode, int resultCode, Intent data)
-&#123;
-    if (null != mTencent)
-    &#123;
-        mTencent.onActivityResult(requestCode, resultCode, data);
-    &#125;
-&#125;</code></pre><p>到这里就基本上搞好了。</p>
+<p>到这里就基本上搞好了。</p>
 <p>然后就是对官方文档里面提到的api数据封装功能函数，可以分享链接，音乐，图片，应用这些东西，具体就是这样：</p>
-<pre><code>/**
- * 分享到QQ
- * @param v
- */
-public void qqShare(String t, String s, String u, String p, String w)
-&#123;
-    final Bundle params = new Bundle();
-    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型
-    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);//分享标题
-    params.putString(QQShare.SHARE_TO_QQ_SUMMARY, s);//要分享的内容摘要
-    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, u);//内容地址
-    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);//分享的图片URL
-    params.putString(QQShare.SHARE_TO_QQ_APP_NAME, w);//应用名称
-    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());
-&#125;
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 分享到QQ</span><br><span class="line"> * @param v</span><br><span class="line"> */</span><br><span class="line">public void qqShare(String t, String s, String u, String p, String w)</span><br><span class="line">&#123;</span><br><span class="line">	final Bundle params = new Bundle();</span><br><span class="line">	params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);//分享的类型</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_TITLE, t);//分享标题</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_SUMMARY, s);//要分享的内容摘要</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, u);//内容地址</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);//分享的图片URL</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_APP_NAME, w);//应用名称</span><br><span class="line">	mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分享到QQ空间</span><br><span class="line"> * @param v</span><br><span class="line"> */</span><br><span class="line">public void qqQzoneShare(String t, String s, String u, String p, String w)\r\n	&#123;\r\n        int QzoneType = QzoneShare.SHARE_TO_QZONE_TYPE_NO_TYPE;\r\n        Bundle params = new Bundle();</span><br><span class="line">	params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneType);</span><br><span class="line">	params.putString(QzoneShare.SHARE_TO_QQ_TITLE, t);//分享标题</span><br><span class="line">	params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, s);//分享的内容摘要</span><br><span class="line">	params.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, u);//分享的链接</span><br><span class="line">	//分享的图片, 以ArrayList&lt;String&gt;的类型传入，以便支持多张图片（注：图片最多支持9张图片，多余的图片会被丢弃）</span><br><span class="line">	ArrayList&lt;String&gt; imageUrls = new ArrayList&lt;String&gt;();</span><br><span class="line">	imageUrls.add(&quot;http://www.hzv5.cn/logo.jpg&quot;);//添加一个图片地址</span><br><span class="line">	params.putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);//分享的图片URL</span><br><span class="line">	mTencent.shareToQzone(MainActivity.this, params, new ShareUiListener());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 分享音乐</span><br><span class="line"> * @param v</span><br><span class="line"> */</span><br><span class="line">private void qqAudioShare(String t, String s, String u, String p, String w)</span><br><span class="line">&#123;</span><br><span class="line">	int ii = def_getNum(0, songlist.length - 1);</span><br><span class="line">	final Bundle params = new Bundle();</span><br><span class="line">	params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_AUDIO);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_TITLE, t);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  s);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,  u);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL, songlist[ii]);</span><br><span class="line">	params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  w);</span><br><span class="line">	//params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);</span><br><span class="line">	mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-/**
- * 分享到QQ空间
- * @param v
- */
-public void qqQzoneShare(String t, String s, String u, String p, String w)\r\n    &#123;\r\n        int QzoneType = QzoneShare.SHARE_TO_QZONE_TYPE_NO_TYPE;\r\n        Bundle params = new Bundle();
-    params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneType);
-    params.putString(QzoneShare.SHARE_TO_QQ_TITLE, t);//分享标题
-    params.putString(QzoneShare.SHARE_TO_QQ_SUMMARY, s);//分享的内容摘要
-    params.putString(QzoneShare.SHARE_TO_QQ_TARGET_URL, u);//分享的链接
-    //分享的图片, 以ArrayList&lt;String&gt;的类型传入，以便支持多张图片（注：图片最多支持9张图片，多余的图片会被丢弃）
-    ArrayList&lt;String&gt; imageUrls = new ArrayList&lt;String&gt;();
-    imageUrls.add(&quot;http://www.hzv5.cn/logo.jpg&quot;);//添加一个图片地址
-    params.putStringArrayList(QzoneShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);//分享的图片URL
-    mTencent.shareToQzone(MainActivity.this, params, new ShareUiListener());
-&#125;
-
-/**
- * 分享音乐
- * @param v
- */
-private void qqAudioShare(String t, String s, String u, String p, String w)
-&#123;
-    int ii = def_getNum(0, songlist.length - 1);
-    final Bundle params = new Bundle();
-    params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_AUDIO);
-    params.putString(QQShare.SHARE_TO_QQ_TITLE, t);
-    params.putString(QQShare.SHARE_TO_QQ_SUMMARY,  s);
-    params.putString(QQShare.SHARE_TO_QQ_TARGET_URL,  u);
-    params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, p);
-    params.putString(QQShare.SHARE_TO_QQ_AUDIO_URL, songlist[ii]);
-    params.putString(QQShare.SHARE_TO_QQ_APP_NAME,  w);
-    //params.putInt(QQShare.SHARE_TO_QQ_EXT_INT, QQShare.SHARE_TO_QQ_FLAG_QZONE_AUTO_OPEN);
-    mTencent.shareToQQ(MainActivity.this, params, new ShareUiListener());
-&#125;</code></pre><p>到这里整个工程项目的QQ自定义分享基本上就完成了，这里算是给自己也做了一份备份。</p>
+<p>到这里整个工程项目的QQ自定义分享基本上就完成了，这里算是给自己也做了一份备份。</p>
 <h1 id="V4，V7支持包"><a href="#V4，V7支持包" class="headerlink" title="V4，V7支持包"></a>V4，V7支持包</h1><p>另外再备份两个东西，那就是安卓的android-support-v4，和v7支持包，特别是v7包，网上找的全是那种缺胳膊少腿的，找个完整的v7找了我两天时间！这个是安卓25版本的。</p>
 <p>不是最新，但是够用就行了。</p>
 <p>v4下载链接：<a href="https://pan.baidu.com/s/1aotD4JKcPgwje1a4cPsfqg">点击下载v4 提取码：65o3</a></p>
@@ -779,29 +667,6 @@ private void qqAudioShare(String t, String s, String u, String p, String w)
       </div>
 
       <!-- 评论模块 -->
-      
-        
-  <div class="comments" id="comments">
-    
-      <div id="gitalk-container"></div>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-      <script>
-        var gitalk = new Gitalk({
-          clientID: 'f9d80c822c0bc01e8457',
-          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
-          repo: 'ldyivan.github.io',
-          owner: 'ldyivan',
-          admin: ["ldyivan"],
-          id: location.pathname,
-          distractionFreeMode: 'false',
-          language: 'zh-CN'
-        })
-        gitalk.render('gitalk-container')
-      </script>
-    
-  </div>
- 
       
     
     

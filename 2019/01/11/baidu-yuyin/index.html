@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -569,19 +560,21 @@ document.addEventListener('DOMContentLoaded', function() {
     </header>
     <div class="article-content">
       
-        <h1 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h1><p>有朋友博文<a href="http://www.hzv5.cn/index.php/archives/29.html'">自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等…）</a>的评论里留言说，收集的api接口，有的已经失效了</p>
+        <h1 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h1><p>有朋友博文<a href="http://localhost:4000/2018/04/24/my-apis/">自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等…）</a>的评论里留言说，收集的api接口，有的已经失效了</p>
 <p>也抽空看了，有几个确实是已经失效了，QQ秀的接口暂时没有找到新的</p>
 <p>今天是找了下语音接口，就是文字转成语音的接口</p>
 <p>其他的不多说了</p>
 <p>直接开始贴接口地址，和参数说明吧</p>
 <h1 id="1丶文字转语音"><a href="#1丶文字转语音" class="headerlink" title="1丶文字转语音"></a>1丶文字转语音</h1><p>① 接口地址：</p>
 <span id="more"></span>
-<pre><code>https://ai.baidu.com/aidemo?type=tns2&amp;idx=1&amp;&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=0&amp;vol=5&amp;pit=5&amp;tex=需要转换的文字内容</code></pre><h1 id="2丶文字转语音"><a href="#2丶文字转语音" class="headerlink" title="2丶文字转语音"></a>2丶文字转语音</h1><p>② 接口地址：</p>
-<pre><code>http://tts.baidu.com/text2audio?idx=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=1&amp;vol=9&amp;pit=5&amp;tex=需要转换的文字内容</code></pre><h1 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h1><pre><code>cuid：是程序id，默认的这个是百度测试demo，需要自己单独的id可以去百度语音官网申请。
-per：男声0，女声1
-spd：速度参数，1~10，数字越大语音速度越快
-pit：变声参数，1~10，数字越小越低沉，数字越大音调越高
-tex：文本内容，也就是你要转换成语音的文字</code></pre><p>GET请求接口，会得到一个aidemo文件，后缀改成任意能识别的音频文件名称即可播放。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://ai.baidu.com/aidemo?type=tns2&amp;idx=1&amp;&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=0&amp;vol=5&amp;pit=5&amp;tex=需要转换的文字内容</span><br></pre></td></tr></table></figure>
+
+<h1 id="2丶文字转语音"><a href="#2丶文字转语音" class="headerlink" title="2丶文字转语音"></a>2丶文字转语音</h1><p>② 接口地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://tts.baidu.com/text2audio?idx=1&amp;cuid=baidu_speech_demo&amp;cod=2&amp;lan=zh&amp;ctp=1&amp;pdt=1&amp;spd=5&amp;per=1&amp;vol=9&amp;pit=5&amp;tex=需要转换的文字内容</span><br></pre></td></tr></table></figure>
+
+<h1 id="参数说明："><a href="#参数说明：" class="headerlink" title="参数说明："></a>参数说明：</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cuid：是程序id，默认的这个是百度测试demo，需要自己单独的id可以去百度语音官网申请。</span><br><span class="line">per：男声0，女声1</span><br><span class="line">spd：速度参数，1~10，数字越大语音速度越快</span><br><span class="line">pit：变声参数，1~10，数字越小越低沉，数字越大音调越高</span><br><span class="line">tex：文本内容，也就是你要转换成语音的文字</span><br></pre></td></tr></table></figure>
+
+<p>GET请求接口，会得到一个aidemo文件，后缀改成任意能识别的音频文件名称即可播放。</p>
 <p>其他几个参数貌似没什么变化，暂时不知道是什么，可以自己改变一下数字试一下。</p>
 <p>暂时先这样，</p>
 <p>失效的接口到时候找到了新的再新增到这里。</p>
@@ -652,29 +645,6 @@ tex：文本内容，也就是你要转换成语音的文字</code></pre><p>GET�
       </div>
 
       <!-- 评论模块 -->
-      
-        
-  <div class="comments" id="comments">
-    
-      <div id="gitalk-container"></div>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-      <script>
-        var gitalk = new Gitalk({
-          clientID: 'f9d80c822c0bc01e8457',
-          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
-          repo: 'ldyivan.github.io',
-          owner: 'ldyivan',
-          admin: ["ldyivan"],
-          id: location.pathname,
-          distractionFreeMode: 'false',
-          language: 'zh-CN'
-        })
-        gitalk.render('gitalk-container')
-      </script>
-    
-  </div>
- 
       
     
     

@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -551,7 +542,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="article-meta">
         <span class="article-date">
           <i class="fas fa-calendar-alt"></i>
-          2024-12-29
+          2017-12-28
         </span>
         
         
@@ -565,20 +556,20 @@ document.addEventListener('DOMContentLoaded', function() {
 	<a class="photos-btn" href="#">待续</a>
 </div>
 <div class="instagram itemscope">
-	图片正在加载中…
+	<div class="photo-wrapper"></div>
 </div>
+
+<!-- 引入必要的脚本 -->
 <script>
-  (function() {
-    var loadScript = function(path) {
-      var $script = document.createElement('script')
-      document.getElementsByTagName('body')[0].appendChild($script)
-      $script.setAttribute('src', path)
-    }
-    setTimeout(function() {
-      loadScript('./ins.js')
-    }, 0)
-  })()
+    // 确保 LazyLoad 可用
+    window.lazyLoadOptions = {
+        elements_selector: ".lazy",
+        threshold: 50
+    };
 </script>
+<script src="./lazyload.min.js"></script>
+<script src="./config.js"></script>
+<script src="./ins.js"></script>
       
     </div>
 

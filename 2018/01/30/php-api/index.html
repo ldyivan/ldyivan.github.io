@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -571,72 +562,19 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <p>php写api接口起初是因为自己在玩机器人软件，需要进行数据交互，例如看笑话，查天气，查快递等等的一些数据，来丰富机器人的功能，现在本站暂时保留着两个就博客的api接口，<img src="http://img.baidu.com/hi/face/i_f08.gif"/></p>
 <p>css什么的失效了，暂时没去管：</p>
-<pre><code>1· http://www.hzv5.cn/api/ai.php
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.hzv5.cn/api/ai.php</span><br></pre></td></tr></table></figure>
 
-2· http://www.hzv5.cn/api/sina_url.php</code></pre><img src="http://img.baidu.com/hi/face/i_f05.gif"/>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.hzv5.cn/api/sina_url.php</span><br></pre></td></tr></table></figure>
+
+<img src="http://img.baidu.com/hi/face/i_f05.gif"/>
 
 <p>下面就来看看怎么自己写一个api接口吧：</p>
 <p>实例代码：</p>
 <span id="more"></span>
 
-<pre><code>&lt;?php
-  $output = array();  $a = @$_GET[&quot;a&quot;] ? $_GET[&quot;a&quot;] : &quot;&quot;;
-  $uid = @$_GET[&quot;uid&quot;] ? $_GET[&quot;uid&quot;] : 0;\r\n  if (empty($a)) &#123;
-    $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;非常抱歉，缺少参数!&quot;, &quot;code&quot;=&gt;-201);
-    exit(json_encode($output));
-  &#125;
-  //接口走的端口
-   if ($a == &quot;get_users&quot;) &#123;
-     //检查用户
-     if ($uid == 0) &#123;
-       $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;The uid is null!&quot;, &quot;code&quot;=&gt;-401);
-       exit(json_encode($output));
-     &#125;
-     //假设 $mysql 是数据库或者从网络读取的数据
-     $mysql = array(
-       10001 =&gt; array(
-         &quot;uid&quot;=&gt;10001,
-         &quot;vip&quot;=&gt;5,
-         &quot;nickname&quot; =&gt; &quot;Shine X&quot;,
-         &quot;email&quot;=&gt;&quot;88888888@qq.com&quot;,
-         &quot;qq&quot;=&gt;88888888,
-         &quot;ctime&quot;=&gt;1320321234,
-         &quot;lastLogin&quot;=&gt;1321121144,
-         &quot;level&quot;=&gt;19
-       ),10002 =&gt; array(
-         &quot;uid&quot;=&gt;10002,
-         &quot;vip&quot;=&gt;3,
-         &quot;nickname&quot; =&gt; &quot;elva&quot;,
-         &quot;email&quot;=&gt;&quot;99999999@qq.com&quot;,
-         &quot;qq&quot;=&gt;NULL,
-         &quot;ctime&quot;=&gt;1372323234,
-         &quot;lastLogin&quot;=&gt;1371122114,
-         &quot;level&quot;=&gt;12,
-       )
-     );
-     //检测查询的数据是否注册存在
-     $uidArr = array(10001,10002);
-     if (in_array($uid, $nickname, true)) &#123;
-       $output = array(&quot;data&quot; =&gt; NULL, &quot;info&quot;=&gt;&quot;The user does not exist!&quot;, &quot;code&quot; =&gt; -402);
-       exit(json_encode($output));
-     &#125;
-     //存在的开始查询数据库
-     $userInfo = $mysql[$uid];
-     //输出数据
-     $output = array(
-       &quot;data&quot; =&gt; array(&quot;userInfo&quot; =&gt; $userInfo),
-       &quot;info&quot; =&gt; &quot;Here is the message which, commonly used in popup window&quot;, //返回消息提示
-       &quot;code&quot; =&gt; 200, //成功与失败的代码，一般都是正数或者负数
-     );
-     exit(json_encode($output));
-     //其他端口查询还可以自己再继续添加，方法同上
-   &#125; elseif ($a == &quot;get_result&quot;) &#123;
-     //...
-     die(&quot;您正在调 get_result 接口!&quot;);
-   &#125; elseif ($a == &quot;get_upload&quot;) &#123;
-     //....
-     die(&quot;您正在调 get_upload 接口!&quot;);
-   &#125;</code></pre><p>OK，以上便是自写api接口进行服务器和客户端之间交互的实例~</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">  $output = array();  $a = @$_GET[&quot;a&quot;] ? $_GET[&quot;a&quot;] : &quot;&quot;;</span><br><span class="line">  $uid = @$_GET[&quot;uid&quot;] ? $_GET[&quot;uid&quot;] : 0;\r\n  if (empty($a)) &#123;</span><br><span class="line">    $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;非常抱歉，缺少参数!&quot;, &quot;code&quot;=&gt;-201);</span><br><span class="line">    exit(json_encode($output));</span><br><span class="line">  &#125;</span><br><span class="line">  //接口走的端口</span><br><span class="line">   if ($a == &quot;get_users&quot;) &#123;</span><br><span class="line">     //检查用户</span><br><span class="line">     if ($uid == 0) &#123;</span><br><span class="line">       $output = array(&quot;data&quot;=&gt;NULL, &quot;info&quot;=&gt;&quot;The uid is null!&quot;, &quot;code&quot;=&gt;-401);</span><br><span class="line">       exit(json_encode($output));</span><br><span class="line">     &#125;</span><br><span class="line">     //假设 $mysql 是数据库或者从网络读取的数据</span><br><span class="line">     $mysql = array(</span><br><span class="line">       10001 =&gt; array(</span><br><span class="line">         &quot;uid&quot;=&gt;10001,</span><br><span class="line">         &quot;vip&quot;=&gt;5,</span><br><span class="line">         &quot;nickname&quot; =&gt; &quot;Shine X&quot;,</span><br><span class="line">         &quot;email&quot;=&gt;&quot;88888888@qq.com&quot;,</span><br><span class="line">         &quot;qq&quot;=&gt;88888888,</span><br><span class="line">         &quot;ctime&quot;=&gt;1320321234,</span><br><span class="line">         &quot;lastLogin&quot;=&gt;1321121144,</span><br><span class="line">         &quot;level&quot;=&gt;19</span><br><span class="line">       ),10002 =&gt; array(</span><br><span class="line">         &quot;uid&quot;=&gt;10002,</span><br><span class="line">         &quot;vip&quot;=&gt;3,</span><br><span class="line">         &quot;nickname&quot; =&gt; &quot;elva&quot;,</span><br><span class="line">         &quot;email&quot;=&gt;&quot;99999999@qq.com&quot;,</span><br><span class="line">         &quot;qq&quot;=&gt;NULL,</span><br><span class="line">         &quot;ctime&quot;=&gt;1372323234,</span><br><span class="line">         &quot;lastLogin&quot;=&gt;1371122114,</span><br><span class="line">         &quot;level&quot;=&gt;12,</span><br><span class="line">       )</span><br><span class="line">     );</span><br><span class="line">     //检测查询的数据是否注册存在</span><br><span class="line">     $uidArr = array(10001,10002);</span><br><span class="line">     if (in_array($uid, $nickname, true)) &#123;</span><br><span class="line">       $output = array(&quot;data&quot; =&gt; NULL, &quot;info&quot;=&gt;&quot;The user does not exist!&quot;, &quot;code&quot; =&gt; -402);</span><br><span class="line">       exit(json_encode($output));</span><br><span class="line">     &#125;</span><br><span class="line">     //存在的开始查询数据库</span><br><span class="line">     $userInfo = $mysql[$uid];</span><br><span class="line">     //输出数据</span><br><span class="line">     $output = array(</span><br><span class="line">       &quot;data&quot; =&gt; array(&quot;userInfo&quot; =&gt; $userInfo),</span><br><span class="line">       &quot;info&quot; =&gt; &quot;Here is the message which, commonly used in popup window&quot;, //返回消息提示</span><br><span class="line">       &quot;code&quot; =&gt; 200, //成功与失败的代码，一般都是正数或者负数</span><br><span class="line">     );</span><br><span class="line">     exit(json_encode($output));</span><br><span class="line">     //其他端口查询还可以自己再继续添加，方法同上</span><br><span class="line">   &#125; elseif ($a == &quot;get_result&quot;) &#123;</span><br><span class="line">     //...</span><br><span class="line">     die(&quot;您正在调 get_result 接口!&quot;);</span><br><span class="line">   &#125; elseif ($a == &quot;get_upload&quot;) &#123;</span><br><span class="line">     //....</span><br><span class="line">     die(&quot;您正在调 get_upload 接口!&quot;);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>OK，以上便是自写api接口进行服务器和客户端之间交互的实例~</p>
 <p><img src="http://img.baidu.com/hi/face/i_f07.gif"/>很简单吧，有什么不懂的可以留言评论~</p>
 
       
@@ -704,29 +642,6 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- 评论模块 -->
-      
-        
-  <div class="comments" id="comments">
-    
-      <div id="gitalk-container"></div>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-      <script>
-        var gitalk = new Gitalk({
-          clientID: 'f9d80c822c0bc01e8457',
-          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
-          repo: 'ldyivan.github.io',
-          owner: 'ldyivan',
-          admin: ["ldyivan"],
-          id: location.pathname,
-          distractionFreeMode: 'false',
-          language: 'zh-CN'
-        })
-        gitalk.render('gitalk-container')
-      </script>
-    
-  </div>
- 
       
     
     

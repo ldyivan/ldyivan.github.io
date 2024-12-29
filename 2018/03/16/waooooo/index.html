@@ -177,15 +177,6 @@
         <span class="menu-text">分类</span>
       </a>
     
-      <a href="/photos" class="menu-item">
-        
-          
-              <i class="fas fa-photo-video"></i>
-            
-        
-        <span class="menu-text">相册</span>
-      </a>
-    
       <a href="/friends" class="menu-item">
         
           
@@ -575,20 +566,17 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>APP的主界面大概长这个样子：</p>
 <span id="more"></span>
 
-<img src="//api.hzv5.cn/images/dx_01.jpg" title="1521255490853660.png" alt="Screenshot_2018-03-17-09-38-19-00.png"/>
-
+<p><img src="/img/duxin/dx_01.jpg" alt="APP的主界面"></p>
 <p>最近有几位兄弟找到我，询问关于这个软件的原理是什么！</p>
 <p>我这边都是4字真言回复了他们：</p>
 <p>9的倍数！（这算是高冷嘛？）</p>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>具体原理是这样的：</p>
 <p>先来大概看一下流程，app的规则如下：</p>
-<img src="//api.hzv5.cn/images/dx_02.jpg" title="1521255508536007.png" alt="Screenshot_2018-03-17-09-43-52-06.png"/>
-
+<p><img src="/img/duxin/dx_02.jpg" alt="APP的主界面"></p>
 <p>（有的朋友看了规则就说，算法是固定的，你直接按照那个算法倒推回去不就是答案了嘛？其实不然，因为系统并不知道最初用户选择的是什么数字，更不知道用户通过算法计算之后的数字是什么！）</p>
 <p>然后这是用户寻找计算数字对应的符号的界面：</p>
-<img src="//api.hzv5.cn/images/dx_03.jpg" title="1521255529244927.png" alt="Screenshot_2018-03-17-09-43-27-23.png"/>
-
-<p>然后是系统给出答案的界面：<br><img src="//api.hzv5.cn/images/dx_04.jpg" title="1521255562746837.png" alt="Screenshot_2018-03-17-09-43-42-39.png"/></p>
+<p><img src="/img/duxin/dx_03.jpg" alt="APP的主界面"></p>
+<p>然后是系统给出答案的界面：<br><img src="/img/duxin/dx_04.jpg" alt="APP的主界面"></p>
 <p>4字真言“9的倍数”说的是：</p>
 <p>当用户心里默选了一个两位数的数字之后，通过上面提到的规则进行计算，得到的任何一个新的数字，必定是一个9的倍数，所以只需要将列表中的9的倍数对应的符号全部显示成一样的就可以了，最后再显示结果！</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>(知道了原理，就像魔术被解密了一样，变得了无生趣了，有木有？)</p>
@@ -663,29 +651,6 @@ document.addEventListener('DOMContentLoaded', function() {
       </div>
 
       <!-- 评论模块 -->
-      
-        
-  <div class="comments" id="comments">
-    
-      <div id="gitalk-container"></div>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-      <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-      <script>
-        var gitalk = new Gitalk({
-          clientID: 'f9d80c822c0bc01e8457',
-          clientSecret: '44ecbaaba9867c1a8c80966cd8b2a60cd182f3e9',
-          repo: 'ldyivan.github.io',
-          owner: 'ldyivan',
-          admin: ["ldyivan"],
-          id: location.pathname,
-          distractionFreeMode: 'false',
-          language: 'zh-CN'
-        })
-        gitalk.render('gitalk-container')
-      </script>
-    
-  </div>
- 
       
     
     
