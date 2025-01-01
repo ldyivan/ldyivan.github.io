@@ -861,6 +861,11 @@ http://api.k780.com:88/?app=qr.get&data=http://www.hzv5.cn&level=L&size=6
                 'Accept': 'application/json'
             }
         }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -871,7 +876,8 @@ http://api.k780.com:88/?app=qr.get&data=http://www.hzv5.cn&level=L&size=6
                 localStorage.removeItem('baidu_pushed_' + '2018/04/24/my-apis/');
             }
         }).catch(function(error) {
-            console.error('[Baidu Push] 请求失败:', error);
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Baidu Push] 请求未成功完成');
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('baidu_pushed_' + '2018/04/24/my-apis/');
         });
@@ -895,6 +901,11 @@ http://api.k780.com:88/?app=qr.get&data=http://www.hzv5.cn&level=L&size=6
                 'Accept': 'application/json'
             }
         }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -905,7 +916,8 @@ http://api.k780.com:88/?app=qr.get&data=http://www.hzv5.cn&level=L&size=6
                 localStorage.removeItem('bing_pushed_' + '2018/04/24/my-apis/');
             }
         }).catch(function(error) {
-            console.error('[Bing Push] 请求失败:', error);
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Bing Push] 请求未成功完成');
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('bing_pushed_' + '2018/04/24/my-apis/');
         });

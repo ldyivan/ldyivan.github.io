@@ -689,16 +689,38 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="random-loading-text">正在随机选择文章...</div>
   <div class="random-loading-spinner"></div>
   <div class="random-quotes">
-    知识的海洋中总有惊喜...
+    让我们看看今天的幸运文章是...
   </div>
 </div>
 
 <script>
+// 获取上次访问的文章路径
+const lastRandomPost = localStorage.getItem('lastRandomPost');
+const posts = [{"path":"2023/09/27/zfb-hb/","title":"支付宝0门槛红包，每日都可以领取1次"},{"path":"2018/04/24/my-apis/","title":"自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等...）"},{"path":"2025/01/01/hexo-random-post/","title":"Hexo博客实现随机文章功能的完整教程"},{"path":"2024/12/19/qqch-bot-readme/","title":"QQ频道机器人Android客户端使用指南"},{"path":"2024/12/19/qqch-bot-plugin/","title":"安卓版QQ频道机器人APP客户端插件开发指南"},{"path":"2024/10/15/ai-coding-assistants/","title":"2024年AI编程助手深度评测：哪款最适合你？"},{"path":"2024/06/25/uniapp-map-location/","title":"uni-app地图定位踩坑记：地图功能和定位的那些坑"},{"path":"2024/06/01/uniapp-file-upload/","title":"uni-app文件上传踩坑记：图片处理和上传全攻略"},{"path":"2024/05/10/uniapp-form-validation/","title":"uni-app表单验证踩坑记：这些坑我替你踩过了"},{"path":"2024/04/20/uniapp-common-issues/","title":"uni-app开发踩坑记录：新手必看的常见问题与解决方案"},{"path":"2024/04/15/uniapp-security/","title":"uni-app安全防护指南：构建可靠的跨端应用"},{"path":"2024/04/10/uniapp-optimization/","title":"uni-app性能优化指南：从加载到渲染的全方位提升"},{"path":"2024/04/05/uniapp-animation/","title":"uni-app动画效果实战：从基础到高级的动画实现指南"},{"path":"2024/03/30/uniapp-component/","title":"uni-app组件开发实战：从基础到进阶的最佳实践"},{"path":"2024/03/25/uniapp-network/","title":"uni-app网络请求与缓存策略：构建高效的数据层"},{"path":"2024/03/20/uniapp-state-management/","title":"uni-app状态管理进阶：Vuex最佳实践与性能优化"},{"path":"2024/03/15/uniapp-router/","title":"uni-app路由与页面跳转：最佳实践与踩坑指南"},{"path":"2024/03/10/uniapp-performance/","title":"uni-app性能优化实战：从加载到渲染的全方位提升"},{"path":"2024/02/18/uniapp-component-communication/","title":"uni-app组件通信完全指南：从基础到进阶"},{"path":"2024/01/05/uniapp-storage/","title":"uni-app数据存储全攻略：从本地存储到持久化方案"},{"path":"2023/11/28/uniapp-request/","title":"uni-app网络请求最佳实践：封装、拦截与错误处理"},{"path":"2023/10/15/uniapp-lifecycle/","title":"uni-app生命周期踩坑指南：常见错误与最佳实践"},{"path":"2023/09/08/uni_push/","title":"uni-app实现本地通知栏消息推送(不使用第三方插件)的知识点和一些坑"},{"path":"2023/07/24/github_api/","title":"使用vercel和github免费实现serverless api接口服务部署"},{"path":"2023/03/28/unity_note/","title":"Unity一些常用的小知识点笔记，WebGL部署报Unable to parse Build解决笔记"},{"path":"2023/03/13/js-array/","title":"修改JS数组中一个元素的值，其它元素也会跟着变化"},{"path":"2023/02/28/wx-mini/","title":"微信小程序的审核没有统一标准吗？真的太奇葩了..."},{"path":"2023/02/22/wx-xcx-canvas/","title":"避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决"},{"path":"2022/02/14/android-nft/","title":"笔记：实现数组排列组合图片合成，做一个NFT生成器！"},{"path":"2021/06/07/android-gif/","title":"Android实现帧动画动态设置播放时间间隔"},{"path":"2020/12/23/GitTalk-Error/","title":"Hexo添加完GitTalk评论系统后报错以及解决办法"},{"path":"2020/12/22/yilia-photos/","title":"Hexo依靠yilia主题实现添加相册目录"},{"path":"2020/12/22/hexo-github/","title":"使用hexo+github搭建免费个人博客详细教程"},{"path":"2020/12/22/hello-world/","title":"Hello World"},{"path":"2020/12/14/About-Git-Err-2/","title":"Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记"},{"path":"2020/05/10/test_sfy/","title":"三丰云免费主机和服务器的使用体验和感受"},{"path":"2020/04/07/hexo-rep/","title":"当你更换电脑设备，怎么重新部署自己的Hexo博客"},{"path":"2020/04/03/mylist-app/","title":"把自己做的一些小工具app归类到了网站上"},{"path":"2019/11/30/add-rssblog/","title":"一款博主自己写的博客订阅安卓APP"},{"path":"2019/09/17/cnb-huawei/","title":"吹水一波，生活需要一丢丢的调节剂"},{"path":"2019/08/17/About-Git-Err/","title":"关于Git以及相关工具(Gitalk等等)在使用过程中的一些错误及解决办法"},{"path":"2019/07/15/encode-top-test/","title":"Hexo实现文章加密和文章置顶的方法与演示"},{"path":"2019/01/11/baidu-yuyin/","title":"百度文字合成语音的api接口，以及其他失效的接口，找了新的免费语音接口！"},{"path":"2018/10/28/android-qq-share/","title":"Android 利用腾讯开放平台的官方SDK，实现自定义QQ分享。并备份一下android-support-v7安卓支持包！"},{"path":"2018/08/15/QQshare-Err/","title":"关于Android自定义QQ分享提示未正确授权，错误码901115"},{"path":"2018/05/04/tucao-sjirji/","title":"吐槽一下下，关于最近的社交软件开放的账号销户功能！"},{"path":"2018/04/23/caihong-encode/","title":"关于新版彩虹代刷hashsalt值如何还原出真实值"},{"path":"2018/03/16/waooooo/","title":"最近有一件很神奇的事情发生，哈哈！"},{"path":"2018/01/30/php-api/","title":"php自写api数据接口实例笔记"},{"path":"2018/01/28/php-http/","title":"php打开网页链接请求http连接的方法"},{"path":"2018/01/25/coding-pages/","title":"coding pages托管项目是有点小尴尬~"}];
+
+// 过滤掉上次访问的文章
+let availablePosts = lastRandomPost ? posts.filter(post => post.path !== lastRandomPost) : posts;
+
+// 如果没有可用文章，使用所有文章
+if (availablePosts.length === 0) {
+  availablePosts = posts;
+}
+
+// 随机选择一篇文章
+const randomPost = availablePosts[Math.floor(Math.random() * availablePosts.length)];
+
 // 添加一些随机延迟，让加载动画显示一会儿
 setTimeout(function() {
+  // 记录本次访问的文章路径
+  localStorage.setItem('lastRandomPost', randomPost.path);
+  
+  // 添加时间戳来避免缓存
+  const timestamp = new Date().getTime();
+  const targetUrl = '/2024/12/19/qqch-bot-readme/?_=' + timestamp;
+  
   // 使用 history.replaceState 来替换历史记录，这样按返回键时不会回到随机页面
-  history.replaceState(null, '', '/2024/12/19/qqch-bot-readme/');
-  window.location.href = '/2024/12/19/qqch-bot-readme/';
+  history.replaceState(null, '', targetUrl);
+  window.location.href = targetUrl;
 }, Math.random() * 1000 + 1000); // 1-2秒的随机延迟
 </script>
 

@@ -839,6 +839,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Accept': 'application/json'
             }
         }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -849,7 +854,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.removeItem('baidu_pushed_' + '2018/05/04/tucao-sjirji/');
             }
         }).catch(function(error) {
-            console.error('[Baidu Push] 请求失败:', error);
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Baidu Push] 请求未成功完成');
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('baidu_pushed_' + '2018/05/04/tucao-sjirji/');
         });
@@ -873,6 +879,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Accept': 'application/json'
             }
         }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -883,7 +894,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 localStorage.removeItem('bing_pushed_' + '2018/05/04/tucao-sjirji/');
             }
         }).catch(function(error) {
-            console.error('[Bing Push] 请求失败:', error);
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Bing Push] 请求未成功完成');
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('bing_pushed_' + '2018/05/04/tucao-sjirji/');
         });
