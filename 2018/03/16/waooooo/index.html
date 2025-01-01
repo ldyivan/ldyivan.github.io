@@ -712,6 +712,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- 遮罩层 -->
 <div class="reward-overlay" id="reward-overlay"></div>
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('baidu_pushed_' + '2018/03/16/waooooo/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('baidu_pushed_' + '2018/03/16/waooooo/', '1');
+        // 发送异步请求进行推送
+        var pushUrl = '/baidu-push-url';
+        var formData = new FormData();
+        formData.append('url', '2018/03/16/waooooo/');
+        
+        fetch(pushUrl, {
+            method: 'POST',
+            body: formData
+        }).then(function(response) {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Baidu Push] 推送成功');
+            } else {
+                console.error('[Baidu Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('baidu_pushed_' + '2018/03/16/waooooo/');
+            }
+        }).catch(function(error) {
+            console.error('[Baidu Push] 请求失败:', error);
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('baidu_pushed_' + '2018/03/16/waooooo/');
+        });
+    }
+})();
+</script>
+
       </div>
     </main>
 
