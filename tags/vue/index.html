@@ -55,6 +55,93 @@
       document.documentElement.style.visibility = 'visible';
     });
   </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
+  
+
+  
+    <meta name="keywords" content="吖远zzy,编程爱好者,前端开发,Vue.js,React,Node.js,JavaScript,TypeScript,Web开发,全栈开发,编程教程,技术博客,软件开发,程序员,开发者,coding">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/tags/Vue/index.html">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/tags/Vue/index.html">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/tags/Vue/index.html"
+        },
+        "headline": "吖远zzyの博客",
+        
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
 </head>
@@ -182,6 +269,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
       </a>
     
       <a href="/photos" class="menu-item">
@@ -536,7 +632,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="category-header">
   <h1 class="page-title">
     <i class="fas fa-tag"></i>
-    vue
+    Vue
   </h1>
   <div class="category-counter">
     共计 2 篇文章
@@ -549,26 +645,25 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="post-item">
       <div class="post-date">
         <i class="fas fa-calendar"></i>
-        2023-03-13
+        2024-02-18
       </div>
       <div class="post-info">
         <h2 class="post-title">
-          <a href="/2023/03/13/js-array/">修改JS数组中一个元素的值，其它元素也会跟着变化</a>
+          <a href="/2024/02/18/uniapp-component-communication/">uni-app组件通信完全指南：从基础到进阶</a>
         </h2>
         <div class="post-meta">
           
             <div class="post-categories">
               <i class="fas fa-folder"></i>
-              <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>，<a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/">笔记</a>
+              <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a>，<a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/uni-app/">uni-app</a>
             </div>
           
         </div>
         
           <div class="post-excerpt">
-            <h1 id="js的神奇"><a href="#js的神奇" class="headerlink" title="js的神奇"></a>js的神奇</h1><h2 id="知识点问题复现"><a href="#知识点问题复现" class="headerlink" title="知识点问题复现"></a>知识点问题复现</h2><p>今天在码着代码调试的时候，根据条件判断将一个数组的一个元素值进行增或者减的操作，结果发现，数组中的其它元素也都跟着变了。</p>
-<p>第一次碰见这种情况，检查了好几遍代码也没感觉哪里有写错，有点一头雾水，甚至写了各种小demo调试。</p>
-<p>最后发现，是关于js的堆与栈问题…</p>
-<p>示例代码：</p>
+            <blockquote>
+<p>组件通信是uni-app开发中的重要环节,选择合适的通信方式对提升代码质量和开发效率至关重要。本文将详细介绍各种组件通信方案的使用场景和最佳实践。</p>
+</blockquote>
           </div>
         
       </div>
@@ -577,25 +672,25 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="post-item">
       <div class="post-date">
         <i class="fas fa-calendar"></i>
-        2023-02-22
+        2023-10-15
       </div>
       <div class="post-info">
         <h2 class="post-title">
-          <a href="/2023/02/22/wx-xcx-canvas/">避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决</a>
+          <a href="/2023/10/15/uniapp-lifecycle/">uni-app生命周期踩坑指南：常见错误与最佳实践</a>
         </h2>
         <div class="post-meta">
           
             <div class="post-categories">
               <i class="fas fa-folder"></i>
-              <a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>，<a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/">笔记</a>，<a class="category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/vue/">vue</a>
+              <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</a>，<a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/uni-app/">uni-app</a>
             </div>
           
         </div>
         
           <div class="post-excerpt">
-            <h1 id="Unhandled-promise-rejection错误"><a href="#Unhandled-promise-rejection错误" class="headerlink" title="Unhandled promise rejection错误"></a>Unhandled promise rejection错误</h1><h2 id="报错详情"><a href="#报错详情" class="headerlink" title="报错详情"></a>报错详情</h2><p>使用网络图片地址请求时，后台数据有正常返回，但前端promise处理报错。</p>
-<p>例如图片链接失效出现404时，一报错的时候，就不继续往下执行后面的代码</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>
+            <blockquote>
+<p>在uni-app开发中,正确理解和使用生命周期函数是避免各种异常问题的关键。本文将详细介绍uni-app生命周期中的常见陷阱和解决方案。</p>
+</blockquote>
           </div>
         
       </div>

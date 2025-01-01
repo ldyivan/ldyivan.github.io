@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <!DOCTYPE html>
+<html lang="zh-CN" style="visibility: hidden;">
+<script>
+  (function() {
+    const darkMode = localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (darkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      // 预设背景色，避免闪烁
+      document.documentElement.style.backgroundColor = '#1a1a1a';
+    } else {
+      document.documentElement.style.backgroundColor = '#ffffff';
+    }
+  })();
+</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>2024年AI编程助手深度评测：哪款最适合你？ | 吖远zzyの博客</title>
+  
+  <!-- 不蒜子统计 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 网站图标 -->
+  <link rel="icon" href="/favicon.ico">
+  
+  <!-- Font Awesome -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <!-- 预加载字体文件 -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Fancybox -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+  
+  
+  <!-- RSS -->
+  
+  
+  <script>
+    // 在样式加载完成后显示页面
+    window.addEventListener('load', function() {
+      document.documentElement.style.visibility = 'visible';
+    });
+  </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="深度评测2024年主流AI编程助手，包括Cursor、CodeGeeX等国内外知名工具，从多个维度对比分析各自优缺点，帮助开发者选择最适合的AI编程助手。">
+  
+
+  
+    <meta name="keywords" content="AI编程助手,Cursor,CodeGeeX,编程效率,AI工具评测">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/2024/10/15/ai-coding-assistants/">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="2024年AI编程助手深度评测：哪款最适合你？ | 吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/2024/10/15/ai-coding-assistants/">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="深度评测2024年主流AI编程助手，包括Cursor、CodeGeeX等国内外知名工具，从多个维度对比分析各自优缺点，帮助开发者选择最适合的AI编程助手。">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/2024/10/15/ai-coding-assistants/"
+        },
+        "headline": "2024年AI编程助手深度评测：哪款最适合你？",
+        
+            "datePublished": "2024-10-15T06:30:00.000Z",
+        
+        
+            "dateModified": "2024-10-15T06:30:00.000Z",
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "深度评测2024年主流AI编程助手，包括Cursor、CodeGeeX等国内外知名工具，从多个维度对比分析各自优缺点，帮助开发者选择最适合的AI编程助手。"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
+</head>
+
+</html></head>
+<body>
+  <!-- Loading 容器 -->
+  <div class="loading-container">
+    <div class="loading-spinner">
+      <div class="cube">
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 页面加载进度条 -->
+  <div class="loading-bar"></div>
+
+  <div class="container">
+    <!-- 左侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- 个人信息 -->
+        
+          <div class="profile">
+            <div class="avatar">
+              <a href="/">
+                <img src="/img/logo.png" alt="吖远zzy">
+              </a>
+            </div>
+            <h2 class="name">吖远zzy</h2>
+            <p class="description">一个不知名的编程爱好者~</p>
+            
+            <div class="social-links">
+              
+                <a href="https://github.com/ldyivan" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fab fa-github"></i>
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/cy/" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-book"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/dnfshow/" target="_blank" rel="noopener">
+                  
+                    <img class="social-icon" src="/img/dnf.png" alt="dnfshow">
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/qqgj/" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-comment-dollar"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/blogPic/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-image"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/android/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-user-astronaut"></i>
+                  
+                </a>
+              
+                <a href="http://weibo.com/u/1625877175" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fab fa-weibo"></i>
+                  
+                </a>
+              
+                <a href="mailto:i@hzv5.cn" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-envelope"></i>
+                  
+                </a>
+              
+                <a href="/atom.xml" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-rss"></i>
+                  
+                </a>
+              
+            </div>
+          </div>
+        
+
+        <!-- 导航菜单 -->
+        <div class="widget-wrap menu-wrap">
+  <nav class="menu">
+    
+      <a href="/" class="menu-item">
+        
+          
+              <i class="fas fa-home"></i>
+            
+        
+        <span class="menu-text">首页</span>
+      </a>
+    
+      <a href="/archives" class="menu-item">
+        
+          
+              <i class="fas fa-archive"></i>
+            
+        
+        <span class="menu-text">归档</span>
+      </a>
+    
+      <a href="/categories" class="menu-item">
+        
+          
+              <i class="fas fa-folder-open"></i>
+            
+        
+        <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
+      </a>
+    
+      <a href="/photos" class="menu-item">
+        
+          
+              <i class="fas fa-photo-video"></i>
+            
+        
+        <span class="menu-text">相册</span>
+      </a>
+    
+      <a href="/friends" class="menu-item">
+        
+          
+              <i class="fas fa-link"></i>
+            
+        
+        <span class="menu-text">友链</span>
+      </a>
+    
+      <a href="/guestbook" class="menu-item">
+        
+          
+              <span class="menu-icon svg-icon">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+              </span>
+            
+        
+        <span class="menu-text">留言</span>
+      </a>
+    
+      <a href="/about" class="menu-item">
+        
+          
+              <i class="fas fa-user"></i>
+            
+        
+        <span class="menu-text">关于</span>
+      </a>
+    
+  </nav>
+</div> 
+
+        <!-- 搜索框 -->
+        
+          <!-- 搜索框 -->
+<div class="search-box">
+  <div class="search-input-wrap">
+    <input type="text" class="search-input" placeholder="搜索文章...">
+    <i class="fas fa-search search-icon" id="search-btn"></i>
+  </div>
+</div>
+
+<!-- 搜索结果容器 -->
+<div class="search-result-container">
+  <div class="search-result-wrapper">
+    <div class="search-result-header">
+      <h3>搜索结果</h3>
+      <button class="search-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="search-result-list"></div>
+    <div class="search-result-empty" style="display: none;">
+      <div class="icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="text">未找到相关结果</div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResultContainer = document.querySelector('.search-result-container');
+  const searchResultList = document.querySelector('.search-result-list');
+  const searchCloseBtn = document.querySelector('.search-close-btn');
+  const searchEmpty = document.querySelector('.search-result-empty');
+
+  // 格式化日期
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  async function performSearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    searchResultContainer.classList.add('active');
+    searchResultList.innerHTML = '<div class="loading">搜索中...</div>';
+    searchEmpty.style.display = 'none';
+
+    try {
+      const searchPath = '/search.xml';
+      const response = await fetch(searchPath);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const xmlText = await response.text();
+      
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+        throw new Error('XML解析错误');
+      }
+
+      const posts = xmlDoc.getElementsByTagName('entry');
+
+      
+      const results = Array.from(posts).filter(post => {
+        try {
+          const title = post.querySelector('title')?.textContent.toLowerCase() || '';
+          const content = post.querySelector('content')?.textContent.toLowerCase() || '';
+          return title.includes(query.toLowerCase()) || content.includes(query.toLowerCase());
+        } catch (e) {
+          console.error('处理文章时出错:', e);
+          return false;
+        }
+      });
+
+      if (results.length === 0) {
+        searchResultList.innerHTML = '';
+        searchEmpty.style.display = 'block';
+        return;
+      }
+
+      searchResultList.innerHTML = results.map(post => {
+        try {
+          const title = post.querySelector('title')?.textContent || '无标题';
+          const url = post.querySelector('url')?.textContent || '';
+          const path = url.replace(/^\/|\/$/g, '');
+          
+          // 从文件路径中提取日期
+          const dateMatch = path.match(/(\d{4})\/(\d{2})\/(\d{2})/);
+          const displayDate = dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : '';
+          
+          // 获取分类信息
+          const categories = Array.from(post.getElementsByTagName('category'))
+            .filter(cat => cat.textContent.trim() && !cat.getAttribute('scheme'));
+          const categoryHtml = categories
+            .map(category => {
+              const term = category.textContent.trim();
+              return `<span class="category"><i class="fas fa-folder"></i>${term}</span>`;
+            })
+            .join('');
+          
+          // 获取标签信息并合并显示
+          const tags = Array.from(post.getElementsByTagName('tags')?.[0]?.getElementsByTagName('tag') || []);
+          const tagHtml = tags.length > 0 ? 
+            `<span class="tags"><i class="fas fa-tags"></i>${tags.map(tag => tag.textContent.trim()).join(', ')}</span>` : '';
+
+          return `
+            <div class="search-result-item">
+              <div class="title">
+                <a href="/${path}">${title}</a>
+              </div>
+              <div class="meta">
+                ${displayDate ? `<span class="date"><i class="fas fa-calendar"></i>${displayDate}</span>` : ''}
+                ${categoryHtml}
+                ${tagHtml}
+              </div>
+            </div>
+          `;
+        } catch (e) {
+          console.error('生成搜索结果HTML时出错:', e);
+          return '';
+        }
+      }).join('');
+    } catch (err) {
+      console.error('搜索出错:', err);
+      searchResultList.innerHTML = `<div class="error">搜索出错: ${err.message}</div>`;
+    }
+  }
+
+  // 事件绑定
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  searchCloseBtn.addEventListener('click', () => {
+    searchResultContainer.classList.remove('active');
+  });
+
+  searchResultContainer.addEventListener('click', (e) => {
+    if (e.target === searchResultContainer) {
+      searchResultContainer.classList.remove('active');
+    }
+  });
+});
+</script>
+
+<style>
+.search-result-item {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+  background-color: var(--card-header-bg);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item .title {
+  margin-bottom: 12px;
+}
+
+.search-result-item .title a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.search-result-item .title a:hover {
+  color: var(--primary-color);
+}
+
+.search-result-item .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9em;
+  color: var(--text-color-secondary);
+  align-items: center;
+}
+
+.search-result-item .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-result-item .meta i {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.search-result-item .meta .date {
+  color: var(--text-color-secondary);
+  font-weight: 500;
+}
+
+.search-result-item .meta .category,
+.search-result-item .meta .tags {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--card-header-bg);
+  transition: all 0.3s ease;
+}
+
+.search-result-item .meta .category:hover,
+.search-result-item .meta .tags:hover {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+}
+
+.search-result-item .meta .tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+</style> 
+        
+    
+        <!-- 粒子时钟 -->
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px 0;">
+          <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+        </div>
+    
+        <!-- 版权和备案信息 -->
+        <div class="sidebar-footer">
+          <!-- 备案信息 -->
+          
+            <div class="beian">
+              
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow noopener noreferrer">
+                  <i class="fas fa-shield-alt"></i>
+                  粤ICP备17005281号-1
+                </a>
+              
+              
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44130202001331" target="_blank" rel="external nofollow noopener noreferrer">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABDCAYAAADEfbZbAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF+GlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgMTE2LjE2NDY1NSwgMjAyMS8wMS8yNi0xNTo0MToyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA1LTE3VDA5OjU3OjU1KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDplZmVjMTAxOS02ZjI2LTRlNjMtYmU3ZC03ZTI3ZDMxYmE3NzUiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo1MThjZTRmYS1hMjQ4LTAwNGYtYWVhYi1hYjQxZGU5YWUxNjIiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmNDFkNGExYy0xMjZjLTQ4MDQtYTE3Zi1mNTJkYTJjZDkzMmYiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmY0MWQ0YTFjLTEyNmMtNDgwNC1hMTdmLWY1MmRhMmNkOTMyZiIgc3RFdnQ6d2hlbj0iMjAyMi0wNS0xN1QwOTo1Nzo1NSswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmVmZWMxMDE5LTZmMjYtNGU2My1iZTdkLTdlMjdkMzFiYTc3NSIgc3RFdnQ6d2hlbj0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BNXVtQAAJTVJREFUeJy9u2m0ZVd13/tbzW5Pf8/t6lZzS1WlUqnUIlGSkAQCLEAgYZCMwBgIARxsTJzYsbHjZ8eRXxM8XhKI7eBnIJgMTBwixWBQA1gIBJKQUN9UlaqkKlV/++60u11rvQ9XIAukOMLAHuN8OWOcvefv7Lnm/M+15hT8jK/bbruhPmpOXNFojP1GsjZ7qJPrv/jP9r88ftPbhflZ2iF+Vg+6/yvvPStyg7f5uXmT6KxdtLSY0hqPkUokutb4xkohbj0yrH3x7e//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" alt="公安备案图标">
+                  粤公网安备44130202001331号
+                </a>
+              
+            </div>
+          
+
+          <!-- 版权信息 -->
+          
+            <div class="copyright">
+              <span>© 2018 - 2025</span>
+              <a href="https://www.hzv5.cn" target="_blank">
+                <span>吖远zzy</span>
+              </a>
+              
+                <br>
+                <span>All rights reserved.</span>
+              
+            </div>
+          
+
+          <!-- Powered by 信息 -->
+          <div class="powered-by">
+            <span>Powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span>
+            <span>Theme by - <a href="https://github.com/ldyivan/hexo-theme-ldysprout" target="_blank" rel="external nofollow noopener noreferrer">LdySprout</a></span>
+          </div>
+
+          <!-- 不蒜子统计 -->
+          
+            <div class="busuanzi-count">
+              <div class="site-stats">
+                
+                  <span class="site-uv">
+                    <i class="fas fa-user"></i>
+                    <span id="busuanzi_value_site_uv">0</span> 人
+                  </span>
+                 | 
+                
+                  <span class="site-pv">
+                    <i class="fas fa-eye"></i>
+                    <span id="busuanzi_value_site_pv">0</span> 次
+                  </span>
+                
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <div class="content-inner">
+        <!-- 阅读进度条 -->
+<div class="reading-progress-bar" id="reading-progress-bar"></div>
+
+
+  <!-- 文章目录 -->
+  <div class="article-toc collapsed" id="article-toc">
+    <div class="toc-title">
+      <i class="fas fa-list"></i>
+      <span>目录</span>
+    </div>
+    <div class="toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Cursor-%E4%B8%93%E6%B3%A8%E9%AB%98%E6%95%88%E7%9A%84AI%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B"><span class="toc-number">1.</span> <span class="toc-text">1. Cursor - 专注高效的AI编程助手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 主要特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E4%BC%98%E7%82%B9"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E7%BC%BA%E7%82%B9"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CodeGeeX-%E5%9B%BD%E4%BA%A7%E4%BC%98%E7%A7%80AI%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B"><span class="toc-number">2.</span> <span class="toc-text">2. CodeGeeX - 国产优秀AI编程助手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 主要特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E4%BC%98%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E7%BC%BA%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-GitHub-Copilot-%E6%9C%80%E5%8F%97%E6%AC%A2%E8%BF%8E%E7%9A%84AI%E5%8A%A9%E6%89%8B"><span class="toc-number">3.</span> <span class="toc-text">3. GitHub Copilot - 最受欢迎的AI助手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E4%B8%BB%E8%A6%81%E7%89%B9%E7%82%B9"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 主要特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E4%BC%98%E7%82%B9"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E7%BC%BA%E7%82%B9"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 缺点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%9B%BD%E5%86%85%E5%85%B6%E4%BB%96AI%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B"><span class="toc-number">4.</span> <span class="toc-text">4. 国内其他AI编程助手</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-MarsCode-%E6%8A%96%E9%9F%B3%E5%AE%98%E6%96%B9AI%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B"><span class="toc-number">4.1.</span> <span class="toc-text">4.1 MarsCode - 抖音官方AI编程助手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%99%BE%E5%BA%A6%E6%99%BA%E8%83%BD%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 百度智能编程助手</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E9%98%BF%E9%87%8C%E4%BA%91%E4%BB%A3%E7%A0%81%E6%99%BA%E8%83%BD%E5%8A%A9%E6%89%8B"><span class="toc-number">4.3.</span> <span class="toc-text">4.3 阿里云代码智能助手</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-number">5.</span> <span class="toc-text">5. 选择建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E4%B8%8D%E5%90%8C%E5%9C%BA%E6%99%AF%E7%9A%84%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 不同场景的选择建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E9%80%89%E6%8B%A9%E8%80%83%E8%99%91%E5%9B%A0%E7%B4%A0"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 选择考虑因素</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7%E5%88%86%E4%BA%AB"><span class="toc-number">6.</span> <span class="toc-text">6. 使用技巧分享</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E6%8F%90%E9%AB%98AI%E5%8A%A9%E6%89%8B%E6%95%88%E7%8E%87%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">6.1.</span> <span class="toc-text">6.1 提高AI助手效率的技巧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E9%81%BF%E5%85%8D%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">6.2.</span> <span class="toc-text">6.2 避免常见误区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E6%9C%AA%E6%9D%A5%E5%B1%95%E6%9C%9B"><span class="toc-number">7.</span> <span class="toc-text">7. 未来展望</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">8. 总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E4%BA%A7%E5%93%81%E5%AF%B9%E6%AF%94%E5%88%86%E6%9E%90"><span class="toc-number">9.</span> <span class="toc-text">5. 产品对比分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E5%8A%9F%E8%83%BD%E5%AF%B9%E6%AF%94"><span class="toc-number">9.1.</span> <span class="toc-text">5.1 功能对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%BB%B7%E6%A0%BC%E5%AF%B9%E6%AF%94"><span class="toc-number">9.2.</span> <span class="toc-text">5.2 价格对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF%E5%AF%B9%E6%AF%94"><span class="toc-number">9.3.</span> <span class="toc-text">5.3 适用场景对比</span></a></li></ol></li></ol>
+    </div>
+  </div>
+
+
+<article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-inner">
+    <header class="article-header">
+      <h2 class="article-title">
+        <a href="/2024/10/15/ai-coding-assistants/">2024年AI编程助手深度评测：哪款最适合你？</a>
+        
+          <span class="article-views">
+            <i class="fas fa-eye"></i>
+            <span id="busuanzi_value_page_pv">0</span> 次阅读
+          </span>
+        
+      </h2>
+      <div class="article-meta">
+        <span class="article-date">
+          <i class="fas fa-calendar-alt"></i>
+          2024-10-15
+        </span>
+        
+          <span class="article-categories">
+            <i class="fas fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E8%AF%84%E6%B5%8B/">技术评测</a> <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF%E8%AF%84%E6%B5%8B/AI%E5%B7%A5%E5%85%B7/">AI工具</a>
+          </span>
+        
+        
+          <span class="article-wordcount">
+            <i class="fas fa-file-word"></i>
+            
+            2443 字
+            
+              · 7 分钟
+            
+          </span>
+        
+        
+          <span class="article-tags">
+            <i class="fas fa-tags"></i>
+            <a class="article-tag-none-link" href="/tags/AI%E7%BC%96%E7%A8%8B/" rel="tag">AI编程</a> <a class="article-tag-none-link" href="/tags/CodeGeeX/" rel="tag">CodeGeeX</a> <a class="article-tag-none-link" href="/tags/Cursor/" rel="tag">Cursor</a> <a class="article-tag-none-link" href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" rel="tag">开发工具</a> <a class="article-tag-none-link" href="/tags/%E7%BC%96%E7%A8%8B%E5%8A%A9%E6%89%8B/" rel="tag">编程助手</a>
+          </span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      
+        <blockquote>
+<p>随着AI技术的快速发展，各种AI编程助手层出不穷。本文将深入对比主流AI编程助手的优缺点，帮助你找到最适合自己的AI编程伙伴。</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-Cursor-专注高效的AI编程助手"><a href="#1-Cursor-专注高效的AI编程助手" class="headerlink" title="1. Cursor - 专注高效的AI编程助手"></a>1. Cursor - 专注高效的AI编程助手</h2><h3 id="1-1-主要特点"><a href="#1-1-主要特点" class="headerlink" title="1.1 主要特点"></a>1.1 主要特点</h3><ul>
+<li>基于先进的AI模型</li>
+<li>完整的IDE功能</li>
+<li>强大的代码补全和生成能力</li>
+<li>支持多种编程语言</li>
+<li>实时代码分析和建议</li>
+</ul>
+<h3 id="1-2-优点"><a href="#1-2-优点" class="headerlink" title="1.2 优点"></a>1.2 优点</h3><ol>
+<li><p><strong>代码理解能力强</strong></p>
+<ul>
+<li>能准确理解项目上下文</li>
+<li>提供精准的代码建议</li>
+<li>支持复杂代码重构</li>
+</ul>
+</li>
+<li><p><strong>交互体验优秀</strong></p>
+<ul>
+<li>界面简洁直观</li>
+<li>响应速度快</li>
+<li>支持自然语言交互</li>
+</ul>
+</li>
+<li><p><strong>功能完整性</strong></p>
+<ul>
+<li>集成Git版本控制</li>
+<li>支持代码调试</li>
+<li>内置终端功能</li>
+</ul>
+</li>
+</ol>
+<h3 id="1-3-缺点"><a href="#1-3-缺点" class="headerlink" title="1.3 缺点"></a>1.3 缺点</h3><ol>
+<li><p><strong>资源占用较高</strong></p>
+<ul>
+<li>运行需要较好的硬件配置</li>
+<li>启动速度较慢</li>
+</ul>
+</li>
+<li><p><strong>收费较高</strong></p>
+<ul>
+<li>完整功能需要付费订阅</li>
+<li>价格对个人开发者略高</li>
+</ul>
+</li>
+</ol>
+<h2 id="2-CodeGeeX-国产优秀AI编程助手"><a href="#2-CodeGeeX-国产优秀AI编程助手" class="headerlink" title="2. CodeGeeX - 国产优秀AI编程助手"></a>2. CodeGeeX - 国产优秀AI编程助手</h2><h3 id="2-1-主要特点"><a href="#2-1-主要特点" class="headerlink" title="2.1 主要特点"></a>2.1 主要特点</h3><ul>
+<li>支持中文交互</li>
+<li>离线运行能力</li>
+<li>跨平台支持</li>
+<li>多种编辑器插件</li>
+</ul>
+<h3 id="2-2-优点"><a href="#2-2-优点" class="headerlink" title="2.2 优点"></a>2.2 优点</h3><ol>
+<li><p><strong>本地化优势</strong></p>
+<ul>
+<li>完善的中文支持</li>
+<li>符合国内开发习惯</li>
+<li>响应速度快</li>
+</ul>
+</li>
+<li><p><strong>性价比高</strong></p>
+<ul>
+<li>基础功能免费</li>
+<li>企业版价格合理</li>
+<li>教育优惠政策</li>
+</ul>
+</li>
+<li><p><strong>安全性好</strong></p>
+<ul>
+<li>支持私有部署</li>
+<li>代码不出境</li>
+<li>数据安全有保障</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-3-缺点"><a href="#2-3-缺点" class="headerlink" title="2.3 缺点"></a>2.3 缺点</h3><ol>
+<li><p><strong>功能完整度</strong></p>
+<ul>
+<li>部分高级功能不如国外产品</li>
+<li>IDE集成度有待提高</li>
+</ul>
+</li>
+<li><p><strong>模型能力</strong></p>
+<ul>
+<li>在某些专业领域理解不够深入</li>
+<li>代码生成质量略低于顶级产品</li>
+</ul>
+</li>
+</ol>
+<h2 id="3-GitHub-Copilot-最受欢迎的AI助手"><a href="#3-GitHub-Copilot-最受欢迎的AI助手" class="headerlink" title="3. GitHub Copilot - 最受欢迎的AI助手"></a>3. GitHub Copilot - 最受欢迎的AI助手</h2><h3 id="3-1-主要特点"><a href="#3-1-主要特点" class="headerlink" title="3.1 主要特点"></a>3.1 主要特点</h3><ul>
+<li>微软和GitHub联合开发</li>
+<li>基于OpenAI技术</li>
+<li>支持主流编辑器</li>
+<li>强大的代码生成能力</li>
+</ul>
+<h3 id="3-2-优点"><a href="#3-2-优点" class="headerlink" title="3.2 优点"></a>3.2 优点</h3><ol>
+<li><p><strong>代码质量高</strong></p>
+<ul>
+<li>基于海量GitHub代码训练</li>
+<li>生成代码可读性好</li>
+<li>注释详细准确</li>
+</ul>
+</li>
+<li><p><strong>集成度高</strong></p>
+<ul>
+<li>支持VS Code等主流IDE</li>
+<li>操作便捷</li>
+<li>学习成本低</li>
+</ul>
+</li>
+<li><p><strong>更新频繁</strong></p>
+<ul>
+<li>持续改进和优化</li>
+<li>Bug修复及时</li>
+<li>新功能不断</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-3-缺点"><a href="#3-3-缺点" class="headerlink" title="3.3 缺点"></a>3.3 缺点</h3><ol>
+<li><p><strong>价格较贵</strong></p>
+<ul>
+<li>月付费用较高</li>
+<li>没有永久授权选项</li>
+</ul>
+</li>
+<li><p><strong>网络依赖</strong></p>
+<ul>
+<li>需要稳定的网络连接</li>
+<li>无法离线使用</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-国内其他AI编程助手"><a href="#4-国内其他AI编程助手" class="headerlink" title="4. 国内其他AI编程助手"></a>4. 国内其他AI编程助手</h2><h3 id="4-1-MarsCode-抖音官方AI编程助手"><a href="#4-1-MarsCode-抖音官方AI编程助手" class="headerlink" title="4.1 MarsCode - 抖音官方AI编程助手"></a>4.1 MarsCode - 抖音官方AI编程助手</h3><p><strong>主要特点：</strong></p>
+<ul>
+<li>字节跳动官方出品</li>
+<li>基于先进的CodeFuse大模型</li>
+<li>支持VSCode、JetBrains等主流IDE</li>
+<li>提供Web版在线使用</li>
+<li>完全免费使用</li>
+</ul>
+<p><strong>优点：</strong></p>
+<ol>
+<li><p><strong>强大的代码生成能力</strong></p>
+<ul>
+<li>基于海量字节跳动内部代码训练</li>
+<li>支持40+种主流编程语言</li>
+<li>代码质量和可用性较高</li>
+<li>支持完整函数和类的生成</li>
+</ul>
+</li>
+<li><p><strong>智能交互体验</strong></p>
+<ul>
+<li>支持自然语言对话</li>
+<li>提供代码解释和优化建议</li>
+<li>实时代码补全</li>
+<li>多轮对话上下文理解</li>
+</ul>
+</li>
+<li><p><strong>便捷的使用方式</strong></p>
+<ul>
+<li>完全免费，无需付费</li>
+<li>支持Web端直接使用</li>
+<li>IDE插件集成便捷</li>
+<li>快速的响应速度</li>
+</ul>
+</li>
+<li><p><strong>中文支持优秀</strong></p>
+<ul>
+<li>完善的中文交互</li>
+<li>准确的中文需求理解</li>
+<li>详细的中文注释生成</li>
+<li>符合国内开发习惯</li>
+</ul>
+</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li><p><strong>功能限制</strong></p>
+<ul>
+<li>部分高级功能尚未开放</li>
+<li>代码分析深度有限</li>
+<li>重构功能相对基础</li>
+</ul>
+</li>
+<li><p><strong>生态体系</strong></p>
+<ul>
+<li>插件数量较少</li>
+<li>社区资源不够丰富</li>
+<li>文档和教程较少</li>
+</ul>
+</li>
+<li><p><strong>使用限制</strong></p>
+<ul>
+<li>需要抖音账号登录</li>
+<li>可能有API调用限制</li>
+<li>暂不支持私有部署</li>
+</ul>
+</li>
+<li><p><strong>稳定性待提升</strong></p>
+<ul>
+<li>服务偶有波动</li>
+<li>代码生成质量不够稳定</li>
+<li>复杂场景支持有限</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-2-百度智能编程助手"><a href="#4-2-百度智能编程助手" class="headerlink" title="4.2 百度智能编程助手"></a>4.2 百度智能编程助手</h3><p><strong>优点：</strong></p>
+<ul>
+<li>中文支持好</li>
+<li>与百度生态集成</li>
+<li>免费额度大</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>功能相对简单</li>
+<li>仅支持部分语言</li>
+<li>社区活跃度低</li>
+</ul>
+<h3 id="4-3-阿里云代码智能助手"><a href="#4-3-阿里云代码智能助手" class="headerlink" title="4.3 阿里云代码智能助手"></a>4.3 阿里云代码智能助手</h3><p><strong>优点：</strong></p>
+<ul>
+<li>阿里云生态集成</li>
+<li>企业级支持</li>
+<li>安全性高</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>需要阿里云账号</li>
+<li>收费较高</li>
+<li>通用性不足</li>
+</ul>
+<h2 id="5-选择建议"><a href="#5-选择建议" class="headerlink" title="5. 选择建议"></a>5. 选择建议</h2><h3 id="5-1-不同场景的选择建议"><a href="#5-1-不同场景的选择建议" class="headerlink" title="5.1 不同场景的选择建议"></a>5.1 不同场景的选择建议</h3><ol>
+<li><p><strong>个人开发者</strong></p>
+<ul>
+<li>预算充足：Cursor或GitHub Copilot</li>
+<li>预算有限：CodeGeeX</li>
+<li>中文环境：CodeGeeX或百度智能编程助手</li>
+</ul>
+</li>
+<li><p><strong>企业用户</strong></p>
+<ul>
+<li>注重安全：CodeGeeX企业版</li>
+<li>团队协作：GitHub Copilot商业版</li>
+<li>云生态：阿里云代码智能助手</li>
+</ul>
+</li>
+<li><p><strong>学生用户</strong></p>
+<ul>
+<li>GitHub Copilot（有教育优惠）</li>
+<li>CodeGeeX（免费版够用）</li>
+</ul>
+</li>
+</ol>
+<h3 id="5-2-选择考虑因素"><a href="#5-2-选择考虑因素" class="headerlink" title="5.2 选择考虑因素"></a>5.2 选择考虑因素</h3><ol>
+<li><p><strong>预算</strong></p>
+<ul>
+<li>免费使用需求</li>
+<li>性价比考虑</li>
+<li>长期订阅成本</li>
+</ul>
+</li>
+<li><p><strong>使用场景</strong></p>
+<ul>
+<li>个人/团队使用</li>
+<li>项目规模</li>
+<li>编程语言支持</li>
+</ul>
+</li>
+<li><p><strong>特殊需求</strong></p>
+<ul>
+<li>中文支持</li>
+<li>离线使用</li>
+<li>安全合规</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-使用技巧分享"><a href="#6-使用技巧分享" class="headerlink" title="6. 使用技巧分享"></a>6. 使用技巧分享</h2><h3 id="6-1-提高AI助手效率的技巧"><a href="#6-1-提高AI助手效率的技巧" class="headerlink" title="6.1 提高AI助手效率的技巧"></a>6.1 提高AI助手效率的技巧</h3><ol>
+<li><p><strong>编写清晰的提示</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 好的提示示例</span></span><br><span class="line"><span class="comment">// 实现一个基于Promise的延迟函数，支持取消操作</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>善用上下文</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 先说明需求背景</span></span><br><span class="line"><span class="comment">// 再描述具体功能</span></span><br><span class="line"><span class="comment">// 最后指出关键点</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>结合文档使用</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查看官方文档</span></span><br><span class="line"><span class="comment">// 参考示例代码</span></span><br><span class="line"><span class="comment">// 理解实现原理</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h3 id="6-2-避免常见误区"><a href="#6-2-避免常见误区" class="headerlink" title="6.2 避免常见误区"></a>6.2 避免常见误区</h3><ol>
+<li><p><strong>过度依赖</strong></p>
+<ul>
+<li>不要完全依赖AI生成代码</li>
+<li>保持代码审查习惯</li>
+<li>理解代码逻辑</li>
+</ul>
+</li>
+<li><p><strong>忽视性能</strong></p>
+<ul>
+<li>注意代码质量</li>
+<li>考虑性能影响</li>
+<li>测试生成代码</li>
+</ul>
+</li>
+</ol>
+<h2 id="7-未来展望"><a href="#7-未来展望" class="headerlink" title="7. 未来展望"></a>7. 未来展望</h2><ol>
+<li><p><strong>技术趋势</strong></p>
+<ul>
+<li>模型能力持续提升</li>
+<li>多模态交互增强</li>
+<li>个性化推荐加强</li>
+</ul>
+</li>
+<li><p><strong>行业影响</strong></p>
+<ul>
+<li>提高开发效率</li>
+<li>降低入门门槛</li>
+<li>改变开发模式</li>
+</ul>
+</li>
+<li><p><strong>注意事项</strong></p>
+<ul>
+<li>保持学习能力</li>
+<li>提高代码素养</li>
+<li>关注安全合规</li>
+</ul>
+</li>
+</ol>
+<h2 id="8-总结"><a href="#8-总结" class="headerlink" title="8. 总结"></a>8. 总结</h2><ol>
+<li>选择合适的AI编程助手很重要</li>
+<li>根据实际需求和场景选择</li>
+<li>合理使用提高开发效率</li>
+<li>避免过度依赖</li>
+<li>持续关注新技术发展</li>
+</ol>
+<h2 id="5-产品对比分析"><a href="#5-产品对比分析" class="headerlink" title="5. 产品对比分析"></a>5. 产品对比分析</h2><h3 id="5-1-功能对比"><a href="#5-1-功能对比" class="headerlink" title="5.1 功能对比"></a>5.1 功能对比</h3><table>
+<thead>
+<tr>
+<th>功能特性</th>
+<th>Cursor</th>
+<th>GitHub Copilot</th>
+<th>CodeGeeX</th>
+<th>MarsCode</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>代码补全</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>代码生成</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>中文支持</td>
+<td>⭐⭐⭐</td>
+<td>⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>IDE集成</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐</td>
+</tr>
+<tr>
+<td>响应速度</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+<tr>
+<td>代码质量</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+<td>⭐⭐⭐⭐</td>
+</tr>
+</tbody></table>
+<h3 id="5-2-价格对比"><a href="#5-2-价格对比" class="headerlink" title="5.2 价格对比"></a>5.2 价格对比</h3><table>
+<thead>
+<tr>
+<th>产品</th>
+<th>免费版</th>
+<th>个人版</th>
+<th>团队版</th>
+<th>企业版</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cursor</td>
+<td>基础功能</td>
+<td>$20/月</td>
+<td>$40/人/月</td>
+<td>联系商务</td>
+</tr>
+<tr>
+<td>GitHub Copilot</td>
+<td>无</td>
+<td>$10/月</td>
+<td>$19/人/月</td>
+<td>联系商务</td>
+</tr>
+<tr>
+<td>CodeGeeX</td>
+<td>完整功能</td>
+<td>免费</td>
+<td>¥299/人/年</td>
+<td>联系商务</td>
+</tr>
+<tr>
+<td>MarsCode</td>
+<td>完整功能</td>
+<td>免费</td>
+<td>免费</td>
+<td>免费</td>
+</tr>
+</tbody></table>
+<h3 id="5-3-适用场景对比"><a href="#5-3-适用场景对比" class="headerlink" title="5.3 适用场景对比"></a>5.3 适用场景对比</h3><ol>
+<li><p><strong>个人开发者</strong></p>
+<ul>
+<li>预算充足：GitHub Copilot &gt; Cursor</li>
+<li>预算有限：MarsCode &gt; CodeGeeX</li>
+<li>中文环境：MarsCode = CodeGeeX &gt; 其他</li>
+</ul>
+</li>
+<li><p><strong>团队使用</strong></p>
+<ul>
+<li>大型企业：GitHub Copilot &gt; Cursor &gt; CodeGeeX</li>
+<li>中小企业：CodeGeeX &gt; MarsCode &gt; 其他</li>
+<li>创业团队：MarsCode &gt; CodeGeeX &gt; 其他</li>
+</ul>
+</li>
+<li><p><strong>特定需求</strong></p>
+<ul>
+<li>离线使用：CodeGeeX &gt; 其他</li>
+<li>私有部署：CodeGeeX &gt; GitHub Copilot</li>
+<li>中文支持：MarsCode = CodeGeeX &gt; 其他</li>
+</ul>
+</li>
+</ol>
+<hr>
+<blockquote>
+<p>如果觉得文章对你有帮助,欢迎点赞、评论、分享,你的支持是我继续创作的动力！ </p>
+</blockquote>
+
+      
+    </div>
+
+    
+      <!-- 文章底部分享和赞赏 -->
+      <div class="article-footer">
+        <!-- 分享模块 -->
+        
+        <div class="article-share">
+          <div class="share-links">
+            <a href="https://service.weibo.com/share/share.php?url=https://www.hzv5.cn/2024/10/15/ai-coding-assistants/&title=2024年AI编程助手深度评测：哪款最适合你？" target="_blank" class="share-link weibo" title="分享到微博" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-weibo"></i>
+            </a>
+            <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://www.hzv5.cn/2024/10/15/ai-coding-assistants/&title=2024年AI编程助手深度评测：哪款最适合你？" target="_blank" class="share-link qq" title="分享到QQ" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-qq"></i>
+            </a>
+            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.hzv5.cn/2024/10/15/ai-coding-assistants/&title=2024年AI编程助手深度评测：哪款最适合你？" target="_blank" class="share-link qzone" title="分享到QQ空间" rel="external nofollow noopener noreferrer">
+              <i class="fas fa-star"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=2024年AI编程助手深度评测：哪款最适合你？&url=https://www.hzv5.cn/2024/10/15/ai-coding-assistants/" target="_blank" class="share-link twitter" title="分享到Twitter" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.hzv5.cn/2024/10/15/ai-coding-assistants/" target="_blank" class="share-link facebook" title="分享到Facebook" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <button class="share-link copy" data-clipboard-text="https://www.hzv5.cn/2024/10/15/ai-coding-assistants/" title="复制链接">
+              <i class="fas fa-link"></i>
+            </button>
+          </div>
+        </div>
+        
+
+        <!-- 赞赏模块 -->
+        
+        <div class="article-reward">
+          <button class="reward-button" id="reward-button">
+            <i class="fas fa-qrcode"></i>
+            <span class="reward-button-text">赞赏</span>
+          </button>
+        </div>
+        
+      </div>
+
+      <div class="article-nav">
+        
+          <div class="article-nav-prev">
+            <i class="fas fa-chevron-left"></i>
+            <a href="/2024/12/19/qqch-bot-plugin/" class="prev-link">
+              <span class="nav-label">上一篇</span>
+              <span class="nav-title">安卓版QQ频道机器人APP客户端插件开发指南</span>
+            </a>
+          </div>
+        
+        
+          <div class="article-nav-next">
+            <a href="/2024/06/25/uniapp-map-location/" class="next-link">
+              <span class="nav-label">下一篇</span>
+              <span class="nav-title">uni-app地图定位踩坑记：地图功能和定位的那些坑</span>
+            </a>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        
+      </div>
+
+      <!-- 评论模块 -->
+      
+    
+    
+  </div>
+</article>
+
+<!-- 赞赏弹窗 -->
+<div class="reward-qrcodes" id="reward-qrcodes">
+  <div class="reward-title">感谢您的支持！</div>
+  <button class="reward-close" id="reward-close">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="reward-qrcode-list">
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/wechat_code.jpg" alt="微信赞赏码">
+      <span class="reward-name">微信赞赏</span>
+    </div>
+    
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
+      <span class="reward-name">支付宝赞赏</span>
+    </div>
+    
+  </div>
+</div>
+
+<!-- 遮罩层 -->
+<div class="reward-overlay" id="reward-overlay"></div>
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('baidu_pushed_' + '2024/10/15/ai-coding-assistants/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('baidu_pushed_' + '2024/10/15/ai-coding-assistants/', '1');
+        // 发送异步请求进行推送
+        fetch('/baidu-push-url?url=2024%2F10%2F15%2Fai-coding-assistants%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Baidu Push] 推送成功');
+            } else {
+                console.error('[Baidu Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('baidu_pushed_' + '2024/10/15/ai-coding-assistants/');
+            }
+        }).catch(function(error) {
+            console.error('[Baidu Push] 请求失败:', error);
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('baidu_pushed_' + '2024/10/15/ai-coding-assistants/');
+        });
+    }
+})();
+</script>
+
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('bing_pushed_' + '2024/10/15/ai-coding-assistants/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('bing_pushed_' + '2024/10/15/ai-coding-assistants/', '1');
+        // 发送异步请求进行推送
+        fetch('/bing-push-url?url=2024%2F10%2F15%2Fai-coding-assistants%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Bing Push] 推送成功');
+            } else {
+                console.error('[Bing Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('bing_pushed_' + '2024/10/15/ai-coding-assistants/');
+            }
+        }).catch(function(error) {
+            console.error('[Bing Push] 请求失败:', error);
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('bing_pushed_' + '2024/10/15/ai-coding-assistants/');
+        });
+    }
+})();
+</script>
+
+      </div>
+    </main>
+
+    <!-- 移动端菜单按钮 -->
+    <button class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+<!-- 主题脚本 -->
+<script src="/js/theme.js"></script>
+
+<!-- 搜索脚本 -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- Fancybox -->
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+<!-- Clipboard -->
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+
+<!-- 分享和赞赏功能 -->
+
+<script src="/js/share-reward.js"></script>
+
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" aria-label="返回顶部">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- 文章目录按钮 -->
+
+<button class="toc-toggle" aria-label="显示目录">
+  <i class="fas fa-list"></i>
+</button>
+
+
+<!-- 暗黑模式切换按钮 -->
+<button class="dark-mode-toggle" aria-label="切换暗黑模式">
+  <i class="fas fa-moon"></i>
+</button>
+
+<!-- Disqus -->
+
+
+<!-- Loading -->
+<script src="/js/loading.js"></script>
+
+<!-- 粒子时钟 -->
+<script src="/js/clock.js"></script>
+
+</body>
+</html>

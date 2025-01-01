@@ -55,6 +55,109 @@
       document.documentElement.style.visibility = 'visible';
     });
   </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="支付宝专属大额红包，0门槛，每人每日都可以领取1次：
+1：使用浏览器打开链接自动领取：
+https://dz.hzv5.cn/hb/
+2：使用支付宝扫码自动领取：
+">
+  
+
+  
+    <meta name="keywords" content="吖远zzy,编程爱好者,前端开发,Vue.js,React,Node.js,JavaScript,TypeScript,Web开发,全栈开发,编程教程,技术博客,软件开发,程序员,开发者,coding">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/2023/09/27/zfb-hb/">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="支付宝0门槛红包，每日都可以领取1次 | 吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/2023/09/27/zfb-hb/">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="支付宝专属大额红包，0门槛，每人每日都可以领取1次：
+1：使用浏览器打开链接自动领取：
+https://dz.hzv5.cn/hb/
+2：使用支付宝扫码自动领取：
+">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/2023/09/27/zfb-hb/"
+        },
+        "headline": "支付宝0门槛红包，每日都可以领取1次",
+        
+            "datePublished": "2023-09-27T10:35:22.000Z",
+        
+        
+            "dateModified": "2023-09-27T10:41:36.663Z",
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "支付宝专属大额红包，0门槛，每人每日都可以领取1次：
+1：使用浏览器打开链接自动领取：
+https://dz.hzv5.cn/hb/
+2：使用支付宝扫码自动领取：
+"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
 </head>
@@ -182,6 +285,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
       </a>
     
       <a href="/photos" class="menu-item">
@@ -649,9 +761,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
           <div class="article-nav-prev">
             <i class="fas fa-chevron-left"></i>
-            <a href="/2024/12/19/qqch-bot-plugin/" class="prev-link">
+            <a href="/2023/10/15/uniapp-lifecycle/" class="prev-link">
               <span class="nav-label">上一篇</span>
-              <span class="nav-title">安卓版QQ频道机器人APP客户端插件开发指南</span>
+              <span class="nav-title">uni-app生命周期踩坑指南：常见错误与最佳实践</span>
             </a>
           </div>
         
@@ -707,17 +819,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // 标记已推送
         localStorage.setItem('baidu_pushed_' + '2023/09/27/zfb-hb/', '1');
         // 发送异步请求进行推送
-        var pushUrl = '/baidu-push-url';
-        var formData = new FormData();
-        formData.append('url', '2023/09/27/zfb-hb/');
-        
-        fetch(pushUrl, {
-            method: 'POST',
-            body: formData
-        }).then(function(response) {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+        fetch('/baidu-push-url?url=2023%2F09%2F27%2Fzfb-hb%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
             }
+        }).then(function(response) {
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -731,6 +838,40 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('[Baidu Push] 请求失败:', error);
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('baidu_pushed_' + '2023/09/27/zfb-hb/');
+        });
+    }
+})();
+</script>
+
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('bing_pushed_' + '2023/09/27/zfb-hb/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('bing_pushed_' + '2023/09/27/zfb-hb/', '1');
+        // 发送异步请求进行推送
+        fetch('/bing-push-url?url=2023%2F09%2F27%2Fzfb-hb%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Bing Push] 推送成功');
+            } else {
+                console.error('[Bing Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('bing_pushed_' + '2023/09/27/zfb-hb/');
+            }
+        }).catch(function(error) {
+            console.error('[Bing Push] 请求失败:', error);
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('bing_pushed_' + '2023/09/27/zfb-hb/');
         });
     }
 })();

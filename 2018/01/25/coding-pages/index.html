@@ -55,6 +55,103 @@
       document.documentElement.style.visibility = 'visible';
     });
   </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="小尴尬静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，
+各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。
+如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。">
+  
+
+  
+    <meta name="keywords" content="吖远zzy,编程爱好者,前端开发,Vue.js,React,Node.js,JavaScript,TypeScript,Web开发,全栈开发,编程教程,技术博客,软件开发,程序员,开发者,coding">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/2018/01/25/coding-pages/">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="coding pages托管项目是有点小尴尬~ | 吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/2018/01/25/coding-pages/">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="小尴尬静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，
+各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。
+如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/2018/01/25/coding-pages/"
+        },
+        "headline": "coding pages托管项目是有点小尴尬~",
+        
+            "datePublished": "2018-01-25T09:30:01.000Z",
+        
+        
+            "dateModified": "2019-07-13T12:43:34.857Z",
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "小尴尬静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，
+各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。
+如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
 </head>
@@ -182,6 +279,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
       </a>
     
       <a href="/photos" class="menu-item">
@@ -703,17 +809,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // 标记已推送
         localStorage.setItem('baidu_pushed_' + '2018/01/25/coding-pages/', '1');
         // 发送异步请求进行推送
-        var pushUrl = '/baidu-push-url';
-        var formData = new FormData();
-        formData.append('url', '2018/01/25/coding-pages/');
-        
-        fetch(pushUrl, {
-            method: 'POST',
-            body: formData
-        }).then(function(response) {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+        fetch('/baidu-push-url?url=2018%2F01%2F25%2Fcoding-pages%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
             }
+        }).then(function(response) {
             return response.json();
         }).then(function(data) {
             if (data.success) {
@@ -727,6 +828,40 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('[Baidu Push] 请求失败:', error);
             // 如果请求失败，移除标记以便下次重试
             localStorage.removeItem('baidu_pushed_' + '2018/01/25/coding-pages/');
+        });
+    }
+})();
+</script>
+
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('bing_pushed_' + '2018/01/25/coding-pages/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('bing_pushed_' + '2018/01/25/coding-pages/', '1');
+        // 发送异步请求进行推送
+        fetch('/bing-push-url?url=2018%2F01%2F25%2Fcoding-pages%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Bing Push] 推送成功');
+            } else {
+                console.error('[Bing Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('bing_pushed_' + '2018/01/25/coding-pages/');
+            }
+        }).catch(function(error) {
+            console.error('[Bing Push] 请求失败:', error);
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('bing_pushed_' + '2018/01/25/coding-pages/');
         });
     }
 })();

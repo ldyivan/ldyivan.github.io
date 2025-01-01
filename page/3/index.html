@@ -55,6 +55,93 @@
       document.documentElement.style.visibility = 'visible';
     });
   </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
+  
+
+  
+    <meta name="keywords" content="吖远zzy,编程爱好者,前端开发,Vue.js,React,Node.js,JavaScript,TypeScript,Web开发,全栈开发,编程教程,技术博客,软件开发,程序员,开发者,coding">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/page/3/index.html">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/page/3/index.html">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/page/3/index.html"
+        },
+        "headline": "吖远zzyの博客",
+        
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
 <link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
 </head>
@@ -182,6 +269,15 @@
             
         
         <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
       </a>
     
       <a href="/photos" class="menu-item">
@@ -539,27 +635,286 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2019/01/11/baidu-yuyin/">
+      <a href="/2023/03/28/unity_note/">
         <span class="title-content">
           
-          百度文字合成语音的api接口，以及其他失效的接口，找了新的免费语音接口！
+          Unity一些常用的小知识点笔记，WebGL部署报Unable to parse Build解决笔记
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2019-01-11
+          2023-03-28
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <h1 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h1><p>有朋友博文<a href="http://localhost:4000/2018/04/24/my-apis/" rel="external nofollow noopener noreferrer" target="_blank">自写与收集的一些免费的API接口（获取QQ昵称、头像、QQ秀等等…）</a>的评论里留言说，收集的api接口，有的已经失效了</p>
-<p>也抽空看了，有几个确实是已经失效了，QQ秀的接口暂时没有找到新的</p>
-<p>今天是找了下语音接口，就是文字转成语音的接口</p>
-<p>其他的不多说了</p>
-<p>直接开始贴接口地址，和参数说明吧</p>
-<h1 id="1丶文字转语音"><a href="#1丶文字转语音" class="headerlink" title="1丶文字转语音"></a>1丶文字转语音</h1><p>① 接口地址：</p>
+        <h1 id="Unity知识点一"><a href="#Unity知识点一" class="headerlink" title="Unity知识点一"></a>Unity知识点一</h1><h2 id="Unity打包WebGL报Unable-to-parse-Build"><a href="#Unity打包WebGL报Unable-to-parse-Build" class="headerlink" title="Unity打包WebGL报Unable to parse Build"></a>Unity打包WebGL报Unable to parse Build</h2><p>错误详情示例：</p>
+<p>Unable to parse Build/*.framework.js.gz! This can happen if build compression was enabled but web server hosting the content was misconfigured to not serve the file with HTTP Response Header “Content-Encoding: gzip” present. Check browser Console and Devtools Network tab to debug.</p>
+<p>图示：</p>
+<p><img src="/img/unityNote/error.png" alt="unityError"></p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2>
       
-      <a href="/2019/01/11/baidu-yuyin/#more" class="read-more">
+      <a href="/2023/03/28/unity_note/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/">笔记</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/Unity/" rel="tag">Unity</a> <a class="article-tag-none-link" href="/tags/WebGL/" rel="tag">WebGL</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2023/03/13/js-array/">
+        <span class="title-content">
+          
+          修改JS数组中一个元素的值，其它元素也会跟着变化
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2023-03-13
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h1 id="js的神奇"><a href="#js的神奇" class="headerlink" title="js的神奇"></a>js的神奇</h1><h2 id="知识点问题复现"><a href="#知识点问题复现" class="headerlink" title="知识点问题复现"></a>知识点问题复现</h2><p>今天在码着代码调试的时候，根据条件判断将一个数组的一个元素值进行增或者减的操作，结果发现，数组中的其它元素也都跟着变了。</p>
+<p>第一次碰见这种情况，检查了好几遍代码也没感觉哪里有写错，有点一头雾水，甚至写了各种小demo调试。</p>
+<p>最后发现，是关于js的堆与栈问题…</p>
+<p>示例代码：</p>
+      
+      <a href="/2023/03/13/js-array/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/">笔记</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/JScript/" rel="tag">JScript</a> <a class="article-tag-none-link" href="/tags/vue/" rel="tag">vue</a> <a class="article-tag-none-link" href="/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/" rel="tag">大前端</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2023/02/28/wx-mini/">
+        <span class="title-content">
+          
+          微信小程序的审核没有统一标准吗？真的太奇葩了...
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2023-02-28
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h1 id="审核没有统一的标准"><a href="#审核没有统一的标准" class="headerlink" title="审核没有统一的标准"></a>审核没有统一的标准</h1><h2 id="审核规则"><a href="#审核规则" class="headerlink" title="审核规则"></a>审核规则</h2><p>微信小程序的审核机制，虽然写了超级多的规范，也把个人和企业能够上线的类目细分出了很多</p>
+<p>但是审核人员貌似每个都不一样</p>
+<p>有时候一样的代码，你这次没有做什么修改，就改个css样式，这次去提审可能就过不了</p>
+      
+      <a href="/2023/02/28/wx-mini/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E5%90%90%E6%A7%BD/">吐槽</a> <a class="article-category-link" href="/categories/%E5%90%90%E6%A7%BD/%E9%9A%8F%E7%AC%94/">随笔</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/%E5%90%90%E6%A7%BD/" rel="tag">吐槽</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a> <a class="article-tag-none-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2023/02/22/wx-xcx-canvas/">
+        <span class="title-content">
+          
+          避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2023-02-22
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h1 id="Unhandled-promise-rejection错误"><a href="#Unhandled-promise-rejection错误" class="headerlink" title="Unhandled promise rejection错误"></a>Unhandled promise rejection错误</h1><h2 id="报错详情"><a href="#报错详情" class="headerlink" title="报错详情"></a>报错详情</h2><p>使用网络图片地址请求时，后台数据有正常返回，但前端promise处理报错。</p>
+<p>例如图片链接失效出现404时，一报错的时候，就不继续往下执行后面的代码</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2>
+      
+      <a href="/2023/02/22/wx-xcx-canvas/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/">笔记</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/vue/">vue</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/JScript/" rel="tag">JScript</a> <a class="article-tag-none-link" href="/tags/canvas/" rel="tag">canvas</a> <a class="article-tag-none-link" href="/tags/vue/" rel="tag">vue</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2022/02/14/android-nft/">
+        <span class="title-content">
+          
+          笔记：实现数组排列组合图片合成，做一个NFT生成器！
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2022-02-14
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！</p>
+<p>这是一场资本家的狂欢泡沫还是致富风口？</p>
+<p>咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..</p>
+<p>然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。</p>
+<p>但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境没有部署，更难受的是安装模块还不成功！</p>
+<p>最后就自己在Android上去实现了</p>
+<p>下面直接看怎么实现的：</p>
+<h1 id="Android实现图片合成"><a href="#Android实现图片合成" class="headerlink" title="Android实现图片合成"></a>Android实现图片合成</h1>
+      
+      <a href="/2022/02/14/android-nft/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/">吐槽</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/">Android</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/Android/" rel="tag">Android</a> <a class="article-tag-none-link" href="/tags/NFT/" rel="tag">NFT</a> <a class="article-tag-none-link" href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" rel="tag">图片合成</a> <a class="article-tag-none-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2021/06/07/android-gif/">
+        <span class="title-content">
+          
+          Android实现帧动画动态设置播放时间间隔
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2021-06-07
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>前些天在弄一个娱乐小工具App，需要播放gif，但是找了一圈，基本上是使用第三方库的<code>com.felipecsl:gifimageview:2.2.0</code>，和Android帧动画的。</p>
+<p>第三方库貌似自定义局限性很大，帧动画的话在xml中把播放时间给写死了，也不好控制。</p>
+<p>自带的api只看到getDuration，但是没有setDuration，就离谱。</p>
+<p>找了一圈发现是有方法自己去实现setDuration的。</p>
+<p>下面直接看怎么实现的：</p>
+<h1 id="帧动画实现控制播放时间-速度"><a href="#帧动画实现控制播放时间-速度" class="headerlink" title="帧动画实现控制播放时间/速度"></a>帧动画实现控制播放时间/速度</h1>
+      
+      <a href="/2021/06/07/android-gif/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/">吐槽</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/">Android</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/Android/" rel="tag">Android</a> <a class="article-tag-none-link" href="/tags/Duration/" rel="tag">Duration</a> <a class="article-tag-none-link" href="/tags/%E5%B8%A7%E5%8A%A8%E7%94%BB/" rel="tag">帧动画</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
+      <a href="/2020/12/23/GitTalk-Error/">
+        <span class="title-content">
+          
+          Hexo添加完GitTalk评论系统后报错以及解决办法
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2020-12-23
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <p>这几天在折腾hexo，通过github搭了这么一个博客，然后就去申请使用了gittalk的评论。</p>
+<p>第一次折腾这玩意儿，完全不知道报这些错误是为什么，一开始博客的页面一直报Error:Not found，如下：</p>
+      
+      <a href="/2020/12/23/GitTalk-Error/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
     </div>
@@ -573,7 +928,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/" rel="tag">语音合成</a> <a class="article-tag-none-link" href="/tags/%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%AB/" rel="tag">语音识别</a>
+          <a class="article-tag-none-link" href="/tags/GitTalk/" rel="tag">GitTalk</a> <a class="article-tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>
         </div>
       
     </div>
@@ -584,26 +939,23 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2018/10/28/android-qq-share/">
+      <a href="/2020/12/22/yilia-photos/">
         <span class="title-content">
           
-          Android 利用腾讯开放平台的官方SDK，实现自定义QQ分享。并备份一下android-support-v7安卓支持包！
+          Hexo依靠yilia主题实现添加相册目录
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2018-10-28
+          2020-12-22
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <h1 id="开头废话"><a href="#开头废话" class="headerlink" title="开头废话"></a>开头废话</h1><p>前些日子换了手机，旧手机上的数据忘了迁移备份就急急忙忙的重置格式化了，很难受！开发的一些APP源码也就给丢失了，然后只好去自己的群里面，找到曾经上传的旧版本，把他反编译出来一点点的还原。</p>
-<p>逆向始终不是自己会玩的东西，所以效果很不理想，特别是我这种纯手机端进行编写操作的编程爱好者。蓝瘦香菇！</p>
-<p>今天想要说一下那个自定义QQ分享的东西，官方文档以及demo最近也好像是做了一下更新。最烦的就是更新了的文档也不是那么的简洁明了，实在不是很适合给一般的coder看￣ ￣)σ。</p>
-<p>好吧，还是直接去开始吧。</p>
-<h1 id="开整"><a href="#开整" class="headerlink" title="开整"></a>开整</h1>
+        <p>这是<a href="http://litten.me/" rel="external nofollow noopener noreferrer" target="_blank">Litten</a>相册的修改版，版权归原作者所有</p>
+<h4 id="点此预览效果"><a href="#点此预览效果" class="headerlink" title="点此预览效果"></a><a href="https://hexo.hzv5.cn/photos/" rel="external nofollow noopener noreferrer" target="_blank">点此预览效果</a></h4><h1 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h1><h2 id="本相册适用于hexo-yilia主题，移植到其他主题需要改动"><a href="#本相册适用于hexo-yilia主题，移植到其他主题需要改动" class="headerlink" title="本相册适用于hexo-yilia主题，移植到其他主题需要改动"></a>本相册适用于hexo-yilia主题，移植到其他主题需要改动</h2><h3 id="与原作者相比改动"><a href="#与原作者相比改动" class="headerlink" title="与原作者相比改动"></a>与原作者相比改动</h3>
       
-      <a href="/2018/10/28/android-qq-share/#more" class="read-more">
+      <a href="/2020/12/22/yilia-photos/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
     </div>
@@ -617,7 +969,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/QQ%E5%88%86%E4%BA%AB/" rel="tag">QQ分享</a> <a class="article-tag-none-link" href="/tags/android/" rel="tag">android</a>
+          <a class="article-tag-none-link" href="/tags/hexo/" rel="tag">hexo</a> <a class="article-tag-none-link" href="/tags/yilia/" rel="tag">yilia</a> <a class="article-tag-none-link" href="/tags/%E7%9B%B8%E5%86%8C/" rel="tag">相册</a>
         </div>
       
     </div>
@@ -628,27 +980,32 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2018/08/15/QQshare-Err/">
+      <a href="/2020/12/22/hexo-github/">
         <span class="title-content">
           
-          关于Android自定义QQ分享提示未正确授权，错误码901115
+          使用hexo+github搭建免费个人博客详细教程
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2018-08-15
+          2020-12-22
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近，QQ更新了一个成语接龙玩法的红包</p>
-<p>于是乎，博主突然就想搞一个成语查询的工具2333，在给App添加一个分享应用到QQ的时候，发现出现一个错误提示，都是按之前的app写法写的，怎么就报错了，于是乎找到几个之前写的app发现也是一样报这个错误了：</p>
-<p>错误提示如图：</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用github pages服务搭建博客的好处有：</p>
+<ol>
+<li>全是静态文件，访问速度快；</li>
+<li>免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；</li>
+<li>可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；</li>
+<li>数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；</li>
+<li>博客内容可以轻松打包、转移、发布到其它平台；</li>
+<li>等等；
       
-      <a href="/2018/08/15/QQshare-Err/#more" class="read-more">
+      <a href="/2020/12/22/hexo-github/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
-    </div>
+    </li></ol></div>
     <div class="meta">
       
         <div class="meta-item categories">
@@ -659,7 +1016,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/Android/" rel="tag">Android</a> <a class="article-tag-none-link" href="/tags/QQ%E5%88%86%E4%BA%AB/" rel="tag">QQ分享</a> <a class="article-tag-none-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a> <a class="article-tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+          <a class="article-tag-none-link" href="/tags/GitTalk/" rel="tag">GitTalk</a> <a class="article-tag-none-link" href="/tags/hexo/" rel="tag">hexo</a>
         </div>
       
     </div>
@@ -670,26 +1027,23 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2018/05/04/tucao-sjirji/">
+      <a href="/2020/12/22/hello-world/">
         <span class="title-content">
           
-          吐槽一下下，关于最近的社交软件开放的账号销户功能！
+          Hello World
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2018-05-04
+          2020-12-22
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <p>此前，是在QQ群里看到QQ账号可以注销的消息的，用了十几年QQ了，第一次听到QQ可以注销</p>
-<p>【PS：此注销不是退出登录，而是直接把QQ账号销户】。</p>
-<p><img src="/img/tucao/IMG_QQxh_01.png" alt="QQ账号销户"></p>
-<p>但是腾讯是不是太天真了？</p>
-<p>用了十几年的QQ我们会想要注销？</p>
+        <p>Welcome to <a href="https://hexo.io/" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" rel="external nofollow noopener noreferrer" target="_blank">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" rel="external nofollow noopener noreferrer" target="_blank">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" rel="external nofollow noopener noreferrer" target="_blank">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
       
-      <a href="/2018/05/04/tucao-sjirji/#more" class="read-more">
+      <a href="/2020/12/22/hello-world/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
     </div>
@@ -697,13 +1051,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item categories">
           <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/collections/">收集控</a>
+          <a class="article-category-link" href="/categories/%E7%AC%AC%E4%B8%80%E6%AC%A1/">第一次</a>
         </div>
       
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/%E5%85%8D%E8%B4%B9api/" rel="tag">免费api</a> <a class="article-tag-none-link" href="/tags/%E6%8E%A5%E5%8F%A3%E6%94%B6%E9%9B%86/" rel="tag">接口收集</a>
+          <a class="article-tag-none-link" href="/tags/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C/" rel="tag">你好世界</a> <a class="article-tag-none-link" href="/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/" rel="tag">第一次</a> <a class="article-tag-none-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
         </div>
       
     </div>
@@ -714,25 +1068,23 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2018/04/23/caihong-encode/">
+      <a href="/2020/12/14/About-Git-Err-2/">
         <span class="title-content">
           
-          关于新版彩虹代刷hashsalt值如何还原出真实值
+          Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2018-04-23
+          2020-12-14
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <p>最近在qq群上，有朋友要求我更新一下免费领赞(QQ名片赞)App(极其无聊的app但是喜欢的人却很多)，</p>
-<p>以为老接口都失效了，然后去研究了一下代刷站点发现，新版本的彩虹代刷程序增加了hashsalt值 + cookies值方式的验证，</p>
-<p>其主要目的可能就是为了加大写软件的难度，以及防止恶意刷单！</p>
-<p>直接查看代刷站源码，可以看到hashsalt值大概是这样的：</p>
+        <h1 id="啰里啰嗦"><a href="#啰里啰嗦" class="headerlink" title="啰里啰嗦"></a>啰里啰嗦</h1><p>好像好久没有更新博客了，今年疫情很多人都过的不是很好，又到年底了，提前祝大家新年快乐吧😂，希望各位读者能够在新的一年蒸蒸日上，早日摆脱不开心，心想事成。😁哈哈~</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="1丶hexo命令操作时出现的问题"><a href="#1丶hexo命令操作时出现的问题" class="headerlink" title="1丶hexo命令操作时出现的问题"></a>1丶hexo命令操作时出现的问题</h2><h3 id="hexo-v出现的问题"><a href="#hexo-v出现的问题" class="headerlink" title="hexo -v出现的问题"></a>hexo -v出现的问题</h3>
       
-      <a href="/2018/04/23/caihong-encode/#more" class="read-more">
+      <a href="/2020/12/14/About-Git-Err-2/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
     </div>
@@ -740,13 +1092,13 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item categories">
           <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
+          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/">吐槽</a>
         </div>
       
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/%E5%BD%A9%E8%99%B9%E4%BB%A3%E5%88%B7/" rel="tag">彩虹代刷</a> <a class="article-tag-none-link" href="/tags/%E7%AE%97%E6%B3%95%E8%A7%A3%E5%AF%86/" rel="tag">算法解密</a>
+          <a class="article-tag-none-link" href="/tags/Git/" rel="tag">Git</a> <a class="article-tag-none-link" href="/tags/MarkdownPad/" rel="tag">MarkdownPad</a> <a class="article-tag-none-link" href="/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">知识点</a> <a class="article-tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
         </div>
       
     </div>
@@ -757,25 +1109,24 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
-      <a href="/2018/03/16/waooooo/">
+      <a href="/2020/05/10/test_sfy/">
         <span class="title-content">
           
-          最近有一件很神奇的事情发生，哈哈！
+          三丰云免费主机和服务器的使用体验和感受
         </span>
         <span class="post-date">
           <i class="fas fa-calendar-alt"></i>
-          2018-03-16
+          2020-05-10
         </span>
       </a>
     </h2>
     <div class="excerpt">
       
-        <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>最近两个星期，有一件很神奇的事情。</p>
-<p>不知道什么时候的事情了，在手机端利用AIDE写了一个吉普赛读心术的app，最初是尝试的心态上架了百度手机助手，但是没想到通过审核了。</p>
-<p>后来没做什么更新，(大概三个月左右之后)就被下架了。</p>
-<p>APP的主界面大概长这个样子：</p>
+        <h1 id="开篇碎碎念"><a href="#开篇碎碎念" class="headerlink" title="开篇碎碎念"></a>开篇碎碎念</h1><p>今天母亲节啊，记得给自己的母亲大人打个电话什么的哦~~</p>
+<p>博主今天突然想找一个免费主机试玩试玩，在经过一番的搜索引擎翻来覆去的看了之后，看到了三丰云，网路上关于它的文章也不少（推广续期，后面会讲到），貌似还不错，于是乎，就去他们官网注册了个账户想体验一番。</p>
+<h1 id="关于三丰云"><a href="#关于三丰云" class="headerlink" title="关于三丰云"></a>关于三丰云</h1><p>他们自己说明的是北京太极三丰云计算有限公司旗下网络服务品牌，十八年IDC老兵团队蛰伏三年后投资千万于2018年10月1日创建。公司致力于为大众提供最优质的互联网基础服务和物联网服务，包括：域名注册、虚拟主机、云服务器、主机托管租用、CDN网站加速、物联网应用等服务。以帮助客户轻松、 高速、高效的应用互联网/物联网，提高企业竞争能力。</p>
       
-      <a href="/2018/03/16/waooooo/#more" class="read-more">
+      <a href="/2020/05/10/test_sfy/#more" class="read-more">
         <i class="fas fa-book-reader"></i> 继续阅读全文 »
       </a>
     </div>
@@ -789,141 +1140,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/%E5%90%90%E6%A7%BD/" rel="tag">吐槽</a> <a class="article-tag-none-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2018/01/30/php-api/">
-        <span class="title-content">
-          
-          php自写api数据接口实例笔记
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2018-01-30
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <p>php写api接口起初是因为自己在玩机器人软件，需要进行数据交互，例如看笑话，查天气，查快递等等的一些数据，来丰富机器人的功能，现在本站暂时保留着两个就博客的api接口，<img src="http://img.baidu.com/hi/face/i_f08.gif"></p>
-<p>css什么的失效了，暂时没去管：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.hzv5.cn/api/ai.php</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.hzv5.cn/api/sina_url.php</span><br></pre></td></tr></table></figure>
-
-<img src="http://img.baidu.com/hi/face/i_f05.gif">
-
-<p>下面就来看看怎么自己写一个api接口吧：</p>
-<p>实例代码：</p>
-      
-      <a href="/2018/01/30/php-api/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/api%E5%86%99%E6%B3%95/" rel="tag">api写法</a> <a class="article-tag-none-link" href="/tags/php%E6%8E%A5%E5%8F%A3/" rel="tag">php接口</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2018/01/28/php-http/">
-        <span class="title-content">
-          
-          php打开网页链接请求http连接的方法
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2018-01-28
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <h1 id="碎言碎语"><a href="#碎言碎语" class="headerlink" title="碎言碎语"></a>碎言碎语</h1><p>咱们如果是玩php非静态网站，进行网页链接请求获取需要的数据，是必不可少的，不然难道“单机”不成？</p>
-<p>全部数据文件本地化？这好像是静态网站的模式，而且就算是静态网站也不完全是静态的，也有js加持。</p>
-<p>这显然不太现实了吧~~</p>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>利用php的curl函数进行封装，具体代码如下：</p>
-      
-      <a href="/2018/01/28/php-http/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/php%E7%9B%B8%E5%85%B3/" rel="tag">php相关</a> <a class="article-tag-none-link" href="/tags/%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85/" rel="tag">函数封装</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2018/01/25/coding-pages/">
-        <span class="title-content">
-          
-          coding pages托管项目是有点小尴尬~
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2018-01-25
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <h1 id="小尴尬"><a href="#小尴尬" class="headerlink" title="小尴尬"></a>小尴尬</h1><p>静态的程序不知道，反正类似于emlog以及现在本站正在使用的typecho程序来说，</p>
-<p>各种奇奇怪怪的问题，coding官方是说 ：还在公测阶段。</p>
-<p>如果你是手机端操作代码进行托管，而非使用git操作的，使用coding pages就会有这样的情况：<br>（ps因为emlog官方版本的最新版不支持php7.0，所以这里测试使用的是 @疯狂老司机 前辈自制的emlog6.0特别版。</p>
-      
-      <a href="/2018/01/25/coding-pages/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/coding/" rel="tag">coding</a> <a class="article-tag-none-link" href="/tags/%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1/" rel="tag">项目托管</a>
+          <a class="article-tag-none-link" href="/tags/%E4%B8%89%E4%B8%B0%E4%BA%91/" rel="tag">三丰云</a> <a class="article-tag-none-link" href="/tags/%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BA/" rel="tag">免费主机</a> <a class="article-tag-none-link" href="/tags/%E5%90%90%E6%A7%BD/" rel="tag">吐槽</a> <a class="article-tag-none-link" href="/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a>
         </div>
       
     </div>
@@ -954,8 +1171,20 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="page-number current">3</span>
       
     
+      
+        <a class="page-number" href="/page/4/">4</a>
+      
+    
+      
+        <a class="page-number" href="/page/5/">5</a>
+      
+    
   </div>
   
+  
+    <a class="extend next" rel="next" href="/page/4/">
+      <i class="fas fa-chevron-right"></i>
+    </a>
   
 </nav>
  
