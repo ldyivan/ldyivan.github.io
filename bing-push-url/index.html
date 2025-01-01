@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Bing Push URL</title>
+    <script>
+    // 从页面加载配置
+    window.BING_CONFIG = {
+        api_key: '<%- theme.seo.bing_push.api_key %>'
+    };
+    </script>
+</head>
+<body>
+<script>
+(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageUrl = urlParams.get('url');
+    if (!pageUrl) {
+        console.error('URL parameter is required');
+        return;
+    }
+
+    const siteUrl = window.location.origin;
+    const fullUrl = siteUrl + '/' + pageUrl;
+
+    // 使用必应推送API
+    const apiKey = window.BING_CONFIG.api_key;
+    if (!apiKey) {
+        console.error('Bing API key is not configured');
+        return;
+    }
+
+    fetch('https://ssl.bing.com/webmaster/api.svc/json/SubmitUrlBatch?apikey=' + apiKey, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            siteUrl: siteUrl,
+            urlList: [fullUrl]
+        })
+    }).then(response => response.json())
+      .then(data => {
+          console.log('[Bing Push] Response:', data);
+          // 记录推送状态
+          localStorage.setItem('bing_pushed_' + pageUrl, '1');
+      })
+      .catch(error => {
+          console.error('[Bing Push] Error:', error);
+      });
+
+    // 3秒后返回原页面
+    setTimeout(() => {
+        window.location.href = '/' + pageUrl;
+    }, 3000);
+})();
+</script>
+</body>
+</html> 
