@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>吖远zzyの博客</title>
-  
+  <icon>https://www.hzv5.cn/icon.png</icon>
   <subtitle>一个不知名的编程爱好者</subtitle>
-  <link href="http://www.hzv5.cn/atom.xml" rel="self"/>
+  <link href="https://www.hzv5.cn/atom.xml" rel="self"/>
   
-  <link href="http://www.hzv5.cn/"/>
+  <link href="https://www.hzv5.cn/"/>
   <updated>2024-12-19T09:11:06.114Z</updated>
-  <id>http://www.hzv5.cn/</id>
+  <id>https://www.hzv5.cn/</id>
   
   <author>
     <name>吖远zzy</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>QQ频道机器人Android客户端使用指南</title>
-    <link href="http://www.hzv5.cn/2024/12/19/qqch-bot-readme/"/>
-    <id>http://www.hzv5.cn/2024/12/19/qqch-bot-readme/</id>
+    <link href="https://www.hzv5.cn/2024/12/19/qqch-bot-readme/"/>
+    <id>https://www.hzv5.cn/2024/12/19/qqch-bot-readme/</id>
     <published>2024-12-18T18:58:36.000Z</published>
     <updated>2024-12-19T09:11:06.114Z</updated>
     
@@ -63,25 +63,25 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
     
-    <category term="笔记" scheme="http://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="QQ" scheme="http://www.hzv5.cn/tags/QQ/"/>
+    <category term="QQ" scheme="https://www.hzv5.cn/tags/QQ/"/>
     
-    <category term="QQ频道" scheme="http://www.hzv5.cn/tags/QQ%E9%A2%91%E9%81%93/"/>
+    <category term="QQ频道" scheme="https://www.hzv5.cn/tags/QQ%E9%A2%91%E9%81%93/"/>
     
-    <category term="QQ机器人" scheme="http://www.hzv5.cn/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="QQ机器人" scheme="https://www.hzv5.cn/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="使用文档" scheme="http://www.hzv5.cn/tags/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/"/>
+    <category term="使用文档" scheme="https://www.hzv5.cn/tags/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/"/>
     
   </entry>
   
   <entry>
     <title>安卓版QQ频道机器人APP客户端插件开发指南</title>
-    <link href="http://www.hzv5.cn/2024/12/19/qqch-bot-plugin/"/>
-    <id>http://www.hzv5.cn/2024/12/19/qqch-bot-plugin/</id>
+    <link href="https://www.hzv5.cn/2024/12/19/qqch-bot-plugin/"/>
+    <id>https://www.hzv5.cn/2024/12/19/qqch-bot-plugin/</id>
     <published>2024-12-18T17:50:56.000Z</published>
     <updated>2024-12-19T09:14:03.687Z</updated>
     
@@ -96,25 +96,25 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
     
-    <category term="笔记" scheme="http://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="QQ" scheme="http://www.hzv5.cn/tags/QQ/"/>
+    <category term="QQ" scheme="https://www.hzv5.cn/tags/QQ/"/>
     
-    <category term="QQ频道" scheme="http://www.hzv5.cn/tags/QQ%E9%A2%91%E9%81%93/"/>
+    <category term="QQ频道" scheme="https://www.hzv5.cn/tags/QQ%E9%A2%91%E9%81%93/"/>
     
-    <category term="QQ机器人" scheme="http://www.hzv5.cn/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="QQ机器人" scheme="https://www.hzv5.cn/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="开发文档" scheme="http://www.hzv5.cn/tags/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/"/>
+    <category term="开发文档" scheme="https://www.hzv5.cn/tags/%E5%BC%80%E5%8F%91%E6%96%87%E6%A1%A3/"/>
     
   </entry>
   
   <entry>
     <title>支付宝0门槛红包，每日都可以领取1次</title>
-    <link href="http://www.hzv5.cn/2023/09/27/zfb-hb/"/>
-    <id>http://www.hzv5.cn/2023/09/27/zfb-hb/</id>
+    <link href="https://www.hzv5.cn/2023/09/27/zfb-hb/"/>
+    <id>https://www.hzv5.cn/2023/09/27/zfb-hb/</id>
     <published>2023-09-27T10:35:22.000Z</published>
     <updated>2023-09-27T10:41:36.663Z</updated>
     
@@ -129,19 +129,19 @@
     
     
     
-    <category term="收集控" scheme="http://www.hzv5.cn/categories/%E6%94%B6%E9%9B%86%E6%8E%A7/"/>
+    <category term="收集控" scheme="https://www.hzv5.cn/categories/collections/"/>
     
     
-    <category term="支付宝" scheme="http://www.hzv5.cn/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
+    <category term="支付宝" scheme="https://www.hzv5.cn/tags/%E6%94%AF%E4%BB%98%E5%AE%9D/"/>
     
-    <category term="红包" scheme="http://www.hzv5.cn/tags/%E7%BA%A2%E5%8C%85/"/>
+    <category term="红包" scheme="https://www.hzv5.cn/tags/%E7%BA%A2%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>uni-app实现本地通知栏消息推送(不使用第三方插件)的知识点和一些坑</title>
-    <link href="http://www.hzv5.cn/2023/09/08/uni_push/"/>
-    <id>http://www.hzv5.cn/2023/09/08/uni_push/</id>
+    <link href="https://www.hzv5.cn/2023/09/08/uni_push/"/>
+    <id>https://www.hzv5.cn/2023/09/08/uni_push/</id>
     <published>2023-09-08T04:11:13.000Z</published>
     <updated>2023-09-08T08:36:56.598Z</updated>
     
@@ -156,23 +156,23 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
+    <category term="Android" scheme="https://www.hzv5.cn/tags/Android/"/>
     
-    <category term="uniapp" scheme="http://www.hzv5.cn/tags/uniapp/"/>
+    <category term="uniapp" scheme="https://www.hzv5.cn/tags/uniapp/"/>
     
   </entry>
   
   <entry>
     <title>使用vercel和github免费实现serverless api接口服务部署</title>
-    <link href="http://www.hzv5.cn/2023/07/24/github_api/"/>
-    <id>http://www.hzv5.cn/2023/07/24/github_api/</id>
+    <link href="https://www.hzv5.cn/2023/07/24/github_api/"/>
+    <id>https://www.hzv5.cn/2023/07/24/github_api/</id>
     <published>2023-07-24T10:10:05.000Z</published>
     <updated>2023-07-24T11:35:12.237Z</updated>
     
@@ -188,23 +188,23 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="vercel" scheme="http://www.hzv5.cn/tags/vercel/"/>
+    <category term="vercel" scheme="https://www.hzv5.cn/tags/vercel/"/>
     
-    <category term="github" scheme="http://www.hzv5.cn/tags/github/"/>
+    <category term="github" scheme="https://www.hzv5.cn/tags/github/"/>
     
-    <category term="api" scheme="http://www.hzv5.cn/tags/api/"/>
+    <category term="api" scheme="https://www.hzv5.cn/tags/api/"/>
     
   </entry>
   
   <entry>
     <title>Unity一些常用的小知识点笔记，WebGL部署报Unable to parse Build解决笔记</title>
-    <link href="http://www.hzv5.cn/2023/03/28/unity_note/"/>
-    <id>http://www.hzv5.cn/2023/03/28/unity_note/</id>
+    <link href="https://www.hzv5.cn/2023/03/28/unity_note/"/>
+    <id>https://www.hzv5.cn/2023/03/28/unity_note/</id>
     <published>2023-03-28T09:44:20.000Z</published>
     <updated>2023-03-28T10:13:39.807Z</updated>
     
@@ -219,21 +219,21 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="Unity" scheme="http://www.hzv5.cn/tags/Unity/"/>
+    <category term="Unity" scheme="https://www.hzv5.cn/tags/Unity/"/>
     
-    <category term="WebGL" scheme="http://www.hzv5.cn/tags/WebGL/"/>
+    <category term="WebGL" scheme="https://www.hzv5.cn/tags/WebGL/"/>
     
   </entry>
   
   <entry>
     <title>修改JS数组中一个元素的值，其它元素也会跟着变化</title>
-    <link href="http://www.hzv5.cn/2023/03/13/js-array/"/>
-    <id>http://www.hzv5.cn/2023/03/13/js-array/</id>
+    <link href="https://www.hzv5.cn/2023/03/13/js-array/"/>
+    <id>https://www.hzv5.cn/2023/03/13/js-array/</id>
     <published>2023-03-13T06:40:25.000Z</published>
     <updated>2023-03-13T07:40:11.329Z</updated>
     
@@ -247,23 +247,23 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="JScript" scheme="http://www.hzv5.cn/tags/JScript/"/>
+    <category term="JScript" scheme="https://www.hzv5.cn/tags/JScript/"/>
     
-    <category term="大前端" scheme="http://www.hzv5.cn/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/"/>
+    <category term="大前端" scheme="https://www.hzv5.cn/tags/%E5%A4%A7%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="vue" scheme="http://www.hzv5.cn/tags/vue/"/>
+    <category term="vue" scheme="https://www.hzv5.cn/tags/vue/"/>
     
   </entry>
   
   <entry>
     <title>微信小程序的审核没有统一标准吗？真的太奇葩了...</title>
-    <link href="http://www.hzv5.cn/2023/02/28/wx-mini/"/>
-    <id>http://www.hzv5.cn/2023/02/28/wx-mini/</id>
+    <link href="https://www.hzv5.cn/2023/02/28/wx-mini/"/>
+    <id>https://www.hzv5.cn/2023/02/28/wx-mini/</id>
     <published>2023-02-28T15:44:15.000Z</published>
     <updated>2023-02-28T15:43:40.626Z</updated>
     
@@ -276,23 +276,23 @@
     
     
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD/"/>
     
-    <category term="随笔" scheme="http://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="随笔" scheme="http://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/tags/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/tags/%E5%90%90%E6%A7%BD/"/>
     
-    <category term="微信小程序" scheme="http://www.hzv5.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://www.hzv5.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
   </entry>
   
   <entry>
     <title>避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决</title>
-    <link href="http://www.hzv5.cn/2023/02/22/wx-xcx-canvas/"/>
-    <id>http://www.hzv5.cn/2023/02/22/wx-xcx-canvas/</id>
+    <link href="https://www.hzv5.cn/2023/02/22/wx-xcx-canvas/"/>
+    <id>https://www.hzv5.cn/2023/02/22/wx-xcx-canvas/</id>
     <published>2023-02-22T15:52:15.000Z</published>
     <updated>2023-02-22T15:52:51.601Z</updated>
     
@@ -305,27 +305,27 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="vue" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/vue/"/>
+    <category term="vue" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E7%AC%94%E8%AE%B0/vue/"/>
     
     
-    <category term="JScript" scheme="http://www.hzv5.cn/tags/JScript/"/>
+    <category term="JScript" scheme="https://www.hzv5.cn/tags/JScript/"/>
     
-    <category term="vue" scheme="http://www.hzv5.cn/tags/vue/"/>
+    <category term="vue" scheme="https://www.hzv5.cn/tags/vue/"/>
     
-    <category term="微信小程序" scheme="http://www.hzv5.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    <category term="微信小程序" scheme="https://www.hzv5.cn/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
     
-    <category term="canvas" scheme="http://www.hzv5.cn/tags/canvas/"/>
+    <category term="canvas" scheme="https://www.hzv5.cn/tags/canvas/"/>
     
   </entry>
   
   <entry>
     <title>笔记：实现数组排列组合图片合成，做一个NFT生成器！</title>
-    <link href="http://www.hzv5.cn/2022/02/14/android-nft/"/>
-    <id>http://www.hzv5.cn/2022/02/14/android-nft/</id>
+    <link href="https://www.hzv5.cn/2022/02/14/android-nft/"/>
+    <id>https://www.hzv5.cn/2022/02/14/android-nft/</id>
     <published>2022-02-14T10:39:15.000Z</published>
     <updated>2022-02-19T13:00:54.840Z</updated>
     
@@ -343,27 +343,27 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
     
-    <category term="Android" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/"/>
+    <category term="Android" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/"/>
     
     
-    <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
+    <category term="Android" scheme="https://www.hzv5.cn/tags/Android/"/>
     
-    <category term="图片合成" scheme="http://www.hzv5.cn/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/"/>
+    <category term="图片合成" scheme="https://www.hzv5.cn/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/"/>
     
-    <category term="排列组合" scheme="http://www.hzv5.cn/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/"/>
+    <category term="排列组合" scheme="https://www.hzv5.cn/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/"/>
     
-    <category term="NFT" scheme="http://www.hzv5.cn/tags/NFT/"/>
+    <category term="NFT" scheme="https://www.hzv5.cn/tags/NFT/"/>
     
   </entry>
   
   <entry>
     <title>Android实现帧动画动态设置播放时间间隔</title>
-    <link href="http://www.hzv5.cn/2021/06/07/android-gif/"/>
-    <id>http://www.hzv5.cn/2021/06/07/android-gif/</id>
+    <link href="https://www.hzv5.cn/2021/06/07/android-gif/"/>
+    <id>https://www.hzv5.cn/2021/06/07/android-gif/</id>
     <published>2021-06-07T10:32:11.000Z</published>
     <updated>2022-02-19T13:00:32.118Z</updated>
     
@@ -379,25 +379,25 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
     
-    <category term="Android" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/"/>
+    <category term="Android" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/"/>
     
     
-    <category term="Android" scheme="http://www.hzv5.cn/tags/Android/"/>
+    <category term="Android" scheme="https://www.hzv5.cn/tags/Android/"/>
     
-    <category term="Duration" scheme="http://www.hzv5.cn/tags/Duration/"/>
+    <category term="Duration" scheme="https://www.hzv5.cn/tags/Duration/"/>
     
-    <category term="帧动画" scheme="http://www.hzv5.cn/tags/%E5%B8%A7%E5%8A%A8%E7%94%BB/"/>
+    <category term="帧动画" scheme="https://www.hzv5.cn/tags/%E5%B8%A7%E5%8A%A8%E7%94%BB/"/>
     
   </entry>
   
   <entry>
     <title>Hexo添加完GitTalk评论系统后报错以及解决办法</title>
-    <link href="http://www.hzv5.cn/2020/12/23/GitTalk-Error/"/>
-    <id>http://www.hzv5.cn/2020/12/23/GitTalk-Error/</id>
+    <link href="https://www.hzv5.cn/2020/12/23/GitTalk-Error/"/>
+    <id>https://www.hzv5.cn/2020/12/23/GitTalk-Error/</id>
     <published>2020-12-23T03:05:13.000Z</published>
     <updated>2024-12-28T19:27:35.094Z</updated>
     
@@ -409,19 +409,19 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
     
-    <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    <category term="hexo" scheme="https://www.hzv5.cn/tags/hexo/"/>
     
-    <category term="GitTalk" scheme="http://www.hzv5.cn/tags/GitTalk/"/>
+    <category term="GitTalk" scheme="https://www.hzv5.cn/tags/GitTalk/"/>
     
   </entry>
   
   <entry>
     <title>Hexo依靠yilia主题实现添加相册目录</title>
-    <link href="http://www.hzv5.cn/2020/12/22/yilia-photos/"/>
-    <id>http://www.hzv5.cn/2020/12/22/yilia-photos/</id>
+    <link href="https://www.hzv5.cn/2020/12/22/yilia-photos/"/>
+    <id>https://www.hzv5.cn/2020/12/22/yilia-photos/</id>
     <published>2020-12-22T05:46:21.000Z</published>
     <updated>2024-12-22T10:31:17.172Z</updated>
     
@@ -433,21 +433,21 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
     
-    <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    <category term="hexo" scheme="https://www.hzv5.cn/tags/hexo/"/>
     
-    <category term="yilia" scheme="http://www.hzv5.cn/tags/yilia/"/>
+    <category term="yilia" scheme="https://www.hzv5.cn/tags/yilia/"/>
     
-    <category term="相册" scheme="http://www.hzv5.cn/tags/%E7%9B%B8%E5%86%8C/"/>
+    <category term="相册" scheme="https://www.hzv5.cn/tags/%E7%9B%B8%E5%86%8C/"/>
     
   </entry>
   
   <entry>
     <title>使用hexo+github搭建免费个人博客详细教程</title>
-    <link href="http://www.hzv5.cn/2020/12/22/hexo-github/"/>
-    <id>http://www.hzv5.cn/2020/12/22/hexo-github/</id>
+    <link href="https://www.hzv5.cn/2020/12/22/hexo-github/"/>
+    <id>https://www.hzv5.cn/2020/12/22/hexo-github/</id>
     <published>2020-12-22T03:26:51.000Z</published>
     <updated>2024-12-28T19:23:06.416Z</updated>
     
@@ -465,19 +465,19 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
     
-    <category term="hexo" scheme="http://www.hzv5.cn/tags/hexo/"/>
+    <category term="hexo" scheme="https://www.hzv5.cn/tags/hexo/"/>
     
-    <category term="GitTalk" scheme="http://www.hzv5.cn/tags/GitTalk/"/>
+    <category term="GitTalk" scheme="https://www.hzv5.cn/tags/GitTalk/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://www.hzv5.cn/2020/12/22/hello-world/"/>
-    <id>http://www.hzv5.cn/2020/12/22/hello-world/</id>
+    <link href="https://www.hzv5.cn/2020/12/22/hello-world/"/>
+    <id>https://www.hzv5.cn/2020/12/22/hello-world/</id>
     <published>2020-12-22T02:36:50.000Z</published>
     <updated>2024-12-22T10:30:27.801Z</updated>
     
@@ -489,21 +489,21 @@
     
     
     
-    <category term="第一次" scheme="http://www.hzv5.cn/categories/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
+    <category term="第一次" scheme="https://www.hzv5.cn/categories/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
     
     
-    <category term="你好世界" scheme="http://www.hzv5.cn/tags/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C/"/>
+    <category term="你好世界" scheme="https://www.hzv5.cn/tags/%E4%BD%A0%E5%A5%BD%E4%B8%96%E7%95%8C/"/>
     
-    <category term="第一次" scheme="http://www.hzv5.cn/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
+    <category term="第一次" scheme="https://www.hzv5.cn/tags/%E7%AC%AC%E4%B8%80%E6%AC%A1/"/>
     
-    <category term="随笔" scheme="http://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
   </entry>
   
   <entry>
     <title>Git相关工具(MarkdownPad等等)避免踩坑的一些补充笔记</title>
-    <link href="http://www.hzv5.cn/2020/12/14/About-Git-Err-2/"/>
-    <id>http://www.hzv5.cn/2020/12/14/About-Git-Err-2/</id>
+    <link href="https://www.hzv5.cn/2020/12/14/About-Git-Err-2/"/>
+    <id>https://www.hzv5.cn/2020/12/14/About-Git-Err-2/</id>
     <published>2020-12-14T07:32:11.000Z</published>
     <updated>2023-02-22T15:16:16.902Z</updated>
     
@@ -515,25 +515,25 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/"/>
     
     
-    <category term="Git" scheme="http://www.hzv5.cn/tags/Git/"/>
+    <category term="Git" scheme="https://www.hzv5.cn/tags/Git/"/>
     
-    <category term="MarkdownPad" scheme="http://www.hzv5.cn/tags/MarkdownPad/"/>
+    <category term="MarkdownPad" scheme="https://www.hzv5.cn/tags/MarkdownPad/"/>
     
-    <category term="笔记" scheme="http://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="知识点" scheme="http://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/tags/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
   </entry>
   
   <entry>
     <title>三丰云免费主机和服务器的使用体验和感受</title>
-    <link href="http://www.hzv5.cn/2020/05/10/test_sfy/"/>
-    <id>http://www.hzv5.cn/2020/05/10/test_sfy/</id>
+    <link href="https://www.hzv5.cn/2020/05/10/test_sfy/"/>
+    <id>https://www.hzv5.cn/2020/05/10/test_sfy/</id>
     <published>2020-05-10T04:30:01.000Z</published>
     <updated>2023-02-22T15:16:52.229Z</updated>
     
@@ -546,23 +546,23 @@
     
     
     
-    <category term="随笔" scheme="http://www.hzv5.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://www.hzv5.cn/categories/%E9%9A%8F%E7%AC%94/"/>
     
     
-    <category term="随笔" scheme="http://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    <category term="随笔" scheme="https://www.hzv5.cn/tags/%E9%9A%8F%E7%AC%94/"/>
     
-    <category term="免费主机" scheme="http://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BA/"/>
+    <category term="免费主机" scheme="https://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9%E4%B8%BB%E6%9C%BA/"/>
     
-    <category term="三丰云" scheme="http://www.hzv5.cn/tags/%E4%B8%89%E4%B8%B0%E4%BA%91/"/>
+    <category term="三丰云" scheme="https://www.hzv5.cn/tags/%E4%B8%89%E4%B8%B0%E4%BA%91/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/tags/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/tags/%E5%90%90%E6%A7%BD/"/>
     
   </entry>
   
   <entry>
     <title>当你更换电脑设备，怎么重新部署自己的Hexo博客</title>
-    <link href="http://www.hzv5.cn/2020/04/07/hexo-rep/"/>
-    <id>http://www.hzv5.cn/2020/04/07/hexo-rep/</id>
+    <link href="https://www.hzv5.cn/2020/04/07/hexo-rep/"/>
+    <id>https://www.hzv5.cn/2020/04/07/hexo-rep/</id>
     <published>2020-04-07T09:30:01.000Z</published>
     <updated>2020-04-15T05:52:52.823Z</updated>
     
@@ -576,25 +576,25 @@
     
     
     
-    <category term="知识点" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
+    <category term="知识点" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/"/>
     
-    <category term="Hexo" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/Hexo/"/>
+    <category term="Hexo" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/Hexo/"/>
     
-    <category term="Git" scheme="http://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/Hexo/Git/"/>
+    <category term="Git" scheme="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/Hexo/Git/"/>
     
     
-    <category term="Git" scheme="http://www.hzv5.cn/tags/Git/"/>
+    <category term="Git" scheme="https://www.hzv5.cn/tags/Git/"/>
     
-    <category term="HEXO" scheme="http://www.hzv5.cn/tags/HEXO/"/>
+    <category term="HEXO" scheme="https://www.hzv5.cn/tags/HEXO/"/>
     
-    <category term="博客搬家" scheme="http://www.hzv5.cn/tags/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/"/>
+    <category term="博客搬家" scheme="https://www.hzv5.cn/tags/%E5%8D%9A%E5%AE%A2%E6%90%AC%E5%AE%B6/"/>
     
   </entry>
   
   <entry>
     <title>把自己做的一些小工具app归类到了网站上</title>
-    <link href="http://www.hzv5.cn/2020/04/03/mylist-app/"/>
-    <id>http://www.hzv5.cn/2020/04/03/mylist-app/</id>
+    <link href="https://www.hzv5.cn/2020/04/03/mylist-app/"/>
+    <id>https://www.hzv5.cn/2020/04/03/mylist-app/</id>
     <published>2020-04-03T09:30:01.000Z</published>
     <updated>2020-04-07T11:59:01.308Z</updated>
     
@@ -608,25 +608,25 @@
     
     
     
-    <category term="水文" scheme="http://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/"/>
+    <category term="水文" scheme="https://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/"/>
     
-    <category term="吐槽" scheme="http://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/%E5%90%90%E6%A7%BD/"/>
+    <category term="吐槽" scheme="https://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/%E5%90%90%E6%A7%BD/"/>
     
-    <category term="心情" scheme="http://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/%E5%90%90%E6%A7%BD/%E5%BF%83%E6%83%85/"/>
+    <category term="心情" scheme="https://www.hzv5.cn/categories/%E6%B0%B4%E6%96%87/%E5%90%90%E6%A7%BD/%E5%BF%83%E6%83%85/"/>
     
     
-    <category term="安卓软件" scheme="http://www.hzv5.cn/tags/%E5%AE%89%E5%8D%93%E8%BD%AF%E4%BB%B6/"/>
+    <category term="安卓软件" scheme="https://www.hzv5.cn/tags/%E5%AE%89%E5%8D%93%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="原创软件" scheme="http://www.hzv5.cn/tags/%E5%8E%9F%E5%88%9B%E8%BD%AF%E4%BB%B6/"/>
+    <category term="原创软件" scheme="https://www.hzv5.cn/tags/%E5%8E%9F%E5%88%9B%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="android App" scheme="http://www.hzv5.cn/tags/android-App/"/>
+    <category term="android App" scheme="https://www.hzv5.cn/tags/android-App/"/>
     
   </entry>
   
   <entry>
     <title>一款博主自己写的博客订阅安卓APP</title>
-    <link href="http://www.hzv5.cn/2019/11/30/add-rssblog/"/>
-    <id>http://www.hzv5.cn/2019/11/30/add-rssblog/</id>
+    <link href="https://www.hzv5.cn/2019/11/30/add-rssblog/"/>
+    <id>https://www.hzv5.cn/2019/11/30/add-rssblog/</id>
     <published>2019-11-30T07:35:00.000Z</published>
     <updated>2019-11-30T12:22:29.220Z</updated>
     
@@ -640,16 +640,16 @@
     
     
     
-    <category term="吐槽大会" scheme="http://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A/"/>
+    <category term="吐槽大会" scheme="https://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A/"/>
     
-    <category term="知识笔记" scheme="http://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/"/>
+    <category term="知识笔记" scheme="https://www.hzv5.cn/categories/%E5%90%90%E6%A7%BD%E5%A4%A7%E4%BC%9A/%E7%9F%A5%E8%AF%86%E7%AC%94%E8%AE%B0/"/>
     
     
-    <category term="博客订阅" scheme="http://www.hzv5.cn/tags/%E5%8D%9A%E5%AE%A2%E8%AE%A2%E9%98%85/"/>
+    <category term="博客订阅" scheme="https://www.hzv5.cn/tags/%E5%8D%9A%E5%AE%A2%E8%AE%A2%E9%98%85/"/>
     
-    <category term="安卓软件" scheme="http://www.hzv5.cn/tags/%E5%AE%89%E5%8D%93%E8%BD%AF%E4%BB%B6/"/>
+    <category term="安卓软件" scheme="https://www.hzv5.cn/tags/%E5%AE%89%E5%8D%93%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="原创软件" scheme="http://www.hzv5.cn/tags/%E5%8E%9F%E5%88%9B%E8%BD%AF%E4%BB%B6/"/>
+    <category term="原创软件" scheme="https://www.hzv5.cn/tags/%E5%8E%9F%E5%88%9B%E8%BD%AF%E4%BB%B6/"/>
     
   </entry>
   
