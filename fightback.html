@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怼人金句百科</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        /* 页面容器 */
+        .page-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        /* 顶部导航栏 */
+        .nav-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+        .logo span {
+            color: #4299e1;
+        }
+        .nav-btns {
+            display: flex;
+            gap: 12px;
+        }
+        .nav-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-home {
+            background-color: #4299e1;
+            color: white;
+        }
+        .btn-collect {
+            background-color: #f6ad55;
+            color: white;
+        }
+        .nav-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+        /* 卡片通用样式 */
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        /* 主页搜索与分类区 */
+        .search-box {
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        #search-input {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+        }
+        #search-input:focus {
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+        .category-tag {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .tag {
+            padding: 8px 18px;
+            background-color: #f1f3f5;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #495057;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .tag.active {
+            background-color: #4299e1;
+            color: white;
+        }
+        .tag:hover:not(.active) {
+            background-color: #e9ecef;
+        }
+        .main-btn-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .main-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        #search-btn {
+            background-color: #2d3748;
+            color: white;
+        }
+        #random-btn {
+            background-color: #ff6b6b;
+            color: white;
+        }
+        .main-btn:hover {
+            opacity: 0.9;
+        }
+        /* 结果展示区 - 固定高度解决跳动问题 */
+        .result-box {
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px dashed #e9ecef;
+            text-align: center;
+            /* 固定高度，根据内容调整，足够容纳多行文本 */
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .result-text {
+            font-size: 18px;
+            color: #2d3748;
+            margin-bottom: 15px;
+            /* 文本换行优化 */
+            word-break: break-all;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+        .action-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #copy-btn {
+            background-color: #4299e1;
+            color: white;
+        }
+        #collect-btn {
+            background-color: #f6ad55;
+            color: white;
+        }
+        /* 已收藏按钮样式 */
+        #collect-btn.collected {
+            background-color: #cccccc;
+            color: #666666;
+            cursor: not-allowed;
+        }
+        .result-count {
+            font-size: 13px;
+            color: #868e96;
+            margin-top: 10px;
+        }
+        /* 收藏页面样式 */
+        .collect-page {
+            display: none;
+        }
+        .collect-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .collect-title i {
+            color: #f6ad55;
+        }
+        .collect-empty {
+            text-align: center;
+            padding: 50px 0;
+            color: #868e96;
+            font-size: 16px;
+        }
+        .collect-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .collect-item {
+            padding: 16px;
+            background-color: #fef7fb;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .collect-item-text {
+            font-size: 15px;
+            color: #2d3748;
+        }
+        .collect-item-delete {
+            color: #e53e3e;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        .collect-item-delete:hover {
+            transform: scale(1.1);
+        }
+        /* 响应式适配 */
+        @media (max-width: 500px) {
+            .collect-list {
+                grid-template-columns: 1fr;
+            }
+            .main-btn-group {
+                flex-direction: column;
+            }
+            .result-box {
+                min-height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <!-- 顶部导航 -->
+        <div class="nav-header">
+            <div class="logo">怼人<span>金句百科</span></div>
+            <div class="nav-btns">
+                <button class="nav-btn btn-home" onclick="switchPage('home')">金句主页</button>
+                <button class="nav-btn btn-collect" onclick="switchPage('collect')">我的收藏</button>
+            </div>
+        </div>
+
+        <!-- 金句主页 -->
+        <div class="home-page card">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="输入关键词搜索金句...">
+            </div>
+            <div class="category-tag">
+                <span class="tag active" data-tag="all">全部</span>
+                <span class="tag" data-tag="歪楼抬杠">歪楼抬杠</span>
+                <span class="tag" data-tag="阴阳怪气">阴阳怪气</span>
+                <span class="tag" data-tag="犀利短句">犀利短句</span>
+                <span class="tag" data-tag="职场回怼">职场回怼</span>
+                <span class="tag" data-tag="搞笑押韵">搞笑押韵</span>
+            </div>
+            <div class="main-btn-group">
+                <button class="main-btn" id="search-btn">搜索金句</button>
+                <button class="main-btn" id="random-btn">随机抽一句</button>
+            </div>
+            <div class="result-box">
+                <div class="result-text" id="result-text">点击按钮或选择分类，获取你的怼人金句~</div>
+                <div class="result-actions">
+                    <button class="action-btn" id="copy-btn">复制金句</button>
+                    <button class="action-btn" id="collect-btn">收藏金句</button>
+                </div>
+                <div class="result-count" id="result-count"></div>
+            </div>
+        </div>
+
+        <!-- 收藏页面 -->
+        <div class="collect-page card" id="collect-page">
+            <div class="collect-title"><i>★</i> 我的收藏金句</div>
+            <div class="collect-list" id="collect-list">
+                <div class="collect-empty">暂无收藏，快去主页收藏喜欢的金句吧~</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 独立金句词库（可直接编辑） ==========
+        const quoteDatabase = {
+            "歪楼抬杠": [
+                "我聊功能呢，你扯别的干啥？",
+                "说不出缺点就别瞎吵。",
+                "我评价个东西还得按你的逻辑来？你谁啊？",
+                "你这回复跟我评论半毛钱关系没有，建议挂脑科号。",
+                "有空在这抬杠，不如回家给键盘洗个澡",
+                "你这理解能力，怕是词典看的都是简笔画版",
+                "别拿你的偏见当真理，你又不是“道理制造机”",
+                "你这逻辑比迷宫还乱，走进去都怕出不来",
+                "我懒得跟你争，是觉得浪费我宝贵的时间",
+                "你这脑回路太清奇，我跟不上你的“节奏”",
+                "别用你的标准要求我，你又不是“人生裁判”",
+                "你是不是阿基米德的后人啊，整天就知道抬杠",
+                "你这逻辑是闭环的，在自己的世界里自给自足",
+                "你是不是吃键盘长大的，怎么满嘴都是快捷键，就是不会说人话？",
+                "你这脑回路，九曲十八弯，就是绕不到重点上",
+                "你的逻辑是薛定谔的猫吗？我不打开盒子都不知道它不存在",
+                "你是不是信号不太好？怎么跟你沟通全是乱码",
+                "你这思路，GPS看了都得崩溃，直接提示“重新路径规划”",
+                "我们系统不兼容，建议你回厂重装一下语言模块",
+                "你是ETC成精吗？怎么24小时自动抬杠？",
+                "你这逻辑，牛顿的棺材板都压不住了",
+                "我唾沫是用来吹泡泡的，不是跟你抬杠的",
+                "你这么牛，画个正方形的圆给我看看",
+                "再跟我抬杠，就把你变成小蘑菇，踩扁你",
+                "我的素质，遇强则强，遇弱则弱，遇杠？直接消失",
+                "你管的比太平洋还宽，怎么不去当航海家？",
+                "说话前先过过脑子，不然显得智商有点“欠费”",
+                "别用你的错误来定义我，你还没那个资格",
+                "你要是嘴闲，不如去嚼口香糖，别在这当傻瓜",
+                "你的观点只代表你自己，别强加给别人",
+                "我客气是礼貌，不是让你得寸进尺的理由",
+                "别拿无知当个性，那不是酷是“没文化”",
+                "你眼睛怕是有滤镜，不然怎么看不清自己？",
+                "说话别带刺，不然容易扎到自己的嘴",
+                "我不惹事但不怕事，别把我的忍让当懦弱",
+                "你这想法太离谱，怕是从科幻片里学的吧",
+                "别在我面前装大佬，你那点本事我看得清",
+                "我不是软柿子，别想着捏完还不擦手",
+                "你管的太多，小心操心过度把自己累着",
+                "说话要讲事实，别凭空捏造“想象力”",
+                "我没兴趣跟你掰头，你赢了也没奖品",
+                "我对你的话没兴趣，就像你对“礼貌”没兴趣一样",
+                "你又不是导航，凭什么总给我指路？",
+                "建议很好，下次别建议了，留着自我消化吧",
+                "双标玩得这么溜，考虑过参加奥运会吗？",
+                "别用你的业余爱好，挑战我的专业底线",
+                "你的眼界，还没我家猫的瞳孔放得大",
+                "别跟我谈格局，你那点小心思，我在地图上放大十倍都找不着",
+                "脑子不用可以捐给火锅店，至少能当个毛肚涮一涮",
+                "我的态度取决于你的态度，镜子照照再说话",
+                "管好你自己的一亩三分地，太平洋警察都没你管得宽",
+                "我的人生我做主，你的意见？建议存进回收站",
+                "你继续你的表演，我这边门票已售罄",
+                "你是人间减速带，专治各种好心情",
+                "你真是属导航的，一辈子都在给我找弯路",
+                "你这人挺环保的，专门负责回收别人的快乐",
+                "你是属导航的吧？一辈子专坑熟人",
+                "你这人挺复古的，远古时期的脑子还没进化完全",
+                "天下之大，大不过你缺的那块心眼"
+            ],
+            "阴阳怪气": [
+                "哟，这就急了？我还没说啥呢。",
+                "行吧，你说的都对，毕竟你最懂怎么歪楼。",
+                "原来评价个东西还得按你的剧本走啊，失敬失敬。",
+                "别太激动，我怕你急得说不出话来。",
+                "羡慕你的皮肤，保养得真厚",
+                "动不动就发火，你是一颗火龙果吗？",
+                "如果你嫌我粘人，那你就找仙人掌吧",
+                "你再嘴硬，我就用可爱淹死你哦",
+                "我可不是好惹的，除非你给我买奶茶",
+                "虽然我什么都看得开，但是不影响我记仇",
+                "我原谅你了，但拉黑按钮还没坏",
+                "东边不亮西边亮，憨批啥样你啥样",
+                "你这话什么水平？幼儿园都教不出这么烂的",
+                "如果我惹你生气了，对不起，我不改，记住了吗？",
+                "你再气我，我就哭给你看，哭到你心软",
+                "也不找我聊天，留在我的列表是准备暗杀我吗？",
+                "你是不是皮卡丘的弟弟，皮痒痒？",
+                "你脸皮这么厚，防弹衣厂家没找你代言？",
+                "酸味这么冲，你家开醋厂的？",
+                "你怕不是风油精喝多了，净说风凉话",
+                "说真的我挺羡慕你的皮肤，你说你怎么能把它保养得那么厚呢",
+                "你瞅你那五官，各长各的，谁也不服谁",
+                "你身上的闪光点，大概就是眼屎吧，一闪一闪亮晶晶",
+                "您没事儿吧？没事就吃点溜溜梅",
+                "是我把你当人看了，才和你讲道理",
+                "您这智商，充其量就是wifi信号，时强时弱还不稳定",
+                "我不介意您开玩笑，但我介意您的玩笑这么不好笑",
+                "您的发言很有水平，下次别发言了",
+                "听你说话，我建议你去配个助听器，顺便给自己的脑子充充电",
+                "您的逻辑很感人，建议编入《感动中国》特别版",
+                "别太把自己当回事，毕竟地球没你也照样转",
+                "你这张嘴，不去说相声真是屈才了，可惜说的都是废话",
+                "我见过抬杠的，但没见过抬杠抬得这么清新脱俗的",
+                "你这脑容量，怕不是和蚂蚁的一样大",
+                "你是不是觉得自己很幽默？其实也就那样吧",
+                "你说的都对，就是有点不符合事实",
+                "我尊重你的观点，但我不同意你放屁",
+                "你这么会说，怎么不去参加辩论赛？输了还能拿安慰奖",
+                "你这想法，我建议你写进小说里，毕竟现实中没人信",
+                "别跟我秀智商了，你的智商余额明显不足",
+                "你这操作，真是让人叹为观止，叹的是你的无知",
+                "我懒得理你，是因为我觉得和你说话掉价",
+                "你这嘴，比老太太的裹脚布还长还臭",
+                "你是不是觉得自己很懂？其实你啥也不是",
+                "你这理解能力，不去当编剧真是可惜了，脑洞比宇宙还大",
+                "你说的话，我连标点符号都不信",
+                "你这脾气，不去当炸药包真是屈才了",
+                "别用你的无知，挑战我的耐心",
+                "你这脑子，怕是被门夹过，被驴踢过，还被开水烫过",
+                "你这么能杠，怎么不去工地搬钢筋？比在这抬杠强多了",
+                "你这发言，真是语不惊人死不休，惊的是你的愚蠢",
+                "我不跟你吵，是因为我怕赢了之后，你会哭鼻子",
+                "你这水平，也就只能在网上找找存在感了",
+                "你这张嘴，不去卖保险真是可惜了，能把黑的说成白的",
+                "你是不是觉得自己很厉害？其实也就那样吧",
+                "你这逻辑，我建议你重新回炉重造，不然真的没救了",
+                "别跟我谈三观，你的三观怕是歪到太平洋去了",
+                "你这想法，真是前无古人后无来者，可惜是个馊主意",
+                "你这么会抬杠，怎么不去参加奥运会抬杠比赛？金牌非你莫属",
+                "你这嘴，比毒蛇还毒，可惜毒的是自己",
+                "我不跟你计较，是因为我觉得你不配",
+                "你这智商，真是感人至深，深到我都不忍心戳穿你",
+                "你这操作，真是让人哭笑不得，笑的是你的天真",
+                "别跟我装蒜，你那点小心思我早就看穿了",
+                "你这么会说，怎么不去当主持人？可惜没人愿意看",
+                "你这脑回路，真是与众不同，可惜是个死胡同",
+                "你说的话，我听着就像放屁，臭不可闻"
+            ],
+            "犀利短句": [
+                "这么会杠，工地缺你。",
+                "急了急了，戳到痛处了？",
+                "你这逻辑，建议重修语文。",
+                "工地缺抬杠的，你快去，工资肯定高。",
+                "少管闲事，管好你自己。",
+                "你谁啊，我认识你吗？",
+                "脑子是个好东西，希望你也有。",
+                "三观不同，不必强融。",
+                "你算哪块小饼干？",
+                "嘴下留情，积点口德。",
+                "别来沾边，晦气。",
+                "你开心就好，我无所谓。",
+                "没话找话，不如闭嘴。",
+                "智商欠费，建议充值。",
+                "你的世界，我不懂。",
+                "管好你的嘴，不然我帮你管。",
+                "别太自恋，你没那么重要。",
+                "有病治病，别来传染我。",
+                "你这张嘴，真能叭叭。",
+                "我很忙，没空理你。",
+                "别给脸不要脸。",
+                "你是什么品种，这么凶？",
+                "不想听，滚。",
+                "你说的对，但我不听。",
+                "多喝热水，百病全消。",
+                "别杠，杠就是你对。",
+                "你开心就好，反正我不信。",
+                "少废话，直接说重点。",
+                "你这理解能力，没救了。",
+                "我没义务迁就你。",
+                "别自我感动了。",
+                "你算老几？",
+                "懒得跟你废话。",
+                "你这脾气，谁惯的？",
+                "别玻璃心，我没针对你。",
+                "你随意，我奉陪。",
+                "别装了，我看透你了。",
+                "你这水平，不行。",
+                "别浪费我的时间。",
+                "你这想法，太天真。",
+                "我不稀罕。",
+                "你这操作，太秀了。",
+                "别跟我扯犊子。",
+                "你这嘴，开过光吧？",
+                "我不吃你那套。",
+                "别太把自己当回事。",
+                "你这智商，感人。",
+                "我没兴趣。",
+                "你这逻辑，离谱。",
+                "别来烦我。",
+                "你这性格，真让人讨厌。",
+                "我懒得理你。",
+                "你这人品，不行。",
+                "别给我画大饼。",
+                "你这眼光，真差。",
+                "我不跟你玩。",
+                "你这脑子，进水了？",
+                "别自以为是。",
+                "你这张嘴，欠抽。",
+                "我没空陪你演戏。",
+                "你这水平，也就那样。",
+                "别跟我讲道理，我不听。",
+                "你这脾气，该改改了。",
+                "我不接受你的道歉。",
+                "你这想法，太幼稚。"
+            ],
+            "职场回怼": [
+                "这活不是我负责的，别甩锅给我。",
+                "工资没给够，凭什么让我加班？",
+                "你行你上，不行别指挥。",
+                "我的工作做完了，你的呢？",
+                "别拿“为你好”绑架我，我不稀罕。",
+                "开会可以，别占用下班时间。",
+                "这是你的职责，不是我的义务。",
+                "建议你先搞清楚工作流程再说话。",
+                "我拿一份工资，干一份活，别想让我多干。",
+                "加班可以，加班费给够了吗？",
+                "别画大饼了，我不吃这一套。",
+                "你安排的任务，麻烦说清楚要求。",
+                "我的能力怎么样，不是你说了算的。",
+                "别在背后说我坏话，有本事当面说。",
+                "这锅我不背，谁的责任谁承担。",
+                "别拿资历压我，能力才是硬道理。",
+                "我工作是为了赚钱，不是为了交朋友。",
+                "你自己的工作没做完，还有空管我？",
+                "别动不动就扣帽子，我不吃你那套。",
+                "升职加薪没我份，背锅甩锅第一个想到我？",
+                "开会讨论可以，别浪费大家的时间。",
+                "我的工作进度，不需要你天天催。",
+                "别把你的工作失误，归咎于我的配合。",
+                "你要是觉得我做得不好，那你自己来。",
+                "加班是情分，不加班是本分。",
+                "别跟我谈理想，我的理想就是不上班。",
+                "你安排的任务超出我的职责范围了。",
+                "我完成我的部分，剩下的你自己搞定。",
+                "别用命令的语气跟我说话，我不是你的下属。",
+                "工作是工作，生活是生活，别混为一谈。",
+                "你这方案漏洞百出，还好意思拿出来？",
+                "我不是万能的，别什么事都找我。",
+                "别在领导面前装勤快，背后摸鱼谁不知道？",
+                "这不是我的问题，是流程的问题。",
+                "工资没涨，工作量倒是涨了不少。",
+                "别让我做无意义的重复工作。",
+                "你自己都没搞明白，还来指导我？",
+                "我按时下班，不代表我工作没做完。",
+                "别拿团队精神道德绑架我，我只看实际利益。",
+                "你的要求太离谱了，我做不到。",
+                "我加班的时候你看不见，我准时下班你就有意见？",
+                "别把我当软柿子捏，我也有脾气。",
+                "这项目是大家的，别功劳全往自己身上揽。",
+                "你要是有本事，就不会在这里指挥我了。",
+                "别动不动就开会，有这时间不如干点实事。",
+                "我的工作成果，不需要你来评价。",
+                "别让我背锅，我没那么好欺负。",
+                "你这想法太天真了，根本不切实际。",
+                "我拿多少钱，干多少事，天经地义。",
+                "别在我面前摆架子，大家都是打工的。",
+                "你自己的工作自己做，别推给我。",
+                "加班可以，调休给我安排上。",
+                "别跟我谈奉献，我上班是为了赚钱。",
+                "你这方案不行，重新做吧。",
+                "我不是你的助理，别什么事都让我干。",
+                "别在背后打小报告，有本事当面说清楚。",
+                "我的工作节奏，不需要你来打乱。",
+                "你要是觉得我不行，那你换人啊。",
+                "别拿公司规定压我，规定是死的人是活的。",
+                "我完成工作就行，用什么方法是我的事。",
+                "别动不动就扣绩效，我没做错什么。",
+                "你自己的失误，别让我来买单。",
+                "这不是我的工作，我拒绝。",
+                "别跟我谈团队，团队没给我发工资。",
+                "你这指挥水平，还不如我家的猫。",
+                "我按时完成任务，你别鸡蛋里挑骨头。"
+            ],
+            "搞笑押韵": [
+                "你说你行你就行，不行也行；你说你不行就不行，行也不行",
+                "人生自古谁无死，有谁拉屎不用纸",
+                "长江后浪推前浪，前浪死在沙滩上",
+                "书到用时方恨少，钱到月底不够花",
+                "君子之交淡如水，小人之交甜如蜜",
+                "问君能有几多愁，恰似一壶二锅头",
+                "天若有情天亦老，人若有情死得早",
+                "床前明月光，疑是地上霜，举头望明月，低头思故乡——的辣条",
+                "春眠不觉晓，处处蚊子咬，夜来风雨声，花落知多少——的红包",
+                "白日依山尽，黄河入海流，欲穷千里目，更上一层楼——的厕所",
+                "锄禾日当午，汗滴禾下土，谁知盘中餐，粒粒皆辛苦——的外卖",
+                "鹅鹅鹅，曲项向天歌，白毛浮绿水，红掌拨清波——的火锅",
+                "千山鸟飞绝，万径人踪灭，孤舟蓑笠翁，独钓寒江雪——的烤鱼",
+                "远看山有色，近听水无声，春去花还在，人来鸟不惊——的假花",
+                "松下问童子，言师采药去，只在此山中，云深不知处——的信号",
+                "离离原上草，一岁一枯荣，野火烧不尽，春风吹又生——的杂草",
+                "一去二三里，烟村四五家，亭台六七座，八九十枝花——的野花",
+                "危楼高百尺，手可摘星辰，不敢高声语，恐惊天上人——的邻居",
+                "小时不识月，呼作白玉盘，又疑瑶台镜，飞在青云端——的飞碟",
+                "爆竹声中一岁除，春风送暖入屠苏，千门万户曈曈日，总把新桃换旧符——的红包",
+                "清明时节雨纷纷，路上行人欲断魂，借问酒家何处有，牧童遥指杏花村——的厕所",
+                "水光潋滟晴方好，山色空蒙雨亦奇，欲把西湖比西子，淡妆浓抹总相宜——的美女",
+                "横看成岭侧成峰，远近高低各不同，不识庐山真面目，只缘身在此山中——的迷路",
+                "毕竟西湖六月中，风光不与四时同，接天莲叶无穷碧，映日荷花别样红——的荷花",
+                "梅子金黄杏子肥，麦花雪白菜花稀，日长篱落无人过，惟有蜻蜓蛱蝶飞——的田园",
+                "泉眼无声惜细流，树阴照水爱晴柔，小荷才露尖尖角，早有蜻蜓立上头——的蜻蜓",
+                "胜日寻芳泗水滨，无边光景一时新，等闲识得东风面，万紫千红总是春——的春天",
+                "半亩方塘一鉴开，天光云影共徘徊，问渠那得清如许，为有源头活水来——的活水",
+                "昨夜星辰昨夜风，画楼西畔桂堂东，身无彩凤双飞翼，心有灵犀一点通——的默契",
+                "锦瑟无端五十弦，一弦一柱思华年，庄生晓梦迷蝴蝶，望帝春心托杜鹃——的思念",
+                "青山隐隐水迢迢，秋尽江南草未凋，二十四桥明月夜，玉人何处教吹箫——的玉人",
+                "千里莺啼绿映红，水村山郭酒旗风，南朝四百八十寺，多少楼台烟雨中——的寺庙",
+                "烟笼寒水月笼沙，夜泊秦淮近酒家，商女不知亡国恨，隔江犹唱后庭花——的商女",
+                "朱雀桥边野草花，乌衣巷口夕阳斜，旧时王谢堂前燕，飞入寻常百姓家——的燕子",
+                "秦时明月汉时关，万里长征人未还，但使龙城飞将在，不教胡马度阴山——的飞将",
+                "葡萄美酒夜光杯，欲饮琵琶马上催，醉卧沙场君莫笑，古来征战几人回——的征战",
+                "洛阳亲友如相问，一片冰心在玉壶——的冰心",
+                "劝君更尽一杯酒，西出阳关无故人——的故人",
+                "莫愁前路无知己，天下谁人不识君——的知己",
+                "桃花潭水深千尺，不及汪伦送我情——的友情",
+                "两岸猿声啼不住，轻舟已过万重山——的轻舟",
+                "两岸青山相对出，孤帆一片日边来——的孤帆",
+                "飞流直下三千尺，疑是银河落九天——的瀑布",
+                "天生我材必有用，千金散尽还复来——的自信",
+                "仰天大笑出门去，我辈岂是蓬蒿人——的豪迈",
+                "抽刀断水水更流，举杯消愁愁更愁——的忧愁",
+                "长风破浪会有时，直挂云帆济沧海——的壮志",
+                "人生得意须尽欢，莫使金樽空对月——的洒脱",
+                "五花马，千金裘，呼儿将出换美酒，与尔同销万古愁——的美酒",
+                "黄河之水天上来，奔流到海不复回——的黄河",
+                "君不见高堂明镜悲白发，朝如青丝暮成雪——的白发",
+                "岑夫子，丹丘生，将进酒，杯莫停——的劝酒",
+                "与君歌一曲，请君为我倾耳听——的听歌",
+                "钟鼓馔玉不足贵，但愿长醉不复醒——的长醉",
+                "古来圣贤皆寂寞，惟有饮者留其名——的饮者",
+                "陈王昔时宴平乐，斗酒十千恣欢谑——的陈王",
+                "主人何为言少钱，径须沽取对君酌——的沽酒",
+                "五花马，千金裘，呼儿将出换美酒，与尔同销万古愁——的销愁",
+                "白日放歌须纵酒，青春作伴好还乡——的还乡",
+                "即从巴峡穿巫峡，便下襄阳向洛阳——的归程",
+                "剑外忽传收蓟北，初闻涕泪满衣裳——的喜悦",
+                "却看妻子愁何在，漫卷诗书喜欲狂——的狂喜",
+                "黄四娘家花满蹊，千朵万朵压枝低，留连戏蝶时时舞，自在娇莺恰恰啼——的春花",
+                "迟日江山丽，春风花草香，泥融飞燕子，沙暖睡鸳鸯——的春日",
+                "竹外桃花三两枝，春江水暖鸭先知，蒌蒿满地芦芽短，正是河豚欲上时——的春江",
+                "独怜幽草涧边生，上有黄鹂深树鸣，春潮带雨晚来急，野渡无人舟自横——的野渡",
+                "应怜屐齿印苍苔，小扣柴扉久不开，春色满园关不住，一枝红杏出墙来——的红杏",
+                "千里黄云白日曛，北风吹雁雪纷纷，莫愁前路无知己，天下谁人不识君——的送别",
+                "渭城朝雨浥轻尘，客舍青青柳色新，劝君更尽一杯酒，西出阳关无故人——的离别"
+            ]
+        };
+
+        // 转换为数组格式
+        const quoteList = [];
+        for (const tag in quoteDatabase) {
+            quoteDatabase[tag].forEach(content => {
+                quoteList.push({ tag, content });
+            });
+        }
+
+        // DOM元素
+        const homePage = document.querySelector(".home-page");
+        const collectPage = document.getElementById("collect-page");
+        const searchInput = document.getElementById("search-input");
+        const searchBtn = document.getElementById("search-btn");
+        const randomBtn = document.getElementById("random-btn");
+        const resultText = document.getElementById("result-text");
+        const resultCount = document.getElementById("result-count");
+        const copyBtn = document.getElementById("copy-btn");
+        const collectBtn = document.getElementById("collect-btn");
+        const collectList = document.getElementById("collect-list");
+        const tags = document.querySelectorAll(".tag");
+
+        // 全局变量
+        let currentTag = "all";
+        let currentQuote = "";
+        let collectedQuotes = JSON.parse(localStorage.getItem("collectedQuotes")) || [];
+
+        // 页面初始化
+        renderCollectList();
+        initTagEvent();
+        // 初始化收藏按钮状态
+        updateCollectBtnStatus();
+
+        // 1. 页面切换功能
+        function switchPage(pageType) {
+            if (pageType === "home") {
+                homePage.style.display = "block";
+                collectPage.style.display = "none";
+            } else {
+                homePage.style.display = "none";
+                collectPage.style.display = "block";
+                renderCollectList();
+            }
+        }
+
+        // 2. 分类标签事件
+        function initTagEvent() {
+            tags.forEach(tag => {
+                tag.addEventListener("click", () => {
+                    tags.forEach(t => t.classList.remove("active"));
+                    tag.classList.add("active");
+                    currentTag = tag.dataset.tag;
+                    filterQuote();
+                });
+            });
+        }
+
+        // 3. 搜索功能
+        searchBtn.addEventListener("click", filterQuote);
+        searchInput.addEventListener("keyup", (e) => e.key === "Enter" && filterQuote());
+
+        // 4. 随机抽取功能
+        randomBtn.addEventListener("click", () => {
+            const filtered = currentTag === "all" ? quoteList : quoteList.filter(q => q.tag === currentTag);
+            if (filtered.length === 0) {
+                resultText.textContent = "暂无匹配金句~";
+                resultCount.textContent = "";
+                currentQuote = "";
+                updateCollectBtnStatus();
+                return;
+            }
+            const randomIdx = Math.floor(Math.random() * filtered.length);
+            currentQuote = filtered[randomIdx].content;
+            resultText.textContent = currentQuote;
+            resultCount.textContent = `第 ${randomIdx + 1} 句 / 共 ${filtered.length} 句`;
+            // 更新收藏按钮状态
+            updateCollectBtnStatus();
+        });
+
+        // 5. 复制功能
+        copyBtn.addEventListener("click", async () => {
+            if (!currentQuote) return alert("暂无金句可复制~");
+            try {
+                await navigator.clipboard.writeText(currentQuote);
+                alert("金句复制成功！");
+            } catch (err) {
+                alert("复制失败，请手动复制~");
+            }
+        });
+
+        // 6. 收藏功能 - 优化状态显示
+        collectBtn.addEventListener("click", () => {
+            if (!currentQuote) return alert("暂无金句可收藏~");
+            if (collectedQuotes.includes(currentQuote)) return;
+            
+            collectedQuotes.push(currentQuote);
+            localStorage.setItem("collectedQuotes", JSON.stringify(collectedQuotes));
+            alert("金句收藏成功！");
+            // 更新按钮状态
+            updateCollectBtnStatus();
+            // 同步更新收藏页
+            renderCollectList();
+        });
+
+        // 7. 更新收藏按钮状态：已收藏则变灰不可点击
+        function updateCollectBtnStatus() {
+            if (!currentQuote) {
+                collectBtn.textContent = "收藏金句";
+                collectBtn.classList.remove("collected");
+                return;
+            }
+            if (collectedQuotes.includes(currentQuote)) {
+                collectBtn.textContent = "已收藏";
+                collectBtn.classList.add("collected");
+            } else {
+                collectBtn.textContent = "收藏金句";
+                collectBtn.classList.remove("collected");
+            }
+        }
+
+        // 8. 渲染收藏列表
+        function renderCollectList() {
+            if (collectedQuotes.length === 0) {
+                collectList.innerHTML = '<div class="collect-empty">暂无收藏，快去主页收藏喜欢的金句吧~</div>';
+                return;
+            }
+            collectList.innerHTML = collectedQuotes.map(quote => `
+                <div class="collect-item">
+                    <div class="collect-item-text">${quote}</div>
+                    <span class="collect-item-delete" onclick="deleteCollect('${quote}')">×</span>
+                </div>
+            `).join("");
+        }
+
+        // 9. 删除收藏 - 同步更新主页按钮状态
+        window.deleteCollect = function(quote) {
+            collectedQuotes = collectedQuotes.filter(q => q !== quote);
+            localStorage.setItem("collectedQuotes", JSON.stringify(collectedQuotes));
+            renderCollectList();
+            // 如果删除的是当前显示的金句，更新按钮状态
+            if (currentQuote === quote) {
+                updateCollectBtnStatus();
+            }
+        }
+
+        // 10. 过滤金句（搜索+分类）
+        function filterQuote() {
+            const keyword = searchInput.value.trim().toLowerCase();
+            let filtered = quoteList;
+
+            // 分类过滤
+            if (currentTag !== "all") {
+                filtered = filtered.filter(q => q.tag === currentTag);
+            }
+            // 关键词过滤
+            if (keyword) {
+                filtered = filtered.filter(q => q.content.toLowerCase().includes(keyword));
+            }
+
+            if (filtered.length === 0) {
+                resultText.textContent = "暂无匹配金句~";
+                resultCount.textContent = "";
+                currentQuote = "";
+                updateCollectBtnStatus();
+                return;
+            }
+
+            currentQuote = filtered.map(q => q.content).join(" / ");
+            resultText.textContent = currentQuote;
+            resultCount.textContent = `共 ${filtered.length} 句匹配结果`;
+            // 更新收藏按钮状态
+            updateCollectBtnStatus();
+        }
+    </script>
+</body>
+</html>
