@@ -158,6 +158,22 @@ button:hover {opacity: 0.9;}
   <div class="result-box" id="result">生成的镜像文字将显示在这里</div>
 </div>
 
+<script>
+function getQueryParam(key) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(key) || "";
+}
+
+let tValue = getQueryParam("t");
+
+document.addEventListener("DOMContentLoaded", function () {
+  let input = document.getElementById("input");
+  if (input) {
+    input.value = tValue;
+  }
+});
+</script>
+
 <!-- 提示框 -->
 <div class="toast" id="toast"></div>
 <!-- 分享弹窗 -->
@@ -166,10 +182,10 @@ button:hover {opacity: 0.9;}
     <h3>分享镜像文字</h3>
     <p>选择平台分享，或生成分享链接</p>
     <div class="share-btns">
-      <a href="javascript:;" class="share-btn share-wechat" title="微信分享">📱</a>
-      <a href="javascript:;" class="share-btn share-weibo" title="微博分享" onclick="shareToWeibo()">🔶</a>
-      <a href="javascript:;" class="share-btn share-qq" title="QQ分享" onclick="shareToQQ()">🐧</a>
-      <a href="javascript:;" class="share-btn share-link" title="生成链接" onclick="generateShareLink()">🔗</a>
+      <a href="javascript:;" class="share-btn share-wechat" title="微信分享">微信</a>
+      <a href="javascript:;" class="share-btn share-weibo" title="微博分享" onclick="shareToWeibo()">微博</a>
+      <a href="javascript:;" class="share-btn share-qq" title="QQ分享" onclick="shareToQQ()">QQ</a>
+      <a href="javascript:;" class="share-btn share-link" title="生成链接" onclick="generateShareLink()">链接</a>
     </div>
     <button class="close-modal" onclick="closeShareModal()">取消</button>
   </div>
