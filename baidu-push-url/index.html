@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Baidu Push URL</title>
+</head>
+<body>
+<script>
+(function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageUrl = urlParams.get('url');
+    if (!pageUrl) {
+        console.error('URL parameter is required');
+        return;
+    }
+
+    const siteUrl = window.location.origin;
+    const fullUrl = siteUrl + '/' + pageUrl;
+
+    // 使用百度推送JS SDK
+    const bp = document.createElement('script');
+    const curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    const s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+
+    // 记录推送状态
+    localStorage.setItem('baidu_pushed_' + pageUrl, '1');
+    console.log('[Baidu Push] 已推送页面：', pageUrl);
+
+    // 3秒后返回原页面
+    setTimeout(() => {
+        window.location.href = '/' + pageUrl;
+    }, 3000);
+})();
+</script>
+</body>
+</html> 
