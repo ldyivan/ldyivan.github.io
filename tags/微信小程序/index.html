@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
     微信小程序
   </h1>
   <div class="category-counter">
-    共计 3 篇文章
+    共计 4 篇文章
   </div>
 </div>
 
@@ -693,6 +693,43 @@ document.addEventListener('DOMContentLoaded', function() {
 <blockquote>
 <p>对比市面上一堆按次收费或者强制看广告的解析工具，这个小程序把去水印做成了一项长期福利。</p>
 </blockquote>
+          </div>
+        
+      </div>
+    </div>
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2025-11-25
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2025/11/25/xcx-tabbar/">告别原生导航栏：微信小程序自定义导航栏完美适配方案</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-categories">
+              <i class="fas fa-folder"></i>
+              <a class="category-link" href="/categories/tech/">技术分享</a>，<a class="category-link" href="/categories/tech/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%BC%80%E5%8F%91/">小程序开发</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h1 id="为什么需要自定义导航栏？"><a href="#为什么需要自定义导航栏？" class="headerlink" title="为什么需要自定义导航栏？"></a>为什么需要自定义导航栏？</h1><p>原生小程序导航栏虽然开箱即用，但在实际开发中常常遇到以下痛点：</p>
+<ul>
+<li><strong>设计风格受限</strong>：无法自由定制背景、字体颜色、高度，难以融入品牌设计</li>
+<li><strong>扩展能力弱</strong>：无法在导航栏区域增加搜索框、自定义按钮、动态效果等</li>
+<li><strong>无法实现沉浸式</strong>：标题栏与状态栏分离感强，缺少整体感</li>
+<li><strong>屏幕适配难</strong>：不同机型（刘海屏、挖孔屏、动态岛）的高度表现不一致</li>
+</ul>
+<p>因此，<strong>自定义导航栏</strong>成为许多商业项目和小程序框架的标配。本文将手把手教你实现一套适配所有主流机型、易扩展、性能优良的自定义导航栏组件。</p>
+<h2 id="基础配置：开启自定义模式"><a href="#基础配置：开启自定义模式" class="headerlink" title="基础配置：开启自定义模式"></a>基础配置：开启自定义模式</h2><p>在 <code>app.json</code> 中将 <code>navigationStyle</code> 设置为 <code>custom</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;window&quot;: &#123;</span><br><span class="line">    &quot;navigationStyle&quot;: &quot;custom&quot;,</span><br><span class="line">    &quot;navigationBarTextStyle&quot;: &quot;black&quot;  // 仅对页面内文本颜色有影响，导航栏已隐藏</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>💡 小贴士：也可以单独为某个页面配置，在页面目录的 .json 文件中设置相同字段即可。</p>
+<p>配置完成后，小程序所有页面将不再渲染原生导航栏，状态栏区域完全暴露，需要我们自己实现导航UI和内容区域的避让。</p>
           </div>
         
       </div>
