@@ -119,7 +119,7 @@
             "datePublished": "2026-03-02T04:00:00.000Z",
         
         
-            "dateModified": "2026-06-06T15:40:42.065Z",
+            "dateModified": "2026-06-06T15:50:55.177Z",
         
         "author": {
             "@type": "Person",
@@ -705,8 +705,6 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="article-content">
       
         <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>为了让 Hexo 这个静态博客变得更有“灵气”，我动手搭建了自己的 API 服务 —— <strong><a href="https://api.hzv5.cn" rel="external nofollow noopener noreferrer" target="_blank">api.hzv5.cn</a></strong>。它现在已经集成超过 27 种实用的免费接口[reference:1]，从媒体解析到 AI 工具，让我的博客能实时调用各种动态数据。上一次收集整理和自制的api接口获得很多人的喜爱，那么，今天就把这个自制的“工具箱”第二弹分享出来，并手把手教大家如何把它接入到 Hexo 主题中，或许运用到自己的一些项目中。</p>
-<span id="more"></span>
-
 <h2 id="API接口：概览与分类"><a href="#API接口：概览与分类" class="headerlink" title="API接口：概览与分类"></a>API接口：概览与分类</h2><p><code>api.hzv5.cn</code> 是一个完全免费、无需注册的接口站，所有接口都可以直接在浏览器或代码中调用。目前提供的接口主要分为以下几类：</p>
 <h3 id="1-智能工具-AI-amp-Utility"><a href="#1-智能工具-AI-amp-Utility" class="headerlink" title="1. 智能工具 (AI &amp; Utility)"></a>1. 智能工具 (AI &amp; Utility)</h3><ul>
 <li><strong>艺名生成器</strong> (<code>/artname.php</code>): 根据你的姓名或文本，智能生成 1-5 个中文或英文艺名并附带解释[reference:2]。</li>
@@ -715,6 +713,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <li><strong>随机评论生成</strong> (<code>/random_comment.php</code>): 获取预设的随机评论内容，可以当作网站的填充语[reference:5]。</li>
 <li><strong>敏感词检测与过滤</strong> (<code>/mg.php</code>): 支持多种检测模式，可对文本进行脱敏、替换或分类统计[reference:6]。</li>
 </ul>
+<span id="more"></span>
+
 <h3 id="2-主流平台解析"><a href="#2-主流平台解析" class="headerlink" title="2. 主流平台解析"></a>2. 主流平台解析</h3><ul>
 <li><strong>抖音解析</strong>:<ul>
 <li><strong>视频/图文</strong>: 输入抖音链接，解析视频、图集或实况内容，提取无水印素材与作者信息[reference:7]。</li>
