@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <!DOCTYPE html>
+<html lang="zh-CN" style="visibility: hidden;">
+<script>
+  (function() {
+    const darkMode = localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    
+    if (darkMode) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      // 预设背景色，避免闪烁
+      document.documentElement.style.backgroundColor = '#1a1a1a';
+    } else {
+      document.documentElement.style.backgroundColor = '#ffffff';
+    }
+  })();
+</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>如何实现公众号自动回复或做一个短视频无水印解析机器人？ | 吖远zzyの博客</title>
+  
+  <!-- 百度统计 -->
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?e5e807572db1850c0a0d56eb357adc47";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  
+  
+  <!-- 不蒜子统计 -->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+  <!-- 网站图标 -->
+  <link rel="icon" href="/favicon.ico">
+  
+  <!-- Font Awesome -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/css/all.min.css"></noscript>
+  
+  <!-- 预加载字体文件 -->
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="//lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/5.15.4/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+  
+  <!-- 主题样式 -->
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+  <!-- Fancybox -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+  
+  
+  <!-- RSS -->
+  
+  
+  <script>
+    // 在样式加载完成后显示页面
+    window.addEventListener('load', function() {
+      document.documentElement.style.visibility = 'visible';
+    });
+  </script>
+
+  <!-- SEO Meta Tags -->
+  
+    <meta name="description" content="起因前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。
+考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。
+整体思路微信公众">
+  
+
+  
+    <meta name="keywords" content="吖远zzy,编程爱好者,前端开发,Vue.js,React,Node.js,JavaScript,TypeScript,Web开发,全栈开发,编程教程,技术博客,软件开发,程序员,开发者,coding">
+  
+
+  <!-- Canonical URL -->
+  
+    <link rel="canonical" href="https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/">
+  
+
+  <!-- Open Graph Tags -->
+  
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="如何实现公众号自动回复或做一个短视频无水印解析机器人？ | 吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/">
+    <meta property="og:site_name" content="吖远zzyの博客">
+    
+      <meta property="og:description" content="起因前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。
+考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。
+整体思路微信公众">
+    
+    
+      <meta property="og:image" content="/img/logo.png">
+    
+  
+
+  <!-- Twitter Card -->
+  
+    <meta name="twitter:card" content="summary_large_image">
+    
+    
+  
+
+  <!-- Schema.org Markup -->
+  
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/"
+        },
+        "headline": "如何实现公众号自动回复或做一个短视频无水印解析机器人？",
+        
+            "datePublished": "2026-06-05T16:00:00.000Z",
+        
+        
+            "dateModified": "2026-06-06T15:30:03.652Z",
+        
+        "author": {
+            "@type": "Person",
+            "name": "吖远zzy"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "吖远zzy",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "/img/logo.png"
+            }
+        },
+        
+        "description": "起因前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。
+考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。
+整体思路微信公众"
+    }
+    </script>
+  
+
+  <!-- Verification Tags -->
+  
+    
+    
+    
+  
+
+  <!-- Author Tag -->
+  <meta name="author" content="吖远zzy">
+
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#2196f3">
+
+  <!-- CDN Resources -->
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+  
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="吖远zzyの博客" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="吖远zzyの博客" type="application/rss+xml">
+</head>
+
+</html></head>
+<body>
+  <!-- Loading 容器 -->
+  <div class="loading-container">
+    <div class="loading-spinner">
+      <div class="cube">
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+        <div class="face"></div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 页面加载进度条 -->
+  <div class="loading-bar"></div>
+
+  <div class="container">
+    <!-- 左侧边栏 -->
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <!-- 个人信息 -->
+        
+          <div class="profile">
+            <div class="avatar">
+              <a href="/">
+                <img src="/img/logo.png" alt="吖远zzy">
+              </a>
+            </div>
+            <h2 class="name">吖远zzy</h2>
+            <p class="description">一个不知名的编程爱好者~</p>
+            
+            <div class="social-links">
+              
+                <a href="https://github.com/ldyivan" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fab fa-github"></i>
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/cy/" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-book"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/dnfshow/" target="_blank" rel="noopener">
+                  
+                    <img class="social-icon" src="/img/dnf.png" alt="dnfshow">
+                  
+                </a>
+              
+                <a href="https://app.hzv5.cn/qqgj/" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-comment-dollar"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/blogPic/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-image"></i>
+                  
+                </a>
+              
+                <a href="https://www.hzv5.cn/android/" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-user-astronaut"></i>
+                  
+                </a>
+              
+                <a href="http://weibo.com/u/1625877175" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fab fa-weibo"></i>
+                  
+                </a>
+              
+                <a href="mailto:i@hzv5.cn" target="_blank" rel="external nofollow noopener noreferrer">
+                  
+                    <i class="fas fa-envelope"></i>
+                  
+                </a>
+              
+                <a href="/atom.xml" target="_blank" rel="noopener">
+                  
+                    <i class="fas fa-rss"></i>
+                  
+                </a>
+              
+            </div>
+          </div>
+        
+
+        <!-- 导航菜单 -->
+        <div class="widget-wrap menu-wrap">
+  <nav class="menu">
+    
+      <a href="/" class="menu-item">
+        
+          
+              <i class="fas fa-home"></i>
+            
+        
+        <span class="menu-text">首页</span>
+      </a>
+    
+      <a href="/archives" class="menu-item">
+        
+          
+              <i class="fas fa-archive"></i>
+            
+        
+        <span class="menu-text">归档</span>
+      </a>
+    
+      <a href="/categories" class="menu-item">
+        
+          
+              <i class="fas fa-folder-open"></i>
+            
+        
+        <span class="menu-text">分类</span>
+      </a>
+    
+      <a href="/random" class="menu-item">
+        
+          
+              <i class="fas fa-random"></i>
+            
+        
+        <span class="menu-text">手气</span>
+      </a>
+    
+      <a href="/photos" class="menu-item">
+        
+          
+              <i class="fas fa-photo-video"></i>
+            
+        
+        <span class="menu-text">相册</span>
+      </a>
+    
+      <a href="/friends" class="menu-item">
+        
+          
+              <i class="fas fa-link"></i>
+            
+        
+        <span class="menu-text">友链</span>
+      </a>
+    
+      <a href="/guestbook" class="menu-item">
+        
+          
+              <span class="menu-icon svg-icon">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+              </span>
+            
+        
+        <span class="menu-text">留言</span>
+      </a>
+    
+      <a href="/about" class="menu-item">
+        
+          
+              <i class="fas fa-user"></i>
+            
+        
+        <span class="menu-text">关于</span>
+      </a>
+    
+  </nav>
+</div> 
+
+        <!-- 搜索框 -->
+        
+          <!-- 搜索框 -->
+<div class="search-box">
+  <div class="search-input-wrap">
+    <input type="text" class="search-input" placeholder="搜索文章...">
+    <i class="fas fa-search search-icon" id="search-btn"></i>
+  </div>
+</div>
+
+<!-- 搜索结果容器 -->
+<div class="search-result-container">
+  <div class="search-result-wrapper">
+    <div class="search-result-header">
+      <h3>搜索结果</h3>
+      <button class="search-close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="search-result-list"></div>
+    <div class="search-result-empty" style="display: none;">
+      <div class="icon">
+        <i class="fas fa-search"></i>
+      </div>
+      <div class="text">未找到相关结果</div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.search-input');
+  const searchBtn = document.getElementById('search-btn');
+  const searchResultContainer = document.querySelector('.search-result-container');
+  const searchResultList = document.querySelector('.search-result-list');
+  const searchCloseBtn = document.querySelector('.search-close-btn');
+  const searchEmpty = document.querySelector('.search-result-empty');
+
+  // 格式化日期
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
+
+  async function performSearch() {
+    const query = searchInput.value.trim();
+    if (!query) return;
+
+    searchResultContainer.classList.add('active');
+    searchResultList.innerHTML = '<div class="loading">搜索中...</div>';
+    searchEmpty.style.display = 'none';
+
+    try {
+      const searchPath = '/search.xml';
+      const response = await fetch(searchPath);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const xmlText = await response.text();
+      
+      const parser = new DOMParser();
+      const xmlDoc = parser.parseFromString(xmlText, "text/xml");
+      
+      if (xmlDoc.getElementsByTagName('parsererror').length > 0) {
+        throw new Error('XML解析错误');
+      }
+
+      const posts = xmlDoc.getElementsByTagName('entry');
+
+      
+      const results = Array.from(posts).filter(post => {
+        try {
+          const title = post.querySelector('title')?.textContent.toLowerCase() || '';
+          const content = post.querySelector('content')?.textContent.toLowerCase() || '';
+          return title.includes(query.toLowerCase()) || content.includes(query.toLowerCase());
+        } catch (e) {
+          console.error('处理文章时出错:', e);
+          return false;
+        }
+      });
+
+      if (results.length === 0) {
+        searchResultList.innerHTML = '';
+        searchEmpty.style.display = 'block';
+        return;
+      }
+
+      searchResultList.innerHTML = results.map(post => {
+        try {
+          const title = post.querySelector('title')?.textContent || '无标题';
+          const url = post.querySelector('url')?.textContent || '';
+          const path = url.replace(/^\/|\/$/g, '');
+          
+          // 从文件路径中提取日期
+          const dateMatch = path.match(/(\d{4})\/(\d{2})\/(\d{2})/);
+          const displayDate = dateMatch ? `${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}` : '';
+          
+          // 获取分类信息
+          const categories = Array.from(post.getElementsByTagName('category'))
+            .filter(cat => cat.textContent.trim() && !cat.getAttribute('scheme'));
+          const categoryHtml = categories
+            .map(category => {
+              const term = category.textContent.trim();
+              return `<span class="category"><i class="fas fa-folder"></i>${term}</span>`;
+            })
+            .join('');
+          
+          // 获取标签信息并合并显示
+          const tags = Array.from(post.getElementsByTagName('tags')?.[0]?.getElementsByTagName('tag') || []);
+          const tagHtml = tags.length > 0 ? 
+            `<span class="tags"><i class="fas fa-tags"></i>${tags.map(tag => tag.textContent.trim()).join(', ')}</span>` : '';
+
+          return `
+            <div class="search-result-item">
+              <div class="title">
+                <a href="/${path}">${title}</a>
+              </div>
+              <div class="meta">
+                ${displayDate ? `<span class="date"><i class="fas fa-calendar"></i>${displayDate}</span>` : ''}
+                ${categoryHtml}
+                ${tagHtml}
+              </div>
+            </div>
+          `;
+        } catch (e) {
+          console.error('生成搜索结果HTML时出错:', e);
+          return '';
+        }
+      }).join('');
+    } catch (err) {
+      console.error('搜索出错:', err);
+      searchResultList.innerHTML = `<div class="error">搜索出错: ${err.message}</div>`;
+    }
+  }
+
+  // 事件绑定
+  searchBtn.addEventListener('click', performSearch);
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') performSearch();
+  });
+
+  searchCloseBtn.addEventListener('click', () => {
+    searchResultContainer.classList.remove('active');
+  });
+
+  searchResultContainer.addEventListener('click', (e) => {
+    if (e.target === searchResultContainer) {
+      searchResultContainer.classList.remove('active');
+    }
+  });
+});
+</script>
+
+<style>
+.search-result-item {
+  padding: 15px;
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.3s ease;
+}
+
+.search-result-item:hover {
+  background-color: var(--card-header-bg);
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item .title {
+  margin-bottom: 12px;
+}
+
+.search-result-item .title a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1.1em;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.search-result-item .title a:hover {
+  color: var(--primary-color);
+}
+
+.search-result-item .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.9em;
+  color: var(--text-color-secondary);
+  align-items: center;
+}
+
+.search-result-item .meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.search-result-item .meta i {
+  font-size: 0.9em;
+  opacity: 0.7;
+}
+
+.search-result-item .meta .date {
+  color: var(--text-color-secondary);
+  font-weight: 500;
+}
+
+.search-result-item .meta .category,
+.search-result-item .meta .tags {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--card-header-bg);
+  transition: all 0.3s ease;
+}
+
+.search-result-item .meta .category:hover,
+.search-result-item .meta .tags:hover {
+  background: var(--primary-color-light);
+  color: var(--primary-color);
+}
+
+.search-result-item .meta .tags {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+</style> 
+        
+    
+        <!-- 粒子时钟 -->
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%; padding: 10px 0;">
+          <canvas id="canvas" style="width:60%;">当前浏览器不支持canvas，请更换浏览器后再试</canvas>
+        </div>
+    
+        <!-- 版权和备案信息 -->
+        <div class="sidebar-footer">
+          <!-- 备案信息 -->
+          
+            <div class="beian">
+              
+                <a href="https://beian.miit.gov.cn/" target="_blank" rel="external nofollow noopener noreferrer">
+                  <i class="fas fa-shield-alt"></i>
+                  粤ICP备17005281号-1
+                </a>
+              
+              
+                <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44130202001331" target="_blank" rel="external nofollow noopener noreferrer">
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD4AAABDCAYAAADEfbZbAAAACXBIWXMAAAsTAAALEwEAmpwYAAAF+GlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgMTE2LjE2NDY1NSwgMjAyMS8wMS8yNi0xNTo0MToyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0RXZ0PSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VFdmVudCMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiIHhtcDpDcmVhdGVEYXRlPSIyMDIyLTA1LTE3VDA5OjU3OjU1KzA4OjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDplZmVjMTAxOS02ZjI2LTRlNjMtYmU3ZC03ZTI3ZDMxYmE3NzUiIHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo1MThjZTRmYS1hMjQ4LTAwNGYtYWVhYi1hYjQxZGU5YWUxNjIiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmNDFkNGExYy0xMjZjLTQ4MDQtYTE3Zi1mNTJkYTJjZDkzMmYiPiA8eG1wTU06SGlzdG9yeT4gPHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmY0MWQ0YTFjLTEyNmMtNDgwNC1hMTdmLWY1MmRhMmNkOTMyZiIgc3RFdnQ6d2hlbj0iMjAyMi0wNS0xN1QwOTo1Nzo1NSswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNhdmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOmVmZWMxMDE5LTZmMjYtNGU2My1iZTdkLTdlMjdkMzFiYTc3NSIgc3RFdnQ6d2hlbj0iMjAyMi0wNS0xOFQxMTowOToxNCswODowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKE1hY2ludG9zaCkiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+BNXVtQAAJTVJREFUeJy9u2m0ZVd13/tbzW5Pf8/t6lZzS1WlUqnUIlGSkAQCLEAgYZCMwBgIARxsTJzYsbHjZ8eRXxM8XhKI7eBnIJgMTBwixWBQA1gIBJKQUN9UlaqkKlV/++60u11rvQ9XIAukOMLAHuN8OWOcvefv7Lnm/M+15hT8jK/bbruhPmpOXNFojP1GsjZ7qJPrv/jP9r88ftPbhflZ2iF+Vg+6/yvvPStyg7f5uXmT6KxdtLSY0hqPkUokutb4xkohbj0yrH3x7e//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" alt="公安备案图标">
+                  粤公网安备44130202001331号
+                </a>
+              
+            </div>
+          
+
+          <!-- 版权信息 -->
+          
+            <div class="copyright">
+              <span>© 2018 - 2026</span>
+              <a href="https://www.hzv5.cn" target="_blank">
+                <span>吖远zzy</span>
+              </a>
+              
+                <br>
+                <span>All rights reserved.</span>
+              
+            </div>
+          
+
+          <!-- Powered by 信息 -->
+          <div class="powered-by">
+            <span>Powered by <a href="https://hexo.io" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a></span>
+            <span>Theme by - <a href="https://github.com/ldyivan/hexo-theme-ldysprout" target="_blank" rel="external nofollow noopener noreferrer">LdySprout</a></span>
+          </div>
+
+          <!-- 不蒜子统计 -->
+          
+            <div class="busuanzi-count">
+              <div class="site-stats">
+                
+                  <span class="site-uv">
+                    <i class="fas fa-user"></i>
+                    <span id="busuanzi_value_site_uv">0</span> 人
+                  </span>
+                 | 
+                
+                  <span class="site-pv">
+                    <i class="fas fa-eye"></i>
+                    <span id="busuanzi_value_site_pv">0</span> 次
+                  </span>
+                
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <div class="content-inner">
+        <!-- 阅读进度条 -->
+<div class="reading-progress-bar" id="reading-progress-bar"></div>
+
+
+  <!-- 文章目录 -->
+  <div class="article-toc collapsed" id="article-toc">
+    <div class="toc-title">
+      <i class="fas fa-list"></i>
+      <span>目录</span>
+    </div>
+    <div class="toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E6%80%9D%E8%B7%AF"><span class="toc-number">2.</span> <span class="toc-text">整体思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%87%86%E5%A4%87-Vercel-%E9%A1%B9%E7%9B%AE"><span class="toc-number">3.</span> <span class="toc-text">第一步：准备 Vercel 项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%86%99%E5%A4%84%E7%90%86%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">第二步：写处理代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">5.</span> <span class="toc-text">第三步：配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7"><span class="toc-number">6.</span> <span class="toc-text">第四步：配置微信公众号</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9A%E5%90%84%E7%A7%8D%E5%9D%91"><span class="toc-number">7.</span> <span class="toc-text">第五步：各种坑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%91%E4%B8%80%EF%BC%9A%E6%94%B6%E4%B8%8D%E5%88%B0%E6%B6%88%E6%81%AF%EF%BC%8C%E6%97%A5%E5%BF%97%E6%98%BE%E7%A4%BA%E2%80%9C%E9%9D%9E%E6%96%87%E6%9C%AC%E6%B6%88%E6%81%AF%E2%80%9D"><span class="toc-number">7.0.1.</span> <span class="toc-text">坑一：收不到消息，日志显示“非文本消息”</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%91%E4%BA%8C%EF%BC%9A%E8%A7%A3%E6%9E%90%E5%87%BA%E6%9D%A5%E7%9A%84%E9%93%BE%E6%8E%A5%E5%A4%AA%E9%95%BF%EF%BC%8C%E5%A4%9A%E5%9B%BE%E5%9B%9E%E5%A4%8D%E5%A4%B1%E8%B4%A5"><span class="toc-number">7.0.2.</span> <span class="toc-text">坑二：解析出来的链接太长，多图回复失败</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%91%E4%B8%89%EF%BC%9A%E9%9D%9E%E6%8A%96%E9%9F%B3%E6%B6%88%E6%81%AF%E4%B9%9F%E4%BC%9A%E5%9B%9E%E5%A4%8D%E6%8F%90%E7%A4%BA"><span class="toc-number">7.0.3.</span> <span class="toc-text">坑三：非抖音消息也会回复提示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%91%E5%9B%9B%EF%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89%E8%8F%9C%E5%8D%95%E4%B8%8D%E8%A7%81%E4%BA%86"><span class="toc-number">7.0.4.</span> <span class="toc-text">坑四：自定义菜单不见了</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9D%91%E4%BA%94%EF%BC%9A%E5%88%9B%E5%BB%BA%E8%8F%9C%E5%8D%95%E6%8E%A5%E5%8F%A3%E8%AE%BF%E9%97%AE%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%8A%A5%E6%89%BE%E4%B8%8D%E5%88%B0-node-fetch"><span class="toc-number">7.0.5.</span> <span class="toc-text">坑五：创建菜单接口访问失败，报找不到 node-fetch</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E7%A8%B3%E5%AE%9A%E7%89%88%E4%BB%A3%E7%A0%81"><span class="toc-number">8.</span> <span class="toc-text">最终稳定版代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">总结</span></a></li>
+    </div>
+  </div>
+
+
+<article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-inner">
+    <header class="article-header">
+      <h2 class="article-title">
+        <a href="/2026/06/05/WeChat-official-account-ai/">如何实现公众号自动回复或做一个短视频无水印解析机器人？</a>
+        
+          <span class="article-views">
+            <i class="fas fa-eye"></i>
+            <span id="busuanzi_value_page_pv">0</span> 次阅读
+          </span>
+        
+      </h2>
+      <div class="article-meta">
+        <span class="article-date">
+          <i class="fas fa-calendar-alt"></i>
+          2026-06-06
+        </span>
+        
+          <span class="article-categories">
+            <i class="fas fa-folder"></i>
+            <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">项目实战</a>
+          </span>
+        
+        
+          <span class="article-wordcount">
+            <i class="fas fa-file-word"></i>
+            
+            9696 字
+            
+              · 25 分钟
+            
+          </span>
+        
+        
+          <span class="article-tags">
+            <i class="fas fa-tags"></i>
+            <a class="article-tag-none-link" href="/tags/Serverless/" rel="tag">Serverless</a> <a class="article-tag-none-link" href="/tags/Vercel/" rel="tag">Vercel</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a> <a class="article-tag-none-link" href="/tags/%E6%8A%96%E9%9F%B3%E8%A7%A3%E6%9E%90/" rel="tag">抖音解析</a>
+          </span>
+        
+      </div>
+    </header>
+    <div class="article-content">
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。</p>
+<p>考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。</p>
+<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>微信公众号收到用户消息后，会向配置的服务器地址推送一条 XML 格式的请求。我们要做的就是：</p>
+<ol>
+<li>验证消息确实来自微信（验证签名）</li>
+<li>解析用户消息内容，提取其中的抖音分享链接</li>
+<li>调用一个现成的解析接口，拿到视频或图片信息</li>
+<li>按照微信要求的 XML 格式回复给用户</li>
+</ol>
+<p>听起来不复杂，但细节很多。</p>
+<span id="more"></span>
+
+<h2 id="第一步：准备-Vercel-项目"><a href="#第一步：准备-Vercel-项目" class="headerlink" title="第一步：准备 Vercel 项目"></a>第一步：准备 Vercel 项目</h2><p>注册 Vercel 并登录，用 GitHub 账号授权。新建一个项目，关联一个仓库。我直接在项目根目录下建了 <code>api</code> 文件夹，里面放一个 <code>wx.js</code> 文件。</p>
+<p>Vercel 的约定：<code>api/xxx.js</code> 会自动映射成 <code>/api/xxx</code> 路由。后面微信后台填的 URL 就是 <code>https://你的域名/api/wx</code>。</p>
+<h2 id="第二步：写处理代码"><a href="#第二步：写处理代码" class="headerlink" title="第二步：写处理代码"></a>第二步：写处理代码</h2><p>我从开源项目 <code>aiwechat-vercel</code> 得到启发，但根据自己的需求大幅修改了。核心逻辑是：</p>
+<ul>
+<li>接收微信 POST 来的 XML</li>
+<li>提取 <code>Content</code> 字段</li>
+<li>用正则匹配抖音链接（<code>v.douyin.com</code> 或 <code>iesdouyin.com</code>）</li>
+<li>请求 <code>http://api.hzv5.cn/dysp.php?url=...</code> 解析</li>
+<li>把解析结果拼成文本，包装成 XML 回复</li>
+</ul>
+<p>踩的第一个坑：Vercel 的 <code>req.body</code> 默认是 Buffer，不是字符串，需要手动转。而且微信的 XML 里用了 CDATA，解析时要注意换行和空格。我一开始用正则死活匹配不到内容，后来写了一个简单的 <code>extractTag</code> 函数，同时支持普通标签和 CDATA。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function extractTag(xml, tag) &#123;</span><br><span class="line">  const cdataRegex = new RegExp(`&lt;$&#123;tag&#125;&gt;&lt;\\!\\[CDATA\\[([\\s\\S]*?)\\]\\]&gt;&lt;/$&#123;tag&#125;&gt;`);</span><br><span class="line">  let match = xml.match(cdataRegex);</span><br><span class="line">  if (match) return match[1];</span><br><span class="line">  const textRegex = new RegExp(`&lt;$&#123;tag&#125;&gt;([\\s\\S]*?)&lt;/$&#123;tag&#125;&gt;`);</span><br><span class="line">  match = xml.match(textRegex);</span><br><span class="line">  return match ? match[1].trim() : &#x27;&#x27;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="第三步：配置环境变量"><a href="#第三步：配置环境变量" class="headerlink" title="第三步：配置环境变量"></a>第三步：配置环境变量</h2><p>微信验证需要一个 Token，自己随便设一个字符串。在 Vercel 项目里，进入 Settings -&gt; Environment Variables，添加 WX_TOKEN，值就是你自己定的那个。</p>
+<p>注意：不要被那个“Create Pre-production Environment”误导了，那东西不是用来添加环境变量的。我一开始也在那上面浪费了不少时间。</p>
+<p>添加完变量后必须 Redeploy，否则不生效。</p>
+<h2 id="第四步：配置微信公众号"><a href="#第四步：配置微信公众号" class="headerlink" title="第四步：配置微信公众号"></a>第四步：配置微信公众号</h2><p>登录公众平台，进入“设置与开发” -&gt; “基本配置” -&gt; “服务器配置”。</p>
+<p>· URL: https://你的域名/api/wx<br>· Token: 和上面 WX_TOKEN 保持一致<br>· 消息加解密方式: 选“明文模式”（省事）</p>
+<p>提交后如果 Token 匹配且代码没有问题，就会验证通过。</p>
+<h2 id="第五步：各种坑"><a href="#第五步：各种坑" class="headerlink" title="第五步：各种坑"></a>第五步：各种坑</h2><h4 id="坑一：收不到消息，日志显示“非文本消息”"><a href="#坑一：收不到消息，日志显示“非文本消息”" class="headerlink" title="坑一：收不到消息，日志显示“非文本消息”"></a>坑一：收不到消息，日志显示“非文本消息”</h4><p>我发送了好几条 test，Vercel 日志里却显示“非文本消息，忽略”。排查了很久，发现是 extractTag 没有拿到 MsgType，导致代码认为不是文本消息。</p>
+<p>后来在代码里加了很多 console.log，把原始 XML 打印出来，才发现微信发的 XML 里 Content 标签前后有换行，正则没考虑到。改了正则就好了。</p>
+<h4 id="坑二：解析出来的链接太长，多图回复失败"><a href="#坑二：解析出来的链接太长，多图回复失败" class="headerlink" title="坑二：解析出来的链接太长，多图回复失败"></a>坑二：解析出来的链接太长，多图回复失败</h4><p>抖音图文集的图片链接非常长，一个链接就有两百多个字符。如果图集有七八张图，加上作者、标题、点赞数，总长度很容易超过微信的限制（大概是 2048 字节）。结果是用户那边收不到任何回复，或者看到乱七八糟的“查看图片.0”之类的东西。</p>
+<p>解决方案：生成回复前计算字节长度，如果超过限制就动态减少图片数量，直到满足要求，并在末尾提示“仅显示前 N 张，共 M 张”。同时把标题截断到 15 个字符，作者、标题、点赞合并成一行，图片显示为“图1”“图2”这种简短的链接文字，点击即可跳转。这样既节省篇幅又不影响使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">buildFullReply</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="comment">// 构建头部</span></span><br><span class="line">  <span class="keyword">const</span> header = <span class="string">`<span class="subst">$&#123;author&#125;</span> | <span class="subst">$&#123;shortenTitle(title)&#125;</span> | ❤️<span class="subst">$&#123;like&#125;</span>`</span>;</span><br><span class="line">  <span class="comment">// 尝试加入所有图片，超长则逐步减少</span></span><br><span class="line">  <span class="keyword">while</span> (currentUrls.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> testText = lines.<span class="title function_">concat</span>(currentUrls.<span class="title function_">map</span>(<span class="function">(<span class="params">url, idx</span>) =&gt;</span> <span class="string">`&lt;a href=&quot;<span class="subst">$&#123;url&#125;</span>&quot;&gt;图<span class="subst">$&#123;idx+<span class="number">1</span>&#125;</span>&lt;/a&gt;`</span>)).<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">Buffer</span>.<span class="title function_">byteLength</span>(testText, <span class="string">&#x27;utf8&#x27;</span>) &lt;= <span class="variable constant_">MAX_BYTES</span>) &#123;</span><br><span class="line">      replyText = testText;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    currentUrls.<span class="title function_">pop</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 如果图片被截断，追加提示</span></span><br><span class="line">  <span class="keyword">if</span> (currentUrls.<span class="property">length</span> &lt; totalNum) &#123;</span><br><span class="line">    replyText += <span class="string">`\n(仅显示前<span class="subst">$&#123;currentUrls.length&#125;</span>张，共<span class="subst">$&#123;totalNum&#125;</span>张)`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> replyText;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="坑三：非抖音消息也会回复提示"><a href="#坑三：非抖音消息也会回复提示" class="headerlink" title="坑三：非抖音消息也会回复提示"></a>坑三：非抖音消息也会回复提示</h4><p>一开始的逻辑是：如果用户发的消息不包含抖音链接，就回复“请发送抖音分享链接”。后来觉得这样挺烦的，用户随便说句话都要被怼一下。于是改成：没有抖音链接就直接返回 success，不回复任何内容。静默忽略，体验好多了。</p>
+<h4 id="坑四：自定义菜单不见了"><a href="#坑四：自定义菜单不见了" class="headerlink" title="坑四：自定义菜单不见了"></a>坑四：自定义菜单不见了</h4><p>启用服务器配置之后，公众号后台的自定义菜单和自动回复会被自动停用。这是微信的设计：开发者模式和后端配置互斥。</p>
+<p>本来想通过 API 重新创建菜单，但发现个人未认证的订阅号根本没有调用菜单接口的权限。调用就返回 48001 错误。</p>
+<p>折腾了一圈发现没戏。最后我选择不搞菜单了，反正核心的解析功能还能用。如果实在想要菜单，要么暂停服务器配置（但解析功能就没了），要么去微信认证（个人号认证门槛不低，而且花钱）。我选择了接受现实。</p>
+<h4 id="坑五：创建菜单接口访问失败，报找不到-node-fetch"><a href="#坑五：创建菜单接口访问失败，报找不到-node-fetch" class="headerlink" title="坑五：创建菜单接口访问失败，报找不到 node-fetch"></a>坑五：创建菜单接口访问失败，报找不到 node-fetch</h4><p>后来想单独写一个创建菜单的接口放在 Vercel，访问时 500 错误，日志显示缺少 node-fetch 模块。其实 Vercel 的 Node.js 运行时版本是 18+，已经原生支持 fetch，根本不需要这个依赖。删掉 require(‘node-fetch’) 就好了。</p>
+<p>再后来调通之后又遇到 IP 白名单问题，加了白名单又遇到 48001…… 最终还是因为权限问题放弃。个人号就是个人号，认了。</p>
+<h2 id="最终稳定版代码"><a href="#最终稳定版代码" class="headerlink" title="最终稳定版代码"></a>最终稳定版代码</h2><p>我把最终能用的 api/wx.js 完整贴出来。包含了智能长度控制、无抖音链接不回复、支持视频和图文集解析。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">&#x27;crypto&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">TOKEN</span> = process.<span class="property">env</span>.<span class="property">WX_TOKEN</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">API_URL</span> = <span class="string">&#x27;http://api.hzv5.cn/dysp.php&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">MAX_BYTES</span> = <span class="number">2000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getRawBodyFromReq</span>(<span class="params">req</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> data = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">chunk</span> =&gt;</span> &#123; data += chunk; &#125;);</span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;end&#x27;</span>, <span class="function">() =&gt;</span> &#123; <span class="title function_">resolve</span>(data); &#125;);</span><br><span class="line">    req.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, reject);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkSignature</span>(<span class="params">signature, timestamp, nonce</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> arr = [<span class="variable constant_">TOKEN</span>, timestamp, nonce].<span class="title function_">sort</span>();</span><br><span class="line">  <span class="keyword">const</span> sha1 = crypto.<span class="title function_">createHash</span>(<span class="string">&#x27;sha1&#x27;</span>).<span class="title function_">update</span>(arr.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>)).<span class="title function_">digest</span>(<span class="string">&#x27;hex&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> sha1 === signature;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">extractTag</span>(<span class="params">xml, tag</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> cdataRegex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`&lt;<span class="subst">$&#123;tag&#125;</span>&gt;&lt;\\!\\[CDATA\\[([\\s\\S]*?)\\]\\]&gt;&lt;/<span class="subst">$&#123;tag&#125;</span>&gt;`</span>);</span><br><span class="line">  <span class="keyword">let</span> match = xml.<span class="title function_">match</span>(cdataRegex);</span><br><span class="line">  <span class="keyword">if</span> (match) <span class="keyword">return</span> match[<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">const</span> textRegex = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">`&lt;<span class="subst">$&#123;tag&#125;</span>&gt;([\\s\\S]*?)&lt;/<span class="subst">$&#123;tag&#125;</span>&gt;`</span>);</span><br><span class="line">  match = xml.<span class="title function_">match</span>(textRegex);</span><br><span class="line">  <span class="keyword">return</span> match ? match[<span class="number">1</span>].<span class="title function_">trim</span>() : <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">extractDouyinLink</span>(<span class="params">text</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!text) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">const</span> regex = <span class="regexp">/https?:\/\/(v\.douyin\.com|iesdouyin\.com)\/[a-zA-Z0-9_-]+\/?/</span>;</span><br><span class="line">  <span class="keyword">const</span> match = text.<span class="title function_">match</span>(regex);</span><br><span class="line">  <span class="keyword">return</span> match ? match[<span class="number">0</span>] : <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">parseDouyin</span>(<span class="params">shareUrl</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> url = <span class="string">`<span class="subst">$&#123;API_URL&#125;</span>?url=<span class="subst">$&#123;<span class="built_in">encodeURIComponent</span>(shareUrl)&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">const</span> res = <span class="keyword">await</span> <span class="title function_">fetch</span>(url, &#123; <span class="attr">headers</span>: &#123; <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0&#x27;</span> &#125; &#125;);</span><br><span class="line">  <span class="keyword">if</span> (!res.<span class="property">ok</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`HTTP <span class="subst">$&#123;res.status&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> data = <span class="keyword">await</span> res.<span class="title function_">json</span>();</span><br><span class="line">  <span class="keyword">if</span> (data.<span class="property">code</span> !== <span class="number">200</span>) <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(data.<span class="property">msg</span> || <span class="string">&#x27;解析失败&#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> data.<span class="property">data</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">extractImageUrls</span>(<span class="params">urlField</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!urlField) <span class="keyword">return</span> [];</span><br><span class="line">  <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(urlField)) <span class="keyword">return</span> urlField;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> urlField === <span class="string">&#x27;object&#x27;</span>) <span class="keyword">return</span> <span class="title class_">Object</span>.<span class="title function_">values</span>(urlField);</span><br><span class="line">  <span class="keyword">return</span> [urlField];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">shortenTitle</span>(<span class="params">title, maxLen = <span class="number">15</span></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!title) <span class="keyword">return</span> <span class="string">&#x27;无标题&#x27;</span>;</span><br><span class="line">  <span class="keyword">if</span> (title.<span class="property">length</span> &lt;= maxLen) <span class="keyword">return</span> title;</span><br><span class="line">  <span class="keyword">return</span> title.<span class="title function_">substring</span>(<span class="number">0</span>, maxLen) + <span class="string">&#x27;…&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">buildFullReply</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> type = data.<span class="property">type</span>;</span><br><span class="line">  <span class="keyword">const</span> author = data.<span class="property">author</span> || <span class="string">&#x27;未知&#x27;</span>;</span><br><span class="line">  <span class="keyword">const</span> title = <span class="title function_">shortenTitle</span>(data.<span class="property">title</span>);</span><br><span class="line">  <span class="keyword">const</span> like = data.<span class="property">like</span> || <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">const</span> header = <span class="string">`<span class="subst">$&#123;author&#125;</span> | <span class="subst">$&#123;title&#125;</span> | ❤️<span class="subst">$&#123;like&#125;</span>`</span>;</span><br><span class="line">  <span class="keyword">const</span> lines = [header];</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (type === <span class="string">&#x27;视频&#x27;</span>) &#123;</span><br><span class="line">    lines.<span class="title function_">push</span>(<span class="string">`&lt;a href=&quot;<span class="subst">$&#123;data.url&#125;</span>&quot;&gt;▶ 观看视频&lt;/a&gt;`</span>);</span><br><span class="line">    <span class="keyword">return</span> lines.<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (type !== <span class="string">&#x27;图文&#x27;</span>) &#123;</span><br><span class="line">    lines.<span class="title function_">push</span>(<span class="string">`未知类型：<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(data).substring(<span class="number">0</span>, <span class="number">100</span>)&#125;</span>`</span>);</span><br><span class="line">    <span class="keyword">return</span> lines.<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> allUrls = <span class="title function_">extractImageUrls</span>(data.<span class="property">url</span>);</span><br><span class="line">  <span class="keyword">const</span> totalNum = data.<span class="property">num</span> || allUrls.<span class="property">length</span>;</span><br><span class="line">  lines.<span class="title function_">push</span>(<span class="string">`📷 共<span class="subst">$&#123;totalNum&#125;</span>张图`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> currentUrls = [...allUrls];</span><br><span class="line">  <span class="keyword">let</span> replyText = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> (currentUrls.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> testLines = [...lines];</span><br><span class="line">    currentUrls.<span class="title function_">forEach</span>(<span class="function">(<span class="params">url, idx</span>) =&gt;</span> &#123;</span><br><span class="line">      testLines.<span class="title function_">push</span>(<span class="string">`&lt;a href=&quot;<span class="subst">$&#123;url&#125;</span>&quot;&gt;图<span class="subst">$&#123;idx+<span class="number">1</span>&#125;</span>&lt;/a&gt;`</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">const</span> testText = testLines.<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> byteLength = <span class="title class_">Buffer</span>.<span class="title function_">byteLength</span>(testText, <span class="string">&#x27;utf8&#x27;</span>);</span><br><span class="line">    <span class="keyword">if</span> (byteLength &lt;= <span class="variable constant_">MAX_BYTES</span>) &#123;</span><br><span class="line">      replyText = testText;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (currentUrls.<span class="property">length</span> === <span class="number">1</span>) &#123;</span><br><span class="line">        replyText = testText;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      currentUrls.<span class="title function_">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (replyText &amp;&amp; currentUrls.<span class="property">length</span> &lt; allUrls.<span class="property">length</span>) &#123;</span><br><span class="line">    replyText += <span class="string">`\n(仅显示前<span class="subst">$&#123;currentUrls.length&#125;</span>张，共<span class="subst">$&#123;totalNum&#125;</span>张)`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> replyText || (lines.<span class="title function_">join</span>(<span class="string">&#x27;\n&#x27;</span>) + <span class="string">&#x27;\n(无法生成回复)&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">buildReply</span>(<span class="params">toUser, fromUser, content</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> timestamp = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Date</span>.<span class="title function_">now</span>() / <span class="number">1000</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`&lt;xml&gt;</span></span><br><span class="line"><span class="string">  &lt;ToUserName&gt;&lt;![CDATA[<span class="subst">$&#123;toUser&#125;</span>]]&gt;&lt;/ToUserName&gt;</span></span><br><span class="line"><span class="string">  &lt;FromUserName&gt;&lt;![CDATA[<span class="subst">$&#123;fromUser&#125;</span>]]&gt;&lt;/FromUserName&gt;</span></span><br><span class="line"><span class="string">  &lt;CreateTime&gt;<span class="subst">$&#123;timestamp&#125;</span>&lt;/CreateTime&gt;</span></span><br><span class="line"><span class="string">  &lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;</span></span><br><span class="line"><span class="string">  &lt;Content&gt;&lt;![CDATA[<span class="subst">$&#123;content&#125;</span>]]&gt;&lt;/Content&gt;</span></span><br><span class="line"><span class="string">&lt;/xml&gt;`</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">async</span> (req, res) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">method</span> === <span class="string">&#x27;GET&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123; signature, timestamp, nonce, echostr &#125; = req.<span class="property">query</span>;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">checkSignature</span>(signature, timestamp, nonce)) &#123;</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">send</span>(echostr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">401</span>).<span class="title function_">send</span>(<span class="string">&#x27;Invalid signature&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (req.<span class="property">method</span> === <span class="string">&#x27;POST&#x27;</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> rawXml = <span class="keyword">await</span> <span class="title function_">getRawBodyFromReq</span>(req);</span><br><span class="line">      <span class="keyword">const</span> fromUser = <span class="title function_">extractTag</span>(rawXml, <span class="string">&#x27;FromUserName&#x27;</span>);</span><br><span class="line">      <span class="keyword">const</span> toUser = <span class="title function_">extractTag</span>(rawXml, <span class="string">&#x27;ToUserName&#x27;</span>);</span><br><span class="line">      <span class="keyword">const</span> content = <span class="title function_">extractTag</span>(rawXml, <span class="string">&#x27;Content&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (!content) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">send</span>(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> douyinUrl = <span class="title function_">extractDouyinLink</span>(content);</span><br><span class="line">      <span class="keyword">if</span> (!douyinUrl) <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">send</span>(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">const</span> parsed = <span class="keyword">await</span> <span class="title function_">parseDouyin</span>(douyinUrl);</span><br><span class="line">      <span class="keyword">const</span> replyText = <span class="title function_">buildFullReply</span>(parsed);</span><br><span class="line">      <span class="keyword">const</span> replyXml = <span class="title function_">buildReply</span>(fromUser, toUser, replyText);</span><br><span class="line">      res.<span class="title function_">setHeader</span>(<span class="string">&#x27;Content-Type&#x27;</span>, <span class="string">&#x27;application/xml&#x27;</span>);</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">send</span>(replyXml);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(err);</span><br><span class="line">      <span class="keyword">return</span> res.<span class="title function_">status</span>(<span class="number">200</span>).<span class="title function_">send</span>(<span class="string">&#x27;success&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  res.<span class="title function_">status</span>(<span class="number">405</span>).<span class="title function_">send</span>(<span class="string">&#x27;Method Not Allowed&#x27;</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>用 Vercel 搭公众号机器人，优点是免费、不用折腾服务器、域名免备案。缺点是 Vercel 函数执行时间只有 10 秒，但解析抖音通常一两秒就够了。</p>
+<p>另外，个人订阅号的权限限制是个硬伤。如果你只想做一个简单的消息自动回复，那没问题；但如果你想要自定义菜单、客服消息、网页授权等高级功能，最好老老实实搞个认证的服务号，或者用测试号体验。</p>
+<p>这次折腾下来，最深的体会是：别小看微信的 XML 解析，也别高估个人号的权限。先把最简单的跑通，再一点点加功能，遇到问题耐心看日志，总能解决的。</p>
+<p>希望这篇文章能帮到也想折腾公众号机器人的朋友。如果你也遇到类似的坑，欢迎交流。</p>
+
+      
+    </div>
+
+    
+      <!-- 文章底部分享和赞赏 -->
+      <div class="article-footer">
+        <!-- 分享模块 -->
+        
+        <div class="article-share">
+          <div class="share-links">
+            <a href="https://service.weibo.com/share/share.php?url=https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/&title=如何实现公众号自动回复或做一个短视频无水印解析机器人？" target="_blank" class="share-link weibo" title="分享到微博" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-weibo"></i>
+            </a>
+            <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/&title=如何实现公众号自动回复或做一个短视频无水印解析机器人？" target="_blank" class="share-link qq" title="分享到QQ" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-qq"></i>
+            </a>
+            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/&title=如何实现公众号自动回复或做一个短视频无水印解析机器人？" target="_blank" class="share-link qzone" title="分享到QQ空间" rel="external nofollow noopener noreferrer">
+              <i class="fas fa-star"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?text=如何实现公众号自动回复或做一个短视频无水印解析机器人？&url=https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/" target="_blank" class="share-link twitter" title="分享到Twitter" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/" target="_blank" class="share-link facebook" title="分享到Facebook" rel="external nofollow noopener noreferrer">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <button class="share-link copy" data-clipboard-text="https://www.hzv5.cn/2026/06/05/WeChat-official-account-ai/" title="复制链接">
+              <i class="fas fa-link"></i>
+            </button>
+          </div>
+        </div>
+        
+
+        <!-- 赞赏模块 -->
+        
+        <div class="article-reward">
+          <button class="reward-button" id="reward-button">
+            <i class="fas fa-qrcode"></i>
+            <span class="reward-button-text">赞赏</span>
+          </button>
+        </div>
+        
+      </div>
+
+      <div class="article-nav">
+        
+        
+          <div class="article-nav-next">
+            <a href="/2026/06/01/GitHub_Actions/" class="next-link">
+              <span class="nav-label">下一篇</span>
+              <span class="nav-title">以后在手机上用 Termux 和 GitHub Actions 更新 Hexo 博客</span>
+            </a>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+        
+      </div>
+
+      <!-- 评论模块 -->
+      
+    
+    
+  </div>
+</article>
+
+<!-- 赞赏弹窗 -->
+<div class="reward-qrcodes" id="reward-qrcodes">
+  <div class="reward-title">感谢您的支持！</div>
+  <button class="reward-close" id="reward-close">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="reward-qrcode-list">
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/wechat_code.jpg" alt="微信赞赏码">
+      <span class="reward-name">微信赞赏</span>
+    </div>
+    
+    
+    <div class="reward-qrcode-item">
+      <img src="/img/alipay_code.jpg" alt="支付宝赞赏码">
+      <span class="reward-name">支付宝赞赏</span>
+    </div>
+    
+  </div>
+</div>
+
+<!-- 遮罩层 -->
+<div class="reward-overlay" id="reward-overlay"></div>
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('baidu_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('baidu_pushed_' + '2026/06/05/WeChat-official-account-ai/', '1');
+        // 发送异步请求进行推送
+        fetch('/baidu-push-url?url=2026%2F06%2F05%2FWeChat-official-account-ai%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Baidu Push] 推送成功');
+            } else {
+                console.error('[Baidu Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('baidu_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+            }
+        }).catch(function(error) {
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Baidu Push] 请求未成功完成');
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('baidu_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+        });
+    }
+})();
+</script>
+
+
+
+<script>
+(function(){
+    // 避免重复推送
+    var pushed = localStorage.getItem('bing_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+    if (!pushed) {
+        // 标记已推送
+        localStorage.setItem('bing_pushed_' + '2026/06/05/WeChat-official-account-ai/', '1');
+        // 发送异步请求进行推送
+        fetch('/bing-push-url?url=2026%2F06%2F05%2FWeChat-official-account-ai%2F', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(function(response) {
+            // 检查响应类型
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError('返回的不是JSON格式');
+            }
+            return response.json();
+        }).then(function(data) {
+            if (data.success) {
+                console.log('[Bing Push] 推送成功');
+            } else {
+                console.error('[Bing Push] 推送失败:', data.message);
+                // 如果推送失败，移除标记以便下次重试
+                localStorage.removeItem('bing_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+            }
+        }).catch(function(error) {
+            // 静默处理错误，避免影响用户体验
+            console.debug('[Bing Push] 请求未成功完成');
+            // 如果请求失败，移除标记以便下次重试
+            localStorage.removeItem('bing_pushed_' + '2026/06/05/WeChat-official-account-ai/');
+        });
+    }
+})();
+</script>
+
+      </div>
+    </main>
+
+    <!-- 移动端菜单按钮 -->
+    <button class="menu-toggle" id="menu-toggle">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- 遮罩层 -->
+    <div class="overlay" id="overlay"></div>
+  </div>
+
+  <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
+<!-- 主题脚本 -->
+<script src="/js/theme.js"></script>
+
+<!-- 搜索脚本 -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- Fancybox -->
+
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+
+<!-- Clipboard -->
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+
+
+<!-- 分享和赞赏功能 -->
+
+<script src="/js/share-reward.js"></script>
+
+
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" aria-label="返回顶部">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- 文章目录按钮 -->
+
+<button class="toc-toggle" aria-label="显示目录">
+  <i class="fas fa-list"></i>
+</button>
+
+
+<!-- 暗黑模式切换按钮 -->
+<button class="dark-mode-toggle" aria-label="切换暗黑模式">
+  <i class="fas fa-moon"></i>
+</button>
+
+<!-- Disqus -->
+
+
+<!-- Loading -->
+<script src="/js/loading.js"></script>
+
+<!-- 粒子时钟 -->
+<script src="/js/clock.js"></script>
+
+</body>
+</html>

@@ -852,6 +852,55 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
+      <a href="/2026/06/05/WeChat-official-account-ai/">
+        <span class="title-content">
+          
+          如何实现公众号自动回复或做一个短视频无水印解析机器人？
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2026-06-06
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。</p>
+<p>考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。</p>
+<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>微信公众号收到用户消息后，会向配置的服务器地址推送一条 XML 格式的请求。我们要做的就是：</p>
+<ol>
+<li>验证消息确实来自微信（验证签名）</li>
+<li>解析用户消息内容，提取其中的抖音分享链接</li>
+<li>调用一个现成的解析接口，拿到视频或图片信息</li>
+<li>按照微信要求的 XML 格式回复给用户</li>
+</ol>
+<p>听起来不复杂，但细节很多。</p>
+      
+      <a href="/2026/06/05/WeChat-official-account-ai/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">项目实战</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/Serverless/" rel="tag">Serverless</a> <a class="article-tag-none-link" href="/tags/Vercel/" rel="tag">Vercel</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a> <a class="article-tag-none-link" href="/tags/%E6%8A%96%E9%9F%B3%E8%A7%A3%E6%9E%90/" rel="tag">抖音解析</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
       <a href="/2026/06/01/GitHub_Actions/">
         <span class="title-content">
           
@@ -1144,79 +1193,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
           <a class="article-tag-none-link" href="/tags/Hexo/" rel="tag">Hexo</a> <a class="article-tag-none-link" href="/tags/JavaScript/" rel="tag">JavaScript</a> <a class="article-tag-none-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" rel="tag">前端开发</a> <a class="article-tag-none-link" href="/tags/%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96/" rel="tag">博客优化</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2024/12/18/qqch-bot-readme/">
-        <span class="title-content">
-          
-          QQ频道机器人Android客户端使用指南
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2024-12-19
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <h1 id="QQ频道机器人-Android客户端"><a href="#QQ频道机器人-Android客户端" class="headerlink" title="QQ频道机器人 Android客户端"></a>QQ频道机器人 Android客户端</h1><p>一个用于管理和操作QQ频道机器人的Android客户端应用，基于uniapp开发，提供了直观的用户界面和丰富的功能特性。</p>
-<h2 id="客户端界面预览"><a href="#客户端界面预览" class="headerlink" title="客户端界面预览"></a>客户端界面预览</h2><p><img src="/img/qqBot/login_chat.png" alt="登录频道聊天查看和发送消息"></p>
-<p><img src="/img/qqBot/plugin_setting_log.png" alt="插件功能运行日志和设置"></p>
-<h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><h3 id="1-账号管理"><a href="#1-账号管理" class="headerlink" title="1. 账号管理"></a>1. 账号管理</h3><ul>
-<li>App ID和Token登录</li>
-<li>记住登录状态</li>
-<li>自动登录选项</li>
-<li>沙盒/正式环境切换</li>
-<li>多账号管理</li>
-<li>账号安全保护</li>
-</ul>
-<h3 id="2-频道管理"><a href="#2-频道管理" class="headerlink" title="2. 频道管理"></a>2. 频道管理</h3><ul>
-<li>频道列表显示<ul>
-<li>分组展示</li>
-<li>在线人数显示</li>
-<li>频道类型图标</li>
-<li>频道状态标识</li>
-</ul>
-</li>
-<li>未读消息统计<ul>
-<li>普通消息计数</li>
-<li>@消息特别标记</li>
-<li>按频道分类统计</li>
-</ul>
-</li>
-<li>频道权限管理<ul>
-<li>自动识别管理员权限</li>
-<li>权限值实时计算</li>
-<li>权限检查功能</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-消息功能"><a href="#3-消息功能" class="headerlink" title="3. 消息功能"></a>3. 消息功能</h3><ul>
-<li><p>实时消息接收</p>
-      
-      <a href="/2024/12/18/qqch-bot-readme/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </li></ul></div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/QQ/" rel="tag">QQ</a> <a class="article-tag-none-link" href="/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/" rel="tag">QQ机器人</a> <a class="article-tag-none-link" href="/tags/QQ%E9%A2%91%E9%81%93/" rel="tag">QQ频道</a> <a class="article-tag-none-link" href="/tags/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/" rel="tag">使用文档</a> <a class="article-tag-none-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
         </div>
       
     </div>
