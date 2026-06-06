@@ -648,7 +648,7 @@ document.addEventListener('DOMContentLoaded', function() {
     Termux
   </h1>
   <div class="category-counter">
-    共计 1 篇文章
+    共计 2 篇文章
   </div>
 </div>
 
@@ -676,6 +676,42 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="post-excerpt">
             <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你像我一样，经常在手机上写文章，却苦于无法在手机端运行 <code>hexo generate</code> 和 <code>hexo deploy</code>（耗电且容易出错），那么这篇教程正是为你准备的。我们将利用 <strong>Termux</strong> 在手机上完成 Git 操作，再借助 <strong>GitHub Actions</strong> 在云端自动构建和部署博客——你只需要专注写作，剩下的交给云端。</p>
 <p><strong>最终效果</strong>：在手机上写完文章 → <code>git push</code> → 等待 2~5 分钟 → 博客自动更新。全程无需在手机运行 Hexo 或 Node.js。</p>
+          </div>
+        
+      </div>
+    </div>
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2025-06-28
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2025/06/27/OpenClaw-for-Android/">在安卓手机上运行OpenClaw？当然可以，用Termux折腾OpenClaw安装QQ机器人的踩坑记录...</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-categories">
+              <i class="fas fa-folder"></i>
+              <a class="category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近想在手机上跑一个 QQ 机器人，选了个看起来挺灵活的框架 OpenClaw。本以为按文档几分钟就能搞定，结果断断续续折腾了一晚上。这里记一下过程，给同样在 Termux 上折腾的人省点时间。</p>
+<p>为什么选 OpenClaw</p>
+<p>主要看中它支持多平台（QQ、微信、Telegram 等），还能接各种大模型。我想把智谱的免费模型 glm-4.7-flash 接上 QQ，手机上跑着省电。</p>
+<h3 id="第一个坑：插件找不到"><a href="#第一个坑：插件找不到" class="headerlink" title="第一个坑：插件找不到"></a>第一个坑：插件找不到</h3><p>装完 OpenClaw 后，配置文件里加了 openclaw-qqbot，结果启动报错：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plugins.allow: plugin not found: openclaw-qqbot</span><br></pre></td></tr></table></figure>
+
+<p>官方的安装命令跑了一遍，又说找不到 openclaw/dist/plugins-sdk/index_js/core。搜了一下，大概是版本不匹配——OpenClaw 核心和 QQ 插件各说各话。</p>
+<h3 id="第二个坑：Node-js-编译失败"><a href="#第二个坑：Node-js-编译失败" class="headerlink" title="第二个坑：Node.js 编译失败"></a>第二个坑：Node.js 编译失败</h3><p>升级 Node.js 到 v24 后，npm install -g openclaw@latest 直接挂掉，卡在 tree-sitter-bash 的编译上：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gyp: Undefined variable android_ndk_path in binding.gyp</span><br></pre></td></tr></table></figure>
+
+<p>这是 Termux 环境的老毛病了——Android 的 C 库（Bionic）和很多 npm 原生模块不对付。折腾半天无解，决定换路子。</p>
+<h3 id="终极方案：Ubuntu-容器"><a href="#终极方案：Ubuntu-容器" class="headerlink" title="终极方案：Ubuntu 容器"></a>终极方案：Ubuntu 容器</h3><p>Termux 里有个 proot-distro 可以跑完整 Linux 发行版。既然原生环境不行，就在容器里装。</p>
           </div>
         
       </div>
