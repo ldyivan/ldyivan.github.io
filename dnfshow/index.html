@@ -20,7 +20,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>笔记：实现数组排列组合图片合成，做一个NFT生成器！ | 吖远zzyの博客</title>
+  <title>吖远zzyの博客</title>
   
   <!-- 百度统计 -->
   
@@ -71,11 +71,7 @@
 
   <!-- SEO Meta Tags -->
   
-    <meta name="description" content="前言NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！
-这是一场资本家的狂欢泡沫还是致富风口？
-咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..
-然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。
-但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境">
+    <meta name="description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
   
 
   
@@ -84,21 +80,17 @@
 
   <!-- Canonical URL -->
   
-    <link rel="canonical" href="https://www.hzv5.cn/2022/02/14/android-nft/">
+    <link rel="canonical" href="https://www.hzv5.cn/dnfshow/index.html">
   
 
   <!-- Open Graph Tags -->
   
     <meta property="og:type" content="website">
-    <meta property="og:title" content="笔记：实现数组排列组合图片合成，做一个NFT生成器！ | 吖远zzyの博客">
-    <meta property="og:url" content="https://www.hzv5.cn/2022/02/14/android-nft/">
+    <meta property="og:title" content="吖远zzyの博客">
+    <meta property="og:url" content="https://www.hzv5.cn/dnfshow/index.html">
     <meta property="og:site_name" content="吖远zzyの博客">
     
-      <meta property="og:description" content="前言NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！
-这是一场资本家的狂欢泡沫还是致富风口？
-咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..
-然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。
-但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境">
+      <meta property="og:description" content="吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。">
     
     
       <meta property="og:image" content="/img/logo.png">
@@ -120,14 +112,14 @@
         "@type": "BlogPosting",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://www.hzv5.cn/2022/02/14/android-nft/"
+            "@id": "https://www.hzv5.cn/dnfshow/index.html"
         },
-        "headline": "笔记：实现数组排列组合图片合成，做一个NFT生成器！",
+        "headline": "吖远zzyの博客",
         
-            "datePublished": "2022-02-14T10:39:15.000Z",
+            "datePublished": "2026-06-11T10:05:17.355Z",
         
         
-            "dateModified": "2026-06-11T10:05:17.349Z",
+            "dateModified": "2026-06-11T10:05:17.355Z",
         
         "author": {
             "@type": "Person",
@@ -142,11 +134,7 @@
             }
         },
         
-        "description": "前言NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！
-这是一场资本家的狂欢泡沫还是致富风口？
-咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..
-然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。
-但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境"
+        "description": "吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。"
     }
     </script>
   
@@ -668,16 +656,16 @@ document.addEventListener('DOMContentLoaded', function() {
       <span>目录</span>
     </div>
     <div class="toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android%E5%AE%9E%E7%8E%B0%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90"><span class="toc-number">2.</span> <span class="toc-text">Android实现图片合成</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88"><span class="toc-number">2.1.</span> <span class="toc-text">数组排列组合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90"><span class="toc-number">2.2.</span> <span class="toc-text">图片合成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E5%9B%BE%E7%89%87%E5%88%B0%E6%89%8B%E6%9C%BA"><span class="toc-number">2.3.</span> <span class="toc-text">保存图片到手机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%99%84%E5%8A%A0%EF%BC%9A%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%89%E6%8B%A9%E6%96%87%E4%BB%B6%E7%B4%A0%E6%9D%90%E5%B9%B6%E8%BF%94%E5%9B%9E%E8%B7%AF%E5%BE%84Uri"><span class="toc-number">2.4.</span> <span class="toc-text">附加：系统文件管理器选择文件素材并返回路径Uri</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a></li></ol>
+      
     </div>
   </div>
 
 
-<article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
   <div class="article-inner">
     <header class="article-header">
       <h2 class="article-title">
-        <a href="/2022/02/14/android-nft/">笔记：实现数组排列组合图片合成，做一个NFT生成器！</a>
+        <a href="/dnfshow/"></a>
         
           <span class="article-views">
             <i class="fas fa-eye"></i>
@@ -688,62 +676,47 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="article-meta">
         <span class="article-date">
           <i class="fas fa-calendar-alt"></i>
-          2022-02-14
+          2026-06-11
         </span>
-        
-          <span class="article-categories">
-            <i class="fas fa-folder"></i>
-            <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/">吐槽</a> <a class="article-category-link" href="/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/%E5%90%90%E6%A7%BD/Android/">Android</a>
-          </span>
         
         
           <span class="article-wordcount">
             <i class="fas fa-file-word"></i>
             
-            7265 字
+            278 字
             
-              · 19 分钟
+              · 1 分钟
             
           </span>
         
-        
-          <span class="article-tags">
-            <i class="fas fa-tags"></i>
-            <a class="article-tag-none-link" href="/tags/Android/" rel="tag">Android</a> <a class="article-tag-none-link" href="/tags/NFT/" rel="tag">NFT</a> <a class="article-tag-none-link" href="/tags/%E5%9B%BE%E7%89%87%E5%90%88%E6%88%90/" rel="tag">图片合成</a> <a class="article-tag-none-link" href="/tags/%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" rel="tag">排列组合</a>
-          </span>
         
       </div>
     </header>
     <div class="article-content">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>NFT是前两年火起来的，被大家称为是去中心化的非同质化代币，是具有唯一性的数字资产加密货币令牌，并且是可以买卖的！</p>
-<p>这是一场资本家的狂欢泡沫还是致富风口？</p>
-<p>咱不知道，就是单纯的最近想自己玩一玩，弄一套上架到NFT交易平台上去看看2333..</p>
-<p>然后自己p好了素材，苦于找不到批量生成工具，找了一圈发现网络上有很多js和python的脚本。</p>
-<p>但是我自己下载下来运行后发现，不是缺这个模块就是缺那个环境没有部署，更难受的是安装模块还不成功！</p>
-<p>最后就自己在Android上去实现了</p>
-<p>下面直接看怎么实现的：</p>
-<h1 id="Android实现图片合成"><a href="#Android实现图片合成" class="headerlink" title="Android实现图片合成"></a>Android实现图片合成</h1><span id="more"></span>
+        <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/dnfshow/assets/uni.e0883805.css">
 
-<h2 id="数组排列组合"><a href="#数组排列组合" class="headerlink" title="数组排列组合"></a>数组排列组合</h2><p>先把每个素材保存到单独的数组里，然后把全部数组合并为一个数组：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">allList.add(arr_1);</span><br><span class="line">allList.add(arr_2);</span><br><span class="line">allList.add(arr_3);</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>排列组合：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * 算法，非递归计算所有组合</span><br><span class="line"> * @param inputList 所有数组的列表</span><br><span class="line"> * allList_new：排列组合后的新数组</span><br><span class="line"> * </span><br><span class="line"> * */</span><br><span class="line">public void def_calculateCombination(List&lt;List&lt;String&gt;&gt; inputList) &#123;</span><br><span class="line">    List&lt;Integer&gt; combination = new ArrayList&lt;Integer&gt;();</span><br><span class="line">    allList_new.clear();</span><br><span class="line">    int n=inputList.size();</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        combination.add(0);</span><br><span class="line">    &#125;</span><br><span class="line">    int i=0;</span><br><span class="line">    boolean isContinue=false;</span><br><span class="line">    do&#123;</span><br><span class="line">        List&lt;String&gt; List = new ArrayList&lt;&gt;();</span><br><span class="line">        //打印一次循环生成的组合</span><br><span class="line">        for (int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">            Log.e(&quot;=========&gt;&gt;&gt;&quot;, &quot;&quot; + inputList.get(j).get(combination.get(j)));</span><br><span class="line">            List.add(&quot;&quot; + inputList.get(j).get(combination.get(j)));</span><br><span class="line">        &#125;</span><br><span class="line">        Log.e(&quot;=========&quot;, &quot;====下一组====&quot;);</span><br><span class="line">        allList_new.add(List);</span><br><span class="line"></span><br><span class="line">        i++;</span><br><span class="line">        combination.set(n - 1, i);</span><br><span class="line">        for (int j = n - 1; j &gt;= 0; j--) &#123;</span><br><span class="line">            if (combination.get(j) &gt;= inputList.get(j).size()) &#123;</span><br><span class="line">                combination.set(j, 0);</span><br><span class="line">                i = 0;</span><br><span class="line">                if (j - 1 &gt;= 0) &#123;</span><br><span class="line">                    combination.set(j - 1, combination.get(j - 1) + 1);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        isContinue = false;</span><br><span class="line">        for (Integer integer : combination) &#123;</span><br><span class="line">            if (integer != 0) &#123;</span><br><span class="line">                isContinue = true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;while (isContinue);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="图片合成"><a href="#图片合成" class="headerlink" title="图片合成"></a>图片合成</h2><p>图片合成，返回合成后的新图片Bitmap：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">/**</span><br><span class="line">    * </span><br><span class="line">    * @param background 背景图</span><br><span class="line">    * @param body 前景图</span><br><span class="line">    * @return</span><br><span class="line">    */</span><br><span class="line">   public Bitmap def_combineBitmap(Bitmap background, Bitmap body) &#123;</span><br><span class="line">       if (background == null) &#123;</span><br><span class="line">           return null;</span><br><span class="line">       &#125;</span><br><span class="line">       int bgWidth = background.getWidth();</span><br><span class="line">       int bgHeight = background.getHeight();</span><br><span class="line">       /*</span><br><span class="line">        int fgWidth = body.getWidth();</span><br><span class="line">        int fgHeight = body.getHeight();</span><br><span class="line">        */</span><br><span class="line">       Bitmap newmap = Bitmap.createBitmap(bgWidth, bgHeight, Bitmap.Config.ARGB_8888);</span><br><span class="line">       Canvas canvas = new Canvas(newmap);</span><br><span class="line">	//添加每个素材图片到画布</span><br><span class="line">       if (background != null) &#123;</span><br><span class="line">           canvas.drawBitmap(background, 0, 0, null);//参数2和3是设置贴图的xy坐标位置</span><br><span class="line">       &#125;</span><br><span class="line">       if (body != null) &#123;</span><br><span class="line">           canvas.drawBitmap(body, 0, 0, null);</span><br><span class="line">       &#125;</span><br><span class="line">	//更多素材可以继续在后面添加</span><br><span class="line">       canvas.save();</span><br><span class="line">       canvas.restore();</span><br><span class="line">       return newmap;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="保存图片到手机"><a href="#保存图片到手机" class="headerlink" title="保存图片到手机"></a>保存图片到手机</h2><p>保存图片到sd卡指定目录：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public void def_savePic(Bitmap btImage) &#123;</span><br><span class="line">       if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) &#123;    </span><br><span class="line">           FileOutputStream out = null;</span><br><span class="line">           // 获取SDCard指定目录下</span><br><span class="line">           String sdCardDir = Environment.getExternalStorageDirectory() + &quot;/NFT/&quot;;</span><br><span class="line">           File dirFile  = new File(sdCardDir);  //目录转化成文件夹</span><br><span class="line">           if (!dirFile .exists()) &#123;  //如果不存在，那就建立这个文件夹</span><br><span class="line">               dirFile .mkdirs();</span><br><span class="line">           &#125;  </span><br><span class="line">           File file = new File(sdCardDir, &quot;NFT&quot; + System.currentTimeMillis() + &quot;.png&quot;);// 在SDcard的目录下创建图片文，以当前时间为其命名</span><br><span class="line">           try &#123;</span><br><span class="line">               out = new FileOutputStream(file);</span><br><span class="line">               btImage.compress(Bitmap.CompressFormat.PNG, 100, out);</span><br><span class="line">               //System.out.println(&quot;___保存到_sd_指定目录文件夹___&quot;);</span><br><span class="line">           &#125; catch (FileNotFoundException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">           try &#123;</span><br><span class="line">               out.flush();</span><br><span class="line">               out.close();</span><br><span class="line">           &#125; catch (IOException e) &#123;</span><br><span class="line">               e.printStackTrace();</span><br><span class="line">           &#125;</span><br><span class="line">           //Toast.makeText(MainActivity.this, &quot;保存已经至&quot; + sdCardDir + &quot;目录文件夹下&quot;, Toast.LENGTH_SHORT).show();</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>保存图片需要SD卡写入的权限，别忘了在 <code>AndroidManifest.xml</code> 中添加！</p>
-<h2 id="附加：系统文件管理器选择文件素材并返回路径Uri"><a href="#附加：系统文件管理器选择文件素材并返回路径Uri" class="headerlink" title="附加：系统文件管理器选择文件素材并返回路径Uri"></a>附加：系统文件管理器选择文件素材并返回路径Uri</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//存放需要过滤的类型的类</span><br><span class="line">public class MimeType &#123;</span><br><span class="line">    /*</span><br><span class="line">     public static final String DOC = &quot;application/msword&quot;;</span><br><span class="line">     public static final String DOCX = &quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;;</span><br><span class="line">     public static final String XLS = &quot;application/vnd.ms-excel&quot;;</span><br><span class="line">     public static final String XLSX = &quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;;</span><br><span class="line">     public static final String PPT = &quot;application/vnd.ms-powerpoint&quot;;</span><br><span class="line">     public static final String PPTX = &quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;;</span><br><span class="line">     public static final String PDF = &quot;application/pdf&quot;;</span><br><span class="line">     public static final String PNG = &quot;image/png&quot;;</span><br><span class="line">     */</span><br><span class="line">    public static final String JPG = &quot;image/*&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//选择文件</span><br><span class="line">private void def_performFileSearch() &#123;</span><br><span class="line">    Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);</span><br><span class="line">    intent.addCategory(Intent.CATEGORY_OPENABLE);</span><br><span class="line">    //允许多选 长按多选</span><br><span class="line">    intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);</span><br><span class="line">    //不限制选取类型</span><br><span class="line">    intent.setType(&quot;*/*&quot;);</span><br><span class="line"></span><br><span class="line">    //如果想给选择器添加过滤的文件类型，只需要添加如下代码就可以了</span><br><span class="line">    String[] mimeTypes = &#123;</span><br><span class="line">        /*</span><br><span class="line">         MimeType.DOC, </span><br><span class="line">         MimeType.DOCX, </span><br><span class="line">         MimeType.PDF, </span><br><span class="line">         MimeType.PPT, </span><br><span class="line">         MimeType.PPTX, </span><br><span class="line">         MimeType.XLS, </span><br><span class="line">         MimeType.XLSX,</span><br><span class="line">         MimeType.PNG,*/</span><br><span class="line">         MimeType.JPG</span><br><span class="line">    &#125;;</span><br><span class="line">    intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);</span><br><span class="line"></span><br><span class="line">    startActivityForResult(intent, 1); //第二个参数必须是大于0的，才会响应onActivityResult()回调函数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//接收选择文件后的返回值</span><br><span class="line">@Override</span><br><span class="line">protected void onActivityResult(int requestCode, int resultCode, Intent data) &#123;</span><br><span class="line">    super.onActivityResult(requestCode, resultCode, data);</span><br><span class="line">    switch (requestCode) &#123;</span><br><span class="line">        case 1:</span><br><span class="line">            if (resultCode == Activity.RESULT_OK &amp;&amp; data != null) &#123;</span><br><span class="line">                //单选选了一个文件后返回</span><br><span class="line">                if (data.getData() != null) &#123;</span><br><span class="line">                    String uri = def_handleSingleDocument(data);</span><br><span class="line">                    //数据uri</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    //多选后返回</span><br><span class="line">                    ClipData clipData = data.getClipData();</span><br><span class="line">                    if (clipData != null) &#123;</span><br><span class="line">                        Uri[] uris = new Uri[clipData.getItemCount()];</span><br><span class="line">                        for (int i = 0; i &lt; clipData.getItemCount(); i++) &#123;</span><br><span class="line">                            uris[i] = clipData.getItemAt(i).getUri();</span><br><span class="line">                        &#125;</span><br><span class="line">			//数据uris</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//将uri转换为我们需要的path,多选类似</span><br><span class="line">private String def_handleSingleDocument(Intent data) &#123;</span><br><span class="line">    Uri uri = data.getData();</span><br><span class="line">    String filePath = null;</span><br><span class="line">    try &#123;</span><br><span class="line">        filePath = MyFileUtils.getPath(this, uri);</span><br><span class="line">    &#125; catch (Exception e) &#123;&#125;</span><br><span class="line">    return filePath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>基本上，通关上面这些关键函数，就完全可以实现自己做一个“NFT生成器”App了。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>（PS：NFT还会跟当年的比特币那样火起来吗，还是泡沫破灭呢，值得深思emmm…）</p>
-<p>OK，今天就这样，感谢阅读。</p>
-<p>么么哒~~</p>
+    <meta charset="UTF-8">
+    <script>
+      var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+        CSS.supports('top: constant(a)'))
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+        (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+    </script>
+    <title>DNF时装搭配模拟器 - 吖远zzy,DNF,时装秀,时装搭配模拟器,绿豆芽SprOut</title>
+    <!--preload-links-->
+    <!--app-context-->
+    <script type="module" crossorigin src="/dnfshow/assets/index-DMAmF6Cq.js"></script>
+    <link rel="stylesheet" crossorigin href="/dnfshow/assets/index-BgCuxJG8.css">
+  </head>
+  <body>
+    <div id="app"><!--app-html--></div>
+  </body>
+</html>
 
       
     </div>
@@ -755,22 +728,22 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <div class="article-share">
           <div class="share-links">
-            <a href="https://service.weibo.com/share/share.php?url=https://www.hzv5.cn/2022/02/14/android-nft/&title=笔记：实现数组排列组合图片合成，做一个NFT生成器！" target="_blank" class="share-link weibo" title="分享到微博" rel="external nofollow noopener noreferrer">
+            <a href="https://service.weibo.com/share/share.php?url=https://www.hzv5.cn/dnfshow/&title=" target="_blank" class="share-link weibo" title="分享到微博" rel="external nofollow noopener noreferrer">
               <i class="fab fa-weibo"></i>
             </a>
-            <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://www.hzv5.cn/2022/02/14/android-nft/&title=笔记：实现数组排列组合图片合成，做一个NFT生成器！" target="_blank" class="share-link qq" title="分享到QQ" rel="external nofollow noopener noreferrer">
+            <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://www.hzv5.cn/dnfshow/&title=" target="_blank" class="share-link qq" title="分享到QQ" rel="external nofollow noopener noreferrer">
               <i class="fab fa-qq"></i>
             </a>
-            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.hzv5.cn/2022/02/14/android-nft/&title=笔记：实现数组排列组合图片合成，做一个NFT生成器！" target="_blank" class="share-link qzone" title="分享到QQ空间" rel="external nofollow noopener noreferrer">
+            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.hzv5.cn/dnfshow/&title=" target="_blank" class="share-link qzone" title="分享到QQ空间" rel="external nofollow noopener noreferrer">
               <i class="fas fa-star"></i>
             </a>
-            <a href="https://twitter.com/intent/tweet?text=笔记：实现数组排列组合图片合成，做一个NFT生成器！&url=https://www.hzv5.cn/2022/02/14/android-nft/" target="_blank" class="share-link twitter" title="分享到Twitter" rel="external nofollow noopener noreferrer">
+            <a href="https://twitter.com/intent/tweet?text=&url=https://www.hzv5.cn/dnfshow/" target="_blank" class="share-link twitter" title="分享到Twitter" rel="external nofollow noopener noreferrer">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.hzv5.cn/2022/02/14/android-nft/" target="_blank" class="share-link facebook" title="分享到Facebook" rel="external nofollow noopener noreferrer">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.hzv5.cn/dnfshow/" target="_blank" class="share-link facebook" title="分享到Facebook" rel="external nofollow noopener noreferrer">
               <i class="fab fa-facebook"></i>
             </a>
-            <button class="share-link copy" data-clipboard-text="https://www.hzv5.cn/2022/02/14/android-nft/" title="复制链接">
+            <button class="share-link copy" data-clipboard-text="https://www.hzv5.cn/dnfshow/" title="复制链接">
               <i class="fas fa-link"></i>
             </button>
           </div>
@@ -790,22 +763,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
       <div class="article-nav">
         
-          <div class="article-nav-prev">
-            <i class="fas fa-chevron-left"></i>
-            <a href="/2023/02/22/wx-xcx-canvas/" class="prev-link">
-              <span class="nav-label">上一篇</span>
-              <span class="nav-title">避坑：小程序canvas绘制不显示，动态请求图片报Unhandled promise rejection错误解决</span>
-            </a>
-          </div>
-        
-        
-          <div class="article-nav-next">
-            <a href="/2021/06/07/android-gif/" class="next-link">
-              <span class="nav-label">下一篇</span>
-              <span class="nav-title">Android实现帧动画动态设置播放时间间隔</span>
-            </a>
-            <i class="fas fa-chevron-right"></i>
-          </div>
         
       </div>
 
@@ -849,86 +806,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <!-- 遮罩层 -->
 <div class="reward-overlay" id="reward-overlay"></div>
-
-
-<script>
-(function(){
-    // 避免重复推送
-    var pushed = localStorage.getItem('baidu_pushed_' + '2022/02/14/android-nft/');
-    if (!pushed) {
-        // 标记已推送
-        localStorage.setItem('baidu_pushed_' + '2022/02/14/android-nft/', '1');
-        // 发送异步请求进行推送
-        fetch('/baidu-push-url?url=2022%2F02%2F14%2Fandroid-nft%2F', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(function(response) {
-            // 检查响应类型
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                throw new TypeError('返回的不是JSON格式');
-            }
-            return response.json();
-        }).then(function(data) {
-            if (data.success) {
-                console.log('[Baidu Push] 推送成功');
-            } else {
-                console.error('[Baidu Push] 推送失败:', data.message);
-                // 如果推送失败，移除标记以便下次重试
-                localStorage.removeItem('baidu_pushed_' + '2022/02/14/android-nft/');
-            }
-        }).catch(function(error) {
-            // 静默处理错误，避免影响用户体验
-            console.debug('[Baidu Push] 请求未成功完成');
-            // 如果请求失败，移除标记以便下次重试
-            localStorage.removeItem('baidu_pushed_' + '2022/02/14/android-nft/');
-        });
-    }
-})();
-</script>
-
-
-
-<script>
-(function(){
-    // 避免重复推送
-    var pushed = localStorage.getItem('bing_pushed_' + '2022/02/14/android-nft/');
-    if (!pushed) {
-        // 标记已推送
-        localStorage.setItem('bing_pushed_' + '2022/02/14/android-nft/', '1');
-        // 发送异步请求进行推送
-        fetch('/bing-push-url?url=2022%2F02%2F14%2Fandroid-nft%2F', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(function(response) {
-            // 检查响应类型
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                throw new TypeError('返回的不是JSON格式');
-            }
-            return response.json();
-        }).then(function(data) {
-            if (data.success) {
-                console.log('[Bing Push] 推送成功');
-            } else {
-                console.error('[Bing Push] 推送失败:', data.message);
-                // 如果推送失败，移除标记以便下次重试
-                localStorage.removeItem('bing_pushed_' + '2022/02/14/android-nft/');
-            }
-        }).catch(function(error) {
-            // 静默处理错误，避免影响用户体验
-            console.debug('[Bing Push] 请求未成功完成');
-            // 如果请求失败，移除标记以便下次重试
-            localStorage.removeItem('bing_pushed_' + '2022/02/14/android-nft/');
-        });
-    }
-})();
-</script>
-
       </div>
     </main>
 
@@ -973,10 +850,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </button>
 
 <!-- 文章目录按钮 -->
-
-<button class="toc-toggle" aria-label="显示目录">
-  <i class="fas fa-list"></i>
-</button>
 
 
 <!-- 暗黑模式切换按钮 -->
