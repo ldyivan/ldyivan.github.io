@@ -657,12 +657,44 @@ document.addEventListener('DOMContentLoaded', function() {
     踩坑记录
   </h1>
   <div class="category-counter">
-    共计 1 篇文章
+    共计 2 篇文章
   </div>
 </div>
 
 <!-- 文章列表 -->
 <div class="post-list">
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2026-06-15
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2026/06/14/DevEco-Studio-err/">解决华为开发者工具 DevEco Studio 登录跳转 localhost:10101 端口被阻止问题</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-categories">
+              <i class="fas fa-folder"></i>
+              <a class="category-link" href="/categories/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>今天下午想捣鼓一下华为的鸿蒙应用，写一个我的“好事录”应用，结果卡在了第一步——DevEco Studio死活登录不上去，太尴尬了- -!!。</p>
+<h2 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h2><p>点登录按钮，开发工具自动打开浏览器，输入华为账号密码登录账号后，自动跳转到华为账号授权页，一切正常。我点击同意授权，然后浏览器跳转到：</p>
+<p><code>http://localhost:10101/callback</code></p>
+<p>接着就看到一行大字：<strong>“无法访问此网站，localhost的响应时间过长”</strong>。</p>
+<p><img src="/img/HWerr.png" alt="DevEco Studio 登录授权时的报错信息"></p>
+<p>然后，开始检查网络，检查代理，搜索引擎上搜索有没有网友有相关的问题。</p>
+<p>结果，方法好像都不太管用，就连官方文档中的常见问题中也没有，心态有点崩。</p>
+<h2 id="尝试的过程"><a href="#尝试的过程" class="headerlink" title="尝试的过程"></a>尝试的过程</h2><h3 id="第一次尝试：关代理"><a href="#第一次尝试：关代理" class="headerlink" title="第一次尝试：关代理"></a>第一次尝试：关代理</h3>
+          </div>
+        
+      </div>
+    </div>
   
     <div class="post-item">
       <div class="post-date">
