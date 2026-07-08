@@ -15,8 +15,59 @@
     <atom:link href="https://www.hzv5.cn/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。</description>
-    <pubDate>Wed, 08 Jul 2026 19:23:12 GMT</pubDate>
+    <pubDate>Wed, 08 Jul 2026 19:23:36 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>记录一下豆包视频去水印的研究过程，以及fallback_api加密数据qAAB开头数据的解密。</title>
+      <link>https://www.hzv5.cn/2026/07/06/doubao-watermark-research/</link>
+      <guid>https://www.hzv5.cn/2026/07/06/doubao-watermark-research/</guid>
+      <pubDate>Mon, 06 Jul 2026 13:10:32 GMT</pubDate>
+      
+      <description>&lt;h2 id=&quot;起因&quot;&gt;&lt;a href=&quot;#起因&quot; class=&quot;headerlink&quot; title=&quot;起因&quot;&gt;&lt;/a&gt;起因&lt;/h2&gt;&lt;p&gt;朋友丢过来一个链接，问我能不能写个接口，输入豆包的分享链接就返回无水印的视频直链。&lt;br&gt;需求很明确：部署在 PHP 环境里，访问 &lt;code&gt;?url=分享链接&lt;/code&gt; 就吐 JSON 结果。&lt;br&gt;听起来像是抖音去水印那一套，心想应该不难。&lt;/p&gt;
+&lt;h2 id=&quot;第一阶段：抄作业&quot;&gt;&lt;a href=&quot;#第一阶段：抄作业&quot; class=&quot;headerlink&quot; title=&quot;第一阶段：抄作业&quot;&gt;&lt;/a&gt;第一阶段：抄作业&lt;/h2&gt;&lt;p&gt;先去 GitHub 上找了一圈，发现有个浏览器js插件，正好是类似效果的。直接拉到本地看源码，核心流程大概是这样：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;请求 thread 页面的 HTML&lt;/li&gt;
+&lt;li&gt;从 HTML 里提取 &lt;code&gt;fallback_api&lt;/code&gt; 这个接口地址&lt;/li&gt;
+&lt;li&gt;把这个地址里的参数改成 &lt;code&gt;logo_type=unwatermarked, channel=no, codec_type=8&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;请求修改后的接口，返回的是一段加密数据&lt;/li&gt;
+&lt;li&gt;用 AES-128-CBC 解密这段数据，得到真正的视频直链&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;加密这块研究了半天。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/img/decode_qAAB.png&quot; alt=&quot;qAAB开头数据解密流程&quot;&gt;&lt;/p&gt;
+&lt;p&gt;数据体前面 4 个字节是 qAAB 标记头（&lt;code&gt;0xA8 0x00 0x01 0x00&lt;/code&gt;），跳过这 4 字节后是密文。&lt;/p&gt;
+&lt;p&gt;解密用的 key 和 iv 是从 URL 参数里的 &lt;code&gt;key_seed&lt;/code&gt; 派生出来的：先 SHA-512 哈希一次，再拼接一个固定盐值做第二次 SHA-512，前 16 字节是 key，后 16 字节是 iv。&lt;/p&gt;
+&lt;p&gt;盐值是个写死的十六进制字符串。&lt;/p&gt;
+&lt;p&gt;第一版写好测试，发现 thread 类型的链接完美工作，拿到了无水印直链。&lt;/p&gt;</description>
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>朋友丢过来一个链接，问我能不能写个接口，输入豆包的分享链接就返回无水印的视频直链。<br>需求很明确：部署在 PHP 环境里，访问 <code>?url=分享链接</code> 就吐 JSON 结果。<br>听起来像是抖音去水印那一套，心想应该不难。</p><h2 id="第一阶段：抄作业"><a href="#第一阶段：抄作业" class="headerlink" title="第一阶段：抄作业"></a>第一阶段：抄作业</h2><p>先去 GitHub 上找了一圈，发现有个浏览器js插件，正好是类似效果的。直接拉到本地看源码，核心流程大概是这样：</p><ol><li>请求 thread 页面的 HTML</li><li>从 HTML 里提取 <code>fallback_api</code> 这个接口地址</li><li>把这个地址里的参数改成 <code>logo_type=unwatermarked, channel=no, codec_type=8</code></li><li>请求修改后的接口，返回的是一段加密数据</li><li>用 AES-128-CBC 解密这段数据，得到真正的视频直链</li></ol><p>加密这块研究了半天。</p><p><img src="/img/decode_qAAB.png" alt="qAAB开头数据解密流程"></p><p>数据体前面 4 个字节是 qAAB 标记头（<code>0xA8 0x00 0x01 0x00</code>），跳过这 4 字节后是密文。</p><p>解密用的 key 和 iv 是从 URL 参数里的 <code>key_seed</code> 派生出来的：先 SHA-512 哈希一次，再拼接一个固定盐值做第二次 SHA-512，前 16 字节是 key，后 16 字节是 iv。</p><p>盐值是个写死的十六进制字符串。</p><p>第一版写好测试，发现 thread 类型的链接完美工作，拿到了无水印直链。</p><span id="more"></span><h2 id="第二阶段：碰壁"><a href="#第二阶段：碰壁" class="headerlink" title="第二阶段：碰壁"></a>第二阶段：碰壁</h2><p>正当我以为搞定的时候，朋友又丢来一种新链接：<code>/video-sharing?share_id=xxx&amp;video_id=xxx</code>。和 thread 完全不同，这种链接是豆包内生成 AI 视频后分享出来的。</p><p>试了一下，页面完全不包含 <code>fallback_api</code>。不管怎么请求都是空的。<br>对比了一下两种页面的 HTML 大小：thread 页面大概 70KB 而且包含了完整的 SSR 数据（服务端渲染），video-sharing 页面直接飙到 140KB，全是 SPA 壳子，真正的数据得靠 JS 动态加载。</p><h3 id="尝试过的路子"><a href="#尝试过的路子" class="headerlink" title="尝试过的路子"></a>尝试过的路子</h3><p><strong>chain/single 接口</strong>：给 share_id 请求 <code>/aweme/v2/chain/single</code>，返回的是一个 HTML 登录页。这条路不通。</p><p><strong>get_play_info 接口</strong>：<code>POST /samantha/media/get_play_info</code>，这个能通，返回了视频的分辨率、时长、封面这些元数据。但 <code>fallback_api</code> 字段是空的。</p><p><strong>用 share_id 当 thread ID</strong>：试试请求 <code>/thread/&#123;share_id&#125;</code>，确实返回了 70KB 的 HTML，里面也有 <code>_ROUTER_DATA</code>，但 <code>fallback_api</code> 依然不存在。而且 SSR 数据里显示的是”会话过期，请重新登录”。</p><p><strong>get_video_share_info</strong>：POST 请求 <code>/creativity/share/get_video_share_info</code>，这个是后来发现的。能返回视频的 prompt（生成提示词）、用户信息、以及一个带水印的播放链接。</p><h3 id="浏览器扩展插件的启示"><a href="#浏览器扩展插件的启示" class="headerlink" title="浏览器扩展插件的启示"></a>浏览器扩展插件的启示</h3><p>为了搞清楚别人到底是怎么做的，又去下了一个浏览器扩展的完整源码分析。</p><p>它用了 Chrome 的 debugger API，在用户打开豆包聊天页面的时候，拦截 <code>doubao.com/im/chain/single</code> 这个接口的响应。这个接口返回的数据里确实包含了 <code>fallback_api</code>。</p><p>但问题在于：</p><ul><li>这个接口需要 protobuf 编码的请求体</li><li>需要用户登录后的 Cookie</li><li>而且请求格式是豆包聊天服务的私有协议</li></ul><p>换言之，在服务端 PHP 里根本无法复刻。这条路是浏览器专属的，必须用户已经登录了豆包才行。</p><h2 id="第三阶段：认命和取舍"><a href="#第三阶段：认命和取舍" class="headerlink" title="第三阶段：认命和取舍"></a>第三阶段：认命和取舍</h2><p>经过一轮轮的测试，基本把豆包视频的解析边界摸清楚了：</p><table><thead><tr><th>链接类型</th><th>SSR 数据</th><th>fallback_api</th><th>无水印</th></tr></thead><tbody><tr><td>/thread/xxx（公开分享）</td><td>有</td><td>有</td><td>可以</td></tr><tr><td>/thread/xxx（需登录）</td><td>有，但缺 fallback</td><td>无</td><td>不行</td></tr><tr><td>/video-sharing（公开分享）</td><td>无</td><td>无</td><td>不行</td></tr><tr><td>/video-sharing（登录态）</td><td>N/A</td><td>有（需拦截）</td><td>仅浏览器可行</td></tr></tbody></table><p>最终的结论是：<strong>thread 类型的公开分享链接可以做到无水印直链解析；video-sharing 类型在不登录的情况下，只能拿到带水印的视频链接和元数据（或许也能拿到无水印的链接，只是我还没研究透）。</strong></p><h2 id="最终的-PHP-实现"><a href="#最终的-PHP-实现" class="headerlink" title="最终的 PHP 实现"></a>最终的 PHP 实现</h2><p>整合下来，处理流程分成两条线：</p><p><strong>thread 链接</strong>：</p><ol><li>GET 请求页面 HTML</li><li>正则提取 video_id 和 fallback_api URL</li><li>修改 fallback_api 参数（去水印标识）</li><li>请求修改后的接口获取加密数据</li><li>提取 key_seed，派生 AES key/iv，解密得到无水印直链</li></ol><p><strong>video-sharing 链接</strong>：</p><ol><li>POST 请求 <code>get_video_share_info</code> 获取 share 元数据（prompt、用户名）</li><li>POST 请求 <code>get_play_info</code> 获取视频详情（分辨率、时长、封面）</li><li>返回带水印的直链 + 元数据，附加说明告知需要登录才能去水印</li></ol><h2 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h2><p>整个研究过程大概花了一个晚上，大部分时间花在试各种 API 端点上。倒是搞清楚了一件事：豆包对视频分享的权限控制分得很细。thread 是对话分享方式，数据都打在页面里；video-sharing 是直接分享视频，把敏感数据藏到了后面。</p><p>如果之后有兴趣搞更完整的方案，但现在暂时不折腾了。</p>]]></content:encoded>
+      
+      
+      <category domain="https://www.hzv5.cn/categories/%E5%8E%BB%E6%B0%B4%E5%8D%B0/">去水印</category>
+      
+      <category domain="https://www.hzv5.cn/categories/%E5%8E%BB%E6%B0%B4%E5%8D%B0/api%E6%8E%A5%E5%8F%A3/">api接口</category>
+      
+      <category domain="https://www.hzv5.cn/categories/%E5%8E%BB%E6%B0%B4%E5%8D%B0/api%E6%8E%A5%E5%8F%A3/collections/">收集控</category>
+      
+      
+      <category domain="https://www.hzv5.cn/tags/doubao/">doubao</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E8%B1%86%E5%8C%85AI/">豆包AI</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E8%A7%86%E9%A2%91%E5%8E%BB%E6%B0%B4%E5%8D%B0/">视频去水印</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E8%B1%86%E5%8C%85/">豆包</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E5%8E%BB%E6%B0%B4%E5%8D%B0/">去水印</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86/">数据解密</category>
+      
+      
+      <comments>https://www.hzv5.cn/2026/07/06/doubao-watermark-research/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>解决华为开发者工具 DevEco Studio 登录跳转 localhost:10101 端口被阻止问题</title>
@@ -212,13 +263,13 @@
       
       <category domain="https://www.hzv5.cn/tags/Hexo/">Hexo</category>
       
+      <category domain="https://www.hzv5.cn/tags/%E5%8E%BB%E6%B0%B4%E5%8D%B0/">去水印</category>
+      
       <category domain="https://www.hzv5.cn/tags/%E5%85%8D%E8%B4%B9API/">免费API</category>
       
       <category domain="https://www.hzv5.cn/tags/%E6%8E%A5%E5%8F%A3%E6%94%B6%E9%9B%86/">接口收集</category>
       
       <category domain="https://www.hzv5.cn/tags/%E6%95%99%E7%A8%8B/">教程</category>
-      
-      <category domain="https://www.hzv5.cn/tags/%E5%8E%BB%E6%B0%B4%E5%8D%B0/">去水印</category>
       
       <category domain="https://www.hzv5.cn/tags/%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1/">自建服务</category>
       
@@ -683,37 +734,6 @@
       
       
       <comments>https://www.hzv5.cn/2024/05/10/uniapp-form-validation/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>uni-app开发踩坑记录：新手必看的常见问题与解决方案</title>
-      <link>https://www.hzv5.cn/2024/04/20/uniapp-common-issues/</link>
-      <guid>https://www.hzv5.cn/2024/04/20/uniapp-common-issues/</guid>
-      <pubDate>Sat, 20 Apr 2024 08:45:00 GMT</pubDate>
-      
-      <description>总结uni-app开发中的常见问题和解决方案，帮助开发者避免踩坑，提高开发效率。通俗易懂的语言，适合新手阅读。</description>
-      
-      
-      
-      <content:encoded><![CDATA[<blockquote><p>在uni-app开发中，总会遇到一些让人头疼的问题。本文整理了一些常见的坑和解决方案，希望能帮助大家少走弯路。</p></blockquote><span id="more"></span><h2 id="1-页面相关问题"><a href="#1-页面相关问题" class="headerlink" title="1. 页面相关问题"></a>1. 页面相关问题</h2><h3 id="1-1-页面返回数据刷新问题"><a href="#1-1-页面返回数据刷新问题" class="headerlink" title="1.1 页面返回数据刷新问题"></a>1.1 页面返回数据刷新问题</h3><p><strong>问题描述：</strong><br>从A页面跳转到B页面，在B页面修改了数据后返回A页面，发现A页面的数据没有更新。</p><p><strong>解决方案：</strong></p><ol><li><p>使用事件总线：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在B页面修改数据后发送事件</span></span><br><span class="line">uni.$emit(<span class="string">&#x27;updateData&#x27;</span>, &#123; <span class="attr">data</span>: <span class="string">&#x27;新数据&#x27;</span> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在A页面监听事件</span></span><br><span class="line"><span class="title function_">onShow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  uni.$on(<span class="string">&#x27;updateData&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleUpdate</span>)</span><br><span class="line">&#125;,</span><br><span class="line"><span class="title function_">onHide</span>(<span class="params"></span>) &#123;</span><br><span class="line">  uni.$off(<span class="string">&#x27;updateData&#x27;</span>, <span class="variable language_">this</span>.<span class="property">handleUpdate</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li><li><p>使用页面生命周期：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在A页面的onShow中刷新数据</span></span><br><span class="line"><span class="title function_">onShow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">loadData</span>() <span class="comment">// 重新加载数据</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><h3 id="1-2-页面返回卡顿问题"><a href="#1-2-页面返回卡顿问题" class="headerlink" title="1.2 页面返回卡顿问题"></a>1.2 页面返回卡顿问题</h3><p><strong>问题描述：</strong><br>使用uni.navigateBack返回上一页时出现明显卡顿。</p><p><strong>解决方案：</strong></p><ol><li>检查页面是否有大量数据或复杂计算</li><li>使用分页加载代替一次性加载</li><li>在返回前清理不必要的定时器和监听器</li><li>避免在onShow中进行耗时操作</li></ol><h2 id="2-样式兼容问题"><a href="#2-样式兼容问题" class="headerlink" title="2. 样式兼容问题"></a>2. 样式兼容问题</h2><h3 id="2-1-不同平台样式差异"><a href="#2-1-不同平台样式差异" class="headerlink" title="2.1 不同平台样式差异"></a>2.1 不同平台样式差异</h3><p><strong>问题描述：</strong><br>同样的样式在不同平台（iOS、Android、H5）显示效果不一致。</p><p><strong>解决方案：</strong></p><ol><li>使用flex布局代替固定宽高</li><li>避免使用复杂的CSS3特性</li><li>使用条件编译处理平台差异：<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* #ifdef H5 */</span></span><br><span class="line"><span class="selector-class">.box</span> &#123; <span class="attribute">height</span>: <span class="number">100vh</span>; &#125;</span><br><span class="line"><span class="comment">/* #endif */</span></span><br><span class="line"><span class="comment">/* #ifdef MP */</span></span><br><span class="line"><span class="selector-class">.box</span> &#123; <span class="attribute">height</span>: <span class="number">100%</span>; &#125;</span><br><span class="line"><span class="comment">/* #endif */</span></span><br></pre></td></tr></table></figure></li></ol><h3 id="2-2-滚动穿透问题"><a href="#2-2-滚动穿透问题" class="headerlink" title="2.2 滚动穿透问题"></a>2.2 滚动穿透问题</h3><p><strong>问题描述：</strong><br>弹窗打开时，背景页面仍可滚动。</p><p><strong>解决方案：</strong></p><ol><li><p>弹窗打开时给body添加类：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 打开弹窗时</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">overflow</span> = <span class="string">&#x27;hidden&#x27;</span></span><br><span class="line"><span class="comment">// 关闭弹窗时</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">style</span>.<span class="property">overflow</span> = <span class="string">&#x27;auto&#x27;</span></span><br></pre></td></tr></table></figure></li><li><p>使用@touchmove.prevent阻止滚动：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">view</span> <span class="attr">class</span>=<span class="string">&quot;mask&quot;</span> @<span class="attr">touchmove.prevent</span>&gt;</span><span class="tag">&lt;/<span class="name">view</span>&gt;</span></span><br></pre></td></tr></table></figure></li></ol><h2 id="3-网络请求问题"><a href="#3-网络请求问题" class="headerlink" title="3. 网络请求问题"></a>3. 网络请求问题</h2><h3 id="3-1-请求超时处理"><a href="#3-1-请求超时处理" class="headerlink" title="3.1 请求超时处理"></a>3.1 请求超时处理</h3><p><strong>问题描述：</strong><br>网络请求偶尔超时，导致页面卡死。</p><p><strong>解决方案：</strong></p><ol><li>设置合理的超时时间</li><li>添加重试机制</li><li>显示加载提示和错误提示：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">showLoading</span>(&#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&#x27;加载中...&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">loadData</span>()</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  uni.<span class="title function_">showToast</span>(&#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;加载失败，请重试&#x27;</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="string">&#x27;none&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">  uni.<span class="title function_">hideLoading</span>()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><h3 id="3-2-登录失效处理"><a href="#3-2-登录失效处理" class="headerlink" title="3.2 登录失效处理"></a>3.2 登录失效处理</h3><p><strong>问题描述：</strong><br>token过期后继续请求接口导致报错。</p><p><strong>解决方案：</strong></p><ol><li>统一处理token过期：<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 请求拦截器中处理</span></span><br><span class="line"><span class="keyword">if</span> (response.<span class="property">code</span> === <span class="number">401</span>) &#123;</span><br><span class="line">  <span class="comment">// 清除登录信息</span></span><br><span class="line">  uni.<span class="title function_">clearStorageSync</span>()</span><br><span class="line">  <span class="comment">// 跳转登录页</span></span><br><span class="line">  uni.<span class="title function_">reLaunch</span>(&#123;</span><br><span class="line">    <span class="attr">url</span>: <span class="string">&#x27;/pages/login/index&#x27;</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li></ol><h2 id="4-性能优化问题"><a href="#4-性能优化问题" class="headerlink" title="4. 性能优化问题"></a>4. 性能优化问题</h2><h3 id="4-1-图片加载优化"><a href="#4-1-图片加载优化" class="headerlink" title="4.1 图片加载优化"></a>4.1 图片加载优化</h3><p><strong>问题描述：</strong><br>页面中图片较多，加载慢且占用内存。</p><p><strong>解决方案：</strong></p><ol><li><p>使用懒加载：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">:src</span>=<span class="string">&quot;url&quot;</span> <span class="attr">lazy-load</span>&gt;</span><span class="tag">&lt;/<span class="name">image</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>压缩图片</p></li><li><p>使用CDN加速</p></li><li><p>预加载重要图片</p></li></ol><h3 id="4-2-列表卡顿问题"><a href="#4-2-列表卡顿问题" class="headerlink" title="4.2 列表卡顿问题"></a>4.2 列表卡顿问题</h3><p><strong>问题描述：</strong><br>长列表滚动时出现卡顿。</p><p><strong>解决方案：</strong></p><ol><li>使用分页加载</li><li>避免在滚动时进行复杂计算</li><li>使用骨架屏优化体验</li><li>减少不必要的数据绑定</li></ol><h2 id="5-小程序相关问题"><a href="#5-小程序相关问题" class="headerlink" title="5. 小程序相关问题"></a>5. 小程序相关问题</h2><h3 id="5-1-包体积超限"><a href="#5-1-包体积超限" class="headerlink" title="5.1 包体积超限"></a>5.1 包体积超限</h3><p><strong>问题描述：</strong><br>小程序打包后提示超出大小限制。</p><p><strong>解决方案：</strong></p><ol><li>使用分包加载</li><li>压缩图片和资源文件</li><li>删除未使用的组件和文件</li><li>使用CDN加载大文件</li></ol><h3 id="5-2-微信授权问题"><a href="#5-2-微信授权问题" class="headerlink" title="5.2 微信授权问题"></a>5.2 微信授权问题</h3><p><strong>问题描述：</strong><br>获取用户信息时授权弹窗显示不出来。</p><p><strong>解决方案：</strong></p><ol><li><p>使用button触发授权：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">open-type</span>=<span class="string">&quot;getUserInfo&quot;</span> @<span class="attr">getuserinfo</span>=<span class="string">&quot;handleGetUserInfo&quot;</span>&gt;</span></span><br><span class="line">  获取用户信息</span><br><span class="line"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>检查是否已授权：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">uni.<span class="title function_">getSetting</span>(&#123;</span><br><span class="line">  <span class="attr">success</span>: <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (!res.<span class="property">authSetting</span>[<span class="string">&#x27;scope.userInfo&#x27;</span>]) &#123;</span><br><span class="line">      <span class="comment">// 未授权，显示授权按钮</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li></ol><h2 id="6-开发工具问题"><a href="#6-开发工具问题" class="headerlink" title="6. 开发工具问题"></a>6. 开发工具问题</h2><h3 id="6-1-HBuilderX卡顿"><a href="#6-1-HBuilderX卡顿" class="headerlink" title="6.1 HBuilderX卡顿"></a>6.1 HBuilderX卡顿</h3><p><strong>问题描述：</strong><br>HBuilderX运行缓慢，经常卡死。</p><p><strong>解决方案：</strong></p><ol><li>关闭不需要的项目</li><li>定期清理缓存</li><li>更新到最新版本</li><li>增加内存分配</li></ol><h3 id="6-2-真机调试问题"><a href="#6-2-真机调试问题" class="headerlink" title="6.2 真机调试问题"></a>6.2 真机调试问题</h3><p><strong>问题描述：</strong><br>真机调试时连接不上设备。</p><p><strong>解决方案：</strong></p><ol><li>检查USB调试是否开启</li><li>更新手机驱动</li><li>更换数据线</li><li>重启开发工具和手机</li></ol><h2 id="7-总结建议"><a href="#7-总结建议" class="headerlink" title="7. 总结建议"></a>7. 总结建议</h2><ol><li>多看官方文档和更新日志</li><li>保持良好的代码习惯</li><li>做好版本管理</li><li>常见问题记录总结</li><li>定期更新开发工具</li></ol><hr><blockquote><p>如果觉得文章对你有帮助,欢迎点赞、评论、分享,你的支持是我继续创作的动力！ </p></blockquote>]]></content:encoded>
-      
-      
-      <category domain="https://www.hzv5.cn/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</category>
-      
-      <category domain="https://www.hzv5.cn/categories/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/uni-app/">uni-app</category>
-      
-      
-      <category domain="https://www.hzv5.cn/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">踩坑记录</category>
-      
-      <category domain="https://www.hzv5.cn/tags/uni-app/">uni-app</category>
-      
-      <category domain="https://www.hzv5.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">前端开发</category>
-      
-      <category domain="https://www.hzv5.cn/tags/%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3/">问题解决</category>
-      
-      
-      <comments>https://www.hzv5.cn/2024/04/20/uniapp-common-issues/#disqus_thread</comments>
       
     </item>
     

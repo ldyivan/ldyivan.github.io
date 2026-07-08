@@ -657,12 +657,51 @@ document.addEventListener('DOMContentLoaded', function() {
     api接口
   </h1>
   <div class="category-counter">
-    共计 1 篇文章
+    共计 2 篇文章
   </div>
 </div>
 
 <!-- 文章列表 -->
 <div class="post-list">
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2026-07-06
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2026/07/06/doubao-watermark-research/">记录一下豆包视频去水印的研究过程，以及fallback_api加密数据qAAB开头数据的解密。</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-tags">
+              <i class="fas fa-tags"></i>
+              <a class="tag-none-link" href="/tags/doubao/" rel="tag">doubao</a>，<a class="tag-none-link" href="/tags/%E5%8E%BB%E6%B0%B4%E5%8D%B0/" rel="tag">去水印</a>，<a class="tag-none-link" href="/tags/%E6%95%B0%E6%8D%AE%E8%A7%A3%E5%AF%86/" rel="tag">数据解密</a>，<a class="tag-none-link" href="/tags/%E8%A7%86%E9%A2%91%E5%8E%BB%E6%B0%B4%E5%8D%B0/" rel="tag">视频去水印</a>，<a class="tag-none-link" href="/tags/%E8%B1%86%E5%8C%85/" rel="tag">豆包</a>，<a class="tag-none-link" href="/tags/%E8%B1%86%E5%8C%85AI/" rel="tag">豆包AI</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>朋友丢过来一个链接，问我能不能写个接口，输入豆包的分享链接就返回无水印的视频直链。<br>需求很明确：部署在 PHP 环境里，访问 <code>?url=分享链接</code> 就吐 JSON 结果。<br>听起来像是抖音去水印那一套，心想应该不难。</p>
+<h2 id="第一阶段：抄作业"><a href="#第一阶段：抄作业" class="headerlink" title="第一阶段：抄作业"></a>第一阶段：抄作业</h2><p>先去 GitHub 上找了一圈，发现有个浏览器js插件，正好是类似效果的。直接拉到本地看源码，核心流程大概是这样：</p>
+<ol>
+<li>请求 thread 页面的 HTML</li>
+<li>从 HTML 里提取 <code>fallback_api</code> 这个接口地址</li>
+<li>把这个地址里的参数改成 <code>logo_type=unwatermarked, channel=no, codec_type=8</code></li>
+<li>请求修改后的接口，返回的是一段加密数据</li>
+<li>用 AES-128-CBC 解密这段数据，得到真正的视频直链</li>
+</ol>
+<p>加密这块研究了半天。</p>
+<p><img src="/img/decode_qAAB.png" alt="qAAB开头数据解密流程"></p>
+<p>数据体前面 4 个字节是 qAAB 标记头（<code>0xA8 0x00 0x01 0x00</code>），跳过这 4 字节后是密文。</p>
+<p>解密用的 key 和 iv 是从 URL 参数里的 <code>key_seed</code> 派生出来的：先 SHA-512 哈希一次，再拼接一个固定盐值做第二次 SHA-512，前 16 字节是 key，后 16 字节是 iv。</p>
+<p>盐值是个写死的十六进制字符串。</p>
+<p>第一版写好测试，发现 thread 类型的链接完美工作，拿到了无水印直链。</p>
+          </div>
+        
+      </div>
+    </div>
   
     <div class="post-item">
       <div class="post-date">
