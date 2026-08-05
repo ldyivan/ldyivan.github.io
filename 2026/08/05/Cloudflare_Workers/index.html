@@ -119,7 +119,7 @@
             "datePublished": "2026-08-05T06:30:00.000Z",
         
         
-            "dateModified": "2026-08-05T12:05:53.447Z",
+            "dateModified": "2026-08-05T13:21:50.654Z",
         
         "author": {
             "@type": "Person",
@@ -697,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <span class="article-wordcount">
             <i class="fas fa-file-word"></i>
             
-            2742 字
+            2716 字
             
               · 7 分钟
             
@@ -713,8 +713,8 @@ document.addEventListener('DOMContentLoaded', function() {
     </header>
     <div class="article-content">
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道大家有没有遇到过这种情况：辛辛苦苦分享出去的链接，没过多久就变成了“404 Not Found”。第三方短链服务跑路、限流、删链，早就不是什么新鲜事了[reference:0]。</p>
-<p>之前我在博客里分享过自建的 API 服务 <code>api.hzv5.cn</code>，集成了 27 种实用接口[reference:1]。今天继续这个“自建工具箱”系列，跟大家聊聊如何用 <strong>Cloudflare Workers</strong> 免费搭建一个完全属于自己的短链服务。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道大家有没有遇到过这种情况：辛辛苦苦分享出去的链接，没过多久就变成了“404 Not Found”。第三方短链服务跑路、限流、删链，早就不是什么新鲜事了。</p>
+<p>之前我在博客里分享过自建的 API 服务 <code>api.hzv5.cn</code>，集成了 27 种实用接口。今天继续这个“自建工具箱”系列，跟大家聊聊如何用 <strong>Cloudflare Workers</strong> 免费搭建一个完全属于自己的短链服务。</p>
 <h2 id="为什么选择-Cloudflare-Workers？"><a href="#为什么选择-Cloudflare-Workers？" class="headerlink" title="为什么选择 Cloudflare Workers？"></a>为什么选择 Cloudflare Workers？</h2><p>市面上短链服务不少，但要么收费、要么有广告、要么随时可能关停。自建的话，传统方案需要买服务器、搭数据库、配置环境，门槛确实不低。</p>
 <p>而 Cloudflare Workers 的优势非常明显：</p>
 <ul>
