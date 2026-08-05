@@ -657,12 +657,53 @@ document.addEventListener('DOMContentLoaded', function() {
     技术分享
   </h1>
   <div class="category-counter">
-    共计 1 篇文章
+    共计 2 篇文章
   </div>
 </div>
 
 <!-- 文章列表 -->
 <div class="post-list">
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2026-08-05
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2026/08/05/Cloudflare_Workers/">利用 Cloudflare Workers 免费搭建自己的短链服务</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-tags">
+              <i class="fas fa-tags"></i>
+              <a class="tag-none-link" href="/tags/Cloudflare/" rel="tag">Cloudflare</a>，<a class="tag-none-link" href="/tags/%E5%85%8D%E8%B4%B9%E6%9C%8D%E5%8A%A1/" rel="tag">免费服务</a>，<a class="tag-none-link" href="/tags/%E6%95%99%E7%A8%8B/" rel="tag">教程</a>，<a class="tag-none-link" href="/tags/%E7%9F%AD%E9%93%BE%E6%8E%A5/" rel="tag">短链接</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>不知道大家有没有遇到过这种情况：辛辛苦苦分享出去的链接，没过多久就变成了“404 Not Found”。第三方短链服务跑路、限流、删链，早就不是什么新鲜事了[reference:0]。</p>
+<p>之前我在博客里分享过自建的 API 服务 <code>api.hzv5.cn</code>，集成了 27 种实用接口[reference:1]。今天继续这个“自建工具箱”系列，跟大家聊聊如何用 <strong>Cloudflare Workers</strong> 免费搭建一个完全属于自己的短链服务。</p>
+<h2 id="为什么选择-Cloudflare-Workers？"><a href="#为什么选择-Cloudflare-Workers？" class="headerlink" title="为什么选择 Cloudflare Workers？"></a>为什么选择 Cloudflare Workers？</h2><p>市面上短链服务不少，但要么收费、要么有广告、要么随时可能关停。自建的话，传统方案需要买服务器、搭数据库、配置环境，门槛确实不低。</p>
+<p>而 Cloudflare Workers 的优势非常明显：</p>
+<ul>
+<li><strong>完全免费</strong>：每天 10 万次请求的免费额度，个人使用绰绰有余</li>
+<li><strong>无需服务器</strong>：基于边缘计算，部署即用</li>
+<li><strong>自带 CDN</strong>：全球节点加速，访问速度飞快</li>
+<li><strong>自定义域名</strong>：支持绑定自己的域名，短链完全由你掌控</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><p>开始之前，你需要准备以下几样东西：</p>
+<ol>
+<li><strong>一个 Cloudflare 账号</strong>（免费注册即可）</li>
+<li><strong>一个域名</strong>（最好托管在 Cloudflare，非必须但推荐）</li>
+<li><strong>一点点 JavaScript 基础</strong>（复制粘贴也能搞定）</li>
+</ol>
+<h2 id="第一步：创建-Workers-服务"><a href="#第一步：创建-Workers-服务" class="headerlink" title="第一步：创建 Workers 服务"></a>第一步：创建 Workers 服务</h2>
+          </div>
+        
+      </div>
+    </div>
   
     <div class="post-item">
       <div class="post-date">
