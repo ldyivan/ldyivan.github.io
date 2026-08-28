@@ -3,153 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#FFD400">
 <title>挪瓦咖啡 SOP 查询工具</title>
 <style>
 :root{
   --yellow:#FFD400;
-  --yellow-deep:#F5B800;
+  --yellow-deep:#F2B800;
+  --yellow-soft:#FFF6D6;
   --ink:#1A1A1A;
-  --bg:#F7F3E8;
+  --bg:#F6F1E4;
   --card:#FFFFFF;
   --gray:#8C8C8C;
-  --line:#EFE9D8;
-  --ice-bg:#E7F3F7; --ice-tx:#13728A;
-  --hot-bg:#FDEBDD; --hot-tx:#C2571A;
-  --shadow:0 2px 12px rgba(26,26,26,.06);
+  --line:rgba(26,26,26,.08);
+  --ice-bg:#E6F3F7; --ice-tx:#12718C;
+  --hot-bg:#FCEBDE; --hot-tx:#C25A1C;
+  --shadow:0 6px 20px rgba(26,26,26,.07);
+  --shadow-lg:0 12px 30px rgba(26,26,26,.12);
+  --r:18px;
+  --ease:cubic-bezier(.22,.9,.3,1);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{max-width:100%;overflow-x:hidden;}
-html{font-size:16px;}
+html{font-size:16px;-webkit-text-size-adjust:100%;}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.6;
-  padding-bottom:86px;
+  padding-bottom:92px;
+  min-height:100vh;
 }
+
+/* ambient background glow */
+.bg-glow{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-glow::before,.bg-glow::after{content:"";position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;}
+.bg-glow::before{width:340px;height:340px;background:#FFE27A;top:-120px;left:-90px;animation:drift1 14s ease-in-out infinite alternate;}
+.bg-glow::after{width:300px;height:300px;background:#FFD9A8;bottom:-100px;right:-80px;animation:drift2 18s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate(60px,50px) scale(1.15);}}
+@keyframes drift2{to{transform:translate(-50px,-40px) scale(.9);}}
 
 /* Header */
 .header{
-  background:linear-gradient(135deg,#FFD400 0%,#FFC300 100%);
-  padding:16px 16px 14px;color:var(--ink);position:sticky;top:0;z-index:20;
+  position:sticky;top:0;z-index:20;
+  background:linear-gradient(135deg,#FFE066 0%,#FFD400 45%,#F2B800 100%);
+  padding:14px 16px 13px;color:var(--ink);
+  box-shadow:0 4px 16px rgba(242,184,0,.35);
 }
-.header-top{display:flex;align-items:center;gap:11px;}
+.header::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,rgba(255,255,255,.35) 0%,rgba(255,255,255,0) 28%);}
+.header-top{position:relative;display:flex;align-items:center;gap:11px;}
 .logo{
-  width:40px;height:40px;background:var(--ink);border-radius:11px;flex:0 0 auto;
+  width:42px;height:42px;background:var(--ink);border-radius:12px;flex:0 0 auto;
   display:flex;align-items:center;justify-content:center;color:var(--yellow);
-  font-weight:900;font-size:22px;line-height:1;
+  font-weight:900;font-size:23px;line-height:1;letter-spacing:-1px;
+  animation:logoPop .6s var(--ease) both;
 }
-.header h1{font-size:20px;font-weight:800;letter-spacing:1px;line-height:1.2;}
-.header .sub{font-size:11.5px;font-weight:500;opacity:.75;margin-top:1px;letter-spacing:1px;}
+@keyframes logoPop{0%{transform:scale(.5) rotate(-12deg);opacity:0;}100%{transform:scale(1) rotate(0);opacity:1;}}
+.header h1{font-size:20px;font-weight:800;letter-spacing:1px;line-height:1.15;}
+.header .sub{font-size:11.5px;font-weight:600;opacity:.7;margin-top:1px;letter-spacing:1.5px;}
 
 /* Search */
 .search{
-  margin:10px 14px 0;background:var(--card);border-radius:12px;display:flex;align-items:center;
-  padding:0 12px;height:42px;box-shadow:var(--shadow);
+  margin:12px 14px 0;background:var(--card);border-radius:14px;display:flex;align-items:center;
+  padding:0 13px;height:46px;box-shadow:var(--shadow);
+  transition:box-shadow .25s ease,transform .25s ease;border:1.5px solid transparent;
 }
-.search svg{width:18px;height:18px;fill:#B8B2A0;flex:0 0 auto;}
-.search input{border:none;outline:none;flex:1;margin-left:8px;font-size:15px;background:transparent;color:var(--ink);min-width:0;}
-.search input::placeholder{color:#C4BEA8;}
+.search:focus-within{border-color:var(--yellow);box-shadow:0 0 0 4px rgba(255,212,0,.22),var(--shadow-lg);transform:translateY(-1px);}
+.search svg{width:19px;height:19px;fill:#ADA68F;flex:0 0 auto;transition:fill .25s;}
+.search:focus-within svg{fill:var(--ink);}
+.search input{border:none;outline:none;flex:1;margin-left:9px;font-size:15.5px;background:transparent;color:var(--ink);min-width:0;}
+.search input::placeholder{color:#C7C1AB;}
+.search .clean-btn{display:none;flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:#F0ECE0;color:#8C8C8C;border:none;font-size:13px;line-height:1;cursor:pointer;align-items:center;justify-content:center;}
+.search .clean-btn.show{display:flex;}
 
 /* Filter */
-.filter{margin:10px 14px 0;background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:11px 12px;}
+.filter{margin:10px 14px 0;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:12px 13px;animation:fadeUp .5s var(--ease) .08s both;}
 .f-row{display:flex;align-items:center;gap:8px;}
-.f-row + .f-row{margin-top:9px;padding-top:9px;border-top:1px solid var(--line);}
-.f-label{flex:0 0 auto;font-size:12px;font-weight:700;color:#9A937E;width:34px;}
-.chips{display:flex;gap:7px;overflow-x:auto;flex:1;scrollbar-width:none;padding:1px;}
+.f-row + .f-row{margin-top:10px;padding-top:10px;border-top:1px dashed rgba(26,26,26,.09);}
+.f-label{flex:0 0 auto;font-size:12px;font-weight:800;color:#A79F86;width:36px;letter-spacing:1px;}
+.chips{display:flex;gap:7px;overflow-x:auto;flex:1;scrollbar-width:none;padding:2px 1px;-webkit-overflow-scrolling:touch;}
 .chips::-webkit-scrollbar{display:none;}
-.chips.scroll-mask{-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);mask-image:linear-gradient(90deg,#000 88%,transparent);}
+.chips.scroll-mask{-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent);}
 .chip{
-  flex:0 0 auto;padding:6px 13px;border-radius:999px;font-size:13px;font-weight:600;
-  background:#F5F1E5;color:#6B6757;border:1px solid transparent;cursor:pointer;white-space:nowrap;
-  transition:all .16s;
+  position:relative;flex:0 0 auto;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700;
+  background:#F6F2E6;color:#6B6655;border:1px solid transparent;cursor:pointer;white-space:nowrap;
+  transition:background .2s,color .2s,transform .18s var(--ease),box-shadow .2s;overflow:hidden;user-select:none;
 }
-.chip.active{background:var(--ink);color:var(--yellow);border-color:var(--ink);}
+.chip:active{transform:scale(.92);}
+.chip.active{background:var(--ink);color:var(--yellow);box-shadow:0 4px 12px rgba(26,26,26,.25);}
+.chip .ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:ripple .55s ease-out forwards;pointer-events:none;}
+.chip.active .ripple{background:rgba(255,212,0,.5);}
+@keyframes ripple{to{transform:scale(3);opacity:0;}}
 
-/* Section */
-.main{padding:6px 14px 20px;}
-.sec-title{font-size:13px;color:var(--gray);margin:14px 2px 8px;font-weight:600;letter-spacing:1px;}
+/* Main */
+.main{position:relative;z-index:1;padding:8px 14px 22px;}
+.sec-title{font-size:13px;color:var(--gray);margin:16px 2px 8px;font-weight:700;letter-spacing:1px;display:flex;align-items:center;gap:6px;}
+.sec-title::before{content:"";width:4px;height:14px;border-radius:3px;background:var(--yellow);}
 
-/* Product Card */
+/* Result bar */
+.result-bar{display:flex;align-items:center;justify-content:space-between;margin:6px 2px 10px;color:var(--gray);font-size:12px;font-weight:600;gap:10px;}
+.result-bar .cnt{display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap;}
+.result-bar .cnt b{color:var(--ink);font-size:14px;}
+.col-switch{display:flex;background:#F0E9DA;border-radius:999px;padding:2px;gap:1px;flex:0 0 auto;box-shadow:inset 0 1px 3px rgba(26,26,26,.06);}
+.col-switch button{border:none;background:transparent;font-size:11px;font-weight:800;color:#A8A28D;padding:5px 9px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s;line-height:1;font-family:inherit;}
+.col-switch button:active{transform:scale(.92);}
+.col-switch button.active{background:var(--ink);color:var(--yellow);box-shadow:0 2px 6px rgba(26,26,26,.25);}
+
+/* Product Grid */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+#drinks{display:grid;grid-template-columns:repeat(var(--cols,2),minmax(0,1fr));gap:10px;}
 .card{
-  background:var(--card);border-radius:16px;box-shadow:var(--shadow);margin-bottom:12px;
-  overflow:hidden;cursor:pointer;width:100%;
+  background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);
+  overflow:hidden;cursor:pointer;width:100%;min-width:0;
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:13px 12px 11px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .45s var(--ease),transform .45s var(--ease),box-shadow .25s ease;
+  will-change:transform,opacity;
+  contain:layout;
 }
-.card-head{padding:14px 15px;}
-.card-main{display:flex;flex-direction:column;gap:8px;}
-.card-title{font-size:16px;font-weight:700;line-height:1.35;word-break:break-all;}
-.card-tags{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
-.badge{font-size:11px;padding:2px 9px;border-radius:999px;font-weight:600;background:#FFF6D6;color:#9A7B00;border:1px solid #FFE78A;}
-.badge.new{background:#E9F7EE;color:#1E8A4C;border-color:#BFE8CF;}
-.badge.retire{background:#F2F0EC;color:#8C8C8C;border-color:#E2DED2;}
-.ctag{font-size:11px;padding:2px 8px;border-radius:7px;font-weight:600;}
+.card.in{opacity:1;transform:translateY(0);}
+.card.pressed{transform:scale(.97);box-shadow:var(--shadow-lg);}
+.card:active{transform:scale(.97);}
+.card-title{font-size:14.5px;font-weight:800;line-height:1.32;word-break:break-all;}
+.card-title mark{background:linear-gradient(transparent 55%,#FFE066 55%);color:inherit;padding:0 2px;border-radius:3px;font-weight:inherit;}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-top:7px;}
+.card-sub{display:flex;flex-direction:column;align-items:flex-start;gap:5px;margin-top:9px;font-size:11px;color:#8C8C8C;font-weight:600;word-break:break-all;line-height:1.4;}
+.card-sub .temps{display:inline-flex;gap:4px;flex-wrap:wrap;}
+.badge{font-size:10px;padding:1.5px 8px;border-radius:999px;font-weight:700;background:var(--yellow-soft);color:#8F7300;border:1px solid #FFE078;}
+.badge.new{background:#E9F7EE;color:#1E8A4C;border-color:#BFE8CF;animation:pulse 2.4s ease-in-out infinite;}
+.badge.retire{background:#F3F1EB;color:#8C8C8C;border-color:#E4E0D3;}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(30,138,76,.25);}50%{box-shadow:0 0 0 5px rgba(30,138,76,0);}}
+.ctag{font-size:10px;padding:2px 7px;border-radius:7px;font-weight:700;display:inline-flex;align-items:center;gap:3px;}
 .ctag.ice{background:var(--ice-bg);color:var(--ice-tx);}
 .ctag.hot{background:var(--hot-bg);color:var(--hot-tx);}
-.arrow{width:16px;height:16px;transition:transform .2s;fill:#B8B2A0;flex:0 0 auto;align-self:center;}
-.head-row{display:flex;align-items:flex-start;gap:8px;}
-.head-row .card-main{flex:1;min-width:0;}
 
-/* Specs */
-.specs{display:none;border-top:1px solid var(--line);padding:8px 14px 15px;}
-.card.open .specs{display:block;}
-.card.open .arrow{transform:rotate(90deg);}
-.spec{margin-top:10px;background:#FFFDF4;border:1px solid var(--line);border-radius:12px;padding:12px 13px;}
+/* Specs (inside modal) */
+.spec{background:#FFFDF3;border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-top:12px;}
 .spec:first-child{margin-top:0;}
-.spec-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.cup{font-size:13px;font-weight:700;}
-.tag{font-size:11px;padding:1px 8px;border-radius:6px;font-weight:700;}
+.spec-top{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.cup{font-size:13.5px;font-weight:800;display:inline-flex;align-items:center;gap:5px;}
+.tag{font-size:11px;padding:2px 9px;border-radius:7px;font-weight:800;}
 .tag.ice{background:var(--ice-bg);color:var(--ice-tx);}
 .tag.hot{background:var(--hot-bg);color:var(--hot-tx);}
 .steps{list-style:none;}
-.steps li{position:relative;padding-left:26px;font-size:14px;color:#3A372F;margin-top:9px;line-height:1.7;word-break:break-all;}
+.steps li{position:relative;padding-left:28px;font-size:14px;color:#3A372F;margin-top:9px;line-height:1.7;word-break:break-all;}
 .steps li:first-child{margin-top:0;}
 .steps li::before{
-  content:attr(data-i);position:absolute;left:0;top:2px;width:18px;height:18px;border-radius:50%;
-  background:var(--yellow);color:var(--ink);font-size:10.5px;font-weight:800;
+  content:attr(data-i);position:absolute;left:0;top:2px;width:19px;height:19px;border-radius:50%;
+  background:var(--yellow);color:var(--ink);font-size:11px;font-weight:800;
   display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 5px rgba(242,184,0,.4);
 }
 
 /* Material / Tools rows */
-.row{background:var(--card);border-radius:14px;box-shadow:var(--shadow);margin-bottom:10px;padding:13px 15px;}
-.row-name{font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;word-break:break-all;}
+.row{background:var(--card);border-radius:15px;box-shadow:var(--shadow);margin-bottom:10px;padding:14px 16px;animation:fadeUp .5s var(--ease) both;contain:layout;}
+.row-name{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;flex-wrap:wrap;word-break:break-all;}
 .row-name .tag{font-size:10px;}
-.kv{display:flex;flex-wrap:wrap;gap:5px 14px;margin-top:8px;font-size:12.5px;color:#5A5648;}
-.kv span b{color:#8C8C8C;font-weight:600;margin-right:3px;}
+.kv{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:9px;font-size:12.5px;color:#5A5648;}
+.kv span b{color:var(--gray);font-weight:700;margin-right:3px;}
 
 /* Terms */
-.term{padding:12px 15px;}
-.term .k{font-size:14.5px;font-weight:700;color:var(--ink);word-break:break-all;}
-.term .v{font-size:13px;color:#5A5648;margin-top:4px;word-break:break-all;}
+.term{padding:13px 16px;}
+.term .k{font-size:14.5px;font-weight:800;color:var(--ink);word-break:break-all;display:flex;align-items:center;gap:7px;}
+.term .k::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--yellow);flex:0 0 auto;}
+.term .v{font-size:13px;color:#5A5648;margin-top:5px;word-break:break-all;padding-left:15px;border-left:2px solid #F0E9D4;}
 
 /* Button cards */
-.btn-card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden;}
-.btn-item{padding:11px 15px;}
-.btn-item.old{background:#FFFDF4;border-bottom:1px solid var(--line);}
-.btn-item.new{background:#FFFBE8;}
+.btn-card{background:var(--card);border-radius:15px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden;animation:fadeUp .5s var(--ease) both;}
+.btn-item{padding:12px 16px;}
+.btn-item.old{background:#FFFDF3;border-bottom:1px solid var(--line);}
+.btn-item.new{background:#FFF9E0;}
 .btn-item.deprecated{background:#F6F4EE;color:#9A9584;}
-.btn-item.new-only{background:#FFFBE8;}
+.btn-item.new-only{background:#FFF9E0;}
 .btn-name{font-size:15px;font-weight:800;}
 .btn-item.deprecated .btn-name{color:#B0AA97;font-weight:600;}
-.btn-meta{font-size:12px;color:#8C8C8C;margin-top:2px;}
-.btn-arrow{text-align:center;background:var(--bg);color:#B0AA97;font-size:13px;line-height:1;padding:5px 0;}
-.note{font-size:12px;color:var(--gray);line-height:1.7;padding:4px 2px;word-break:break-all;}
+.btn-meta{font-size:12px;color:var(--gray);margin-top:2px;}
+.btn-arrow{text-align:center;background:var(--bg);color:#B0AA97;font-size:12px;line-height:1;padding:7px 0;font-weight:700;letter-spacing:1px;}
+.note{font-size:12px;color:var(--gray);line-height:1.7;padding:6px 2px;word-break:break-all;}
+
+/* Empty */
+.empty{text-align:center;color:var(--gray);padding:52px 20px;animation:fadeUp .5s var(--ease) both;}
+.empty svg{width:74px;height:74px;fill:#E6E0CE;margin-bottom:14px;}
+.empty .t{font-size:15px;font-weight:800;color:#8C876F;}
+.empty .d{font-size:12.5px;margin-top:5px;color:#BBB49F;}
+.empty button{margin-top:16px;padding:9px 22px;border-radius:999px;border:none;background:var(--ink);color:var(--yellow);font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 5px 14px rgba(26,26,26,.22);transition:transform .18s var(--ease);}
+.empty button:active{transform:scale(.94);}
 
 /* Tabbar */
 .tabbar{
-  position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
-  display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom);
+  position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);display:flex;z-index:30;padding-bottom:env(safe-area-inset-bottom);
+  box-shadow:0 -6px 20px rgba(26,26,26,.06);
 }
+.tabbar::before{content:"";position:absolute;top:-1px;left:0;right:0;height:1px;}
 .tabbar .tab{
-  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 0 5px;
-  font-size:10.5px;color:#9A9584;cursor:pointer;font-weight:600;
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0 6px;
+  font-size:10.5px;color:#A8A28D;cursor:pointer;font-weight:700;position:relative;user-select:none;
+  transition:color .2s;
 }
-.tabbar .tab svg{width:22px;height:22px;fill:#9A9584;}
+.tabbar .tab svg{width:23px;height:23px;fill:#B4AE99;transition:transform .28s var(--ease),fill .2s;}
 .tabbar .tab.active{color:var(--ink);}
-.tabbar .tab.active svg{fill:var(--ink);}
+.tabbar .tab.active svg{fill:var(--yellow-deep);transform:translateY(-2px);}
+.tabbar .tab.active::after{content:"";position:absolute;top:0;width:18px;height:3px;border-radius:0 0 4px 4px;background:var(--yellow);animation:tabdot .3s var(--ease) both;}
+@keyframes tabdot{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+.tabbar .tab.bump svg{animation:bump .4s var(--ease);}
+@keyframes bump{0%{transform:scale(1);}40%{transform:scale(1.28) translateY(-3px);}100%{transform:scale(1) translateY(-2px);}}
+
+/* Modal */
+.modal{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:20px 14px;visibility:hidden;pointer-events:none;}
+.modal.show{visibility:visible;pointer-events:auto;}
+.modal-mask{position:absolute;inset:0;background:rgba(24,21,12,.55);opacity:0;transition:opacity .3s ease;}
+.modal.show .modal-mask{opacity:1;}
+.modal-box{position:relative;width:100%;max-width:460px;max-height:84vh;background:var(--card);border-radius:20px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;overflow:hidden;transform:translateY(26px) scale(.95);opacity:0;transition:transform .34s var(--ease),opacity .3s var(--ease);}
+.modal.show .modal-box{transform:none;opacity:1;}
+.modal-head{flex:0 0 auto;display:flex;align-items:flex-start;gap:10px;padding:15px 16px 12px;border-bottom:1px solid var(--line);}
+.modal-head .t{flex:1;min-width:0;}
+.modal-title{font-size:17px;font-weight:800;line-height:1.3;word-break:break-all;}
+.modal-title mark{background:linear-gradient(transparent 55%,#FFE066 55%);color:inherit;padding:0 2px;border-radius:3px;}
+.modal-head .badge{margin-top:5px;}
+.modal-close{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:none;background:#F0E9DA;color:#6B6655;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .18s var(--ease);}
+.modal-close:active{transform:scale(.88);}
+.modal-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 16px 20px;}
+
+/* To top */
+#toTop{
+  position:fixed;right:14px;bottom:88px;z-index:28;width:44px;height:44px;border-radius:50%;
+  background:var(--ink);color:var(--yellow);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 20px rgba(26,26,26,.35);
+  opacity:0;transform:translateY(16px) scale(.8);pointer-events:none;
+  transition:opacity .3s ease,transform .3s var(--ease);
+}
+#toTop.show{opacity:1;transform:none;pointer-events:auto;}
+#toTop:active{transform:scale(.9);}
+#toTop svg{width:20px;height:20px;fill:var(--yellow);}
 
 .hidden{display:none!important;}
-.empty{text-align:center;color:var(--gray);font-size:14px;padding:40px 0;}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;}
+}
 </style>
 </head>
 <body>
+
+<div class="bg-glow" aria-hidden="true"></div>
 
 <header class="header">
   <div class="header-top">
@@ -163,7 +259,8 @@ body{
 
 <div class="search">
   <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
-  <input id="search" type="text" placeholder="搜索饮品名称" autocomplete="off">
+  <input id="search" type="text" placeholder="搜索饮品名称，如 生椰拿铁" autocomplete="off">
+  <button class="clean-btn" id="cleanBtn" aria-label="清空">✕</button>
 </div>
 
 <div class="filter">
@@ -183,8 +280,19 @@ body{
 
 <main class="main">
   <section id="tab-drinks">
+    <div class="result-bar">
+      <span class="cnt">共 <b id="resultCount">0</b> 款饮品<span id="matchInfo"></span></span>
+      <div class="col-switch" id="colSwitch" role="group" aria-label="切换宫格列数">
+        <button data-cols="2">2列</button><button data-cols="3">3列</button><button data-cols="4">4列</button>
+      </div>
+    </div>
     <div id="drinks"></div>
-    <div id="empty" class="empty hidden">未找到匹配的饮品</div>
+    <div id="empty" class="empty hidden">
+      <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.7 12.3-1.4 1.4L12 12.4l-3.3 3.3-1.4-1.4L10.6 11 7.3 7.7l1.4-1.4L12 9.6l3.3-3.3 1.4 1.4L13.4 11z"/></svg>
+      <div class="t">未找到匹配的饮品</div>
+      <div class="d">试试更换关键词，或清除筛选条件</div>
+      <button id="resetBtn">清除所有筛选</button>
+    </div>
   </section>
   <section id="tab-material" class="hidden">
     <div class="sec-title">原物料认知</div>
@@ -203,6 +311,17 @@ body{
     <div id="tools"></div>
   </section>
 </main>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-mask" data-close></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <div class="t"><div class="modal-title" id="modalTitle"></div><div id="modalBadge"></div></div>
+      <button class="modal-close" id="modalClose" aria-label="关闭">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
 
 <nav class="tabbar" id="tabbar">
   <div class="tab active" data-tab="drinks">
@@ -227,11 +346,14 @@ body{
   </div>
 </nav>
 
+<button id="toTop" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24"><path d="M12 8l-6 6 1.4 1.4L12 10.8l4.6 4.6L18 14z"/></svg>
+</button>
+
 <script>
 const DATA = {"longterm": [{"name": "深烘美式", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "满冰+直饮水至1线+【标杯 美式】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 美式】+直饮水100ml+热水至距杯口1cm"}, {"cup": "吨吨桶", "temp": "冰", "step": "满冰+直饮水至nowwa线+【吨吨桶 美式】"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨桶 美式】+直饮水200ml+热水至满桶"}]}, {"name": "柚C美式（控糖版）", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "柚C液1条+直饮水至小马标下方/大马眼睛+搅拌均匀+冰块至液面到2线+【标杯 风味】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 风味】+柚C液1条+直饮水100ml+热水至距杯口1cm+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "柚C液2条+直饮水至2个W中间+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 风味】"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨桶 风味】+柚C液2条+直饮水200ml+热水至满桶+搅拌均匀"}]}, {"name": "橙C美式（控糖版）", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "橙C液1条+直饮水至小马标下方/大马眼睛+搅拌均匀+冰块至液面到2线+【标杯 风味】"}, {"cup": "吨吨桶", "temp": "冰", "step": "橙C液2条+直饮水至2个W中间+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 风味】"}]}, {"name": "冰椰风味美式（控糖版）", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "生椰水1条+直饮水至小马标下方/大马眼睛+搅拌均匀+冰块至液面到2线+【标杯 风味】"}, {"cup": "吨吨桶", "temp": "冰", "step": "生椰水2条+直饮水至2个W中间+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 风味】"}]}, {"name": "牛磺酸能量美式", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "牛磺酸1条+直饮水至小马标下方/大马眼睛搅拌均匀+冰块至液面到2线+【标杯 风味】"}, {"cup": "吨吨桶", "temp": "冰", "step": "牛磺酸2条+直饮水至2个W中间+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 风味】"}]}, {"name": "加浓美式", "series": "美式/果咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "满冰+直饮水至1线下方1cm+【标杯 加浓美式】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 加浓美式】+直饮水100ml+热水至距杯口1cm"}]}, {"name": "深烘拿铁", "series": "拿铁系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "牛奶200ml+满冰+【标杯 拿铁】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 拿铁】+（加热：牛奶320ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "牛奶320ml+冰块至液面到nowwa线+【吨吨桶 拿铁】"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨桶 拿铁】+（加热：牛奶600ml）"}]}, {"name": "生椰拿铁（控糖版）", "series": "拿铁系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "生椰乳1盒+满冰+【标杯 拿铁】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 拿铁】+（加热：生椰乳1盒+牛奶150ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "生椰乳2盒+冰块至液面到nowwa线+【吨吨桶 拿铁】"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨桶 拿铁】+（加热：生椰乳2盒+牛奶200ml）"}]}, {"name": "超模芝士拿铁", "series": "拿铁系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "芝士乳50ml+牛奶150ml+搅拌均匀+满冰+【标杯 拿铁】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 拿铁】+（加热：芝士乳50ml+牛奶270ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "芝士乳100ml+牛奶200ml+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 拿铁】"}]}, {"name": "横州茉香 特调拿铁", "series": "拿铁系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉茶液1条+牛奶200ml+搅拌均匀+冰块至液面到2线+【标杯 拿铁】"}, {"cup": "标准杯", "temp": "热", "step": "【标杯 拿铁】+（加热：茉莉茶液1条+牛奶320ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉茶液2条+牛奶320ml+搅拌均匀+冰块至液面到nowwa线+【吨吨桶 拿铁】"}]}, {"name": "冰椰风味水（控糖版）", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "生椰水1条+直饮水至小马标下方/大马眼睛+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "生椰水2条+直饮水至2个W中间+搅拌均匀+满冰"}]}, {"name": "现做柠檬水（控糖版）", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "柠檬液1条+直饮水至小马标下方/大马眼睛+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "柠檬液2条+直饮水至2个W中间+搅拌均匀+满冰"}]}, {"name": "轻轻茉莉轻乳茶（控糖版）", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉茶液1条+牛奶200ml+搅拌均匀+满冰"}, {"cup": "标准杯", "temp": "热", "step": "（加热：茉莉茶液1条+牛奶320ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉茶液2条+牛奶320ml+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "热", "step": "（加热：茉莉茶液2条+牛奶600ml）"}]}, {"name": "柚C果茶（控糖版）", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉柚子1条+直饮水至小马标下方/大马眼睛+搅拌均匀+满冰"}, {"cup": "标准杯", "temp": "热", "step": "茉莉柚子1条+直饮水100ml+热水至距杯口1cm+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉柚子2条+直饮水至2个W中间+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "热", "step": "茉莉柚子2条+直饮水200ml+热水至满桶+搅拌均匀"}]}, {"name": "冰椰风味茉莉花茶（控糖版）", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉冰椰1条+直饮水至小马标下方/大马眼睛+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉冰椰2条+直饮水至两个W中间+搅拌均匀+满冰"}]}, {"name": "牛磺酸能量特饮", "series": "非咖系列", "specs": [{"cup": "标准杯", "temp": "冰", "step": "牛磺酸1条+直饮水至小马标下方/大马眼睛+搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "牛磺酸2条+直饮水至2个W中间+搅拌均匀+满冰"}]}], "season": [{"name": "元气荔枝气泡美式（控糖版）", "series": "当季新品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "荔枝气泡水至小马标下方/大马眼睛+满冰（200g）+【标杯 风味】按键（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "荔枝气泡水1罐+满冰（300g）+【吨吨桶 风味】按键（不满杯增补冰块）"}]}, {"name": "柚C荔枝气泡水", "series": "当季新品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "柚C液1条+荔枝气泡水至小马标下方/大马眼睛+满冰（200g）（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "柚C液1条+1罐荔枝气泡水+满冰（300g）（不满杯增补冰块）"}]}, {"name": "茉莉花香荔枝气泡水", "series": "当季新品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉茶液1条+荔枝气泡水至小马标下方/大马眼睛+满冰（200g）（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉茶液1条+1罐荔枝气泡水+满冰（300g）（不满杯增补冰块）"}]}, {"name": "快乐吃瓜气泡美式（控糖版）", "series": "当季新品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "西瓜浓浆2泵+屈臣氏气泡水至小马标下方/大马眼睛+搅拌均匀+满冰（200g）+【标杯 风味】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "西瓜浓浆3泵+屈臣氏气泡水1罐+搅拌均匀+满冰（300g）+【吨吨桶 风味】按键"}]}, {"name": "现做柠檬冰红茶 8/21上新", "series": "当季新品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "柠檬冰茶粉1条+热水50ml+搅拌均匀+直饮水150ml+满冰（不满杯增补冰块）"}, {"cup": "吨吨桶", "temp": "冰", "step": "柠檬冰茶粉2条+热水100ml+搅拌均匀+倒入吨吨桶+直饮水至2个W中间+满冰（不满杯增补冰块）"}]}], "retire": [{"name": "超模阿萨姆红茶拿铁（减脂版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "红茶浓浆2泵+【小马果咖】按键+（加热：芝士乳20ml +0脂奶300ml）"}, {"cup": "标准杯", "temp": "冰", "step": "红茶浓浆2泵+芝士乳20ml +0脂奶180ml +搅拌均匀+满冰+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "红茶浓浆3泵+【意式精粹】按键+（加热：芝士乳30ml +0脂奶550ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "红茶浓浆3泵+芝士乳30ml +0脂奶380ml +搅拌均匀+满冰+【意式精粹】按键"}]}, {"name": "超模咸酪拿铁（减脂版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "海盐浓浆2泵+【小马果咖】按键+（加热：芝士乳50ml +0脂奶270ml）"}, {"cup": "标准杯", "temp": "冰", "step": "海盐浓浆2泵+芝士乳50ml +0脂奶150ml +搅拌均匀+满冰+【小马果咖】按键"}]}, {"name": "羽衣苹果C美式（控糖版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+苹果汁50ml +直饮水100ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "苹果汁50ml +满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式精萃】按键+苹果汁100ml +直饮水200ml +热水至杯口1cm+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "苹果汁100ml +满冰+直饮水至nowwa线上+搅拌均匀+【意式精萃】按键（不满桶可增补冰块或直饮水）"}]}, {"name": "羽衣苹果0脂拿铁", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+苹果汁20ml +（加热：0脂奶300ml ）"}]}, {"name": "羽衣苹果C果茶（控糖版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "0卡糖1泵+苹果汁50ml +茉莉茶液50ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+苹果汁50ml +茉莉茶液50ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "热", "step": "0卡糖2泵+苹果汁100ml +茉莉茶液100ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+苹果汁100ml +茉莉茶液100ml +满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "双柚0脂拿铁", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：青柚汁20ml +0脂奶300ml ）"}]}, {"name": "胡萝卜橙C美式（控糖版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+胡萝卜汁50ml +直饮水100ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "胡萝卜汁50ml+满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式精萃】按键+胡萝卜汁70ml +直饮水200ml +热水至满桶"}, {"cup": "吨吨桶", "temp": "冰", "step": "胡萝卜汁70ml+满冰+直饮水至nowwa线上+【意式精萃】按键（不满桶可增补冰块或直饮水）"}]}, {"name": "胡萝卜血橙C美式（控糖版） 仅[美团外卖]渠道专供", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+胡萝卜汁50ml +直饮水100ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "胡萝卜汁50ml+满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}]}, {"name": "胡萝卜橙C拿铁（控糖版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+胡萝卜汁20ml +（加热：0脂奶300ml ）"}, {"cup": "标准杯", "temp": "冰", "step": "胡萝卜汁20ml +0脂奶200ml +搅拌均匀+满冰+【意式精萃】按键"}]}, {"name": "胡萝卜橙C果茶（控糖版）", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "胡萝卜汁50ml +茉莉茶液50ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "胡萝卜汁50ml +茉莉茶液50ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "热", "step": "胡萝卜汁100ml +茉莉茶液100ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "胡萝卜汁100ml +茉莉茶液100ml +满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "减糖菠萝美式", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+菠萝酱50ml +直饮水100ml +热水至杯口1cm处+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "菠萝酱50ml +满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式精萃】按键+菠萝酱100ml +直饮水200ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "菠萝酱100ml +满冰+直饮水至nowwa线上+搅拌均匀+【意式精萃】按键（不满杯可增补冰块）"}]}, {"name": "减糖菠萝果茶", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "0卡糖1泵+菠萝酱50ml +茉莉茶液70ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "菠萝酱50ml +茉莉茶液70ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "热", "step": "0卡糖2泵+菠萝酱100ml +茉莉茶液140ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "菠萝酱100ml +茉莉茶液140ml +满冰+直饮水至满桶+搅拌均匀（不满杯可增补冰块）"}]}, {"name": "0乳糖拿铁", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+ (加热：0乳糖奶350ml )"}, {"cup": "标准杯", "temp": "冰", "step": "0乳糖奶200ml +满冰+【小马果咖】按键 （不满杯可增补冰块）"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式精萃】按键+（加热：0乳糖奶600ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "0乳糖奶300ml +满冰+【意式精萃】按键 （不满杯可增补冰块）"}]}, {"name": "轻轻桂花轻乳茶", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "热", "step": "（加热：0卡糖1泵+桂花糖浆2泵+芝士乳10ml +鸭屎香液70ml +0脂奶220ml）倒入杯中"}, {"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+桂花糖浆2泵+芝士乳20ml +鸭屎香液80ml +0脂奶130ml +搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "热", "step": "0卡糖2泵+桂花糖浆3泵+（加热：芝士乳40ml +鸭屎香液280ml +0脂奶330ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+桂花糖浆3泵+芝士乳40ml +鸭屎香液150ml +0脂奶200ml +搅拌均匀+满冰"}]}, {"name": "羽衣甘蓝轻咖", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵 +羽衣汁150ml +生咖粉1条+满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖1泵 +羽衣汁200ml +生咖粉1条+满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "羽衣甘蓝轻体柠檬水", "series": "汰换品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖3泵 +柠檬汁20ml +羽衣汁100ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖5泵 +柠檬汁30ml +羽衣汁150ml ＋满冰+直饮水至满桶＋搅拌均匀"}]}], "materials": [{"name": "牛奶（牛乳）", "abbr": "牛奶", "spec": "1000ml/盒", "box": "12盒/箱", "order": "订1来1箱", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "封口冷藏", "postTime": "24小时", "type": "长期"}, {"name": "轻椰乳200ml", "abbr": "生椰乳", "spec": "200ml/盒", "box": "200ml*24盒/箱", "order": "订1来1箱", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "柚C风味饮料浓浆30g", "abbr": "柚C液", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "橙C风味饮料浓浆30g", "abbr": "橙C液", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "柠檬风味饮料30g", "abbr": "柠檬液", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "椰子风味饮料30g", "abbr": "生椰水", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "茉莉柚子风味浓浆30g", "abbr": "茉莉柚子", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "", "type": "长期"}, {"name": "茉莉绿茶风味饮料浓浆30g", "abbr": "茉莉茶液", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "椰子茉莉风味饮料浓浆30g", "abbr": "茉莉冰椰", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "牛磺酸风味维生素风味浓浆30g", "abbr": "牛磺酸", "spec": "30g/条", "box": "50条*6包/箱", "order": "订1来1包", "preEnv": "常温避光", "preTime": "9个月", "postEnv": "开封1条立即使用完", "postTime": "/", "type": "长期"}, {"name": "挪瓦西瓜风味饮料浓浆（375ml/瓶）", "abbr": "西瓜浓浆", "spec": "375ml/瓶", "box": "20瓶/箱", "order": "订1来1瓶", "preEnv": "阴凉干燥避光常温储存", "preTime": "9个月", "postEnv": "常温密封避光保存", "postTime": "30天", "type": "当季"}, {"name": "屈臣氏气泡水（330ml/罐）", "abbr": "屈臣氏气泡水", "spec": "330ml/罐", "box": "24罐/箱", "order": "订1来1箱", "preEnv": "阴凉干燥避光常温储存", "preTime": "18个月", "postEnv": "开封后立即使用， 未使用完需废弃", "postTime": "立即使用", "type": "当季"}, {"name": "健力宝荔枝气泡水（330ml/罐）", "abbr": "荔枝气泡水", "spec": "330ml/罐", "box": "20罐/箱", "order": "订1来1箱", "preEnv": "阴凉干燥避光常温储存", "preTime": "12个月", "postEnv": "开封后立即使用， 未使用完需废弃", "postTime": "立即使用", "type": "当季"}], "terms": [{"k": "加一份浓度", "v": "额外萃取一次【标杯 美式】加入杯中"}, {"k": "不另外加糖", "v": "依据原配方制作"}, {"k": "满冰", "v": "杯中加满冰块，约与杯口齐平；标准杯满冰重量约为200~250g，吨吨桶满冰重量约为300~350g（如有具体克重，根据SOP标准执行）"}, {"k": "直饮水", "v": "接取开水机中的常温水"}, {"k": "热水", "v": "接取开水机中的热水"}, {"k": "【】按键", "v": "点击一次【】内的咖啡机按键"}, {"k": "（加热：）", "v": "（）内物料一起倒入奶缸中加热至60℃±5℃"}], "buttons": [{"old": "小马果咖", "oldBean": "17.0", "oldLiq": "20.0", "new": "标杯风味", "newBean": "12.0", "newLiq": "20.0"}, {"old": "意式精粹", "oldBean": "20.0", "oldLiq": "35.0", "new": "标杯拿铁", "newBean": "12.0", "newLiq": "35.0"}, {"old": "意式满萃", "oldBean": "23.0", "oldLiq": "75.0", "new": "标杯美式", "newBean": "17.0", "newLiq": "75.0"}, {"old": "", "oldBean": "", "oldLiq": "", "new": "吨吨桶风味", "newBean": "17.0", "newLiq": "75.0"}, {"old": "", "oldBean": "", "oldLiq": "", "new": "吨吨桶拿铁", "newBean": "17.0", "newLiq": "75.0"}, {"old": "意式浓缩", "oldBean": "20.0", "oldLiq": "50.0", "new": "-", "newBean": "-", "newLiq": "-"}, {"old": "吨吨精粹", "oldBean": "40.0", "oldLiq": "70.0", "new": "-", "newBean": "-", "newLiq": "-"}, {"old": "吨吨浓缩", "oldBean": "40.0", "oldLiq": "100.0", "new": "标杯加浓美式", "newBean": "23.0", "newLiq": "105.0"}, {"old": "", "oldBean": "", "oldLiq": "", "new": "吨吨桶美式", "newBean": "23.0", "newLiq": "105.0"}, {"old": "加浓美式", "oldBean": "27.0", "oldLiq": "105.0", "new": "-", "newBean": "-", "newLiq": "-"}], "tools": [{"name": "100ml量杯", "use": "量取小剂量原物料"}, {"name": "500ml量杯", "use": "量取较大剂量原物料"}, {"name": "600ml奶缸", "use": "内含刻度线，常用于标准杯拿铁乳制品加热"}, {"name": "900ml奶缸", "use": "内含刻度线，常用于吨吨桶拿铁乳制品加热"}, {"name": "搅拌棒", "use": "将杯中物料搅拌均匀"}, {"name": "置物桶", "use": "盛放沥干搅拌棒等小器具"}, {"name": "浓缩杯", "use": "接取咖啡液"}, {"name": "沥水垫", "use": "沥干量杯等器具"}], "oldLongterm":[{"name": "0脂拿铁", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：0脂奶 320ml）"}]}, {"name": "金奖拿铁", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：芝士乳30ml +0脂奶300ml）"}, {"cup": "标准杯", "temp": "冰", "step": "芝士乳30ml +0脂奶170ml +搅拌均匀+满冰+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式满萃】按键+（加热：芝士乳50ml +0脂奶550ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "芝士乳50ml +0脂奶300ml +搅拌均匀+满冰+【意式满萃】按键"}]}, {"name": "超模芝士拿铁（减脂版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：芝士乳50ml +0脂奶270ml）"}, {"cup": "标准杯", "temp": "冰", "step": "芝士乳50ml +0脂奶150ml +搅拌均匀+满冰+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式满萃】按键+（加热：芝士乳100ml +0脂奶500ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "芝士乳100ml +0脂奶200ml +搅拌均匀+满冰+【吨吨精萃】按键"}]}, {"name": "生椰拿铁", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：厚椰乳 320ml）"}, {"cup": "标准杯", "temp": "冰", "step": "厚椰乳200ml +满冰+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨精萃】按键+（加热：厚椰乳 590ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "厚椰乳400ml ＋满冰+【吨吨精萃】按键"}]}, {"name": "生椰拿铁（控糖版）（旧版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+（加热：椰子水120ml +厚椰乳 200ml）"}, {"cup": "标准杯", "temp": "冰", "step": "椰子水50ml +厚椰乳150ml +搅拌均匀+满冰+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨精萃】按键+（加热：椰子水 310ml +厚椰乳 310ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "椰子水150ml ＋厚椰乳200ml +搅拌均匀＋满冰+【吨吨精萃】按键"}, {"cup": "超大杯", "temp": "冰", "step": "椰子水70ml +厚椰乳180ml +搅拌均匀+满冰+【意式浓缩】按键"}]}, {"name": "横州茉香特调拿铁（减脂版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "0卡糖1泵+【小马果咖】按键+（加热：芝士乳30ml +0脂奶150ml +茉莉绿茶液120ml）"}, {"cup": "标准杯", "temp": "冰", "step": "0卡糖2泵+芝士乳30ml +0脂奶100ml +茉莉绿茶液70ml +搅拌均匀+满冰+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖3泵+芝士乳50ml +0脂奶150ml +茉莉绿茶液110ml +搅拌均匀+满冰+【意式精萃】按键"}]}, {"name": "金奖美式", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式满萃】按键+直饮水100ml +热水至杯口1cm"}, {"cup": "标准杯", "temp": "冰", "step": "满冰+直饮水至1线+【意式满萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【吨吨浓缩】按键+直饮水200ml +热水至满桶"}, {"cup": "吨吨桶", "temp": "冰", "step": "满冰+直饮水至nowwa线＋【吨吨浓缩】按键"}, {"cup": "超大杯", "temp": "冰", "step": "满冰+直饮水250ml +【意式满萃】按键"}]}, {"name": "加浓美式（旧版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【加浓美式】按键+直饮水100ml +热水至杯口1cm"}, {"cup": "标准杯", "temp": "冰", "step": "满冰+直饮水至1线下方+【加浓美式】按键"}]}, {"name": "茉香美式", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【小马果咖】按键+茉莉茶粉1条+直饮水100ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "茉莉茶粉1条+满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}]}, {"name": "柚C美式（控糖版）（旧版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+青柚汁50ml +直饮水100ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "青柚汁50ml +满冰+直饮水至1线上+搅拌均匀+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "热", "step": "【意式浓缩】按键+青柚汁100ml +直饮水200ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "青柚汁100ml ＋满冰+直饮水至nowwa线＋搅拌均匀＋【意式浓缩】按键"}, {"cup": "超大杯", "temp": "冰", "step": "0卡糖1泵+青柚汁50ml +直饮水200ml +搅拌均匀+满冰+【意式精萃】按键"}]}, {"name": "双柚C美式（控糖版）[拼好饭]", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式精萃】按键+青柚汁50ml +直饮水100ml +热水至杯口1cm+搅拌均匀"}]}, {"name": "橙C美式（控糖版）（旧版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "橙汁70ml +满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "橙汁100ml ＋满冰+直饮水至nowwa线上+搅拌均匀+【意式精萃】按键"}]}, {"name": "柠C美式（控糖版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖5泵+柠檬汁20ml +满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖7泵+柠檬汁30ml +满冰+直饮水至nowwa线上+搅拌均匀+【意式精萃】按键"}]}, {"name": "0蔗糖红石榴美式", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "茉莉茶液30ml +石榴汁50ml +满冰+直饮水至1线上+搅拌均匀+【意式精萃】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "茉莉茶液50ml +石榴汁100ml +满冰+直饮水至nowwa线上+搅拌均匀+【意式浓缩】按键"}]}, {"name": "葡萄美式（控糖版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+柠檬汁10ml +葡萄汁70ml +满冰+直饮水至2线+搅拌均匀+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+柠檬汁20ml +葡萄汁100ml +满冰+直饮水至nowwa线上+搅拌均匀+【意式精萃】按键"}]}, {"name": "「好能量」电解质生椰美式", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "椰子水230ml +冰块至液面到2线+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "椰子水400ml +满冰+【意式精萃】按键"}]}, {"name": "0脂牛奶", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "（加热：0脂奶350ml）倒入杯中"}]}, {"name": "「好能量」电解质生椰水", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "椰子水250ml +满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "椰子水450ml +满冰"}]}, {"name": "冰爽柠檬水（控糖版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖5泵＋柠檬汁20ml＋满冰+直饮水至2线＋搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖7泵＋柠檬汁30ml＋满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "葡萄柠檬水（控糖版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+柠檬汁10ml +葡萄汁70ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+柠檬汁20ml +葡萄汁100ml +满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "暴打双柠冰茶", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖5泵＋柠檬汁20ml＋鸭屎香液50ml +满冰+直饮水至2线＋搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖7泵＋柠檬汁30ml＋鸭屎香液70ml +满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "青柚和白柚果茶（控糖版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "0卡糖1泵+青柚汁50ml +茉莉茶液50ml +热水至杯口1cm+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+青柚汁50ml +茉莉茶液50ml +满冰+直饮水至2线+搅拌均匀"}, {"cup": "吨吨桶", "temp": "热", "step": "0卡糖2泵+青柚汁100ml +茉莉茶液100ml +热水至满桶+搅拌均匀"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+青柚汁100ml +茉莉茶液100ml +满冰+直饮水至满桶+搅拌均匀"}]}, {"name": "轻轻茉莉轻乳茶（控糖版）（旧版）", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "热", "step": "（加热：芝士乳10ml +茉莉茶液100ml +0脂奶230ml）倒入杯中"}, {"cup": "标准杯", "temp": "冰", "step": "0卡糖1泵+芝士乳20ml +茉莉茶液80ml +0脂奶130ml +搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "热", "step": "0卡糖2泵+（加热：芝士乳40ml +茉莉茶液330ml +0脂奶280ml）"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖2泵+芝士乳40ml +茉莉茶液150ml +0脂奶200ml +搅拌均匀+满冰"}, {"cup": "超大杯", "temp": "冰", "step": "0卡糖1泵+芝士乳20ml +茉莉茶液100ml +0脂奶160ml +搅拌均匀+满冰"}]}, {"name": "冰椰茉莉冰茶", "series": "旧版长期品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖2泵+茉莉茶液50ml +椰子水150ml +搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖4泵+茉莉茶液70ml +椰子水250ml +搅拌均匀+满冰"}]}], "oldSeason":[{"name": "元气荔枝气泡美式（控糖版）（旧版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "荔枝气泡水至小马标下方+满冰（200g）+【小马果咖】按键（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "荔枝气泡水1罐+满冰（300g）+【意式精萃】按键（不满杯增补冰块）"}]}, {"name": "柚C荔枝气泡水（旧版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "30ml青柚汁+荔枝气泡水至小马标下方+满冰（200g）（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "30ml青柚汁+1罐荔枝气泡水+满冰（300g）（不满杯增补冰块）"}]}, {"name": "茉莉花香荔枝气泡水（旧版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "30ml茉莉茶液+荔枝气泡水至小马标下方+满冰（200g）（不满杯增补气泡水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "30ml茉莉茶液+1罐荔枝气泡水+满冰（300g）（不满杯增补冰块）"}]}, {"name": "牛磺酸能量特饮（控糖版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖2泵+聚能浓浆1泵+直饮水200ml +搅拌均匀+满冰（200g）（不满杯可增补冰块/直饮水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖1泵+聚能浓浆3泵+直饮水350ml +搅拌均匀+满冰（300g）（不满杯可增补冰块/直饮水）"}]}, {"name": "快乐吃瓜气泡美式（控糖版）（旧版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "西瓜浓浆2泵+屈臣氏气泡水200ml +搅拌均匀+满冰（200g）+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "西瓜浓浆3泵+屈臣氏气泡水1罐+搅拌均匀+满冰（300g）+【意式精萃】按键"}]}, {"name": "快乐吃瓜冰椰冰茶（控糖版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "西瓜浓浆2泵+茉莉茶液30ml +椰子水100ml +搅拌均匀+满冰（250g）（不满杯可增补冰块/直饮水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "西瓜浓浆3泵+茉莉茶液40ml +椰子水200ml +搅拌均匀+满冰（350g）（不满杯可增补冰块/直饮水）"}]}, {"name": "西瓜能量牛磺酸特饮（控糖版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "西瓜浓浆1泵+聚能浓浆1泵+直饮水200ml +搅拌均匀+满冰（200g）（不满杯可增补冰块/直饮水）"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖1泵+西瓜浓浆1泵+聚能浓浆2泵+直饮水300ml +搅拌均匀+满冰（300g）（不满杯可增补冰块/直饮水）"}]}, {"name": "荔枝气泡美式", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "荔枝气泡水200ml +满冰+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "荔枝气泡水1罐+满冰+【意式精萃】按键"}]}, {"name": "能量特饮美式", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "0卡糖2泵+聚能浓浆1泵+直饮水180ml +搅拌均匀+满冰+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "0卡糖3泵+聚能浓浆2泵+直饮水320ml +搅拌均匀+满冰+【意式精萃】按键"}]}, {"name": "百威无醇啤咖", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "百威无醇啤酒200ml +满冰+【小马果咖】咖啡液"}, {"cup": "吨吨桶", "temp": "冰", "step": "百威无醇啤1罐+满冰+【意式精萃】咖啡液"}]}, {"name": "电解质蓝椰充能水", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "藻蓝浓浆2泵+直饮水50ml +椰子水200ml +搅拌均匀+满冰"}, {"cup": "超大杯", "temp": "冰", "step": "藻蓝浓浆3泵+直饮水70ml +椰子水300ml +搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "藻蓝浓浆4泵+直饮水100ml +椰子水400ml +搅拌均匀+满冰"}]}, {"name": "粉红芭乐C美式（控糖版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "芭乐汁1袋+直饮水50ml +搅拌均匀+满冰+【小马果咖】按键"}, {"cup": "超大杯", "temp": "冰", "step": "0卡糖2泵+芭乐汁1袋+直饮水100ml +搅拌均匀+满冰+【小马果咖】按键"}, {"cup": "吨吨桶", "temp": "冰", "step": "芭乐汁2袋+直饮水100ml +搅拌均匀+满冰+【意式精萃】按键"}]}, {"name": "粉红芭乐C冰茶（控糖版）", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "冰", "step": "芭乐汁1袋+茉莉茶液50ml +搅拌均匀+满冰"}, {"cup": "超大杯", "temp": "冰", "step": "0卡糖2泵+芭乐汁1袋+茉莉茶液50ml +直饮水50ml +搅拌均匀+满冰"}, {"cup": "吨吨桶", "temp": "冰", "step": "芭乐汁2袋+茉莉茶液100ml +搅拌均匀+满冰"}]}, {"name": "燃减美式", "series": "旧版当季品", "specs": [{"cup": "标准杯", "temp": "热", "step": "【意式满萃】按键+生咖粉1条+直饮水100ml +热水至杯口1cm处+搅拌均匀"}, {"cup": "标准杯", "temp": "冰", "step": "满冰+生咖粉1条+直饮水至1线+搅拌均匀+【意式满萃】按键"}]}]};
 
 const DRINKS = [].concat(DATA.longterm, DATA.season, DATA.retire, DATA.oldLongterm, DATA.oldSeason);
-
 const SERIES = ["美式/果咖系列","拿铁系列","非咖系列","当季新品","汰换品","旧版长期品","旧版当季品"];
 const SERIES_LABEL = {"美式/果咖系列":"美式果咖","拿铁系列":"拿铁","非咖系列":"非咖","当季新品":"当季新品","汰换品":"汰换品","旧版长期品":"旧版长期品","旧版当季品":"旧版当季品"};
 const CUPS = ["标准杯","吨吨桶","超大杯"];
@@ -261,36 +383,43 @@ function splitSteps(s){
 }
 
 function tagOf(temp){return temp==='热'?'<span class="tag hot">热</span>':'<span class="tag ice">冰</span>';}
+function cupIco(cup){
+  if(cup.indexOf('吨吨')>-1) return '<span style="font-size:11px">🧋</span>';
+  if(cup.indexOf('超大')>-1) return '<span style="font-size:11px">🥤</span>';
+  return '<span style="font-size:11px">☕</span>';
+}
 
 function specHTML(spec){
   const steps = splitSteps(spec.step).map((st,i)=>'<li data-i="'+(i+1)+'">'+esc(st)+'</li>').join('');
   return '<div class="spec">'+
-    '<div class="spec-top"><span class="cup">'+esc(spec.cup)+'</span>'+tagOf(spec.temp)+'</div>'+
+    '<div class="spec-top"><span class="cup">'+cupIco(spec.cup)+esc(spec.cup)+'</span>'+tagOf(spec.temp)+'</div>'+
     '<ol class="steps">'+steps+'</ol>'+
   '</div>';
 }
 
-function ctagHTML(s){
-  const cls = s.temp==='热'?'ctag hot':'ctag ice';
-  return '<span class="'+cls+'">'+esc(s.cup)+'·'+esc(s.temp)+'</span>';
+function ctagT(t){
+  const cls = t==='热'?'ctag hot':'ctag ice';
+  return '<span class="'+cls+'">'+esc(t)+'</span>';
 }
 
-function productCard(p){
-  const specs = p.specs.map(specHTML).join('');
-  const tags = badgeOf(p.series) + p.specs.map(ctagHTML).join('');
-  return '<div class="card">'+
-    '<div class="card-head"><div class="head-row">'+
-      '<div class="card-main">'+
-        '<div class="card-title">'+esc(p.name)+'</div>'+
-        '<div class="card-tags">'+tags+'</div>'+
-      '</div>'+
-      '<svg class="arrow" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6z"/></svg>'+
-    '</div></div>'+
-    '<div class="specs">'+specs+'</div>'+
+let hlKw='';
+function hl(s){
+  if(!hlKw) return esc(s);
+  return esc(s).split(hlKw).join('<mark>'+esc(hlKw)+'</mark>');
+}
+
+function productCard(p, idx){
+  const cups = [...new Set(p.specs.map(s=>s.cup))].join(' / ');
+  const temps = [...new Set(p.specs.map(s=>s.temp))];
+  const tempTags = temps.map(ctagT).join('');
+  return '<div class="card" data-idx="'+idx+'" role="button" tabindex="0" aria-label="查看 '+esc(p.name)+' 的制作步骤">'+
+    '<div class="card-title">'+hl(p.name)+'</div>'+
+    '<div class="card-tags">'+badgeOf(p.series)+'</div>'+
+    '<div class="card-sub"><span class="cups">'+esc(cups)+'</span><span class="temps">'+tempTags+'</span></div>'+
   '</div>';
 }
 
-let curSeries='全部', curCup='全部', curTemp='全部', curKeyword='';
+let curSeries='全部', curCup='全部', curTemp='全部', curKeyword='', renderedList=[];
 
 function renderChips(){
   const seriesChips = ['全部'].concat(SERIES).map(c=>
@@ -305,10 +434,15 @@ function renderChips(){
 }
 
 function renderDrinks(){
+  const kws = curKeyword.split(/\s+/).filter(Boolean);
+  hlKw = kws.length ? kws.slice().sort((a,b)=>b.length-a.length)[0] : '';
   const list = [];
   DRINKS.forEach(p=>{
     if(curSeries!=='全部' && p.series!==curSeries) return;
-    if(curKeyword && !p.name.toLowerCase().includes(curKeyword)) return;
+    if(kws.length){
+      const name=p.name.toLowerCase();
+      if(!kws.every(k=>name.indexOf(k)!==-1)) return;
+    }
     const specs = p.specs.filter(s=>{
       if(curCup!=='全部' && s.cup!==curCup) return false;
       if(curTemp!=='全部' && s.temp!==curTemp) return false;
@@ -317,8 +451,20 @@ function renderDrinks(){
     if(specs.length===0) return;
     list.push({name:p.name, series:p.series, specs:specs});
   });
-  document.getElementById('drinks').innerHTML = list.map(productCard).join('');
-  document.getElementById('empty').classList.toggle('hidden', list.length>0);
+  renderedList = list;
+  const wrap = document.getElementById('drinks');
+  wrap.innerHTML = list.map((p,i)=>productCard(p,i)).join('');
+  applyCols();
+  document.getElementById('resultCount').textContent = list.length;
+  document.getElementById('matchInfo').textContent = '';
+  const total = DRINKS.length;
+  const hasFilter = curSeries!=='全部'||curCup!=='全部'||curTemp!=='全部'||curKeyword!=='';
+  if(hasFilter && list.length>0 && list.length<total){
+    document.getElementById('matchInfo').textContent = '（匹配 '+list.length+'/'+total+'）';
+  }
+  const empty = document.getElementById('empty');
+  empty.classList.toggle('hidden', list.length>0);
+  if(list.length>0) observeCards();
 }
 
 function renderMaterials(){
@@ -363,40 +509,105 @@ function renderTools(){
   ).join('');
 }
 
+/* ---- interactions ---- */
+let io;
+function observeCards(){
+  if(!('IntersectionObserver' in window)){ document.querySelectorAll('#drinks .card').forEach(c=>c.classList.add('in')); return; }
+  if(io) io.disconnect();
+  io = new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  },{rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('#drinks .card:not(.in)').forEach(c=>io.observe(c));
+}
+
+function ripple(e){
+  const chip = e.target.closest('.chip');
+  if(!chip) return;
+  const rect = chip.getBoundingClientRect();
+  const d = Math.max(rect.width, rect.height);
+  const r = document.createElement('span');
+  r.className = 'ripple';
+  r.style.width = r.style.height = d+'px';
+  r.style.left = (e.clientX - rect.left - d/2)+'px';
+  r.style.top = (e.clientY - rect.top - d/2)+'px';
+  chip.appendChild(r);
+  setTimeout(()=>r.remove(), 560);
+}
+
 function switchTab(tab){
   ['drinks','material','terms','buttons','tools'].forEach(t=>{
     document.getElementById('tab-'+t).classList.toggle('hidden', t!==tab);
   });
   document.querySelectorAll('#tabbar .tab').forEach(el=>{
-    el.classList.toggle('active', el.dataset.tab===tab);
+    const act = el.dataset.tab===tab;
+    el.classList.toggle('active', act);
+    if(act) el.classList.add('bump');
+    else el.classList.remove('bump');
   });
-  document.querySelector('.search').style.display = (tab==='drinks')?'flex':'none';
-  document.querySelector('.filter').style.display = (tab==='drinks')?'block':'none';
-  window.scrollTo(0,0);
+  const isDrinks = tab==='drinks';
+  document.querySelector('.search').style.display = isDrinks?'flex':'none';
+  document.querySelector('.filter').style.display = isDrinks?'block':'none';
+  if(!isDrinks && typeof renderedLazy==='undefined'){
+    renderedLazy = {};
+    ['materials','terms','buttons','tools'].forEach(k=>renderedLazy[k]=false);
+  }
+  if(!isDrinks && !renderedLazy[tab]){ renderedLazy[tab]=true; (tab==='material'?renderMaterials():tab==='terms'?renderTerms():tab==='buttons'?renderButtons():renderTools()); }
+  window.scrollTo({top:0,behavior:'auto'});
 }
+let renderedLazy;
 
-document.getElementById('search').addEventListener('input', function(e){
-  curKeyword = e.target.value.trim().toLowerCase();
+/* event bindings */
+const searchInput = document.getElementById('search');
+let searchTimer=null;
+searchInput.addEventListener('input', function(e){
+  const val = e.target.value;
+  document.getElementById('cleanBtn').classList.toggle('show', !!val);
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(()=>{
+    curKeyword = val.trim().toLowerCase();
+    renderDrinks();
+  }, 120);
+});
+
+document.getElementById('cleanBtn').addEventListener('click', function(){
+  searchInput.value='';
+  this.classList.remove('show');
+  curKeyword='';
   renderDrinks();
+  searchInput.focus();
 });
 
 document.getElementById('chips-series').addEventListener('click', function(e){
-  const chip = e.target.closest('.chip'); if(!chip) return;
+  ripple(e); const chip=e.target.closest('.chip'); if(!chip) return;
   curSeries = chip.dataset.f; renderChips(); renderDrinks();
 });
 document.getElementById('chips-cup').addEventListener('click', function(e){
-  const chip = e.target.closest('.chip'); if(!chip) return;
+  ripple(e); const chip=e.target.closest('.chip'); if(!chip) return;
   curCup = chip.dataset.cup; renderChips(); renderDrinks();
 });
 document.getElementById('chips-temp').addEventListener('click', function(e){
-  const chip = e.target.closest('.chip'); if(!chip) return;
+  ripple(e); const chip=e.target.closest('.chip'); if(!chip) return;
   curTemp = chip.dataset.temp; renderChips(); renderDrinks();
 });
 
 document.getElementById('drinks').addEventListener('click', function(e){
   const card = e.target.closest('.card');
   if(!card) return;
-  card.classList.toggle('open');
+  openDrink(+card.dataset.idx);
+});
+document.getElementById('drinks').addEventListener('keydown', function(e){
+  if(e.key==='Enter'||e.key===' '){
+    const card = e.target.closest('.card');
+    if(card){ e.preventDefault(); openDrink(+card.dataset.idx); }
+  }
+});
+
+document.getElementById('resetBtn').addEventListener('click', function(){
+  curSeries='全部'; curCup='全部'; curTemp='全部'; curKeyword='';
+  searchInput.value=''; document.getElementById('cleanBtn').classList.remove('show');
+  renderChips(); renderDrinks();
 });
 
 document.getElementById('tabbar').addEventListener('click', function(e){
@@ -405,12 +616,68 @@ document.getElementById('tabbar').addEventListener('click', function(e){
   switchTab(tab.dataset.tab);
 });
 
+/* ---- modal ---- */
+const modal = document.getElementById('modal');
+const modalBodyEl = document.getElementById('modalBody');
+
+function openDrink(idx){
+  const p = renderedList[idx];
+  if(!p) return;
+  document.getElementById('modalTitle').innerHTML = hl(p.name);
+  document.getElementById('modalBadge').innerHTML = badgeOf(p.series);
+  modalBodyEl.innerHTML = p.specs.map(specHTML).join('');
+  modalBodyEl.scrollTop = 0;
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+modal.querySelector('.modal-mask').addEventListener('click', closeModal);
+document.addEventListener('keydown', function(e){
+  if(e.key==='Escape') closeModal();
+});
+
+/* ---- grid columns preference (remembered locally) ---- */
+const LS_COLS = 'nowacoffee_cols';
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function defaultCols(){ const w = window.innerWidth; return w>=900?4: w>=600?3:2; }
+let cols = (function(){
+  const v = parseInt(lsGet(LS_COLS), 10);
+  return (v===2||v===3||v===4) ? v : defaultCols();
+})();
+function applyCols(){
+  document.getElementById('drinks').style.setProperty('--cols', cols);
+  document.querySelectorAll('#colSwitch button').forEach(b=>b.classList.toggle('active', +b.dataset.cols===cols));
+}
+document.getElementById('colSwitch').addEventListener('click', function(e){
+  const b = e.target.closest('button');
+  if(!b || +b.dataset.cols===cols) return;
+  cols = +b.dataset.cols;
+  lsSet(LS_COLS, String(cols));
+  applyCols();
+});
+
+const toTopBtn = document.getElementById('toTop');
+let ticking=false;
+window.addEventListener('scroll', function(){
+  if(ticking) return;
+  ticking=true;
+  requestAnimationFrame(()=>{
+    toTopBtn.classList.toggle('show', window.scrollY>480);
+    ticking=false;
+  });
+},{passive:true});
+toTopBtn.addEventListener('click', function(){
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
 renderChips();
 renderDrinks();
-renderMaterials();
-renderTerms();
-renderButtons();
-renderTools();
+applyCols();
 </script>
 </body>
 </html>
