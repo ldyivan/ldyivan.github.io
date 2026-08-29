@@ -222,7 +222,7 @@ body{
 .modal-head .badge{margin-top:5px;}
 .modal-close{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:none;background:#F0E9DA;color:#6B6655;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .18s var(--ease);}
 .modal-close:active{transform:scale(.88);}
-.modal-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:14px 16px 20px;}
+.modal-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:14px 16px 20px;}
 
 /* To top */
 #toTop{
@@ -624,7 +624,29 @@ document.getElementById('tabbar').addEventListener('click', function(e){
 /* ---- modal ---- */
 const modal = document.getElementById('modal');
 const modalBodyEl = document.getElementById('modalBody');
+let unlockTimer = null;
 
+function lockScroll(){
+  const sy = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden';
+  document.body.style.position = 'fixed';
+  document.body.style.left = '0';
+  document.body.style.right = '0';
+  document.body.style.top = (-sy) + 'px';
+  document.body.dataset.scrollY = sy;
+}
+function unlockScroll(){
+  document.documentElement.style.overflow = '';
+  document.body.style.overflow = '';
+  document.body.style.position = '';
+  document.body.style.left = '';
+  document.body.style.right = '';
+  document.body.style.top = '';
+  const sy = parseInt(document.body.dataset.scrollY || '0', 10) || 0;
+  delete document.body.dataset.scrollY;
+  window.scrollTo(0, sy);
+}
 function openDrink(idx){
   const p = renderedList[idx];
   if(!p) return;
@@ -632,12 +654,15 @@ function openDrink(idx){
   document.getElementById('modalBadge').innerHTML = badgeOf(p.series);
   modalBodyEl.innerHTML = p.specs.map(specHTML).join('');
   modalBodyEl.scrollTop = 0;
+  clearTimeout(unlockTimer);
+  lockScroll();
   modal.classList.add('show');
-  document.body.style.overflow = 'hidden';
+  document.getElementById('modalClose').focus({preventScroll:true});
 }
 function closeModal(){
   modal.classList.remove('show');
-  document.body.style.overflow = '';
+  clearTimeout(unlockTimer);
+  unlockTimer = setTimeout(unlockScroll, 320);
 }
 document.getElementById('modalClose').addEventListener('click', closeModal);
 modal.querySelector('.modal-mask').addEventListener('click', closeModal);
