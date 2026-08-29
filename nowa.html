@@ -166,17 +166,18 @@ body{
 .term .k::before{content:"";width:8px;height:8px;border-radius:3px;background:var(--yellow);flex:0 0 auto;}
 .term .v{font-size:13px;color:#5A5648;margin-top:5px;word-break:break-all;padding-left:15px;border-left:2px solid #F0E9D4;}
 
-/* Button cards */
-.btn-card{background:var(--card);border-radius:15px;box-shadow:var(--shadow);margin-bottom:10px;overflow:hidden;animation:fadeUp .5s var(--ease) both;}
-.btn-item{padding:12px 16px;}
-.btn-item.old{background:#FFFDF3;border-bottom:1px solid var(--line);}
-.btn-item.new{background:#FFF9E0;}
-.btn-item.deprecated{background:#F6F4EE;color:#9A9584;}
-.btn-item.new-only{background:#FFF9E0;}
-.btn-name{font-size:15px;font-weight:800;}
-.btn-item.deprecated .btn-name{color:#B0AA97;font-weight:600;}
-.btn-meta{font-size:12px;color:var(--gray);margin-top:2px;}
-.btn-arrow{text-align:center;background:var(--bg);color:#B0AA97;font-size:12px;line-height:1;padding:7px 0;font-weight:700;letter-spacing:1px;}
+/* Button cards (old vs new side-by-side) */
+.btn-pair{background:var(--card);border-radius:16px;box-shadow:var(--shadow);margin-bottom:10px;padding:12px;display:grid;grid-template-columns:minmax(0,1fr) 26px minmax(0,1fr);align-items:stretch;gap:8px;animation:fadeUp .5s var(--ease) both;}
+.pair-side{border-radius:12px;padding:11px 10px;min-width:0;display:flex;flex-direction:column;}
+.pair-side.old{background:#F6F4EE;border:1px solid #E6E1D4;}
+.pair-side.new{background:#FFF9E0;border:1px solid #FFE3A1;}
+.pair-side .ph{font-size:10.5px;font-weight:800;letter-spacing:2px;margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.pair-side.old .ph{color:#A8A28D;}
+.pair-side.new .ph{color:#B8860B;}
+.pair-side .pname{font-size:13.5px;font-weight:800;line-height:1.35;word-break:break-all;}
+.pair-side .pname.empty{color:#B0AA97;font-weight:600;font-size:12px;}
+.pair-side .pmeta{font-size:11px;color:var(--gray);margin-top:5px;line-height:1.6;word-break:break-all;}
+.pair-mid{display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;color:#D5CDB4;user-select:none;}
 .note{font-size:12px;color:var(--gray);line-height:1.7;padding:6px 2px;word-break:break-all;}
 
 /* Empty */
@@ -491,13 +492,17 @@ function renderButtons(){
   document.getElementById('buttons').innerHTML = DATA.buttons.map(b=>{
     const hasOld = !!b.old;
     const hasNew = !!b.new && b.new!=='-';
-    const oldBlock = hasOld
-      ? '<div class="btn-item old"><div class="btn-name">'+esc(b.old)+'</div><div class="btn-meta">咖啡豆 '+fmt(b.oldBean)+'g · 咖啡液 '+fmt(b.oldLiq)+'ml</div></div>'
-      : '<div class="btn-item old" style="color:#9A9584;"><div class="btn-name" style="font-weight:600;">（无对应旧按键）</div></div>';
-    const newBlock = hasNew
-      ? '<div class="btn-item new"><div class="btn-name">'+esc(b.new)+'</div><div class="btn-meta">咖啡豆 '+fmt(b.newBean)+'g · 咖啡液 '+fmt(b.newLiq)+'ml</div></div>'
-      : '<div class="btn-item deprecated"><div class="btn-name">已停用</div><div class="btn-meta">该按键不再使用</div></div>';
-    return '<div class="btn-card">'+oldBlock+'<div class="btn-arrow">▼ 变更后</div>'+newBlock+'</div>';
+    const oldSide = hasOld
+      ? '<div class="pname">'+esc(b.old)+'</div><div class="pmeta">咖啡豆 '+fmt(b.oldBean)+'g<br>咖啡液 '+fmt(b.oldLiq)+'ml</div>'
+      : '<div class="pname empty">无对应旧按键</div>';
+    const newSide = hasNew
+      ? '<div class="pname">'+esc(b.new)+'</div><div class="pmeta">咖啡豆 '+fmt(b.newBean)+'g<br>咖啡液 '+fmt(b.newLiq)+'ml</div>'
+      : '<div class="pname empty">该按键已停用</div>';
+    return '<div class="btn-pair">'+
+      '<div class="pair-side old"><div class="ph">旧按键</div>'+oldSide+'</div>'+
+      '<div class="pair-mid">→</div>'+
+      '<div class="pair-side new"><div class="ph">新按键</div>'+newSide+'</div>'+
+    '</div>';
   }).join('') +
   '<div class="note">说明：若门店咖啡机按键未更新，请按上表变更前后对应关系进行产品制作。吨吨桶风味 / 吨吨桶拿铁 / 吨吨桶美式为新增按键，无旧按键对应。</div>';
 }
