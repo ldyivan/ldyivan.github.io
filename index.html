@@ -869,6 +869,49 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
+      <a href="/2026/11/06/github_agent_ai_game_development_skills/">
+        <span class="title-content">
+          
+          想做 H5 小游戏？这几个 Agent Skills 仓库我翻了一圈
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2026-11-06
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h2 id="先说一句，H5-游戏和“游戏”是两码事"><a href="#先说一句，H5-游戏和“游戏”是两码事" class="headerlink" title="先说一句，H5 游戏和“游戏”是两码事"></a>先说一句，H5 游戏和“游戏”是两码事</h2><p>游戏开发的 Skills 仓库，大部分是给 Godot、Unity、Unreal 准备的。你在里面能翻到几万星的引擎专项技能，但打开一看，<code>project.godot</code>、<code>*.uproject</code>，跟浏览器没半点关系。</p>
+<p>H5 游戏的技能包得满足另一套条件：<strong>运行时是浏览器，构建是 Vite/TypeScript，验证是 Playwright 截图，发布是静态文件</strong>。这四件事凑齐了，才算真正能干 H5 的活。</p>
+<p>下面这几个，是我按这个标准筛出来的。</p>
+<h2 id="awesome-gamedev-agent-skills-——-当黄页用，别当万能药"><a href="#awesome-gamedev-agent-skills-——-当黄页用，别当万能药" class="headerlink" title="awesome-gamedev-agent-skills —— 当黄页用，别当万能药"></a>awesome-gamedev-agent-skills —— 当黄页用，别当万能药</h2><p>目前游戏方向体量最大的聚合包，6k 星上下，Apache-2.0，77 个 Skill 加一个路由器。覆盖的 Web 引擎包括 <strong>Phaser、PixiJS、three.js</strong>，还有 Defold、Roblox 这些。</p>
+      
+      <a href="/2026/11/06/github_agent_ai_game_development_skills/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/AI/" rel="tag">AI</a> <a class="article-tag-none-link" href="/tags/Agent/" rel="tag">Agent</a> <a class="article-tag-none-link" href="/tags/H5/" rel="tag">H5</a> <a class="article-tag-none-link" href="/tags/Skills/" rel="tag">Skills</a> <a class="article-tag-none-link" href="/tags/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" rel="tag">游戏开发</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
       <a href="/2026/10/26/github_ai_skills/">
         <span class="title-content">
           
@@ -1215,55 +1258,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
           <a class="article-tag-none-link" href="/tags/%E4%B8%AA%E4%BA%BA%E5%BC%80%E5%8F%91%E8%80%85/" rel="tag">个人开发者</a> <a class="article-tag-none-link" href="/tags/%E5%AE%A1%E6%A0%B8%E8%B8%A9%E5%9D%91/" rel="tag">审核踩坑</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2026/06/05/WeChat-official-account-ai/">
-        <span class="title-content">
-          
-          如何实现公众号自动回复或做一个短视频无水印解析机器人？
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2026-06-06
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <h2 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h2><p>前几天一个朋友问我，能不能让公众号自动回复用户发的抖音链接，把视频或者图集解析出来。我看了看微信后台的自动回复，只能匹配固定的关键词，搞不定这种动态链接api接口的方式。想了想，干脆自己动手写一个。</p>
-<p>考虑到成本，我不想买服务器。Vercel 的免费额度对于这种小场景足够用了，而且域名不用备案，只要自己有域名解析过去就行。整个过程折腾了差不多两天，踩了不少坑，记录下来当个笔记。</p>
-<h2 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h2><p>微信公众号收到用户消息后，会向配置的服务器地址推送一条 XML 格式的请求。我们要做的就是：</p>
-<ol>
-<li>验证消息确实来自微信（验证签名）</li>
-<li>解析用户消息内容，提取其中的抖音分享链接</li>
-<li>调用一个现成的解析接口，拿到视频或图片信息</li>
-<li>按照微信要求的 XML 格式回复给用户</li>
-</ol>
-<p>听起来不复杂，但细节很多。</p>
-      
-      <a href="/2026/06/05/WeChat-official-account-ai/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">项目实战</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/Serverless/" rel="tag">Serverless</a> <a class="article-tag-none-link" href="/tags/Vercel/" rel="tag">Vercel</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a> <a class="article-tag-none-link" href="/tags/%E6%8A%96%E9%9F%B3%E8%A7%A3%E6%9E%90/" rel="tag">抖音解析</a>
         </div>
       
     </div>
