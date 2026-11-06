@@ -869,6 +869,50 @@ document.addEventListener('DOMContentLoaded', function() {
   
   <div class="post-card-content">
     <h2 class="title">
+      <a href="/2026/10/26/github_ai_skills/">
+        <span class="title-content">
+          
+          最近翻的几个 Agent Skills 仓库，有些星数离谱到我想笑
+        </span>
+        <span class="post-date">
+          <i class="fas fa-calendar-alt"></i>
+          2026-10-26
+        </span>
+      </a>
+    </h2>
+    <div class="excerpt">
+      
+        <h2 id="先说背景，不废话"><a href="#先说背景，不废话" class="headerlink" title="先说背景，不废话"></a>先说背景，不废话</h2><p>如果你最近刷 GitHub Trending，应该注意到了：满屏都是 Skills 仓库。</p>
+<p>不是 MCP，不是 Prompt 模板，是 <strong>Skills</strong>。一个文件夹，里面放一个 <code>SKILL.md</code>，再配点脚本和参考资料，就能让 AI Agent 学会一套固定流程。</p>
+<p>我一开始也没当回事，心想不就是更结构化的 Prompt 吗。后来翻了几篇文章才意识到，这东西的核心不在“写什么”，而在 <strong>怎么加载</strong>。Agent 启动时只读每个 Skill 的 <code>name</code> 和 <code>description</code>，判断当前任务匹配了，才把完整的 <code>SKILL.md</code> 拉进上下文；需要跑脚本、读参考文档的时候，再进一步按需加载。等于说，你装一百个 Skill，平时只占一百行元数据的上下文，真正干活的那一份才展开。</p>
+<p>这个设计确实有点东西。Prompt 是“一次性把话说死”，Skill 是“先挂个号，叫到了再进来”。</p>
+<h2 id="几个仓库，按我翻的顺序来"><a href="#几个仓库，按我翻的顺序来" class="headerlink" title="几个仓库，按我翻的顺序来"></a>几个仓库，按我翻的顺序来</h2><h3 id="Superpowers（obra-superpowers）-——-想给-Agent-立规矩的，先看这个"><a href="#Superpowers（obra-superpowers）-——-想给-Agent-立规矩的，先看这个" class="headerlink" title="Superpowers（obra/superpowers） —— 想给 Agent 立规矩的，先看这个"></a><strong>Superpowers（obra/superpowers）</strong> —— 想给 Agent 立规矩的，先看这个</h3>
+      
+      <a href="/2026/10/26/github_ai_skills/#more" class="read-more">
+        <i class="fas fa-book-reader"></i> 继续阅读全文 »
+      </a>
+    </div>
+    <div class="meta">
+      
+        <div class="meta-item categories">
+          <i class="fas fa-folder"></i>
+          <a class="article-category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
+        </div>
+      
+      
+        <div class="meta-item tags">
+          <i class="fas fa-tags"></i>
+          <a class="article-tag-none-link" href="/tags/AI/" rel="tag">AI</a> <a class="article-tag-none-link" href="/tags/Agent/" rel="tag">Agent</a> <a class="article-tag-none-link" href="/tags/Skills/" rel="tag">Skills</a> <a class="article-tag-none-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a>
+        </div>
+      
+    </div>
+  </div>
+</div> 
+  
+    <div class="post-card">
+  
+  <div class="post-card-content">
+    <h2 class="title">
       <a href="/2026/09/07/Old-computer-NAS/">
         <span class="title-content">
           
@@ -1220,47 +1264,6 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="meta-item tags">
           <i class="fas fa-tags"></i>
           <a class="article-tag-none-link" href="/tags/Serverless/" rel="tag">Serverless</a> <a class="article-tag-none-link" href="/tags/Vercel/" rel="tag">Vercel</a> <a class="article-tag-none-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/" rel="tag">微信公众号</a> <a class="article-tag-none-link" href="/tags/%E6%8A%96%E9%9F%B3%E8%A7%A3%E6%9E%90/" rel="tag">抖音解析</a>
-        </div>
-      
-    </div>
-  </div>
-</div> 
-  
-    <div class="post-card">
-  
-  <div class="post-card-content">
-    <h2 class="title">
-      <a href="/2026/06/01/GitHub_Actions/">
-        <span class="title-content">
-          
-          以后在手机上用 Termux 和 GitHub Actions 更新 Hexo 博客
-        </span>
-        <span class="post-date">
-          <i class="fas fa-calendar-alt"></i>
-          2026-06-01
-        </span>
-      </a>
-    </h2>
-    <div class="excerpt">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如果你像我一样，经常在手机上写文章，却苦于无法在手机端运行 <code>hexo generate</code> 和 <code>hexo deploy</code>（耗电且容易出错），那么这篇教程正是为你准备的。我们将利用 <strong>Termux</strong> 在手机上完成 Git 操作，再借助 <strong>GitHub Actions</strong> 在云端自动构建和部署博客——你只需要专注写作，剩下的交给云端。</p>
-<p><strong>最终效果</strong>：在手机上写完文章 → <code>git push</code> → 等待 2~5 分钟 → 博客自动更新。全程无需在手机运行 Hexo 或 Node.js。</p>
-      
-      <a href="/2026/06/01/GitHub_Actions/#more" class="read-more">
-        <i class="fas fa-book-reader"></i> 继续阅读全文 »
-      </a>
-    </div>
-    <div class="meta">
-      
-        <div class="meta-item categories">
-          <i class="fas fa-folder"></i>
-          <a class="article-category-link" href="/categories/tutorials/">教程</a>
-        </div>
-      
-      
-        <div class="meta-item tags">
-          <i class="fas fa-tags"></i>
-          <a class="article-tag-none-link" href="/tags/GitHub-Actions/" rel="tag">GitHub Actions</a> <a class="article-tag-none-link" href="/tags/Hexo/" rel="tag">Hexo</a> <a class="article-tag-none-link" href="/tags/Termux/" rel="tag">Termux</a> <a class="article-tag-none-link" href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" rel="tag">自动化</a>
         </div>
       
     </div>

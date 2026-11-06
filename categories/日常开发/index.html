@@ -657,12 +657,41 @@ document.addEventListener('DOMContentLoaded', function() {
     日常开发
   </h1>
   <div class="category-counter">
-    共计 1 篇文章
+    共计 2 篇文章
   </div>
 </div>
 
 <!-- 文章列表 -->
 <div class="post-list">
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2026-10-26
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2026/10/26/github_ai_skills/">最近翻的几个 Agent Skills 仓库，有些星数离谱到我想笑</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-tags">
+              <i class="fas fa-tags"></i>
+              <a class="tag-none-link" href="/tags/AI/" rel="tag">AI</a>，<a class="tag-none-link" href="/tags/Agent/" rel="tag">Agent</a>，<a class="tag-none-link" href="/tags/Skills/" rel="tag">Skills</a>，<a class="tag-none-link" href="/tags/%E5%BC%80%E6%BA%90/" rel="tag">开源</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="先说背景，不废话"><a href="#先说背景，不废话" class="headerlink" title="先说背景，不废话"></a>先说背景，不废话</h2><p>如果你最近刷 GitHub Trending，应该注意到了：满屏都是 Skills 仓库。</p>
+<p>不是 MCP，不是 Prompt 模板，是 <strong>Skills</strong>。一个文件夹，里面放一个 <code>SKILL.md</code>，再配点脚本和参考资料，就能让 AI Agent 学会一套固定流程。</p>
+<p>我一开始也没当回事，心想不就是更结构化的 Prompt 吗。后来翻了几篇文章才意识到，这东西的核心不在“写什么”，而在 <strong>怎么加载</strong>。Agent 启动时只读每个 Skill 的 <code>name</code> 和 <code>description</code>，判断当前任务匹配了，才把完整的 <code>SKILL.md</code> 拉进上下文；需要跑脚本、读参考文档的时候，再进一步按需加载。等于说，你装一百个 Skill，平时只占一百行元数据的上下文，真正干活的那一份才展开。</p>
+<p>这个设计确实有点东西。Prompt 是“一次性把话说死”，Skill 是“先挂个号，叫到了再进来”。</p>
+<h2 id="几个仓库，按我翻的顺序来"><a href="#几个仓库，按我翻的顺序来" class="headerlink" title="几个仓库，按我翻的顺序来"></a>几个仓库，按我翻的顺序来</h2><h3 id="Superpowers（obra-superpowers）-——-想给-Agent-立规矩的，先看这个"><a href="#Superpowers（obra-superpowers）-——-想给-Agent-立规矩的，先看这个" class="headerlink" title="Superpowers（obra/superpowers） —— 想给 Agent 立规矩的，先看这个"></a><strong>Superpowers（obra/superpowers）</strong> —— 想给 Agent 立规矩的，先看这个</h3>
+          </div>
+        
+      </div>
+    </div>
   
     <div class="post-item">
       <div class="post-date">
