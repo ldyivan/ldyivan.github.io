@@ -15,8 +15,39 @@
     <atom:link href="https://www.hzv5.cn/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>吖远zzy的个人博客，专注于Web前端开发、Node.js、Vue.js、React等全栈内容分享。这里有深入的技术教程、实用的开发经验、最新的技术动态，助你在编程之路上不断进步。</description>
-    <pubDate>Tue, 10 Nov 2026 11:52:56 GMT</pubDate>
+    <pubDate>Tue, 10 Nov 2026 12:02:12 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>用 AI Agent 把桌面宠物搬进 Android，dsh-pet-android 顺手记了点踩坑笔记</title>
+      <link>https://www.hzv5.cn/2026/11/10/dsh-pet-android/</link>
+      <guid>https://www.hzv5.cn/2026/11/10/dsh-pet-android/</guid>
+      <pubDate>Tue, 10 Nov 2026 13:00:00 GMT</pubDate>
+      
+      <description>用AI Agent把dsh-pet桌面宠物移植成Android原生应用的实践笔记，聊聊Agent擅长什么、不擅长什么，以及一个“旧代码能跑就别动”的技术取舍。</description>
+      
+      
+      
+      <content:encoded><![CDATA[<h2 id="先说这个项目是啥"><a href="#先说这个项目是啥" class="headerlink" title="先说这个项目是啥"></a>先说这个项目是啥</h2><p><code>dsh-pet</code> 是 DeepSeek Harness 生态里的一个桌面宠物插件，一只蓝色大肥鱼，待机呼吸、随机动作、点击弹台词、拖拽甩抛反弹，一百多段透明动画无缝切换。</p><p>桌面端它跑在 Electron 的透明 <code>BrowserWindow</code> 里。</p><p>但 Android 上没有 Electron，也没有“透明桌面窗口”这种东西。所以我做的事情，说白了就一句：<strong>把 Electron 那个透明窗口，换成 Android 的系统悬浮窗</strong>，让这只鱼飘在手机桌面上[reference:3]。</p><p><img src="img/dshPet/dah-pet.png" alt="蓝色大肥鱼桌宠运行效果"></p><p>仓库已经开源了，MIT，<img src="https://github.com/ldyivan/dsh-pet-android" alt="dsh-pet-android">。</p><span id="more"></span><h2 id="技术路线：没有重写，也没有硬搬"><a href="#技术路线：没有重写，也没有硬搬" class="headerlink" title="技术路线：没有重写，也没有硬搬"></a>技术路线：没有重写，也没有硬搬</h2><p>这里有一个很容易踩进去的坑：<strong>拿到一个移植任务，第一反应往往是“用目标平台的语言重写一遍”</strong>。</p><p>我也想过。dsh-pet 的上游是 TypeScript/Electron 那一套，如果全部用 Kotlin 重写，动画系统、状态机、台词逻辑、渲染循环，工作量直接起飞，而且很容易在重写过程中把原作者调好的手感丢掉。</p><p>最后的决定是：<strong>渲染层原封不动，平台层自己写</strong>。</p><p>宠物动画、渲染逻辑、台词、素材，全部来自上游。Android 这边只做平台适配——悬浮窗、触摸事件、前台服务、后台保活、设置页。渲染容器用 <strong>WebView</strong>，把上游的渲染代码直接塞进去跑。</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">上游 dsh-pet（Electron）</span><br><span class="line">  ├── 动画 / 渲染 / 台词 / 素材  ← 原样保留</span><br><span class="line">  └── 平台层（Electron 透明窗口） ← 替换</span><br><span class="line">              ↓</span><br><span class="line">Android 移植</span><br><span class="line">  ├── WebView 承载渲染</span><br><span class="line">  └── 系统悬浮窗（SYSTEM_ALERT_WINDOW）承载显示</span><br></pre></td></tr></table></figure><p>这个决定让整个项目的核心复杂度降了一个数量级。Agent 不需要去理解那一百多段动画是怎么逐帧调度的，它只需要把“窗口”和“通信”这两件事在 Android 上搭对。</p><h2 id="Agent-干得最好的，是“翻译”"><a href="#Agent-干得最好的，是“翻译”" class="headerlink" title="Agent 干得最好的，是“翻译”"></a>Agent 干得最好的，是“翻译”</h2><p>这次用 Agent 的过程里，最顺畅的部分基本都是 有明确对照物的翻译工作。</p><p>比如，上游用 Electron 的 BrowserWindow 设置透明和鼠标穿透。Android 这边对应的就是悬浮窗的 FLAG_NOT_TOUCHABLE 和 PixelFormat.TRANSLUCENT。把这两边的语义对应关系丢给 Agent，让它生成 Kotlin 代码，基本一遍过。</p><p>再比如触摸事件。上游处理拖拽和点击的逻辑是现成的，Agent 只需要把 Android 悬浮窗的 MotionEvent 翻译成上游能理解的坐标和事件类型，通过 WebView 的 JS Bridge 传进去。这部分它写得又快又准。</p><p>还有设置页、通知栏控制、版本检查这些“边角料”，模式固定、重复度高，交给 Agent 批量生成，比手敲舒服太多。仓库从 v1.0.9 到 v1.2.23，二十多个版本迭代下来，这些东西基本都是 Agent 铺出来的。</p><p>一句话概括：Agent 擅长“已知 A 在 B 上对应什么”的问题。</p><h2 id="Agent-搞不定的，是“Android-本身的脾气”"><a href="#Agent-搞不定的，是“Android-本身的脾气”" class="headerlink" title="Agent 搞不定的，是“Android 本身的脾气”"></a>Agent 搞不定的，是“Android 本身的脾气”</h2><p>但一到 Android 平台特有的那些隐形规则上，Agent 就开始表演什么叫“一本正经地给你埋雷”。</p><h3 id="第一个坑：悬浮窗的触摸焦点"><a href="#第一个坑：悬浮窗的触摸焦点" class="headerlink" title="第一个坑：悬浮窗的触摸焦点"></a>第一个坑：悬浮窗的触摸焦点</h3><p>早期版本桌宠是能拖了，但长按菜单和 AI 对话的输入框死活弹不出键盘。</p><p>查下来是悬浮窗的 FLAG_NOT_FOCUSABLE 标志在作祟——它让窗口不抢焦点，好处是不影响桌面其他应用，坏处是需要键盘输入的时候，键盘根本不出来。社区补丁版也踩了同一个坑，把 setInteractive() 做成了空实现。</p><p>Agent 写这段的时候非常自信，因为它“见过”悬浮窗代码的常见写法。但它不理解 Android 的焦点模型和 Electron 的窗口焦点完全不是一回事。这个只能自己拿着真机一遍遍试。</p><h3 id="第二个坑：国产-ROM-的保活"><a href="#第二个坑：国产-ROM-的保活" class="headerlink" title="第二个坑：国产 ROM 的保活"></a>第二个坑：国产 ROM 的保活</h3><p>桌宠这东西，用户切到别的应用，它得一直在。但国产 ROM 的杀后台策略，用 Agent 的话说叫“非确定性行为”。</p><p>我最后的方案是三层保活 + 用户手动放行：电池优化白名单、自启动权限、最近任务加锁。文档里写得很直白：被系统清理后最多 15 分钟内自动回来，手动强制停止不会恢复。这个策略不是 Agent 想出来的，是翻了一堆踩坑帖之后自己定的，Agent 只负责把代码写出来。</p><h3 id="第三个坑：完全体模式的无障碍权限"><a href="#第三个坑：完全体模式的无障碍权限" class="headerlink" title="第三个坑：完全体模式的无障碍权限"></a>第三个坑：完全体模式的无障碍权限</h3><p>“完全体模式”允许宠物透明度拉到 100% 且不影响桌面点击，靠的是无障碍权限。Agent 能生成申请权限的代码，但它不会告诉你：这个权限在部分 ROM 上会被用户当成“可疑行为”。要不要做、怎么引导，是产品判断，不是代码生成。</p><p>所以 Agent 到底省了多少事？</p><h2 id="Agent-到底省了多少事"><a href="#Agent-到底省了多少事" class="headerlink" title="Agent 到底省了多少事"></a>Agent 到底省了多少事</h2><p>说实话，省了很多，但没有省掉“想”的部分。</p><p>我的体感是：代码产出速度大概快了三四倍，但调试和决策的时间几乎没变。Agent 把“写”的成本打下来了，“想清楚”的成本还是原封不动摆在那里。</p><p>而且它有一个隐蔽的坏习惯：倾向于给你一个“看起来完整”的方案。悬浮窗 + WebView + 保活，一套组合拳给你摆得整整齐齐，你一眼扫过去觉得没问题，真机一跑，键盘不出来。</p><p>后来我养成一个习惯：Agent 生成的 Android 平台层代码，每一条系统 flag 都自己过一遍，不认识的查文档，不确定的写个最小 demo 先跑。它写的业务逻辑可以信任，它写的平台适配，得打问号。</p><h2 id="最后说两句"><a href="#最后说两句" class="headerlink" title="最后说两句"></a>最后说两句</h2><p>这个项目从第一个开源版本到现在，二十多个小版本迭代下来，功能已经比较稳了：多宠物、AI 对话（OpenAI 兼容接口）、完全体模式、检查更新，不填 API Key 也能当普通桌宠用。</p><p>回看整个过程，AI Agent 确实让“一个人把桌面插件搬到 Android”这件事从“想想就算了”变成了“一个周末能出第一个能跑的版本”。但它没有让移植变成“无脑操作”。Electron 和 Android 之间那条语义鸿沟，Agent 能帮你搭桥，但桥搭在哪、承重多少、会不会塌，还是得自己盯着。</p><p>工具越强，判断越值钱。这话放在这次移植上，挺贴切的。</p><p>P.S. 项目地址在 github.com/ldyivan/dsh-pet-android，README 里写了安装和使用方法，想自己改的可以直接 fork。上游素材仅限开源使用，别拿去商用。</p>]]></content:encoded>
+      
+      
+      <category domain="https://www.hzv5.cn/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</category>
+      
+      
+      <category domain="https://www.hzv5.cn/tags/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</category>
+      
+      <category domain="https://www.hzv5.cn/tags/Android/">Android</category>
+      
+      <category domain="https://www.hzv5.cn/tags/AI/">AI</category>
+      
+      <category domain="https://www.hzv5.cn/tags/Agent/">Agent</category>
+      
+      <category domain="https://www.hzv5.cn/tags/%E5%BC%80%E6%BA%90/">开源</category>
+      
+      
+      <comments>https://www.hzv5.cn/2026/11/10/dsh-pet-android/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>想做 H5 小游戏？这几个 Agent Skills 仓库我翻了一圈</title>
@@ -69,9 +100,9 @@
       
       <category domain="https://www.hzv5.cn/tags/Agent/">Agent</category>
       
-      <category domain="https://www.hzv5.cn/tags/Skills/">Skills</category>
-      
       <category domain="https://www.hzv5.cn/tags/%E5%BC%80%E6%BA%90/">开源</category>
+      
+      <category domain="https://www.hzv5.cn/tags/Skills/">Skills</category>
       
       
       <comments>https://www.hzv5.cn/2026/10/26/github_ai_skills/#disqus_thread</comments>
@@ -654,70 +685,6 @@
       
       
       <comments>https://www.hzv5.cn/2025/01/01/hexo-random-post/#disqus_thread</comments>
-      
-    </item>
-    
-    <item>
-      <title>QQ频道机器人Android客户端使用指南</title>
-      <link>https://www.hzv5.cn/2024/12/18/qqch-bot-readme/</link>
-      <guid>https://www.hzv5.cn/2024/12/18/qqch-bot-readme/</guid>
-      <pubDate>Wed, 18 Dec 2024 18:58:36 GMT</pubDate>
-      
-      <description>&lt;h1 id=&quot;QQ频道机器人-Android客户端&quot;&gt;&lt;a href=&quot;#QQ频道机器人-Android客户端&quot; class=&quot;headerlink&quot; title=&quot;QQ频道机器人 Android客户端&quot;&gt;&lt;/a&gt;QQ频道机器人 Android客户端&lt;/h1&gt;&lt;p&gt;一个用于管理和操作QQ频道机器人的Android客户端应用，基于uniapp开发，提供了直观的用户界面和丰富的功能特性。&lt;/p&gt;
-&lt;h2 id=&quot;客户端界面预览&quot;&gt;&lt;a href=&quot;#客户端界面预览&quot; class=&quot;headerlink&quot; title=&quot;客户端界面预览&quot;&gt;&lt;/a&gt;客户端界面预览&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;/img/qqBot/login_chat.png&quot; alt=&quot;登录频道聊天查看和发送消息&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/img/qqBot/plugin_setting_log.png&quot; alt=&quot;插件功能运行日志和设置&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;功能特性&quot;&gt;&lt;a href=&quot;#功能特性&quot; class=&quot;headerlink&quot; title=&quot;功能特性&quot;&gt;&lt;/a&gt;功能特性&lt;/h2&gt;&lt;h3 id=&quot;1-账号管理&quot;&gt;&lt;a href=&quot;#1-账号管理&quot; class=&quot;headerlink&quot; title=&quot;1. 账号管理&quot;&gt;&lt;/a&gt;1. 账号管理&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;App ID和Token登录&lt;/li&gt;
-&lt;li&gt;记住登录状态&lt;/li&gt;
-&lt;li&gt;自动登录选项&lt;/li&gt;
-&lt;li&gt;沙盒/正式环境切换&lt;/li&gt;
-&lt;li&gt;多账号管理&lt;/li&gt;
-&lt;li&gt;账号安全保护&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;2-频道管理&quot;&gt;&lt;a href=&quot;#2-频道管理&quot; class=&quot;headerlink&quot; title=&quot;2. 频道管理&quot;&gt;&lt;/a&gt;2. 频道管理&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;频道列表显示&lt;ul&gt;
-&lt;li&gt;分组展示&lt;/li&gt;
-&lt;li&gt;在线人数显示&lt;/li&gt;
-&lt;li&gt;频道类型图标&lt;/li&gt;
-&lt;li&gt;频道状态标识&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;未读消息统计&lt;ul&gt;
-&lt;li&gt;普通消息计数&lt;/li&gt;
-&lt;li&gt;@消息特别标记&lt;/li&gt;
-&lt;li&gt;按频道分类统计&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;频道权限管理&lt;ul&gt;
-&lt;li&gt;自动识别管理员权限&lt;/li&gt;
-&lt;li&gt;权限值实时计算&lt;/li&gt;
-&lt;li&gt;权限检查功能&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;3-消息功能&quot;&gt;&lt;a href=&quot;#3-消息功能&quot; class=&quot;headerlink&quot; title=&quot;3. 消息功能&quot;&gt;&lt;/a&gt;3. 消息功能&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;实时消息接收&lt;/p&gt;</description>
-      
-      
-      
-      <content:encoded><![CDATA[<h1 id="QQ频道机器人-Android客户端"><a href="#QQ频道机器人-Android客户端" class="headerlink" title="QQ频道机器人 Android客户端"></a>QQ频道机器人 Android客户端</h1><p>一个用于管理和操作QQ频道机器人的Android客户端应用，基于uniapp开发，提供了直观的用户界面和丰富的功能特性。</p><h2 id="客户端界面预览"><a href="#客户端界面预览" class="headerlink" title="客户端界面预览"></a>客户端界面预览</h2><p><img src="/img/qqBot/login_chat.png" alt="登录频道聊天查看和发送消息"></p><p><img src="/img/qqBot/plugin_setting_log.png" alt="插件功能运行日志和设置"></p><h2 id="功能特性"><a href="#功能特性" class="headerlink" title="功能特性"></a>功能特性</h2><h3 id="1-账号管理"><a href="#1-账号管理" class="headerlink" title="1. 账号管理"></a>1. 账号管理</h3><ul><li>App ID和Token登录</li><li>记住登录状态</li><li>自动登录选项</li><li>沙盒/正式环境切换</li><li>多账号管理</li><li>账号安全保护</li></ul><h3 id="2-频道管理"><a href="#2-频道管理" class="headerlink" title="2. 频道管理"></a>2. 频道管理</h3><ul><li>频道列表显示<ul><li>分组展示</li><li>在线人数显示</li><li>频道类型图标</li><li>频道状态标识</li></ul></li><li>未读消息统计<ul><li>普通消息计数</li><li>@消息特别标记</li><li>按频道分类统计</li></ul></li><li>频道权限管理<ul><li>自动识别管理员权限</li><li>权限值实时计算</li><li>权限检查功能</li></ul></li></ul><h3 id="3-消息功能"><a href="#3-消息功能" class="headerlink" title="3. 消息功能"></a>3. 消息功能</h3><ul><li><p>实时消息接收</p><span id="more"></span><ul><li>WebSocket长连接</li><li>断线自动重连</li><li>心跳保活机制</li></ul></li><li><p>消息发送功能</p><ul><li>文本消息支持</li><li>消息审核处理</li><li>审核状态显示</li></ul></li><li><p>消息管理</p><ul><li>消息撤回</li><li>历史记录查看</li><li>系统消息显示</li><li>在线状态更新</li></ul></li><li><p>消息展示</p><ul><li>时间戳显示</li><li>用户身份标识</li><li>消息状态图标</li><li>长按菜单操作</li></ul></li></ul><h3 id="4-插件系统"><a href="#4-插件系统" class="headerlink" title="4. 插件系统"></a>4. 插件系统</h3><ul><li>插件管理<ul><li>启用/禁用控制</li><li>本地存储支持</li><li>配置项管理</li></ul></li><li>插件功能<ul><li>命令处理</li><li>数据持久化</li><li>日志记录</li><li>API调用</li></ul></li><li>内置插件<ul><li>每日签到</li><li>百度百科</li></ul></li><li>开发支持<ul><li>完整API文档</li><li>示例代码</li><li>开发指南</li></ul></li></ul><h3 id="5-通知系统"><a href="#5-通知系统" class="headerlink" title="5. 通知系统"></a>5. 通知系统</h3><ul><li>消息通知<ul><li>新消息提醒</li><li>@消息特殊提示</li><li>消息合并显示</li><li>通知延迟处理</li></ul></li><li>通知管理<ul><li>是否开启通知</li><li>是否震动提醒</li><li>是否系统通知</li><li>免打扰设置</li></ul></li><li>通知优化<ul><li>消息去重</li><li>批量处理</li><li>智能延迟</li><li>性能优化</li></ul></li></ul><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><h3 id="基本要求"><a href="#基本要求" class="headerlink" title="基本要求"></a>基本要求</h3><ul><li>Android 5.0+</li><li>网络连接</li><li>存储空间 &gt;= 50MB</li><li>通知权限(可选)</li><li>后台运行权限(推荐)</li></ul><h3 id="权限说明"><a href="#权限说明" class="headerlink" title="权限说明"></a>权限说明</h3><ol><li><p>必需权限</p><ul><li>网络访问</li><li>存储读写</li><li>后台运行</li></ul></li><li><p>可选权限</p><ul><li>通知显示</li><li>开机自启</li><li>震动控制</li></ul></li></ol><h2 id="安装说明"><a href="#安装说明" class="headerlink" title="安装说明"></a>安装说明</h2><ol><li><p>下载安装</p><ul><li>从Release页面下载最新APK</li><li>允许安装未知来源应用</li><li>按提示完成安装</li></ul></li><li><p>首次配置</p><ul><li>授予必要权限</li><li>登录机器人账号</li><li>配置基本设置</li></ul></li></ol><h2 id="使用指南"><a href="#使用指南" class="headerlink" title="使用指南"></a>使用指南</h2><h3 id="1-登录配置"><a href="#1-登录配置" class="headerlink" title="1. 登录配置"></a>1. 登录配置</h3><h4 id="1-1-获取凭据"><a href="#1-1-获取凭据" class="headerlink" title="1.1 获取凭据"></a>1.1 获取凭据</h4><ol><li>访问<a href="https://q.qq.com">QQ机器人管理平台</a></li><li>创建/选择机器人</li><li>获取App ID和Token</li><li>确认机器人状态正常</li></ol><h4 id="1-2-登录设置"><a href="#1-2-登录设置" class="headerlink" title="1.2 登录设置"></a>1.2 登录设置</h4><ol><li>输入App ID和Token</li><li>选择环境(沙盒/正式)</li><li>设置自动登录(可选)</li><li>配置安全选项</li></ol><h3 id="2-频道操作"><a href="#2-频道操作" class="headerlink" title="2. 频道操作"></a>2. 频道操作</h3><h4 id="2-1-查看频道"><a href="#2-1-查看频道" class="headerlink" title="2.1 查看频道"></a>2.1 查看频道</h4><ol><li><p>打开频道列表</p><ul><li>点击顶部频道信息展开列表</li><li>查看分组和子频道</li><li>观察在线人数和状态</li></ul></li><li><p>频道分类</p><ul><li>文字频道(#)</li><li>语音频道(🔊)</li><li>直播频道(📺)</li><li>公告频道(📢)</li><li>应用频道(💬)</li><li>论坛频道(🎮)</li></ul></li><li><p>未读消息</p><ul><li>红点显示未读数</li><li>橙色标记@消息</li><li>点击清除未读</li></ul></li></ol><h4 id="2-2-消息管理"><a href="#2-2-消息管理" class="headerlink" title="2.2 消息管理"></a>2.2 消息管理</h4><ol><li><p>发送消息</p><ul><li>在输入框输入内容</li><li>点击发送按钮</li><li>等待发送状态</li><li>查看审核结果</li></ul></li><li><p>消息操作</p><ul><li>长按消息显示菜单</li><li>选择撤回等操作</li><li>查看消息详情</li></ul></li><li><p>消息状态</p><ul><li>正常消息</li><li>审核中(灰色)</li><li>审核拒绝(红色)</li><li>已撤回(灰色斜体)</li></ul></li></ol><h3 id="3-插件使用"><a href="#3-插件使用" class="headerlink" title="3. 插件使用"></a>3. 插件使用</h3><h4 id="3-1-插件管理"><a href="#3-1-插件管理" class="headerlink" title="3.1 插件管理"></a>3.1 插件管理</h4><ol><li><p>内置插件</p><ul><li>每日签到(/签到)</li><li>百度百科(/百科)</li></ul></li><li><p>插件控制</p><ul><li>启用/禁用插件</li><li>查看插件信息</li><li>管理插件数据</li></ul></li></ol><h4 id="3-2-插件命令"><a href="#3-2-插件命令" class="headerlink" title="3.2 插件命令"></a>3.2 插件命令</h4><ol><li><p>命令格式</p><ul><li>以/开头</li><li>严格匹配命令名</li><li>空格分隔参数</li></ul></li><li><p>使用示例</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/签到              # 执行签到</span><br><span class="line">/百科 太阳         # 查询百科</span><br></pre></td></tr></table></figure></li></ol><h3 id="4-通知设置"><a href="#4-通知设置" class="headerlink" title="4. 通知设置"></a>4. 通知设置</h3><h4 id="4-1-通知选项"><a href="#4-1-通知选项" class="headerlink" title="4.1 通知选项"></a>4.1 通知选项</h4><ol><li><p>基本设置</p><ul><li>启用通知</li><li>震动提醒</li><li>系统通知</li></ul></li><li><p>通知规则</p><ul><li>新消息延迟2秒</li><li>多条消息合并</li><li>@消息立即提醒</li><li>非当前频道通知</li></ul></li></ol><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-连接问题"><a href="#1-连接问题" class="headerlink" title="1. 连接问题"></a>1. 连接问题</h3><ul><li>问题: 无法连接或频繁断开</li><li>解决: <ol><li>检查网络连接</li><li>确认Token正确</li><li>查看机器人状态</li><li>等待自动重连</li></ol></li></ul><h3 id="2-消息问题"><a href="#2-消息问题" class="headerlink" title="2. 消息问题"></a>2. 消息问题</h3><ul><li>问题: 消息发送失败</li><li>解决:<ol><li>检查频道权限</li><li>确认消息格式</li><li>等待审核通过</li><li>查看错误提示</li></ol></li></ul><h3 id="3-插件问题"><a href="#3-插件问题" class="headerlink" title="3. 插件问题"></a>3. 插件问题</h3><ul><li>问题: 插件无响应</li><li>解决:<ol><li>检查插件状态</li><li>确认命令格式</li><li>查看错误日志</li><li>重启应用</li></ol></li></ul><h3 id="4-通知问题"><a href="#4-通知问题" class="headerlink" title="4. 通知问题"></a>4. 通知问题</h3><ul><li>问题: 收不到通知</li><li>解决:<ol><li>检查通知权限</li><li>确认通知设置</li><li>关闭省电模式</li><li>允许后台运行</li></ol></li></ul><h2 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h2><h3 id="v1-1-0-2024-01-20"><a href="#v1-1-0-2024-01-20" class="headerlink" title="v1.1.0 (2024-01-20)"></a>v1.1.0 (2024-01-20)</h3><ul><li>优化WebSocket连接</li><li>改进消息处理逻辑</li><li>完善插件系统</li><li>优化通知机制</li><li>修复已知问题</li></ul><h3 id="v1-0-0-2023-12-25"><a href="#v1-0-0-2023-12-25" class="headerlink" title="v1.0.0 (2023-12-25)"></a>v1.0.0 (2023-12-25)</h3><ul><li>首次发布</li><li>基础功能实现</li><li>插件系统支持</li><li>通知系统集成</li></ul><h2 id="更多待补充"><a href="#更多待补充" class="headerlink" title="更多待补充"></a>更多待补充</h2><p>么么哒~~</p>]]></content:encoded>
-      
-      
-      <category domain="https://www.hzv5.cn/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
-      
-      
-      <category domain="https://www.hzv5.cn/tags/%E7%AC%94%E8%AE%B0/">笔记</category>
-      
-      <category domain="https://www.hzv5.cn/tags/QQ%E6%9C%BA%E5%99%A8%E4%BA%BA/">QQ机器人</category>
-      
-      <category domain="https://www.hzv5.cn/tags/QQ/">QQ</category>
-      
-      <category domain="https://www.hzv5.cn/tags/QQ%E9%A2%91%E9%81%93/">QQ频道</category>
-      
-      <category domain="https://www.hzv5.cn/tags/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/">使用文档</category>
-      
-      
-      <comments>https://www.hzv5.cn/2024/12/18/qqch-bot-readme/#disqus_thread</comments>
       
     </item>
     

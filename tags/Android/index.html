@@ -657,12 +657,41 @@ document.addEventListener('DOMContentLoaded', function() {
     Android
   </h1>
   <div class="category-counter">
-    共计 5 篇文章
+    共计 6 篇文章
   </div>
 </div>
 
 <!-- 文章列表 -->
 <div class="post-list">
+  
+    <div class="post-item">
+      <div class="post-date">
+        <i class="fas fa-calendar"></i>
+        2026-11-10
+      </div>
+      <div class="post-info">
+        <h2 class="post-title">
+          <a href="/2026/11/10/dsh-pet-android/">用 AI Agent 把桌面宠物搬进 Android，dsh-pet-android 顺手记了点踩坑笔记</a>
+        </h2>
+        <div class="post-meta">
+          
+            <div class="post-categories">
+              <i class="fas fa-folder"></i>
+              <a class="category-link" href="/categories/%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91/">日常开发</a>
+            </div>
+          
+        </div>
+        
+          <div class="post-excerpt">
+            <h2 id="先说这个项目是啥"><a href="#先说这个项目是啥" class="headerlink" title="先说这个项目是啥"></a>先说这个项目是啥</h2><p><code>dsh-pet</code> 是 DeepSeek Harness 生态里的一个桌面宠物插件，一只蓝色大肥鱼，待机呼吸、随机动作、点击弹台词、拖拽甩抛反弹，一百多段透明动画无缝切换。</p>
+<p>桌面端它跑在 Electron 的透明 <code>BrowserWindow</code> 里。</p>
+<p>但 Android 上没有 Electron，也没有“透明桌面窗口”这种东西。所以我做的事情，说白了就一句：<strong>把 Electron 那个透明窗口，换成 Android 的系统悬浮窗</strong>，让这只鱼飘在手机桌面上[reference:3]。</p>
+<p><img src="img/dshPet/dah-pet.png" alt="蓝色大肥鱼桌宠运行效果"></p>
+<p>仓库已经开源了，MIT，<img src="https://github.com/ldyivan/dsh-pet-android" alt="dsh-pet-android">。</p>
+          </div>
+        
+      </div>
+    </div>
   
     <div class="post-item">
       <div class="post-date">
