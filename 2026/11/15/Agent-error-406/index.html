@@ -119,7 +119,7 @@
             "datePublished": "2026-11-15T08:30:00.000Z",
         
         
-            "dateModified": "2026-11-15T08:48:02.934Z",
+            "dateModified": "2026-11-15T08:51:17.830Z",
         
         "author": {
             "@type": "Person",
@@ -697,7 +697,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <span class="article-wordcount">
             <i class="fas fa-file-word"></i>
             
-            5839 字
+            5835 字
             
               · 15 分钟
             
@@ -725,7 +725,40 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>测试环境用 curl 直接打，排除客户端 SDK 干扰。</p>
 <span id="more"></span>
 
-<p>请求类型 Accept 头 结果<br>非流式 stream:false application/json ✅ 200<br>流式 stream:true application/json, text/event-stream ❌ 406<br>流式 stream:true text/event-stream, application/json ✅ 200<br>流式 stream:true text/event-stream（单值） ✅ 200<br>流式 stream:true 不发 Accept 头 ✅ 200</p>
+<table>
+<thead>
+<tr>
+<th>请求类型</th>
+<th>Accept 头</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非流式 <code>stream:false</code></td>
+<td><code>application/json</code></td>
+<td>✅ 200</td>
+</tr>
+<tr>
+<td>流式 <code>stream:true</code></td>
+<td><code>application/json, text/event-stream</code></td>
+<td>❌ 406</td>
+</tr>
+<tr>
+<td>流式 <code>stream:true</code></td>
+<td><code>text/event-stream, application/json</code></td>
+<td>✅ 200</td>
+</tr>
+<tr>
+<td>流式 <code>stream:true</code></td>
+<td><code>text/event-stream</code>（单值）</td>
+<td>✅ 200</td>
+</tr>
+<tr>
+<td>流式 <code>stream:true</code></td>
+<td>不发 Accept 头</td>
+<td>✅ 200</td>
+</tr>
+</tbody></table>
 <p>按 HTTP 规范，Accept: application/json, text/event-stream 的意思是“这两种格式我都能接受”。</p>
 <p>但很多服务端的实现并不规范：解析 Accept 时只取第一个媒体类型，逗号后面的直接忽略。</p>
 <p>这类问题在 Java 生态里有明确的 Bug 记录（Spring 的 MediaType 解析在部分版本上只认首位），Go 写的 MCP 客户端库里也有对应注释——“把 text/event-stream 放在 Accept 最前面，避免严格解析首个值的服务器返回 406”。</p>
@@ -777,7 +810,30 @@ document.addEventListener('DOMContentLoaded', function() {
 </ol>
 <p>部分客户端插件本质上也是这个思路：在 fetch 中间件里重写请求头。</p>
 <h2 id="常见客户端的请求头参考"><a href="#常见客户端的请求头参考" class="headerlink" title="常见客户端的请求头参考"></a>常见客户端的请求头参考</h2><p>不同客户端差异很大，下面是社区逆向 / 抓包整理出的典型特征，仅供排查参考：</p>
-<p>客户端 常见请求头特征<br>OpenCode User-Agent: opencode/<ver>；x-opencode-session，格式类似 ses_&lt;12位十六进制&gt;&lt;14位字母数字&gt;；可能还有 x-opencode-org-id 等<br>ZCode User-Agent: ZCode/&lt;版本&gt; ai-sdk/provider-utils/&lt;4.0.x&gt; …；X-Title: Z Code@electron 或 Z Code@cli；可能还有 X-ZCode-App-Version、X-ZCode-Agent、X-Platform<br>Claude Code / Codex 通常需要 User-Agent、Originator，以及会话相关的 X-Claude-Code-Session-Id 等<br>Magpie 会话标识可能使用 X-Conversation-ID 等头部</ver></p>
+<table>
+<thead>
+<tr>
+<th>客户端</th>
+<th>常见请求头特征</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OpenCode</td>
+<td><code>User-Agent: opencode/&lt;ver&gt;</code>；<code>x-opencode-session</code>，格式类似 <code>ses_&lt;12位十六进制&gt;&lt;14位字母数字&gt;</code>；可能还有 <code>x-opencode-org-id</code> 等</td>
+</tr>
+<tr>
+<td>ZCode</td>
+<td><code>User-Agent: ZCode/&lt;版本&gt; ai-sdk/provider-utils/&lt;4.0.x&gt; ...</code>；<code>X-Title: Z Code@electron</code> 或 <code>Z Code@cli</code>；可能还有 <code>X-ZCode-App-Version</code>、<code>X-ZCode-Agent</code>、<code>X-Platform</code></td>
+</tr>
+<tr>
+<td>Claude Code / Codex</td>
+<td>通常需要 <code>User-Agent</code>、<code>Originator</code>，以及会话相关的 <code>X-Claude-Code-Session-Id</code> 等</td>
+</tr>
+<tr>
+<td>Magpie</td>
+<td>会话标识可能使用 <code>X-Conversation-ID</code> 等头部</td>
+</tr>
+</tbody></table>
 <p>再次强调：不要只改 User-Agent。服务端校验严格的话，配套头缺失或格式不对，照样判“当前客户端不支持”。</p>
 <h2 id="几个注意事项"><a href="#几个注意事项" class="headerlink" title="几个注意事项"></a>几个注意事项</h2><ol>
 <li>一致性很重要：服务端可能同时校验 User-Agent、会话 ID 格式、其他配套头，甚至请求体字段。只改一个头很容易被识破。</li>
